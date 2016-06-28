@@ -24,6 +24,8 @@
 
     <!-- Custom Theme Style -->
     <link href="/components/gentelella/build/css/custom.min.css" rel="stylesheet">
+
+    @yield('styles')
 </head>
 
 <body class="nav-md">
@@ -1255,5 +1257,6 @@
     gauge.setTextField(document.getElementById("gauge-text"));
 </script>
 <!-- /gauge.js -->
+@yield('scripts')
 </body>
 </html>
