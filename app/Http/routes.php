@@ -24,5 +24,5 @@ Route::get('repos', function () {
 });
 
 Route::get('admin', function () {
-    return view('admin.dashboard');
+    return view('admin.repos');
 });

@@ -1,18 +1,19 @@
 @extends('layouts.admin')
 
 @section('contents')
+
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Tables <small>Some examples to get you started</small></h3>
+                <h3>Projects <small>Listing design</small></h3>
             </div>
 
             <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                     <div class="input-group">
-                        <input type="text" placeholder="Search for..." class="form-control">
+                        <input class="form-control" placeholder="Search for..." type="text">
                     <span class="input-group-btn">
-                      <button type="button" class="btn btn-default">Go!</button>
+                      <button class="btn btn-default" type="button">Go!</button>
                     </span>
                     </div>
                 </div>
@@ -22,16 +23,16 @@
         <div class="clearfix"></div>
 
         <div class="row">
-            <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="col-md-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Basic Tables <small>basic table subtitle</small></h2>
+                        <h2>Projects</h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                             </li>
                             <li class="dropdown">
-                                <a aria-expanded="false" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="fa fa-wrench"></i></a>
-                                <ul role="menu" class="dropdown-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
                                     <li><a href="#">Settings 1</a>
                                     </li>
                                     <li><a href="#">Settings 2</a>
@@ -45,408 +46,350 @@
                     </div>
                     <div class="x_content">
 
-                        <table class="table">
+                        <p>Simple table with project listing with progress and editing options</p>
+
+                        <!-- start project list -->
+                        <table class="table table-striped projects">
                             <thead>
                             <tr>
-                                <th>#</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Username</th>
+                                <th style="width: 1%">#</th>
+                                <th style="width: 20%">Project Name</th>
+                                <th>Team Members</th>
+                                <th>Project Progress</th>
+                                <th>Status</th>
+                                <th style="width: 20%">#Edit</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
+                                <td>#</td>
+                                <td>
+                                    <a>Pesamakini Backend UI</a>
+                                    <br>
+                                    <small>Created 01.01.2015</small>
+                                </td>
+                                <td>
+                                    <ul class="list-inline">
+                                        <li>
+                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        </li>
+                                        <li>
+                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        </li>
+                                        <li>
+                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        </li>
+                                        <li>
+                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td class="project_progress">
+                                    <div class="progress progress_sm">
+                                        <div aria-valuenow="56" style="width: 57%;" class="progress-bar bg-green" role="progressbar" data-transitiongoal="57"></div>
+                                    </div>
+                                    <small>57% Complete</small>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-success btn-xs">Success</button>
+                                </td>
+                                <td>
+                                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                                    <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
+                                <td>#</td>
+                                <td>
+                                    <a>Pesamakini Backend UI</a>
+                                    <br>
+                                    <small>Created 01.01.2015</small>
+                                </td>
+                                <td>
+                                    <ul class="list-inline">
+                                        <li>
+                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        </li>
+                                        <li>
+                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td class="project_progress">
+                                    <div class="progress progress_sm">
+                                        <div aria-valuenow="46" style="width: 47%;" class="progress-bar bg-green" role="progressbar" data-transitiongoal="47"></div>
+                                    </div>
+                                    <small>47% Complete</small>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-success btn-xs">Success</button>
+                                </td>
+                                <td>
+                                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                                    <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
+                                <td>#</td>
+                                <td>
+                                    <a>Pesamakini Backend UI</a>
+                                    <br>
+                                    <small>Created 01.01.2015</small>
+                                </td>
+                                <td>
+                                    <ul class="list-inline">
+                                        <li>
+                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        </li>
+                                        <li>
+                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        </li>
+                                        <li>
+                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td class="project_progress">
+                                    <div class="progress progress_sm">
+                                        <div aria-valuenow="76" style="width: 77%;" class="progress-bar bg-green" role="progressbar" data-transitiongoal="77"></div>
+                                    </div>
+                                    <small>77% Complete</small>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-success btn-xs">Success</button>
+                                </td>
+                                <td>
+                                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                                    <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#</td>
+                                <td>
+                                    <a>Pesamakini Backend UI</a>
+                                    <br>
+                                    <small>Created 01.01.2015</small>
+                                </td>
+                                <td>
+                                    <ul class="list-inline">
+                                        <li>
+                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        </li>
+                                        <li>
+                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        </li>
+                                        <li>
+                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        </li>
+                                        <li>
+                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td class="project_progress">
+                                    <div class="progress progress_sm">
+                                        <div aria-valuenow="59" style="width: 60%;" class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
+                                    </div>
+                                    <small>60% Complete</small>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-success btn-xs">Success</button>
+                                </td>
+                                <td>
+                                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                                    <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#</td>
+                                <td>
+                                    <a>Pesamakini Backend UI</a>
+                                    <br>
+                                    <small>Created 01.01.2015</small>
+                                </td>
+                                <td>
+                                    <ul class="list-inline">
+                                        <li>
+                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        </li>
+                                        <li>
+                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        </li>
+                                        <li>
+                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td class="project_progress">
+                                    <div class="progress progress_sm">
+                                        <div aria-valuenow="11" style="width: 12%;" class="progress-bar bg-green" role="progressbar" data-transitiongoal="12"></div>
+                                    </div>
+                                    <small>12% Complete</small>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-success btn-xs">Success</button>
+                                </td>
+                                <td>
+                                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                                    <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#</td>
+                                <td>
+                                    <a>Pesamakini Backend UI</a>
+                                    <br>
+                                    <small>Created 01.01.2015</small>
+                                </td>
+                                <td>
+                                    <ul class="list-inline">
+                                        <li>
+                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        </li>
+                                        <li>
+                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        </li>
+                                        <li>
+                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        </li>
+                                        <li>
+                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td class="project_progress">
+                                    <div class="progress progress_sm">
+                                        <div aria-valuenow="34" style="width: 35%;" class="progress-bar bg-green" role="progressbar" data-transitiongoal="35"></div>
+                                    </div>
+                                    <small>35% Complete</small>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-success btn-xs">Success</button>
+                                </td>
+                                <td>
+                                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                                    <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#</td>
+                                <td>
+                                    <a>Pesamakini Backend UI</a>
+                                    <br>
+                                    <small>Created 01.01.2015</small>
+                                </td>
+                                <td>
+                                    <ul class="list-inline">
+                                        <li>
+                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        </li>
+                                        <li>
+                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td class="project_progress">
+                                    <div class="progress progress_sm">
+                                        <div aria-valuenow="86" style="width: 87%;" class="progress-bar bg-green" role="progressbar" data-transitiongoal="87"></div>
+                                    </div>
+                                    <small>87% Complete</small>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-success btn-xs">Success</button>
+                                </td>
+                                <td>
+                                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                                    <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#</td>
+                                <td>
+                                    <a>Pesamakini Backend UI</a>
+                                    <br>
+                                    <small>Created 01.01.2015</small>
+                                </td>
+                                <td>
+                                    <ul class="list-inline">
+                                        <li>
+                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        </li>
+                                        <li>
+                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        </li>
+                                        <li>
+                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td class="project_progress">
+                                    <div class="progress progress_sm">
+                                        <div aria-valuenow="76" style="width: 77%;" class="progress-bar bg-green" role="progressbar" data-transitiongoal="77"></div>
+                                    </div>
+                                    <small>77% Complete</small>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-success btn-xs">Success</button>
+                                </td>
+                                <td>
+                                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                                    <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#</td>
+                                <td>
+                                    <a>Pesamakini Backend UI</a>
+                                    <br>
+                                    <small>Created 01.01.2015</small>
+                                </td>
+                                <td>
+                                    <ul class="list-inline">
+                                        <li>
+                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        </li>
+                                        <li>
+                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        </li>
+                                        <li>
+                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        </li>
+                                        <li>
+                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td class="project_progress">
+                                    <div class="progress progress_sm">
+                                        <div aria-valuenow="76" style="width: 77%;" class="progress-bar bg-green" role="progressbar" data-transitiongoal="77"></div>
+                                    </div>
+                                    <small>77% Complete</small>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-success btn-xs">Success</button>
+                                </td>
+                                <td>
+                                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                                    <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                                </td>
                             </tr>
                             </tbody>
                         </table>
+                        <!-- end project list -->
 
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-md-6 col-sm-6 col-xs-12">
-                <div class="x_panel">
-                    <div class="x_title">
-                        <h2>Stripped table <small>Stripped table subtitle</small></h2>
-                        <ul class="nav navbar-right panel_toolbox">
-                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                            </li>
-                            <li class="dropdown">
-                                <a aria-expanded="false" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="fa fa-wrench"></i></a>
-                                <ul role="menu" class="dropdown-menu">
-                                    <li><a href="#">Settings 1</a>
-                                    </li>
-                                    <li><a href="#">Settings 2</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a class="close-link"><i class="fa fa-close"></i></a>
-                            </li>
-                        </ul>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="x_content">
-
-                        <table class="table table-striped">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Username</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
-                            </tbody>
-                        </table>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="clearfix"></div>
-
-            <div class="col-md-6 col-sm-6 col-xs-12">
-                <div class="x_panel">
-                    <div class="x_title">
-                        <h2>Hover rows <small>Try hovering over the rows</small></h2>
-                        <ul class="nav navbar-right panel_toolbox">
-                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                            </li>
-                            <li class="dropdown">
-                                <a aria-expanded="false" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="fa fa-wrench"></i></a>
-                                <ul role="menu" class="dropdown-menu">
-                                    <li><a href="#">Settings 1</a>
-                                    </li>
-                                    <li><a href="#">Settings 2</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a class="close-link"><i class="fa fa-close"></i></a>
-                            </li>
-                        </ul>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="x_content">
-                        <table class="table table-hover">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Username</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
-                            </tbody>
-                        </table>
-
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-md-6 col-sm-6 col-xs-12">
-                <div class="x_panel">
-                    <div class="x_title">
-                        <h2>Boardered table <small>Bordered table subtitle</small></h2>
-                        <ul class="nav navbar-right panel_toolbox">
-                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                            </li>
-                            <li class="dropdown">
-                                <a aria-expanded="false" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="fa fa-wrench"></i></a>
-                                <ul role="menu" class="dropdown-menu">
-                                    <li><a href="#">Settings 1</a>
-                                    </li>
-                                    <li><a href="#">Settings 2</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a class="close-link"><i class="fa fa-close"></i></a>
-                            </li>
-                        </ul>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="x_content">
-
-                        <table class="table table-bordered">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Username</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
-                            </tbody>
-                        </table>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="clearfix"></div>
-
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                    <div class="x_title">
-                        <h2>Table design <small>Custom design</small></h2>
-                        <ul class="nav navbar-right panel_toolbox">
-                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                            </li>
-                            <li class="dropdown">
-                                <a aria-expanded="false" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="fa fa-wrench"></i></a>
-                                <ul role="menu" class="dropdown-menu">
-                                    <li><a href="#">Settings 1</a>
-                                    </li>
-                                    <li><a href="#">Settings 2</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a class="close-link"><i class="fa fa-close"></i></a>
-                            </li>
-                        </ul>
-                        <div class="clearfix"></div>
-                    </div>
-
-                    <div class="x_content">
-
-                        <p>Add class <code>bulk_action</code> to table for bulk actions options on row select</p>
-
-                        <div class="table-responsive">
-                            <table class="table table-striped jambo_table bulk_action">
-                                <thead>
-                                <tr class="headings selected">
-                                    <th>
-                                        <div class="icheckbox_flat-green checked" style="position: relative;"><input type="checkbox" class="flat" id="check-all" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins></div>
-                                    </th>
-                                    <th class="column-title" style="display: none;">Invoice </th>
-                                    <th class="column-title" style="display: none;">Invoice Date </th>
-                                    <th class="column-title" style="display: none;">Order </th>
-                                    <th class="column-title" style="display: none;">Bill to Name </th>
-                                    <th class="column-title" style="display: none;">Status </th>
-                                    <th class="column-title" style="display: none;">Amount </th>
-                                    <th class="column-title no-link last" style="display: none;"><span class="nobr">Action</span>
-                                    </th>
-                                    <th colspan="7" class="bulk-actions" style="display: table-cell;">
-                                        <a style="color:#fff; font-weight:500;" class="antoo">Bulk Actions ( <span class="action-cnt">10 Records Selected</span> ) <i class="fa fa-chevron-down"></i></a>
-                                    </th>
-                                </tr>
-                                </thead>
-
-                                <tbody>
-                                <tr class="even pointer selected">
-                                    <td class="a-center ">
-                                        <div class="icheckbox_flat-green checked" style="position: relative;"><input type="checkbox" name="table_records" class="flat" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins></div>
-                                    </td>
-                                    <td class=" ">121000040</td>
-                                    <td class=" ">May 23, 2014 11:47:56 PM </td>
-                                    <td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i></td>
-                                    <td class=" ">John Blank L</td>
-                                    <td class=" ">Paid</td>
-                                    <td class="a-right a-right ">$7.45</td>
-                                    <td class=" last"><a href="#">View</a>
-                                    </td>
-                                </tr>
-                                <tr class="odd pointer selected">
-                                    <td class="a-center ">
-                                        <div class="icheckbox_flat-green checked" style="position: relative;"><input type="checkbox" name="table_records" class="flat" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins></div>
-                                    </td>
-                                    <td class=" ">121000039</td>
-                                    <td class=" ">May 23, 2014 11:30:12 PM</td>
-                                    <td class=" ">121000208 <i class="success fa fa-long-arrow-up"></i>
-                                    </td>
-                                    <td class=" ">John Blank L</td>
-                                    <td class=" ">Paid</td>
-                                    <td class="a-right a-right ">$741.20</td>
-                                    <td class=" last"><a href="#">View</a>
-                                    </td>
-                                </tr>
-                                <tr class="even pointer selected">
-                                    <td class="a-center ">
-                                        <div class="icheckbox_flat-green checked" style="position: relative;"><input type="checkbox" name="table_records" class="flat" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins></div>
-                                    </td>
-                                    <td class=" ">121000038</td>
-                                    <td class=" ">May 24, 2014 10:55:33 PM</td>
-                                    <td class=" ">121000203 <i class="success fa fa-long-arrow-up"></i>
-                                    </td>
-                                    <td class=" ">Mike Smith</td>
-                                    <td class=" ">Paid</td>
-                                    <td class="a-right a-right ">$432.26</td>
-                                    <td class=" last"><a href="#">View</a>
-                                    </td>
-                                </tr>
-                                <tr class="odd pointer selected">
-                                    <td class="a-center ">
-                                        <div class="icheckbox_flat-green checked" style="position: relative;"><input type="checkbox" name="table_records" class="flat" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins></div>
-                                    </td>
-                                    <td class=" ">121000037</td>
-                                    <td class=" ">May 24, 2014 10:52:44 PM</td>
-                                    <td class=" ">121000204</td>
-                                    <td class=" ">Mike Smith</td>
-                                    <td class=" ">Paid</td>
-                                    <td class="a-right a-right ">$333.21</td>
-                                    <td class=" last"><a href="#">View</a>
-                                    </td>
-                                </tr>
-                                <tr class="even pointer selected">
-                                    <td class="a-center ">
-                                        <div class="icheckbox_flat-green checked" style="position: relative;"><input type="checkbox" name="table_records" class="flat" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins></div>
-                                    </td>
-                                    <td class=" ">121000040</td>
-                                    <td class=" ">May 24, 2014 11:47:56 PM </td>
-                                    <td class=" ">121000210</td>
-                                    <td class=" ">John Blank L</td>
-                                    <td class=" ">Paid</td>
-                                    <td class="a-right a-right ">$7.45</td>
-                                    <td class=" last"><a href="#">View</a>
-                                    </td>
-                                </tr>
-                                <tr class="odd pointer selected">
-                                    <td class="a-center ">
-                                        <div class="icheckbox_flat-green checked" style="position: relative;"><input type="checkbox" name="table_records" class="flat" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins></div>
-                                    </td>
-                                    <td class=" ">121000039</td>
-                                    <td class=" ">May 26, 2014 11:30:12 PM</td>
-                                    <td class=" ">121000208 <i class="error fa fa-long-arrow-down"></i>
-                                    </td>
-                                    <td class=" ">John Blank L</td>
-                                    <td class=" ">Paid</td>
-                                    <td class="a-right a-right ">$741.20</td>
-                                    <td class=" last"><a href="#">View</a>
-                                    </td>
-                                </tr>
-                                <tr class="even pointer selected">
-                                    <td class="a-center ">
-                                        <div class="icheckbox_flat-green checked" style="position: relative;"><input type="checkbox" name="table_records" class="flat" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins></div>
-                                    </td>
-                                    <td class=" ">121000038</td>
-                                    <td class=" ">May 26, 2014 10:55:33 PM</td>
-                                    <td class=" ">121000203</td>
-                                    <td class=" ">Mike Smith</td>
-                                    <td class=" ">Paid</td>
-                                    <td class="a-right a-right ">$432.26</td>
-                                    <td class=" last"><a href="#">View</a>
-                                    </td>
-                                </tr>
-                                <tr class="odd pointer selected">
-                                    <td class="a-center ">
-                                        <div class="icheckbox_flat-green checked" style="position: relative;"><input type="checkbox" name="table_records" class="flat" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins></div>
-                                    </td>
-                                    <td class=" ">121000037</td>
-                                    <td class=" ">May 26, 2014 10:52:44 PM</td>
-                                    <td class=" ">121000204</td>
-                                    <td class=" ">Mike Smith</td>
-                                    <td class=" ">Paid</td>
-                                    <td class="a-right a-right ">$333.21</td>
-                                    <td class=" last"><a href="#">View</a>
-                                    </td>
-                                </tr>
-
-                                <tr class="even pointer selected">
-                                    <td class="a-center ">
-                                        <div class="icheckbox_flat-green checked" style="position: relative;"><input type="checkbox" name="table_records" class="flat" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins></div>
-                                    </td>
-                                    <td class=" ">121000040</td>
-                                    <td class=" ">May 27, 2014 11:47:56 PM </td>
-                                    <td class=" ">121000210</td>
-                                    <td class=" ">John Blank L</td>
-                                    <td class=" ">Paid</td>
-                                    <td class="a-right a-right ">$7.45</td>
-                                    <td class=" last"><a href="#">View</a>
-                                    </td>
-                                </tr>
-                                <tr class="odd pointer selected">
-                                    <td class="a-center ">
-                                        <div class="icheckbox_flat-green checked" style="position: relative;"><input type="checkbox" name="table_records" class="flat" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins></div>
-                                    </td>
-                                    <td class=" ">121000039</td>
-                                    <td class=" ">May 28, 2014 11:30:12 PM</td>
-                                    <td class=" ">121000208</td>
-                                    <td class=" ">John Blank L</td>
-                                    <td class=" ">Paid</td>
-                                    <td class="a-right a-right ">$741.20</td>
-                                    <td class=" last"><a href="#">View</a>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 @endsection
