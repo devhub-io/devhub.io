@@ -100,7 +100,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="brand-wrapper">
-                    <h2 class="section-title">专题</h2>
+                    <h2 class="section-title">主题</h2>
                     <div class="brand-list">
                         <img src="img/services_logo__1.jpg" alt="">
                         <img src="img/services_logo__2.jpg" alt="">
@@ -146,6 +146,20 @@
                             <i class="fa fa-star"></i> 100
                         </div>
                     </div>
+                    <div class="single-wid-product">
+                        <a href="#"><img src="img/product-thumb-3.jpg" alt="" class="product-thumb"></a>
+                        <h2><a href="#">Apple new i phone 6</a></h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i> 100
+                        </div>
+                    </div>
+                    <div class="single-wid-product">
+                        <a href="#"><img src="img/product-thumb-3.jpg" alt="" class="product-thumb"></a>
+                        <h2><a href="#">Apple new i phone 6</a></h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i> 100
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-md-4">
@@ -173,6 +187,20 @@
                             <i class="fa fa-star"></i> 100
                         </div>
                     </div>
+                    <div class="single-wid-product">
+                        <a href="#"><img src="img/product-thumb-3.jpg" alt="" class="product-thumb"></a>
+                        <h2><a href="#">Apple new i phone 6</a></h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i> 100
+                        </div>
+                    </div>
+                    <div class="single-wid-product">
+                        <a href="#"><img src="img/product-thumb-3.jpg" alt="" class="product-thumb"></a>
+                        <h2><a href="#">Apple new i phone 6</a></h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i> 100
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-md-4">
@@ -196,6 +224,20 @@
                     <div class="single-wid-product">
                         <a href="#"><img src="img/product-thumb-1.jpg" alt="" class="product-thumb"></a>
                         <h2><a href="#">Sony playstation microsoft</a></h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i> 100
+                        </div>
+                    </div>
+                    <div class="single-wid-product">
+                        <a href="#"><img src="img/product-thumb-3.jpg" alt="" class="product-thumb"></a>
+                        <h2><a href="#">Apple new i phone 6</a></h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i> 100
+                        </div>
+                    </div>
+                    <div class="single-wid-product">
+                        <a href="#"><img src="img/product-thumb-3.jpg" alt="" class="product-thumb"></a>
+                        <h2><a href="#">Apple new i phone 6</a></h2>
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i> 100
                         </div>
