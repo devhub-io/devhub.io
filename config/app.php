@@ -108,7 +108,7 @@ return [
     |
     */
 
-    'log' => env('APP_LOG', 'single'),
+    'log' => env('APP_LOG', 'daily'),
 
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
 
@@ -158,6 +158,11 @@ return [
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         Arrilot\Widgets\ServiceProvider::class,
         Mews\Purifier\PurifierServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
+        BackupManager\Laravel\Laravel5ServiceProvider::class,
+        Prettus\Repository\Providers\RepositoryServiceProvider::class,
+        Arcanedev\LogViewer\LogViewerServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -212,9 +217,12 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
         'Widget' => Arrilot\Widgets\Facade::class,
         'AsyncWidget' => Arrilot\Widgets\AsyncFacade::class,
         'Purifier' => Mews\Purifier\Facades\Purifier::class,
+        'Flash' => Laracasts\Flash\Flash::class,
+        'SEOMeta' => Artesaos\SEOTools\Facades\SEOMeta::class,
 
     ],
 
