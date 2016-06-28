@@ -1,0 +1,23 @@
+{
+  "name": "laravelhub",
+  "description": "",
+  "main": "",
+  "authors": [
+    "sysatom <sysatom@gmail.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [
+    "globals"
+  ],
+  "homepage": "http://www.laravelhub.org",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "gentelella": "~1.3.0"
+  }
+}
