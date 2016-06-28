@@ -151,6 +151,15 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
+         * Third-party Service Providers...
+         */
+        Laracasts\Flash\FlashServiceProvider::class,
+        Roumen\Sitemap\SitemapServiceProvider::class,
+        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
+        Arrilot\Widgets\ServiceProvider::class,
+        Mews\Purifier\PurifierServiceProvider::class,
+
+        /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
@@ -203,6 +212,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Widget' => Arrilot\Widgets\Facade::class,
+        'AsyncWidget' => Arrilot\Widgets\AsyncFacade::class,
+        'Purifier' => Mews\Purifier\Facades\Purifier::class,
 
     ],
 
