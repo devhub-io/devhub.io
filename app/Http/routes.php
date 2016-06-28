@@ -12,9 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('front.home');
+});
+
+Route::get('lists', function () {
+    return view('front.lists');
+});
+
+Route::get('repos', function () {
+    return view('front.repos');
 });
 
 Route::get('admin', function () {
-    return view('admin');
+    return view('admin.home');
 });
