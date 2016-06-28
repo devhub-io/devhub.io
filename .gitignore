@@ -5,7 +5,14 @@ Homestead.yaml
 Homestead.json
 .env
 .idea
-/public/components
+
+# IDE
 .phpstorm.meta.php
 _ide_helper_models.php
 _ide_helper.php
+
+# public
+/public/components
+/public/build
+/public/css/all.css
+/public/js/app.js
