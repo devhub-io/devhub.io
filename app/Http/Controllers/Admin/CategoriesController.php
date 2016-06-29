@@ -45,14 +45,16 @@ class CategoriesController extends Controller
         $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
         $categories = $this->repository->all();
 
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'data' => $categories,
-            ]);
-        }
-
         return view('admin.categories.index', compact('categories'));
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function create()
+    {
+        $categories = $this->repository->all();
+        return view('admin.categories.create', compact('categories'));
     }
 
     /**
@@ -76,20 +78,8 @@ class CategoriesController extends Controller
                 'data'    => $category->toArray(),
             ];
 
-            if ($request->wantsJson()) {
-
-                return response()->json($response);
-            }
-
             return redirect()->back()->with('message', $response['message']);
         } catch (ValidatorException $e) {
-            if ($request->wantsJson()) {
-                return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessageBag()
-                ]);
-            }
-
             return redirect()->back()->withErrors($e->getMessageBag())->withInput();
         }
     }
@@ -106,8 +96,9 @@ class CategoriesController extends Controller
     {
 
         $category = $this->repository->find($id);
+        $categories = $this->repository->all();
 
-        return view('admin.categories.edit', compact('category'));
+        return view('admin.categories.edit', compact('category', 'categories'));
     }
 
 
@@ -126,29 +117,15 @@ class CategoriesController extends Controller
 
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
 
-            $category = $this->repository->update($id, $request->all());
+            $category = $this->repository->update($request->all(), $id);
 
             $response = [
                 'message' => 'Category updated.',
                 'data'    => $category->toArray(),
             ];
 
-            if ($request->wantsJson()) {
-
-                return response()->json($response);
-            }
-
             return redirect()->back()->with('message', $response['message']);
         } catch (ValidatorException $e) {
-
-            if ($request->wantsJson()) {
-
-                return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessageBag()
-                ]);
-            }
-
             return redirect()->back()->withErrors($e->getMessageBag())->withInput();
         }
     }
@@ -163,15 +140,7 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        $deleted = $this->repository->delete($id);
-
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'message' => 'Category deleted.',
-                'deleted' => $deleted,
-            ]);
-        }
+        $this->repository->delete($id);
 
         return redirect()->back()->with('message', 'Category deleted.');
     }

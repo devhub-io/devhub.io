@@ -10,6 +10,6 @@ class Category extends Model implements Transformable
 {
     use TransformableTrait;
 
-    protected $fillable = [];
+    protected $fillable = ['title', 'slug', 'parent_id'];
 
 }
