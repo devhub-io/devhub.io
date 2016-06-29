@@ -55,4 +55,49 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
             'fetched_at' => date('Y-m-d H:i:s'),
         ]);
     }
+
+    /**
+     * @param $slug
+     * @return mixed
+     */
+    public function findBySlug($slug)
+    {
+        return $this->model->where('slug', $slug)->first();
+    }
+
+    /**
+     * @param $limit
+     * @return mixed
+     */
+    public function findHottest($limit = 5)
+    {
+        return $this->model->orderBy('stargazers_count', 'DESC')->limit($limit)->get();
+    }
+
+    /**
+     * @param int $limit
+     * @return mixed
+     */
+    public function findNewest($limit = 5)
+    {
+        return $this->model->orderBy('repos_created_at', 'DESC')->limit($limit)->get();
+    }
+
+    /**
+     * @param int $limit
+     * @return mixed
+     */
+    public function findTrend($limit = 5)
+    {
+        return $this->model->orderBy('repos_updated_at', 'DESC')->limit($limit)->get();
+    }
+
+    /**
+     * @param int $limit
+     * @return mixed
+     */
+    public function findRecommend($limit = 10)
+    {
+        return $this->model->orderBy('stargazers_count', 'DESC')->limit($limit)->get();
+    }
 }

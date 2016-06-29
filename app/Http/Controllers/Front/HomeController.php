@@ -33,6 +33,8 @@ class HomeController extends Controller
     {
         $this->categoryRepository = $categoryRepository;
         $this->reposRepository = $reposRepository;
+
+        view()->share('one_column', $this->categoryRepository->findWhere(['parent_id' => 0]));
     }
 
     /**
@@ -42,22 +44,43 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('front.home');
+        $hot = $this->reposRepository->findHottest();
+        $new = $this->reposRepository->findNewest();
+        $trend = $this->reposRepository->findTrend();
+
+        $recommend = $this->reposRepository->findRecommend();
+
+        return view('front.home', compact('hot', 'new', 'trend', 'recommend'));
     }
 
     /**
      * @return \Illuminate\Http\Response
      */
-    public function lists()
+    public function lists($slug)
     {
-        return view('front.list');
+        $category = $this->categoryRepository->findBySlug($slug);
+        if ($category->parent_id == 0) {
+            $child_category = $this->categoryRepository->findWhere(['parent_id' => $category->id]);
+            $child_id = [];
+            foreach ($child_category as $item) {
+                $child_id[] = $item->id;
+            }
+            $repos = $this->reposRepository->findWhereIn('category_id', $child_id ?: [-1]);
+        } else {
+            $child_category = $this->categoryRepository->findWhere(['parent_id' => $category->parent_id]);
+            $repos = $this->reposRepository->findWhere(['category_id' => $category->id]);
+        }
+
+        return view('front.list', compact('repos', 'child_category'));
     }
 
     /**
      * @return \Illuminate\Http\Response
      */
-    public function repos()
+    public function repos($slug)
     {
-        return view('front.repos');
+        $repos = $this->reposRepository->findBySlug($slug);
+
+        return view('front.repos', compact('repos'));
     }
 }

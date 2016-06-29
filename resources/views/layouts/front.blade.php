@@ -91,13 +91,9 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="/">首页</a></li>
-                    <li><a href="/list">开发语言</a></li>
-                    <li><a href="#">开发工具</a></li>
-                    <li><a href="#">Cart</a></li>
-                    <li><a href="#">Checkout</a></li>
-                    <li><a href="#">Category</a></li>
-                    <li><a href="#">Others</a></li>
-                    <li><a href="#">Contact</a></li>
+                    @foreach($one_column as $item)
+                    <li><a href="{{ url('category', [$item->slug]) }}">{{ $item->title }}</a></li>
+                    @endforeach
                 </ul>
             </div>
         </div>

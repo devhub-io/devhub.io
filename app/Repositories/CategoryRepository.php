@@ -10,5 +10,9 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  */
 interface CategoryRepository extends RepositoryInterface
 {
-    //
+    /**
+     * @param $slug
+     * @return mixed
+     */
+    public function findBySlug($slug);
 }

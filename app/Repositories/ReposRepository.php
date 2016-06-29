@@ -15,4 +15,34 @@ interface ReposRepository extends RepositoryInterface
      * @return mixed
      */
     public function createFromGithubAPI(array $data);
+
+    /**
+     * @param $slug
+     * @return mixed
+     */
+    public function findBySlug($slug);
+
+    /**
+     * @param $limit
+     * @return mixed
+     */
+    public function findHottest($limit = 5);
+
+    /**
+     * @param int $limit
+     * @return mixed
+     */
+    public function findNewest($limit = 5);
+
+    /**
+     * @param int $limit
+     * @return mixed
+     */
+    public function findTrend($limit = 5);
+
+    /**
+     * @param int $limit
+     * @return mixed
+     */
+    public function findRecommend($limit = 10);
 }

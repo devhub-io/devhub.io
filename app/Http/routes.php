@@ -13,8 +13,8 @@
 
 Route::group(['namespace' => 'Front'], function () {
    Route::get('/', 'HomeController@index');
-   Route::get('list', 'HomeController@lists');
-   Route::get('repos', 'HomeController@repos');
+   Route::get('category/{slug}', 'HomeController@lists');
+   Route::get('repos/{slug}', 'HomeController@repos');
 });
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {

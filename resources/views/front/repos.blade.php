@@ -3,39 +3,46 @@
 @section('contents')
     <div class="container">
         <div class="row" style="margin: 50px 0 50px 0">
-            <div class="col-md-5 col-sm-5 hidden-xs">
-                <img src="http://awesomes.img-cn-beijing.aliyuncs.com/repo/151114023816-81.jpg@1e_300w_207h_1c_0i_1o_1x.png" class="cover">
+            <div class="col-md-4 col-sm-4 hidden-xs">
+                <img class="cover" alt="100%x200" data-src="holder.js/100%x200"
+                     style="height: 200px; width: 100%; display: block;"
+                     src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0MiAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MjAwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTU1OTc3ZWIxOTAgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMnB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNTU5NzdlYjE5MCI+PHJlY3Qgd2lkdGg9IjI0MiIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI4OC44NDk5OTg0NzQxMjExIiB5PSIxMDUuNyI+MjQyeDIwMDwvdGV4dD48L2c+PC9nPjwvc3ZnPg=="
+                     data-holder-rendered="true">
             </div>
-            <div class="col-md-7 col-sm-7">
+            <div class="col-md-8 col-sm-8">
                 <div class="repo-title">
                     <h1>
-                        Magnific-popup
+                        {{ $repos->title }}
                     </h1>
                     <p>
-                        Light and responsive lightbox script with focus on performance.
+                        {{ $repos->description }}
                     </p>
                 </div>
                 <div class="menu hidden-xs">
-                    <a target="_blank" href="http://dimsemenov.com/plugins/magnific-popup/"><i class="fa fa-home"></i> 官 网 </a>
-                    </a><a target="_blank" href="https://github.com/dimsemenov/Magnific-Popup" class="gitbtn"><i class="fa fa-github"></i> Github  </a>
+                    @if($repos->homepage)
+                    <a target="_blank" href="{{ $repos->homepage }}"><i class="fa fa-home"></i> 官 网 </a>
+                    @endif
+                    @if($repos->github)
+                    <a target="_blank" href="{{ $repos->github }}" class="gitbtn"><i class="fa fa-github"></i> Github </a>
+                    @endif
                 </div>
                 <div class="params hidden-xs">
                     <div style="border-left: 0" title="星标数量">
-                        <i class="fa fa-star"></i> <span>8211</span>
+                        <i class="fa fa-star"></i> <span>{{ $repos->stargazers_count }}</span>
                     </div>
                     <div title="最后更新时间">
-                        <i class="fa fa-clock-o"></i> <span>3周前</span>
+                        <i class="fa fa-clock-o"></i> <span>{{ $repos->repos_updated_at }}</span>
                     </div>
                     <div title="Fork数量">
-                        <i class="fa fa-code-fork"></i> <span>1903</span>
+                        <i class="fa fa-code-fork"></i> <span>{{ $repos->forks_count }}</span>
                     </div>
-                    <div title="issue 响应速度">
-                        <i class="fa fa-exclamation-circle"></i> <span>2周</span>
-                    </div>
+                    {{--<div title="issue 响应速度">--}}
+                        {{--<i class="fa fa-exclamation-circle"></i> <span>{{ $repos-> }}</span>--}}
+                    {{--</div>--}}
                 </div>
             </div>
         </div>
-        <div class="row">
+        <!--<div class="row">
             <div class="col-md-12">
                 <div class="page-header">
                     <h1>Non-responsive Bootstrap</h1>
@@ -54,7 +61,7 @@
 
                 <h3>Non-responsive grid system</h3>
             </div>
-        </div>
+        </div>-->
     </div>
 
 @endsection
