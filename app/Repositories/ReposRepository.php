@@ -10,5 +10,9 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  */
 interface ReposRepository extends RepositoryInterface
 {
-    //
+    /**
+     * @param array $data
+     * @return mixed
+     */
+    public function createFromGithubAPI(array $data);
 }

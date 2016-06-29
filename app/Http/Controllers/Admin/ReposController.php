@@ -12,6 +12,7 @@ use App\Http\Requests\ReposCreateRequest;
 use App\Http\Requests\ReposUpdateRequest;
 use App\Repositories\ReposRepository;
 use App\Validators\ReposValidator;
+use Response;
 
 
 class ReposController extends Controller
@@ -44,14 +45,15 @@ class ReposController extends Controller
         $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
         $repos = $this->repository->all();
 
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'data' => $repos,
-            ]);
-        }
-
         return view('admin.repos.index', compact('repos'));
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function create()
+    {
+        return view('admin.repos.create');
     }
 
     /**
@@ -75,20 +77,8 @@ class ReposController extends Controller
                 'data'    => $repo->toArray(),
             ];
 
-            if ($request->wantsJson()) {
-
-                return response()->json($response);
-            }
-
             return redirect()->back()->with('message', $response['message']);
         } catch (ValidatorException $e) {
-            if ($request->wantsJson()) {
-                return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessageBag()
-                ]);
-            }
-
             return redirect()->back()->withErrors($e->getMessageBag())->withInput();
         }
     }
@@ -104,13 +94,6 @@ class ReposController extends Controller
     public function show($id)
     {
         $repo = $this->repository->find($id);
-
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'data' => $repo,
-            ]);
-        }
 
         return view('repos.show', compact('repo'));
     }
@@ -154,22 +137,8 @@ class ReposController extends Controller
                 'data'    => $repo->toArray(),
             ];
 
-            if ($request->wantsJson()) {
-
-                return response()->json($response);
-            }
-
             return redirect()->back()->with('message', $response['message']);
         } catch (ValidatorException $e) {
-
-            if ($request->wantsJson()) {
-
-                return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessageBag()
-                ]);
-            }
-
             return redirect()->back()->withErrors($e->getMessageBag())->withInput();
         }
     }
@@ -185,14 +154,6 @@ class ReposController extends Controller
     public function destroy($id)
     {
         $deleted = $this->repository->delete($id);
-
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'message' => 'Repos deleted.',
-                'deleted' => $deleted,
-            ]);
-        }
 
         return redirect()->back()->with('message', 'Repos deleted.');
     }

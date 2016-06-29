@@ -13,7 +13,7 @@ class ReposCreateRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**

@@ -21,6 +21,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/', 'HomeController@index');
     Route::resource('repos', 'ReposController');
     Route::resource('categories', 'CategoriesController');
+    Route::get('url', 'UrlController@index');
+    Route::get('url/{id}/delete', 'UrlController@delete');
+    Route::get('url/{id}/fetch', 'UrlController@fetch');
 });
 
 Route::auth();
