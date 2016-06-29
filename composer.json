@@ -16,7 +16,8 @@
         "gregwar/captcha": "^1.1",
         "backup-manager/laravel": "^1.1",
         "prettus/l5-repository": "^2.6",
-        "arcanedev/log-viewer": "~3.0"
+        "arcanedev/log-viewer": "~3.0",
+        "spatie/laravel-analytics": "^2.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

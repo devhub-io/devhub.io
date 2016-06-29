@@ -163,6 +163,7 @@ return [
         BackupManager\Laravel\Laravel5ServiceProvider::class,
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
         Arcanedev\LogViewer\LogViewerServiceProvider::class,
+        Spatie\Analytics\AnalyticsServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -223,6 +224,7 @@ return [
         'Purifier' => Mews\Purifier\Facades\Purifier::class,
         'Flash' => Laracasts\Flash\Flash::class,
         'SEOMeta' => Artesaos\SEOTools\Facades\SEOMeta::class,
+        'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
 
     ],
 
