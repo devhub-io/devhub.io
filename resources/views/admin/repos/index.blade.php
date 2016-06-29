@@ -37,11 +37,12 @@
                             <thead>
                             <tr>
                                 <th style="width: 1%">#</th>
-                                <th style="width: 20%">Project Name</th>
-                                <th>Team Members</th>
-                                <th>Project Progress</th>
-                                <th>Status</th>
-                                <th style="width: 20%">#Edit</th>
+                                <th style="width: 15%">名称</th>
+                                <th>分类</th>
+                                <th>标识</th>
+                                <th>统计</th>
+                                <th>状态</th>
+                                <th style="width: 20%">操作</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -49,39 +50,43 @@
                             <tr>
                                 <td>{{ $item->id }}</td>
                                 <td>
-                                    <a>{{ $item->title }}</a>
+                                    <b>{{ $item->title }}</b>
                                     <br>
-                                    <small>Fetched {{ $item->fetched_at }}</small>
+                                    <small>抓取于 {{ $item->fetched_at }}</small>
                                 </td>
+                                <td>{{ $item->category->title or '-' }}</td>
+                                <td>{{ $item->slug }}</td>
                                 <td>
                                     <ul class="list-inline">
-                                        <li>
-                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        <li title="stargazers">
+                                            <i class="glyphicon glyphicon-star" ></i> {{ $item->stargazers_count }}
                                         </li>
-                                        <li>
-                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        <li title="forks">
+                                            <i class="glyphicon glyphicon-wrench"></i> {{ $item->forks_count }}
                                         </li>
-                                        <li>
-                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        <li title="watchers">
+                                            <i class="glyphicon glyphicon-duplicate"></i> {{ $item->watchers_count }}
                                         </li>
-                                        <li>
-                                            <img src="images/user.png" class="avatar" alt="Avatar">
+                                        <li title="subscribers">
+                                            <i class="glyphicon glyphicon-scale"></i> {{ $item->subscribers_count }}
+                                        </li>
+                                        <li title="issues">
+                                            <i class="glyphicon glyphicon-adjust"></i> {{ $item->open_issues_count }}
                                         </li>
                                     </ul>
                                 </td>
-                                <td class="project_progress">
-                                    <div class="progress progress_sm">
-                                        <div aria-valuenow="56" style="width: 57%;" class="progress-bar bg-green" role="progressbar" data-transitiongoal="57"></div>
-                                    </div>
-                                    <small>57% Complete</small>
+                                <td>
+                                    @if($item->status == 1)
+                                    <button type="button" class="btn btn-success btn-xs">启用</button>
+                                    @else
+                                    <button type="button" class="btn btn-danger btn-xs">禁用</button>
+                                    @endif
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-success btn-xs">Success</button>
-                                </td>
-                                <td>
-                                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
-                                    <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                                    <a href="#" target="_blank" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> 前台展示 </a>
+                                    <a href="#" class="btn btn-warning btn-xs"><i class="fa fa-feed"></i> 抓取 </a>
+                                    <a href="{{ url("admin/repos/{$item->id}/edit") }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> 修改 </a>
+                                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> 禁用 </a>
                                 </td>
                             </tr>
                             @endforeach

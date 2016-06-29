@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\CategoryRepository;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -24,14 +25,20 @@ class ReposController extends Controller
     protected $repository;
 
     /**
+     * @var CategoryRepository
+     */
+    protected $categoryRepository;
+
+    /**
      * @var ReposValidator
      */
     protected $validator;
 
-    public function __construct(ReposRepository $repository, ReposValidator $validator)
+    public function __construct(ReposRepository $repository, ReposValidator $validator, CategoryRepository $categoryRepository)
     {
         $this->repository = $repository;
         $this->validator  = $validator;
+        $this->categoryRepository = $categoryRepository;
     }
 
 
@@ -49,57 +56,6 @@ class ReposController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function create()
-    {
-        return view('admin.repos.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  ReposCreateRequest $request
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function store(ReposCreateRequest $request)
-    {
-
-        try {
-
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
-
-            $repo = $this->repository->create($request->all());
-
-            $response = [
-                'message' => 'Repos created.',
-                'data'    => $repo->toArray(),
-            ];
-
-            return redirect()->back()->with('message', $response['message']);
-        } catch (ValidatorException $e) {
-            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
-        }
-    }
-
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $repo = $this->repository->find($id);
-
-        return view('repos.show', compact('repo'));
-    }
-
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int $id
@@ -108,10 +64,10 @@ class ReposController extends Controller
      */
     public function edit($id)
     {
+        $repository = $this->repository->find($id);
+        $categories = $this->categoryRepository->all();
 
-        $repo = $this->repository->find($id);
-
-        return view('admin.repos.edit', compact('repo'));
+        return view('admin.repos.edit', compact('repository', 'categories'));
     }
 
 
@@ -125,12 +81,11 @@ class ReposController extends Controller
      */
     public function update(ReposUpdateRequest $request, $id)
     {
-
         try {
 
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
 
-            $repo = $this->repository->update($id, $request->all());
+            $repo = $this->repository->update($request->all(), $id);
 
             $response = [
                 'message' => 'Repos updated.',
@@ -143,18 +98,4 @@ class ReposController extends Controller
         }
     }
 
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $deleted = $this->repository->delete($id);
-
-        return redirect()->back()->with('message', 'Repos deleted.');
-    }
 }
