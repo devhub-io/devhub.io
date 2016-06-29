@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentellela Alela! | </title>
+    <title>DevelopHub</title>
 
     <!-- Bootstrap -->
     <link href="/components/gentelella/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -60,8 +60,8 @@
                         <ul class="nav side-menu">
                             <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="#">类别</a></li>
-                                    <li><a href="#">资源</a></li>
+                                    <li><a href="{{ url('admin/categories') }}">分类</a></li>
+                                    <li><a href="{{ url('admin/repos') }}">资源</a></li>
                                 </ul>
                             </li>
                         </ul>

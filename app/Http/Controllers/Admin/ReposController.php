@@ -51,7 +51,7 @@ class ReposController extends Controller
             ]);
         }
 
-        return view('repos.index', compact('repos'));
+        return view('admin.repos.index', compact('repos'));
     }
 
     /**
@@ -128,7 +128,7 @@ class ReposController extends Controller
 
         $repo = $this->repository->find($id);
 
-        return view('repos.edit', compact('repo'));
+        return view('admin.repos.edit', compact('repo'));
     }
 
 

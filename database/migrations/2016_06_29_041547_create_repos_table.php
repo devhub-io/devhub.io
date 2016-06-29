@@ -15,7 +15,7 @@ class CreateReposTable extends Migration
         Schema::create('repos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->smallInteger('type_id')->index();
+            $table->smallInteger('category_id')->index();
             $table->string('slug')->unique();
             $table->string('desc');
             $table->text('readme');

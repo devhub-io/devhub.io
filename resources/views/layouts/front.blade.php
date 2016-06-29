@@ -91,7 +91,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="/">首页</a></li>
-                    <li><a href="/lists">开发语言</a></li>
+                    <li><a href="/list">开发语言</a></li>
                     <li><a href="#">开发工具</a></li>
                     <li><a href="#">Cart</a></li>
                     <li><a href="#">Checkout</a></li>

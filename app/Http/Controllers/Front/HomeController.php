@@ -7,7 +7,7 @@ use App\Repositories\ReposRepository;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Repositories\TypeRepository;
+use App\Repositories\CategoryRepository;
 use App\Validators\TypeValidator;
 
 
@@ -15,9 +15,9 @@ class HomeController extends Controller
 {
 
     /**
-     * @var TypeRepository
+     * @var CategoryRepository
      */
-    protected $typeRepository;
+    protected $categoryRepository;
 
     /**
      * @var ReposRepository
@@ -29,9 +29,9 @@ class HomeController extends Controller
      */
     protected $validator;
 
-    public function __construct(TypeRepository $typeRepository, ReposRepository $reposRepository)
+    public function __construct(CategoryRepository $categoryRepository, ReposRepository $reposRepository)
     {
-        $this->typeRepository = $typeRepository;
+        $this->categoryRepository = $categoryRepository;
         $this->reposRepository = $reposRepository;
     }
 
@@ -43,5 +43,21 @@ class HomeController extends Controller
     public function index()
     {
         return view('front.home');
+    }
+
+    /**
+     * @return \Illuminate\Http\Response
+     */
+    public function lists()
+    {
+        return view('front.list');
+    }
+
+    /**
+     * @return \Illuminate\Http\Response
+     */
+    public function repos()
+    {
+        return view('front.repos');
     }
 }

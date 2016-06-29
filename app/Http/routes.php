@@ -13,12 +13,14 @@
 
 Route::group(['namespace' => 'Front'], function () {
    Route::get('/', 'HomeController@index');
-   Route::get('list', 'HomeController@list');
+   Route::get('list', 'HomeController@lists');
    Route::get('repos', 'HomeController@repos');
 });
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/', 'HomeController@index');
+    Route::resource('repos', 'ReposController');
+    Route::resource('categories', 'CategoriesController');
 });
 
 Route::auth();

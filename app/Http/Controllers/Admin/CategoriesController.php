@@ -8,27 +8,27 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
-use App\Http\Requests\TypeCreateRequest;
-use App\Http\Requests\TypeUpdateRequest;
-use App\Repositories\TypeRepository;
-use App\Validators\TypeValidator;
+use App\Http\Requests\CategoryCreateRequest;
+use App\Http\Requests\CategoryUpdateRequest;
+use App\Repositories\CategoryRepository;
+use App\Validators\CategoryValidator;
 use Response;
 
 
-class TypesController extends Controller
+class CategoriesController extends Controller
 {
 
     /**
-     * @var TypeRepository
+     * @var CategoryRepository
      */
     protected $repository;
 
     /**
-     * @var TypeValidator
+     * @var CategoryValidator
      */
     protected $validator;
 
-    public function __construct(TypeRepository $repository, TypeValidator $validator)
+    public function __construct(CategoryRepository $repository, CategoryValidator $validator)
     {
         $this->repository = $repository;
         $this->validator  = $validator;
@@ -43,37 +43,37 @@ class TypesController extends Controller
     public function index()
     {
         $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
-        $types = $this->repository->all();
+        $categories = $this->repository->all();
 
         if (request()->wantsJson()) {
 
             return response()->json([
-                'data' => $types,
+                'data' => $categories,
             ]);
         }
 
-        return view('types.index', compact('types'));
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  TypeCreateRequest $request
+     * @param  CategoryCreateRequest $request
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(TypeCreateRequest $request)
+    public function store(CategoryCreateRequest $request)
     {
 
         try {
 
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
 
-            $type = $this->repository->create($request->all());
+            $category = $this->repository->create($request->all());
 
             $response = [
-                'message' => 'Type created.',
-                'data'    => $type->toArray(),
+                'message' => 'Category created.',
+                'data'    => $category->toArray(),
             ];
 
             if ($request->wantsJson()) {
@@ -96,28 +96,6 @@ class TypesController extends Controller
 
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $type = $this->repository->find($id);
-
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'data' => $type,
-            ]);
-        }
-
-        return view('types.show', compact('type'));
-    }
-
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int $id
@@ -127,32 +105,32 @@ class TypesController extends Controller
     public function edit($id)
     {
 
-        $type = $this->repository->find($id);
+        $category = $this->repository->find($id);
 
-        return view('types.edit', compact('type'));
+        return view('admin.categories.edit', compact('category'));
     }
 
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  TypeUpdateRequest $request
+     * @param  CategoryUpdateRequest $request
      * @param  string            $id
      *
      * @return Response
      */
-    public function update(TypeUpdateRequest $request, $id)
+    public function update(CategoryUpdateRequest $request, $id)
     {
 
         try {
 
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
 
-            $type = $this->repository->update($id, $request->all());
+            $category = $this->repository->update($id, $request->all());
 
             $response = [
-                'message' => 'Type updated.',
-                'data'    => $type->toArray(),
+                'message' => 'Category updated.',
+                'data'    => $category->toArray(),
             ];
 
             if ($request->wantsJson()) {
@@ -190,11 +168,11 @@ class TypesController extends Controller
         if (request()->wantsJson()) {
 
             return response()->json([
-                'message' => 'Type deleted.',
+                'message' => 'Category deleted.',
                 'deleted' => $deleted,
             ]);
         }
 
-        return redirect()->back()->with('message', 'Type deleted.');
+        return redirect()->back()->with('message', 'Category deleted.');
     }
 }
