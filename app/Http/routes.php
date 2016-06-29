@@ -11,18 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('front.home');
+Route::group(['namespace' => 'Front'], function () {
+   Route::get('/', 'HomeController@index');
+   Route::get('list', 'HomeController@list');
+   Route::get('repos', 'HomeController@repos');
 });
 
-Route::get('list', function () {
-    return view('front.list');
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+    Route::get('/', 'HomeController@index');
 });
 
-Route::get('repos', function () {
-    return view('front.repos');
-});
-
-Route::get('admin', function () {
-    return view('admin.repos');
-});
+Route::auth();

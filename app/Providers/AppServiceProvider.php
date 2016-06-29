@@ -28,5 +28,8 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register('Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider');
             $this->app->register('Barryvdh\Debugbar\ServiceProvider');
         }
+
+        $this->app->bind('App\Repositories\ReposRepository',  'App\Repositories\ReposRepositoryEloquent');
+        $this->app->bind('App\Repositories\TypeRepository', 'App\Repositories\TypeRepositoryEloquent');
     }
 }
