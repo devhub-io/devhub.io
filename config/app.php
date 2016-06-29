@@ -164,6 +164,7 @@ return [
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
         Arcanedev\LogViewer\LogViewerServiceProvider::class,
         Spatie\Analytics\AnalyticsServiceProvider::class,
+        Cviebrock\EloquentSluggable\ServiceProvider::class,
 
         /*
          * Application Service Providers...
