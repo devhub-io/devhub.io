@@ -52,7 +52,7 @@
                             <div class="form-group">
                                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
                                     <button class="btn btn-primary" type="button" onclick="location.history.back()">返回</button>
-                                    <button class="btn btn-success" type="submit">创建</button>
+                                    <button class="btn btn-success" type="submit">更新</button>
                                 </div>
                             </div>
 

@@ -41,7 +41,11 @@
                                 <td>{{ $category->parent_id }}</td>
                                 <td>
                                     <a href="{{ url("admin/categories/{$category->id}/edit") }}" class="btn btn-default btn-xs">修改</a>
-                                    <a href="{{ url("admin/categories/{$category->id}?_method=DELETE") }}" data-method="delete" class="btn btn-danger btn-xs">删除</a>
+                                    <form action="{{ url("admin/categories/{$category->id}") }}" method="post">
+                                        {!! csrf_field() !!}
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button class="btn btn-danger btn-xs" type="submit">删除</button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach
