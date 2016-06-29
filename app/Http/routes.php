@@ -15,8 +15,8 @@ Route::get('/', function () {
     return view('front.home');
 });
 
-Route::get('lists', function () {
-    return view('front.lists');
+Route::get('list', function () {
+    return view('front.list');
 });
 
 Route::get('repos', function () {
