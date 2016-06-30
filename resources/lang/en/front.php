@@ -10,5 +10,6 @@ return [
     */
 
     'home' => 'Home',
-
+    'about' => 'About',
+    'my_account' => 'My Account',
 ];

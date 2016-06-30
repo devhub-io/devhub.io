@@ -37,7 +37,7 @@
             <div class="col-md-8">
                 <div class="user-menu">
                     <ul>
-                        <li><a href="#"><i class="fa fa-user"></i> 我的账号</a></li>
+                        <li><a href="#"><i class="fa fa-user"></i> @lang('my_account') {{ trans('home') }}</a></li>
                         <li><a href="#"><i class="fa fa-plus"></i> 提交库</a></li>
                     </ul>
                 </div>
@@ -49,7 +49,9 @@
                         <li class="dropdown dropdown-small">
                             <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">切换语言 :</span><span class="value">中文 </span><b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#"> English</a></li>
+                                @foreach($support_lang as $code => $item)
+                                <li><a href="/{{ $code }}"> {{ $item['native'] }}</a></li>
+                                @endforeach
                             </ul>
                         </li>
                     </ul>
@@ -90,7 +92,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/">首页</a></li>
+                    <li class="active"><a href="/">@lang('home')</a></li>
                     @foreach($one_column as $item)
                     <li><a href="{{ url('category', [$item->slug]) }}">{{ $item->title }}</a></li>
                     @endforeach
