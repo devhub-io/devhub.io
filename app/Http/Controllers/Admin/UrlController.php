@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Admin;
 use App\Entities\ReposUrl;
 use App\Http\Controllers\Controller;
 use App\Repositories\ReposRepository;
+use Illuminate\Support\Facades\Log;
 
 class UrlController extends Controller
 {
@@ -33,7 +34,6 @@ class UrlController extends Controller
     public function index()
     {
         $urls = ReposUrl::paginate(10);
-
         return view('admin.url.index', compact('urls'));
     }
 
@@ -55,12 +55,16 @@ class UrlController extends Controller
     public function fetch($id)
     {
         $url = ReposUrl::find($id);
-        $re = "/https:\\/\\/github\\.com\\/([0-9a-zA-Z\\-]*)\\/([0-9a-zA-Z\\-]*)/";
+        $re = "/https:\\/\\/github\\.com\\/([0-9a-zA-Z\\-\\.]*)\\/([0-9a-zA-Z\\-\\.]*)/";
         preg_match($re, $url->url, $matches);
-        if($matches) {
+        if ($matches) {
             $client = new \Github\Client();
             $repo = $client->api('repo')->show($matches[1], $matches[2]);
-            $this->reposRepository->createFromGithubAPI($repo);
+            $repos = $this->reposRepository->createFromGithubAPI($repo);
+
+            $readme = $client->api('repo')->contents()->readme($matches[1], $matches[2]);
+            $readme = file_get_contents($readme['download_url']);
+            $this->reposRepository->update(['readme' => $readme], $repos->id);
         }
 
         return redirect('admin/url');
