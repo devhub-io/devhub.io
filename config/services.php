@@ -34,9 +34,13 @@ return [
     ],
 
     'stripe' => [
-        'model' => App\User::class,
+        'model' => App\Entities\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'rollbar' => [
+        'access_token' => env('ROLLBAR_TOKEN'),
+        'environment' => env('ROLLBAR_ENVIRONMENT'),
+    ],
 ];

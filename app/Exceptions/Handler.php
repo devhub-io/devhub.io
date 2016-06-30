@@ -2,6 +2,8 @@
 
 namespace App\Exceptions;
 
+use Rollbar;
+use Config;
 use Exception;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -34,6 +36,12 @@ class Handler extends ExceptionHandler
     public function report(Exception $e)
     {
         parent::report($e);
+
+        // Rollber
+        if($this->shouldReport($e)) {
+            $this->initRollbar();
+            Rollbar::report_exception($e);
+        }
     }
 
     /**
@@ -46,5 +54,14 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $e)
     {
         return parent::render($request, $e);
+    }
+
+    /**
+     * Init Rollbar
+     */
+    protected function initRollbar()
+    {
+        $config = Config::get('services.rollbar');
+        Rollbar::init($config);
     }
 }
