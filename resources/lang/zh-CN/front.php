@@ -42,4 +42,7 @@ return [
     'continue_submit' => '继续提交',
     'exists_submit' => '你提交库已经存在，',
     'visit' => '马上访问',
+    'submit_title' => '仅需1秒即可提交你的库',
+    'submit_subtitle' => '请确保提交的库是在 github 并且有 50 star 以上',
+    'submit_button' => '确认提交',
 ];
