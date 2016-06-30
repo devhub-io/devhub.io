@@ -42,6 +42,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        $repos_count = $this->reposRepository->count();
+
+        return view('admin.dashboard', compact('repos_count'));
     }
 }

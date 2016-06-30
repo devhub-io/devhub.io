@@ -17,7 +17,7 @@ Route::group(['namespace' => 'Front', 'prefix' => Localization::setLocale()], fu
    Route::get('repos/{slug}', 'HomeController@repos');
 });
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@index');
     Route::resource('repos', 'ReposController');
     Route::resource('categories', 'CategoriesController');

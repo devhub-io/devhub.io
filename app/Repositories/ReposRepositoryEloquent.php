@@ -100,4 +100,12 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
     {
         return $this->model->orderBy('stargazers_count', 'DESC')->limit($limit)->get();
     }
+
+    /**$limit
+     * @return int
+     */
+    public function count()
+    {
+        return $this->model->count();
+    }
 }

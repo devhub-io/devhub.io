@@ -42,11 +42,11 @@
                 <!-- menu profile quick info -->
                 <div class="profile">
                     <div class="profile_pic">
-                        <img src="/components/gentelella/production/images/img.jpg" alt="..." class="img-circle profile_img">
+                        <img src="/components/gentelella/production/images/user.png" alt="..." class="img-circle profile_img">
                     </div>
                     <div class="profile_info">
                         <span>Welcome,</span>
-                        <h2>Admin</h2>
+                        <h2>{{ Auth::user()->name }}</h2>
                     </div>
                 </div>
                 <!-- /menu profile quick info -->
@@ -100,7 +100,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="">
                             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <img src="/components/gentelella/production/images/img.jpg" alt="">Admin
+                                <img src="/components/gentelella/production/images/user.png" alt="">{{ Auth::user()->name }}
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -111,7 +111,7 @@
                                         <span>Settings</span>
                                     </a>
                                 </li>
-                                <li><a href="{{ url('admin/logout') }}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                                <li><a href="{{ url('logout') }}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                             </ul>
                         </li>
 

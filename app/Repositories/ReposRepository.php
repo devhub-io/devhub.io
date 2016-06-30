@@ -45,4 +45,9 @@ interface ReposRepository extends RepositoryInterface
      * @return mixed
      */
     public function findRecommend($limit = 10);
+
+    /**$limit
+     * @return int
+     */
+    public function count();
 }
