@@ -83,7 +83,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="#" target="_blank" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> 前台展示 </a>
+                                    <a href="{{ url('repos', [$item->slug]) }}" target="_blank" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> 前台展示 </a>
                                     <a href="#" class="btn btn-warning btn-xs"><i class="fa fa-feed"></i> 抓取 </a>
                                     <a href="{{ url("admin/repos/{$item->id}/edit") }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> 修改 </a>
                                     <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> 禁用 </a>

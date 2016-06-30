@@ -80,7 +80,10 @@ class HomeController extends Controller
     public function repos($slug)
     {
         $repos = $this->reposRepository->findBySlug($slug);
+        
+        $parsedown = new \Parsedown();
+        $markdown = $parsedown->text($repos->readme);
 
-        return view('front.repos', compact('repos'));
+        return view('front.repos', compact('repos', 'markdown'));
     }
 }
