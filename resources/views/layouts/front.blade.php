@@ -37,8 +37,8 @@
             <div class="col-md-8">
                 <div class="user-menu">
                     <ul>
-                        <li><a href="#"><i class="fa fa-user"></i> @lang('my_account') {{ trans('home') }}</a></li>
-                        <li><a href="#"><i class="fa fa-plus"></i> 提交库</a></li>
+                        <li><a href="#"><i class="fa fa-user"></i> @lang('front.my_account')</a></li>
+                        <li><a href="#"><i class="fa fa-plus"></i> @lang('front.submit_repository')</a></li>
                     </ul>
                 </div>
             </div>
@@ -47,10 +47,14 @@
                 <div class="header-right">
                     <ul class="list-unstyled list-inline">
                         <li class="dropdown dropdown-small">
-                            <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">切换语言 :</span><span class="value">中文 </span><b class="caret"></b></a>
+                            <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">@lang('front.choose_language') : </span><span class="value">{{ Localization::getCurrentLocaleNative() }} </span><b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                @foreach($support_lang as $code => $item)
-                                <li><a href="/{{ $code }}"> {{ $item['native'] }}</a></li>
+                                @foreach(Localization::getSupportedLocales() as $localeCode => $properties)
+                                    <li>
+                                        <a rel="alternate" hreflang="{{$localeCode}}" href="/{{ $localeCode }}">
+                                            {{ $properties['native'] }}
+                                        </a>
+                                    </li>
                                 @endforeach
                             </ul>
                         </li>
@@ -72,7 +76,7 @@
 
             <div class="col-sm-6">
                 <div class="shopping-item">
-                    <input type="search" name="keyword" value="" placeholder="搜索库...">
+                    <input type="search" name="keyword" value="" placeholder="@lang('front.search_repository')">
                 </div>
             </div>
         </div>
@@ -92,9 +96,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/">@lang('home')</a></li>
+                    <li class="active"><a href="/">@lang('front.home')</a></li>
                     @foreach($one_column as $item)
-                    <li><a href="{{ url('category', [$item->slug]) }}">{{ $item->title }}</a></li>
+                    <li><a href="{{ l_url('category', [$item->slug]) }}">{{ $item->title }}</a></li>
                     @endforeach
                 </ul>
             </div>
@@ -124,9 +128,9 @@
 
             <div class="col-md-3 col-sm-6">
                 <div class="footer-menu">
-                    <h2 class="footer-wid-title">网站 </h2>
+                    <h2 class="footer-wid-title">@lang('front.website') </h2>
                     <ul>
-                        <li><a href="#">关于</a></li>
+                        <li><a href="#">@lang('front.about')</a></li>
                         <li><a href="#">Order history</a></li>
                         <li><a href="#">Wishlist</a></li>
                         <li><a href="#">Vendor contact</a></li>
@@ -137,25 +141,23 @@
 
             <div class="col-md-3 col-sm-6">
                 <div class="footer-menu">
-                    <h2 class="footer-wid-title">类别</h2>
+                    <h2 class="footer-wid-title">@lang('front.category')</h2>
                     <ul>
-                        <li><a href="#">开发语言</a></li>
-                        <li><a href="#">开发工具</a></li>
-                        <li><a href="#">LED TV</a></li>
-                        <li><a href="#">Computer</a></li>
-                        <li><a href="#">Gadets</a></li>
+                        @foreach($one_column as $item)
+                        <li><a href="{{ l_url('category', [$item->slug]) }}">{{ $item->title }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
 
             <div class="col-md-3 col-sm-6">
                 <div class="footer-newsletter">
-                    <h2 class="footer-wid-title">最新资源</h2>
+                    <h2 class="footer-wid-title">@lang('front.latest_repositories')</h2>
                     <p>Sign up to our newsletter and get exclusive deals you wont find anywhere else straight to your inbox!</p>
                     <div class="newsletter-form">
                         <form action="#">
-                            <input type="email" placeholder="输入的邮箱">
-                            <input type="submit" value="订阅">
+                            <input type="email" placeholder="@lang('front.enter_email')">
+                            <input type="submit" value="@lang('front.subscribe')">
                         </form>
                     </div>
                 </div>

@@ -12,9 +12,12 @@
 */
 
 Route::group(['namespace' => 'Front', 'prefix' => Localization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect']], function () {
-   Route::get('/', 'HomeController@index');
-   Route::get('category/{slug}', 'HomeController@lists');
-   Route::get('repos/{slug}', 'HomeController@repos');
+
+    App::setLocale(Localization::getCurrentLocaleRegional());
+
+    Route::get('/', 'HomeController@index');
+    Route::get('category/{slug}', 'HomeController@lists');
+    Route::get('repos/{slug}', 'HomeController@repos');
 });
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function () {

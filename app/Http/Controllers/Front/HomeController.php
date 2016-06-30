@@ -35,8 +35,7 @@ class HomeController extends Controller
     {
         $this->categoryRepository = $categoryRepository;
         $this->reposRepository = $reposRepository;
-        
-        view()->share('support_lang', Config::get('laravellocalization.supportedLocales', []));
+
         view()->share('one_column', $this->categoryRepository->findWhere(['parent_id' => 0]));
     }
 

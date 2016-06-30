@@ -20,20 +20,20 @@
                 </div>
                 <div class="menu hidden-xs">
                     @if($repos->homepage)
-                    <a target="_blank" href="{{ $repos->homepage }}"><i class="fa fa-home"></i> 官 网 </a>
+                    <a target="_blank" href="{{ $repos->homepage }}"><i class="fa fa-home"></i> @lang('front.homepage') </a>
                     @endif
                     @if($repos->github)
                     <a target="_blank" href="{{ $repos->github }}" class="gitbtn"><i class="fa fa-github"></i> Github </a>
                     @endif
                 </div>
                 <div class="params hidden-xs">
-                    <div style="border-left: 0" title="星标数量">
+                    <div style="border-left: 0" title="@lang('front.stargazers_count')">
                         <i class="fa fa-star"></i> <span>{{ $repos->stargazers_count }}</span>
                     </div>
-                    <div title="最后更新时间">
+                    <div title="@lang('front.last_updated')">
                         <i class="fa fa-clock-o"></i> <span>{{ $repos->repos_updated_at }}</span>
                     </div>
-                    <div title="Fork数量">
+                    <div title="@lang('front.forks_count')">
                         <i class="fa fa-code-fork"></i> <span>{{ $repos->forks_count }}</span>
                     </div>
                     {{--<div title="issue 响应速度">--}}

@@ -14,11 +14,11 @@
                             <div class="product-f-image">
                                 <img src="img/product-1.jpg" alt="">
                                 <div class="product-hover">
-                                    <a href="{{ url('repos', [$item->slug]) }}" class="view-details-link"><i class="fa fa-link"></i> 查看详情</a>
+                                    <a href="{{ l_url('repos', [$item->slug]) }}" class="view-details-link"><i class="fa fa-link"></i> @lang('front.see_details')</a>
                                 </div>
                             </div>
 
-                            <h2><a href="{{ url('repos', [$item->slug]) }}">{{ $item->title }}</a></h2>
+                            <h2><a href="{{ l_url('repos', [$item->slug]) }}">{{ $item->title }}</a></h2>
                             <div class="product-carousel-price">
                                 <div></div>
                             </div>
@@ -37,7 +37,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="brand-wrapper">
-                    <h2 class="section-title">主题</h2>
+                    <h2 class="section-title">@lang('front.topic')</h2>
                     <div class="brand-list">
                         <img src="img/services_logo__1.jpg" alt="">
                         <img src="img/services_logo__2.jpg" alt="">
@@ -60,12 +60,12 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="single-product-widget">
-                    <h2 class="product-wid-title">热门</h2>
-                    <a href="" class="wid-view-more">查看全部</a>
+                    <h2 class="product-wid-title">@lang('front.popular')</h2>
+                    <a href="" class="wid-view-more">@lang('front.view_all')</a>
                     @foreach($hot as $item)
                     <div class="single-wid-product">
-                        <a href="{{ url('repos', [$item->slug]) }}"><img src="img/product-thumb-1.jpg" alt="" class="product-thumb"></a>
-                        <h2><a href="{{ url('repos', [$item->slug]) }}">{{ $item->title }}</a></h2>
+                        <a href="{{ l_url('repos', [$item->slug]) }}"><img src="img/product-thumb-1.jpg" alt="" class="product-thumb"></a>
+                        <h2><a href="{{ l_url('repos', [$item->slug]) }}">{{ $item->title }}</a></h2>
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i> {{ $item->stargazers_count }}
                         </div>
@@ -75,12 +75,12 @@
             </div>
             <div class="col-md-4">
                 <div class="single-product-widget">
-                    <h2 class="product-wid-title">最新</h2>
-                    <a href="#" class="wid-view-more">查看全部</a>
+                    <h2 class="product-wid-title">@lang('front.latest')</h2>
+                    <a href="#" class="wid-view-more">@lang('front.view_all')</a>
                     @foreach($new as $item)
                         <div class="single-wid-product">
-                            <a href="{{ url('repos', [$item->slug]) }}"><img src="img/product-thumb-1.jpg" alt="" class="product-thumb"></a>
-                            <h2><a href="{{ url('repos', [$item->slug]) }}">{{ $item->title }}</a></h2>
+                            <a href="{{ l_url('repos', [$item->slug]) }}"><img src="img/product-thumb-1.jpg" alt="" class="product-thumb"></a>
+                            <h2><a href="{{ l_url('repos', [$item->slug]) }}">{{ $item->title }}</a></h2>
                             <div class="product-wid-rating">
                                 <i class="fa fa-star"></i> {{ $item->stargazers_count }}
                             </div>
@@ -90,12 +90,12 @@
             </div>
             <div class="col-md-4">
                 <div class="single-product-widget">
-                    <h2 class="product-wid-title">趋势</h2>
-                    <a href="#" class="wid-view-more">查看全部</a>
+                    <h2 class="product-wid-title">@lang('front.trend')</h2>
+                    <a href="#" class="wid-view-more">@lang('front.view_all')</a>
                     @foreach($trend as $item)
                         <div class="single-wid-product">
-                            <a href="{{ url('repos', [$item->slug]) }}"><img src="img/product-thumb-1.jpg" alt="" class="product-thumb"></a>
-                            <h2><a href="{{ url('repos', [$item->slug]) }}">{{ $item->title }}</a></h2>
+                            <a href="{{ l_url('repos', [$item->slug]) }}"><img src="img/product-thumb-1.jpg" alt="" class="product-thumb"></a>
+                            <h2><a href="{{ l_url('repos', [$item->slug]) }}">{{ $item->title }}</a></h2>
                             <div class="product-wid-rating">
                                 <i class="fa fa-star"></i> {{ $item->stargazers_count }}
                             </div>
