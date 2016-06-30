@@ -23,7 +23,8 @@
         "embed/embed": "^2.7",
         "guzzlehttp/guzzle": "^6.2",
         "cviebrock/eloquent-sluggable": "^4.0",
-        "league/fractal": "^0.13.0"
+        "league/fractal": "^0.13.0",
+        "mcamara/laravel-localization": "^1.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

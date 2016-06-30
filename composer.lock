@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "81d305685603ca33a4d20c648ea7bc75",
-    "content-hash": "7c7c6e8167f897d6c046633c565d02e6",
+    "hash": "6877f135899fd83a4f26e3179562e279",
+    "content-hash": "e99d5fa095b5bc3cc660fb41b7f6be8c",
     "packages": [
         {
             "name": "arcanedev/log-viewer",
@@ -1635,6 +1635,54 @@
                 "rest"
             ],
             "time": "2015-10-07 14:48:58"
+        },
+        {
+            "name": "mcamara/laravel-localization",
+            "version": "1.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mcamara/laravel-localization.git",
+                "reference": "89b5d9de51b3ba7c02c5fd9b96a22f84eba2d135"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mcamara/laravel-localization/zipball/89b5d9de51b3ba7c02c5fd9b96a22f84eba2d135",
+                "reference": "89b5d9de51b3ba7c02c5fd9b96a22f84eba2d135",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~5.2",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "3.2.*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [],
+                "psr-0": {
+                    "Mcamara\\LaravelLocalization": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marc Cámara",
+                    "email": "mcamara88@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Easy localization for Laravel",
+            "homepage": "https://github.com/mcamara/laravel-localization",
+            "keywords": [
+                "laravel",
+                "localization",
+                "php"
+            ],
+            "time": "2016-06-23 13:34:39"
         },
         {
             "name": "mews/purifier",

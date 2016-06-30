@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['namespace' => 'Front'], function () {
+Route::group(['namespace' => 'Front', 'prefix' => Localization::setLocale()], function () {
    Route::get('/', 'HomeController@index');
    Route::get('category/{slug}', 'HomeController@lists');
    Route::get('repos/{slug}', 'HomeController@repos');

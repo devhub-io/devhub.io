@@ -165,6 +165,7 @@ return [
         Arcanedev\LogViewer\LogViewerServiceProvider::class,
         Spatie\Analytics\AnalyticsServiceProvider::class,
         Cviebrock\EloquentSluggable\ServiceProvider::class,
+        Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -229,6 +230,7 @@ return [
         'OpenGraph' => Artesaos\SEOTools\Facades\OpenGraph::class,
         'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
+        'Localization'   => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
 
     ],
 
