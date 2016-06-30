@@ -224,8 +224,11 @@ return [
         'AsyncWidget' => Arrilot\Widgets\AsyncFacade::class,
         'Purifier' => Mews\Purifier\Facades\Purifier::class,
         'Flash' => Laracasts\Flash\Flash::class,
-        'SEOMeta' => Artesaos\SEOTools\Facades\SEOMeta::class,
         'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
+        'SEOMeta'   => Artesaos\SEOTools\Facades\SEOMeta::class,
+        'OpenGraph' => Artesaos\SEOTools\Facades\OpenGraph::class,
+        'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
+        'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
 
     ],
 

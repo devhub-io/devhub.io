@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Repositories\CategoryRepository;
 use App\Validators\TypeValidator;
+use SEO;
 
 
 class HomeController extends Controller
@@ -71,6 +72,8 @@ class HomeController extends Controller
             $repos = $this->reposRepository->findWhere(['category_id' => $category->id]);
         }
 
+        SEO::setTitle($category->title);
+
         return view('front.list', compact('repos', 'child_category'));
     }
 
@@ -80,9 +83,11 @@ class HomeController extends Controller
     public function repos($slug)
     {
         $repos = $this->reposRepository->findBySlug($slug);
-        
+
         $parsedown = new \Parsedown();
         $markdown = $parsedown->text($repos->readme);
+
+        SEO::setTitle($repos->title);
 
         return view('front.repos', compact('repos', 'markdown'));
     }
