@@ -17,7 +17,7 @@
                             <h2 class="sidebar-title">@lang('front.submit_subtitle')</h2>
                             <form action="{{ l_url('submit') }}" method="post">
                                 {!! csrf_field() !!}
-                                <input type="url" placeholder="https://github.com/twbs/bootstrap" name="url" class="input-medium" style="width: 500px;">
+                                <input type="url" placeholder="https://github.com/twbs/bootstrap" name="url" class="input-medium" style="width: 500px; height: 42px;">
                                 <input type="submit" value="@lang('front.submit_button')">
                             </form>
                         @endif
