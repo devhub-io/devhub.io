@@ -18,6 +18,7 @@ Route::group(['namespace' => 'Front', 'prefix' => Localization::setLocale(), 'mi
     Route::get('/', 'HomeController@index');
     Route::get('category/{slug}', 'HomeController@lists');
     Route::get('repos/{slug}', 'HomeController@repos');
+    Route::get('search', 'HomeController@search');
 });
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function () {

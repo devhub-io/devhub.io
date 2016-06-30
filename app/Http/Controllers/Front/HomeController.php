@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\ReposRepository;
-use Config;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Repositories\CategoryRepository;
 use App\Validators\TypeValidator;
@@ -91,5 +89,17 @@ class HomeController extends Controller
         SEO::setTitle($repos->title);
 
         return view('front.repos', compact('repos', 'markdown'));
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function search(Request $request)
+    {
+        $keyword = $request->get('keyword');
+        $repos = $this->reposRepository->search($keyword);
+
+        return view('front.search', compact('repos', 'keyword'));
     }
 }

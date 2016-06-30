@@ -108,4 +108,15 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
     {
         return $this->model->count();
     }
+
+    /**
+     * @param $keyword
+     * @param array $where
+     * @param int $limit
+     * @return mixed
+     */
+    public function search($keyword, $where = [], $limit = 15)
+    {
+        return $this->model->where('title', 'LIKE', '%' . $keyword .'%')->where($where)->paginate($limit);
+    }
 }

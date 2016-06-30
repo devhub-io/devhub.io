@@ -50,4 +50,12 @@ interface ReposRepository extends RepositoryInterface
      * @return int
      */
     public function count();
+
+    /**
+     * @param $keyword
+     * @param array $where
+     * @param int $limit
+     * @return mixed
+     */
+    public function search($keyword, $where =[], $limit = 15);
 }

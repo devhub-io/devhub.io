@@ -47,7 +47,10 @@
                 <div class="header-right">
                     <ul class="list-unstyled list-inline">
                         <li class="dropdown dropdown-small">
-                            <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">@lang('front.choose_language') : </span><span class="value">{{ Localization::getCurrentLocaleNative() }} </span><b class="caret"></b></a>
+                            <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#">
+                                <span class="key">@lang('front.choose_language') : </span><span class="value">{{ Localization::getCurrentLocaleNative() }} </span>
+                                <b class="caret"></b>
+                            </a>
                             <ul class="dropdown-menu">
                                 @foreach(Localization::getSupportedLocales() as $localeCode => $properties)
                                     <li>
@@ -76,7 +79,9 @@
 
             <div class="col-sm-6">
                 <div class="shopping-item">
-                    <input type="search" name="keyword" value="" placeholder="@lang('front.search_repository')">
+                    <form action="{{ l_url('search') }}">
+                        <input type="search" name="keyword" value="" placeholder="@lang('front.search_repository')">
+                    </form>
                 </div>
             </div>
         </div>
