@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Entities\ReposUrl;
 use App\Http\Controllers\Controller;
 use App\Repositories\ReposRepository;
 use Illuminate\Http\Request;
@@ -101,5 +102,35 @@ class HomeController extends Controller
         $repos = $this->reposRepository->search($keyword);
 
         return view('front.search', compact('repos', 'keyword'));
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function submit(Request $request)
+    {
+        $status = $request->get('status', '');
+        $url = $request->get('url', '');
+        $url = urldecode($url);
+
+        return view('front.submit', compact('status', 'url'));
+    }
+
+    /**
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function submit_store(Request $request)
+    {
+        $url = $request->get('url');
+        $repos = $this->reposRepository->findWhere(['github' => $url]);
+        if ($repos->count() > 0) {
+            return redirect('submit?status=exists&url=' . urlencode(l_url('repos', [$repos[0]->slug])));
+        } else {
+            if (!ReposUrl::where('url', $url)->first()) {
+                ReposUrl::insert(['url' => $url]);
+            }
+        }
+
+        return redirect('submit?status=ok');
     }
 }

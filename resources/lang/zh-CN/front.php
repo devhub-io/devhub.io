@@ -33,6 +33,13 @@ return [
     'homepage' => '官网',
     'stargazers_count' => '星标数量',
     'last_updated' => '最后更新时间',
-    'forks_count' => 'Forks数量'
+    'forks_count' => 'Forks数量',
 
+    'thank_submit' => '感谢你在DevelopHub上提交库',
+    'review_submit' => '我们将会在2个工作日内为您审核。你可以',
+    'view_repository' => '浏览库',
+    'or' => '或者',
+    'continue_submit' => '继续提交',
+    'exists_submit' => '你提交库已经存在，',
+    'visit' => '马上访问',
 ];
