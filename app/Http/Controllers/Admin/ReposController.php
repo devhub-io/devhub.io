@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Entities\Image;
 use App\Http\Controllers\Controller;
 use App\Repositories\CategoryRepository;
 use App\Http\Requests;
@@ -34,7 +35,7 @@ class ReposController extends Controller
     public function __construct(ReposRepository $repository, ReposValidator $validator, CategoryRepository $categoryRepository)
     {
         $this->repository = $repository;
-        $this->validator  = $validator;
+        $this->validator = $validator;
         $this->categoryRepository = $categoryRepository;
     }
 
@@ -63,8 +64,9 @@ class ReposController extends Controller
     {
         $repository = $this->repository->find($id);
         $categories = $this->categoryRepository->all();
+        $images = Image::paginate(10);
 
-        return view('admin.repos.edit', compact('repository', 'categories'));
+        return view('admin.repos.edit', compact('repository', 'categories', 'images'));
     }
 
 
@@ -72,24 +74,17 @@ class ReposController extends Controller
      * Update the specified resource in storage.
      *
      * @param  ReposUpdateRequest $request
-     * @param  string            $id
+     * @param  string $id
      *
      * @return Response
      */
     public function update(ReposUpdateRequest $request, $id)
     {
         try {
-
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
+            $this->repository->update($request->all(), $id);
 
-            $repo = $this->repository->update($request->all(), $id);
-
-            $response = [
-                'message' => 'Repos updated.',
-                'data'    => $repo->toArray(),
-            ];
-
-            return redirect()->back()->with('message', $response['message']);
+            return redirect('admin/repos');
         } catch (ValidatorException $e) {
             return redirect()->back()->withErrors($e->getMessageBag())->withInput();
         }
