@@ -7,8 +7,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="{{ route('log-viewer::dashboard') }}" class="navbar-brand">
-                <i class="fa fa-fw fa-book"></i> LogViewer
+            <a href="{{ url('admin') }}" class="navbar-brand">
+                <i class="fa fa-fw fa-sitemap"></i> DevelopHub
             </a>
         </div>
         <ul class="nav navbar-nav">
