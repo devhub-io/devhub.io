@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Entities\Image;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use Request;
+use Cache;
+use File;
 
 
 class ImageController extends Controller
@@ -32,8 +33,8 @@ class ImageController extends Controller
             // file
             $upload_path = 'upload/images/' . date('Y/m/d');
             $upload_dir = public_path($upload_path);
-            if (!\File::isDirectory($upload_dir)) {
-                \File::makeDirectory($upload_dir, 0755, true);
+            if (!File::isDirectory($upload_dir)) {
+                File::makeDirectory($upload_dir, 0755, true);
             }
             $filename = md5(time() . $image->getRealPath()) . '.' . $image->getClientOriginalExtension();
             $image->move($upload_dir, $filename);
@@ -53,8 +54,8 @@ class ImageController extends Controller
     {
         $image = Image::find($id);
         Image::destroy($id);
-        \File::delete(public_path($image->url));
-        \Cache::forget("goods:image:{$image->slug}");
+        File::delete(public_path($image->url));
+        Cache::forget("goods:image:{$image->slug}");
 
         return redirect('admin/images');
     }
