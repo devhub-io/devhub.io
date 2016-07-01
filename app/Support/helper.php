@@ -35,8 +35,12 @@ if (!function_exists('image_url')) {
         $key = "goods:image:$slug";
         if (!Cache::has($key)) {
             $image = Image::where('slug', $slug)->first();
-            Cache::put("goods:image:{$image->id}", $image, 365 * 24 * 60);
-            Cache::put("goods:image:{$image->slug}", $image, 365 * 24 * 60);
+            if($image) {
+                Cache::put("goods:image:{$image->id}", $image, 365 * 24 * 60);
+                Cache::put("goods:image:{$image->slug}", $image, 365 * 24 * 60);
+            } else {
+                return '';
+            }
         } else {
             $image = Cache::get($key);
         }

@@ -23,11 +23,11 @@ class CreateReposTable extends Migration
             $table->text('readme');
             $table->string('homepage');
             $table->string('github');
-            $table->smallInteger('stargazers_count');
-            $table->smallInteger('watchers_count');
-            $table->smallInteger('open_issues_count');
-            $table->smallInteger('forks_count');
-            $table->smallInteger('subscribers_count');
+            $table->integer('stargazers_count');
+            $table->integer('watchers_count');
+            $table->integer('open_issues_count');
+            $table->integer('forks_count');
+            $table->integer('subscribers_count');
             $table->integer('issue_response');
             $table->tinyInteger('status')->index()->default(0);
             $table->timestamp('repos_created_at');
