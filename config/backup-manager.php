@@ -31,9 +31,9 @@ return [
     ],
     'dropbox' => [
         'type' => 'Dropbox',
-        'token' => '',
-        'key' => '',
-        'secret' => '',
+        'token' => env('DROPBOX_TOKEN', ''),
+        'key' => env('DROPBOX_KEY', ''),
+        'secret' => env('DROPBOX_SECRET', ''),
         'app' => '',
         'root' => '',
     ],

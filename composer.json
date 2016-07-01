@@ -25,7 +25,8 @@
         "cviebrock/eloquent-sluggable": "^4.0",
         "league/fractal": "^0.13.0",
         "mcamara/laravel-localization": "^1.1",
-        "rollbar/rollbar": "~0.18.0"
+        "rollbar/rollbar": "~0.18.0",
+        "league/flysystem-dropbox": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
