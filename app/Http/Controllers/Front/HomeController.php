@@ -142,8 +142,6 @@ class HomeController extends Controller
      */
     public function image($slug)
     {
-        $image = \Cache::get("goods:image:$slug");
-
         try {
             SignatureFactory::create(env('GLIDE_KEY'))->validateRequest('/image/' . $slug, request()->all());
         } catch (SignatureException $e) {
@@ -155,6 +153,7 @@ class HomeController extends Controller
             'cache' => base_path() . '/storage/framework/cache',
             'response' => (new LaravelResponseFactory())
         ]);
+        $image = \Cache::get("goods:image:$slug");
 
         return $server->getImageResponse($image->url, request()->all());
 

@@ -47,7 +47,7 @@ class ReposController extends Controller
     public function index()
     {
         $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
-        $repos = $this->repository->all();
+        $repos = $this->repository->paginate(10);
 
         return view('admin.repos.index', compact('repos'));
     }

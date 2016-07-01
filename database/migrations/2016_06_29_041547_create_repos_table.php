@@ -17,6 +17,7 @@ class CreateReposTable extends Migration
             $table->string('title');
             $table->smallInteger('category_id')->index();
             $table->string('slug')->unique();
+            $table->integer('image')->default(0);
             $table->string('description');
             $table->string('language');
             $table->text('readme');

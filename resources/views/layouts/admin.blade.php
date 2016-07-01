@@ -62,7 +62,7 @@
                                 <ul class="nav child_menu">
                                     <li><a href="{{ url('admin/categories') }}">分类</a></li>
                                     <li><a href="{{ url('admin/repos') }}">资源</a></li>
-                                    <li><a href="{{ url('admin/url') }}">URL</a></li>
+                                    <li><a href="{{ url('admin/url') }}">链接</a></li>
                                     <li><a href="{{ url('admin/images') }}">图片</a></li>
                                 </ul>
                             </li>

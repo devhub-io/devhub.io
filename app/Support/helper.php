@@ -23,22 +23,25 @@ if (!function_exists('l_url')) {
 
 if (!function_exists('image_url')) {
     /**
-     * @param $slug
+     * @param $id
      * @param $params
      * @return string
      */
-    function image_url($slug, $params)
+    function image_url($id, $params)
     {
         $signKey = env('GLIDE_KEY');
         $urlBuilder = UrlBuilderFactory::create('/', $signKey);
 
-        $key = "goods:image:$slug";
+        $key = "goods:image:$id";
         if (!Cache::has($key)) {
-            $image = Image::where('slug', $slug)->first();
+            $image = Image::find($id);
             Cache::put($key, $image, 365 * 24 * 60);
+            Cache::put("goods:image:{$image->slug}", $image, 365 * 24 * 60);
+        } else {
+            $image = Cache::get($key);
         }
 
-        return $urlBuilder->getUrl("/image/$slug", $params);
+        return $urlBuilder->getUrl("/image/{$image->slug}", $params);
     }
 
 }
