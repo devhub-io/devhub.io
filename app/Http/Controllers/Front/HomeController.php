@@ -8,7 +8,10 @@ use App\Repositories\ReposRepository;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Repositories\CategoryRepository;
-use App\Validators\TypeValidator;
+use League\Glide\Responses\LaravelResponseFactory;
+use League\Glide\ServerFactory;
+use League\Glide\Signatures\SignatureException;
+use League\Glide\Signatures\SignatureFactory;
 use SEO;
 
 
@@ -26,10 +29,9 @@ class HomeController extends Controller
     protected $reposRepository;
 
     /**
-     * @var TypeValidator
+     * @param CategoryRepository $categoryRepository
+     * @param ReposRepository $reposRepository
      */
-    protected $validator;
-
     public function __construct(CategoryRepository $categoryRepository, ReposRepository $reposRepository)
     {
         $this->categoryRepository = $categoryRepository;
@@ -132,5 +134,29 @@ class HomeController extends Controller
         }
 
         return redirect('submit?status=ok');
+    }
+
+    /**
+     * @param $slug
+     * @return \Illuminate\Http\Response|mixed
+     */
+    public function image($slug)
+    {
+        $image = \Cache::get("goods:image:$slug");
+
+        try {
+            SignatureFactory::create(env('GLIDE_KEY'))->validateRequest('/image/' . $slug, request()->all());
+        } catch (SignatureException $e) {
+            return \Response::make('Signature is not valid.', 403);
+        }
+
+        $server = ServerFactory::create([
+            'source' => base_path() . '/public',
+            'cache' => base_path() . '/storage/framework/cache',
+            'response' => (new LaravelResponseFactory())
+        ]);
+
+        return $server->getImageResponse($image->url, request()->all());
+
     }
 }

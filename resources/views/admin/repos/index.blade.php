@@ -93,7 +93,7 @@
                             </tbody>
                         </table>
                         <!-- end project list -->
-
+                        {{ $repos->links() }}
                     </div>
                 </div>
             </div>

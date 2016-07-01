@@ -4,12 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\CategoryRepository;
-use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
-use App\Http\Requests\ReposCreateRequest;
 use App\Http\Requests\ReposUpdateRequest;
 use App\Repositories\ReposRepository;
 use App\Validators\ReposValidator;

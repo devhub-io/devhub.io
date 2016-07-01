@@ -10,7 +10,6 @@ namespace App\Http\Controllers\Admin;
 use App\Entities\ReposUrl;
 use App\Http\Controllers\Controller;
 use App\Repositories\ReposRepository;
-use Illuminate\Support\Facades\Log;
 
 class UrlController extends Controller
 {

@@ -32,7 +32,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     Route::get('url', 'UrlController@index');
     Route::get('url/{id}/delete', 'UrlController@delete');
     Route::get('url/{id}/fetch', 'UrlController@fetch');
+    Route::get('images', 'ImageController@index');
+    Route::post('images', 'ImageController@store');
+    Route::get('images/{id}/delete', 'ImageController@delete');
 });
+
+# Image
+Route::get('image/{slug}', 'Front\HomeController@image');
 
 # Auth
 Route::auth();

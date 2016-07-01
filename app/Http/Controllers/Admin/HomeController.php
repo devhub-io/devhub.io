@@ -5,10 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Repositories\CategoryRepository;
 use App\Repositories\ReposRepository;
-use Illuminate\Http\Request;
-
 use App\Http\Requests;
-use App\Validators\TypeValidator;
 
 
 class HomeController extends Controller
@@ -23,11 +20,6 @@ class HomeController extends Controller
      * @var ReposRepository
      */
     protected $reposRepository;
-
-    /**
-     * @var TypeValidator
-     */
-    protected $validator;
 
     public function __construct(CategoryRepository $categoryRepository, ReposRepository $reposRepository)
     {
