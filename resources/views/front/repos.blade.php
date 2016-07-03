@@ -1,5 +1,18 @@
 @extends('layouts.front')
 
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('css/github-markdown.css') }}">
+    <style>
+        .markdown-body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 45px;
+        }
+    </style>
+@endsection
+
 @section('contents')
     <div class="container">
         <div class="row" style="margin: 50px 0 50px 0">
@@ -43,9 +56,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <article class="col-md-12 markdown-body">
                 {!! $markdown !!}
-            </div>
+            </article>
         </div>
     </div>
 
