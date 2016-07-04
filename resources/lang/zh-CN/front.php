@@ -45,4 +45,12 @@ return [
     'submit_title' => '仅需1秒即可提交你的库',
     'submit_subtitle' => '请确保提交的库是在 github 并且有 50 star 以上',
     'submit_button' => '确认提交',
+
+    'contact_us' => '联系我们',
+    'status' => '状态',
+    'api' => 'API',
+
+    'weekly_title' => '每周订阅',
+    'weekly_subtitle' => '免费,每周提供DevelopHub新闻与文章.',
+    'about_develophub' => '推荐免费开源的高质量开发工具,资源,阅读',
 ];

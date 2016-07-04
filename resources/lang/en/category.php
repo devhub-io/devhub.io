@@ -15,6 +15,6 @@ return [
     'product' => 'Product',
     'design' => 'Design',
     'tool' => 'Tool',
-    'read' => 'Read',
+    'read' => 'Reading',
 
 ];

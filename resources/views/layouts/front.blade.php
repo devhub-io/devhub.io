@@ -122,14 +122,14 @@
             <div class="col-md-3 col-sm-6">
                 <div class="footer-about-us">
                     <h2><span>DevelopHub</span></h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?</p>
-                    <div class="footer-social">
-                        <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                        <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                        <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
-                        <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
-                        <a href="#" target="_blank"><i class="fa fa-pinterest"></i></a>
-                    </div>
+                    <p>@lang('front.about_develophub')</p>
+                    {{--<div class="footer-social">--}}
+                        {{--<a href="#" target="_blank"><i class="fa fa-facebook"></i></a>--}}
+                        {{--<a href="#" target="_blank"><i class="fa fa-twitter"></i></a>--}}
+                        {{--<a href="#" target="_blank"><i class="fa fa-youtube"></i></a>--}}
+                        {{--<a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>--}}
+                        {{--<a href="#" target="_blank"><i class="fa fa-pinterest"></i></a>--}}
+                    {{--</div>--}}
                 </div>
             </div>
 
@@ -138,10 +138,9 @@
                     <h2 class="footer-wid-title">@lang('front.website') </h2>
                     <ul>
                         <li><a href="#">@lang('front.about')</a></li>
-                        <li><a href="#">Order history</a></li>
-                        <li><a href="#">Wishlist</a></li>
-                        <li><a href="#">Vendor contact</a></li>
-                        <li><a href="#">Front page</a></li>
+                        <li><a href="#">@lang('front.contact_us')</a></li>
+                        <li><a href="#">@lang('front.status')</a></li>
+                        <li><a href="#">@lang('front.api')</a></li>
                     </ul>
                 </div>
             </div>
@@ -159,8 +158,8 @@
 
             <div class="col-md-3 col-sm-6">
                 <div class="footer-newsletter">
-                    <h2 class="footer-wid-title">@lang('front.latest_repositories')</h2>
-                    <p>Sign up to our newsletter and get exclusive deals you wont find anywhere else straight to your inbox!</p>
+                    <h2 class="footer-wid-title">@lang('front.weekly_title')</h2>
+                    <p>@lang('front.weekly_subtitle')</p>
                     <div class="newsletter-form">
                         <form action="#">
                             <input type="email" placeholder="@lang('front.enter_email')">

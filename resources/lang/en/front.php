@@ -45,4 +45,13 @@ return [
     'submit_title' => 'Just one second to submit your repository',
     'submit_subtitle' => 'Make sure that the submission is in github repository and has more than 50 star',
     'submit_button' => 'Confirm Submit',
+
+    'contact_us' => 'Contact Us',
+    'status' => 'Status',
+    'api' => 'API',
+
+    'weekly_title' => 'Weekly Subscription',
+    'weekly_subtitle' => 'A free, once–weekly e-mail round-up of DevelopHub news and articles.',
+    'about_develophub' => 'Recommended high-quality free and open source development tools, resources, reading',
+
 ];
