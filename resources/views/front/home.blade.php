@@ -38,14 +38,14 @@
                 <div class="brand-wrapper">
                     <h2 class="section-title">@lang('front.topic')</h2>
                     <div class="brand-list">
-                        <img src="{{ url("img/services_logo__1.jpg") }}" alt="">
-                        <img src="{{ url("img/services_logo__2.jpg") }}" alt="">
-                        <img src="{{ url("img/services_logo__3.jpg") }}" alt="">
-                        <img src="{{ url("img/services_logo__4.jpg") }}" alt="">
-                        <img src="{{ url("img/services_logo__1.jpg") }}" alt="">
-                        <img src="{{ url("img/services_logo__2.jpg") }}" alt="">
-                        <img src="{{ url("img/services_logo__3.jpg") }}" alt="">
-                        <img src="{{ url("img/services_logo__4.jpg") }}" alt="">
+                        <img src="{{ url("img/services_logo__1.jpg") }}" alt="" width="270" height="120">
+                        <img src="{{ url("img/services_logo__2.jpg") }}" alt="" width="270" height="120">
+                        <img src="{{ url("img/services_logo__3.jpg") }}" alt="" width="270" height="120">
+                        <img src="{{ url("img/services_logo__4.jpg") }}" alt="" width="270" height="120">
+                        <img src="{{ url("img/services_logo__1.jpg") }}" alt="" width="270" height="120">
+                        <img src="{{ url("img/services_logo__2.jpg") }}" alt="" width="270" height="120">
+                        <img src="{{ url("img/services_logo__3.jpg") }}" alt="" width="270" height="120">
+                        <img src="{{ url("img/services_logo__4.jpg") }}" alt="" width="270" height="120">
                     </div>
                 </div>
             </div>
