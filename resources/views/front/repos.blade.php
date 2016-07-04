@@ -17,9 +17,9 @@
     <div class="container">
         <div class="row" style="margin: 50px 0 50px 0">
             <div class="col-md-4 col-sm-4 hidden-xs">
-                <img class="cover" alt="100%x200" data-src="holder.js/100%x200"
-                     style="height: 200px; width: 100%; display: block;"
-                     src="{{ image_url($repos->image, ['h' => 200]) }}"
+                <img class="cover"
+                     style="height: 300px; width: 100%; display: block;"
+                     src="{{ $repos->image > 0 ? image_url($repos->image, ['w' => 300]) : 'holder.js/300x300' }}"
                      data-holder-rendered="true">
             </div>
             <div class="col-md-8 col-sm-8">

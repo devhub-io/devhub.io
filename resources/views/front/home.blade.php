@@ -12,7 +12,7 @@
                         @foreach($recommend as $item)
                         <div class="single-product">
                             <div class="product-f-image">
-                                <img src="{{ image_url($item->image, ['w' => 430]) }}" alt="" width="430" height="550">
+                                <img src="{{ $item->image > 0 ? image_url($item->image, ['w' => 210]) : 'holder.js/210x269' }}" alt="">
                                 <div class="product-hover">
                                     <a href="{{ l_url('repos', [$item->slug]) }}" class="view-details-link"><i class="fa fa-link"></i> @lang('front.see_details')</a>
                                 </div>
@@ -64,7 +64,7 @@
                     <a href="" class="wid-view-more">@lang('front.view_all')</a>
                     @foreach($hot as $item)
                     <div class="single-wid-product">
-                        <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ image_url($item->image, ['w' => 100]) }}" alt="" class="product-thumb"></a>
+                        <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->image > 0 ? image_url($item->image, ['w' => 100]) : 'holder.js/100x90' }}" alt="" class="product-thumb"></a>
                         <h2><a href="{{ l_url('repos', [$item->slug]) }}">{{ $item->title }}</a></h2>
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i> {{ $item->stargazers_count }}
@@ -79,7 +79,7 @@
                     <a href="#" class="wid-view-more">@lang('front.view_all')</a>
                     @foreach($new as $item)
                         <div class="single-wid-product">
-                            <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ image_url($item->image, ['w' => 100]) }}" alt="" class="product-thumb"></a>
+                            <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->image > 0 ? image_url($item->image, ['w' => 100]) : 'holder.js/100x90' }}" alt="" class="product-thumb"></a>
                             <h2><a href="{{ l_url('repos', [$item->slug]) }}">{{ $item->title }}</a></h2>
                             <div class="product-wid-rating">
                                 <i class="fa fa-star"></i> {{ $item->stargazers_count }}
@@ -94,7 +94,7 @@
                     <a href="#" class="wid-view-more">@lang('front.view_all')</a>
                     @foreach($trend as $item)
                         <div class="single-wid-product">
-                            <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ image_url($item->image, ['w' => 100]) }}" alt="" class="product-thumb"></a>
+                            <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->image > 0 ? image_url($item->image, ['w' => 100]) : 'holder.js/100x90' }}" alt="" class="product-thumb"></a>
                             <h2><a href="{{ l_url('repos', [$item->slug]) }}">{{ $item->title }}</a></h2>
                             <div class="product-wid-rating">
                                 <i class="fa fa-star"></i> {{ $item->stargazers_count }}
