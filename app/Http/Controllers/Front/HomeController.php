@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Front;
 
+use App;
 use App\Entities\ReposUrl;
 use App\Http\Controllers\Controller;
 use App\Repositories\ReposRepository;
+use DB;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Repositories\CategoryRepository;
@@ -161,5 +163,43 @@ class HomeController extends Controller
 
         return $server->getImageResponse($image->url, request()->all());
 
+    }
+
+    /**
+     * @return mixed
+     */
+    public function sitemap()
+    {
+        // create new sitemap object
+        $sitemap = App::make("sitemap");
+
+        // set cache key (string), duration in minutes (Carbon|Datetime|int), turn on/off (boolean)
+        // by default cache is disabled
+        $sitemap->setCache('front:sitemap', 60);
+
+        // check if there is cached sitemap and build new only if is not
+        if (!$sitemap->isCached())
+        {
+            // add item to the sitemap (url, date, priority, freq)
+            $sitemap->add(url('/'), '2016-07-01T00:00:00+00:00', '1.0', 'daily');
+            $sitemap->add(url('submit'), '2016-07-01T00:00:00+00:00', '0.8', 'daily');
+
+            // category
+            $posts = DB::table('categories')->orderBy('created_at', 'desc')->get();
+            foreach ($posts as $post)
+            {
+                $sitemap->add(url('category', [$post->slug]), $post->updated_at, '0.9', 'daily');
+            }
+
+            // repos
+            $posts = DB::table('repos')->orderBy('created_at', 'desc')->get();
+            foreach ($posts as $post)
+            {
+                $sitemap->add(url('repos', [$post->slug]), $post->updated_at, '1.0', 'daily');
+            }
+        }
+
+        // show your sitemap (options: 'xml' (default), 'html', 'txt', 'ror-rss', 'ror-rdf')
+        return $sitemap->render('xml');
     }
 }
