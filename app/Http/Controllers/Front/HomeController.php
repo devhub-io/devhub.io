@@ -74,7 +74,7 @@ class HomeController extends Controller
             $repos = $this->reposRepository->findWhere(['category_id' => $category->id]);
         }
 
-        SEO::setTitle($category->title);
+        SEO::setTitle(trans("category.{$category->slug}"));
 
         return view('front.list', compact('repos', 'child_category'));
     }
@@ -103,6 +103,8 @@ class HomeController extends Controller
         $keyword = $request->get('keyword');
         $repos = $this->reposRepository->search($keyword);
 
+        SEO::setTitle($keyword);
+
         return view('front.search', compact('repos', 'keyword'));
     }
 
@@ -114,6 +116,8 @@ class HomeController extends Controller
         $status = $request->get('status', '');
         $url = $request->get('url', '');
         $url = urldecode($url);
+
+        SEO::setTitle(trans('front.submit_repository'));
 
         return view('front.submit', compact('status', 'url'));
     }
