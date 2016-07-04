@@ -17,19 +17,12 @@
     <div class="container">
         <div class="row" style="margin: 50px 0 50px 0">
             <div class="col-md-4 col-sm-4 hidden-xs">
-                <img class="cover"
-                     style="height: 300px; width: 100%; display: block;"
-                     src="{{ $repos->image > 0 ? image_url($repos->image, ['w' => 300]) : 'holder.js/300x300' }}"
-                     data-holder-rendered="true">
+                <img class="cover" src="{{ $repos->image > 0 ? image_url($repos->image, ['w' => 300]) : 'holder.js/300x300' }}">
             </div>
             <div class="col-md-8 col-sm-8">
                 <div class="repo-title">
-                    <h1>
-                        {{ $repos->title }}
-                    </h1>
-                    <p>
-                        {{ $repos->description }}
-                    </p>
+                    <h1>{{ $repos->title }}</h1>
+                    <p>{{ $repos->description }}</p>
                 </div>
                 <div class="menu hidden-xs">
                     @if($repos->homepage)

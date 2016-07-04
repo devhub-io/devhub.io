@@ -17,7 +17,6 @@
                                     <a href="{{ l_url('repos', [$item->slug]) }}" class="view-details-link"><i class="fa fa-link"></i> @lang('front.see_details')</a>
                                 </div>
                             </div>
-
                             <h2><a href="{{ l_url('repos', [$item->slug]) }}">{{ $item->title }}</a></h2>
                             <div class="product-carousel-price">
                                 <div></div>

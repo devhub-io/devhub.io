@@ -21,8 +21,8 @@
                         <div class="row">
                             @foreach($repos as $item)
                             <div class="col-sm-6 col-md-4">
-                                <div class="thumbnail"><a href="{{ l_url('repos', [$item->slug]) }}">
-                                    <img style="height: 200px; width: 100%; display: block;" src="{{ $item->image > 0 ? image_url($item->image, ['h' => 200]) : 'holder.js/200x200' }}" data-holder-rendered="true"></a>
+                                <div class="thumbnail">
+                                    <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->image > 0 ? image_url($item->image, ['h' => 200]) : 'holder.js/200x200' }}"></a>
                                     <div class="caption">
                                         <a href="{{ l_url('repos', [$item->slug]) }}"><h3>{{ $item->title }}</h3></a>
                                         <p>{{ $item->description }}</p>
