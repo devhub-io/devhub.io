@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {!! SEO::generate() !!}
+    <link rel="alternate" href="{{ url('/') }}" hreflang="x-default"/>
+    <link rel="alternate" href="{{ url('en') }}" hreflang="en" />
+    <link rel="alternate" href="{{ url('zh') }}" hreflang="zh-Hans" />
     <link rel="search" type="application/opensearchdescription+xml" href="{{ url('opensearch.xml') }}" title="DevelopHub">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
