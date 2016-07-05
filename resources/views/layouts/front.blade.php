@@ -126,7 +126,7 @@
                     <ul>
                         <li><a href="#">@lang('front.about')</a></li>
                         <li><a href="#">@lang('front.contact_us')</a></li>
-                        <li><a href="#">@lang('front.status')</a></li>
+                        <li><a href="//status.develophub.net/">@lang('front.status')</a></li>
                         <li><a href="#">@lang('front.api')</a></li>
                     </ul>
                 </div>
