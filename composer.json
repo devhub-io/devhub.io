@@ -28,7 +28,8 @@
         "rollbar/rollbar": "~0.18.0",
         "league/flysystem-dropbox": "^1.0",
         "league/glide": "^1.0",
-        "league/glide-laravel": "^1.0"
+        "league/glide-laravel": "^1.0",
+        "pragmarx/google2fa": "^0.7.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

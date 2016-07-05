@@ -35,6 +35,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     Route::get('images', 'ImageController@index');
     Route::post('images', 'ImageController@store');
     Route::get('images/{id}/delete', 'ImageController@delete');
+    Route::get('user/profile', 'UserController@profile');
 });
 
 # Image

@@ -166,6 +166,7 @@ return [
         Spatie\Analytics\AnalyticsServiceProvider::class,
         Cviebrock\EloquentSluggable\ServiceProvider::class,
         Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
+        PragmaRX\Google2FA\Vendor\Laravel\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -231,6 +232,7 @@ return [
         'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
         'Localization'   => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
+        'Google2FA' => PragmaRX\Google2FA\Vendor\Laravel\Facade::class,
 
     ],
 
