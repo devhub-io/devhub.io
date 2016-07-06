@@ -2,71 +2,67 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Entities\User;
-use Validator;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Auth;
+use Session;
 
 class AuthController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Registration & Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users, as well as the
-    | authentication of existing users. By default, this controller uses
-    | a simple trait to add these behaviors. Why don't you explore it?
-    |
-    */
-
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
-
-    /**
-     * Where to redirect users after login / registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/admin';
-
-    /**
-     * Create a new authentication controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function showLoginForm()
     {
-        $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        return view('auth.login');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
+    public function login()
     {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
-        ]);
+        $loginData = request()->only(['email', 'password']);
+
+        if (Auth::validate($loginData)) {
+            Auth::once($loginData);
+
+            if (Auth::user()->hasTwoFactor) {
+                Session::put('2fa_id', Auth::user()->id);
+
+                return redirect('auth/2fa');
+            }
+
+            return redirect('admin');
+        }
+
+        return redirect('auth/login');
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return User
-     */
-    protected function create(array $data)
+    public function logout()
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        Auth::logout();
+
+        return redirect('auth/login');
     }
+
+    public function showTwoFactorAuth()
+    {
+        return view('auth.2fa');
+    }
+
+    public function postTwoFactor()
+    {
+        if ($userId = Session::pull('2fa_id')) {
+            $code = request()->get('code');
+
+            Auth::loginUsingId($userId);
+
+            $valid = \Google2FA::verifyKey(Auth::user()->google2fa_secret_key, $code);
+
+            if ($valid) {
+                return redirect('admin');
+            } else {
+                Auth::logout();
+
+                return redirect('auth/login')->withError('Invalid Token');
+            }
+        }
+
+        return redirect('auth/login')->withError('Invalid Token');
+    }
+
 }

@@ -36,13 +36,18 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     Route::post('images', 'ImageController@store');
     Route::get('images/{id}/delete', 'ImageController@delete');
     Route::get('user/profile', 'UserController@profile');
+    Route::post('user/profile', 'UserController@profile_store');
 });
 
 # Image
 Route::get('image/{slug}', 'Front\HomeController@image');
 
 # Auth
-Route::auth();
+$this->get('auth/login', 'Auth\AuthController@showLoginForm');
+$this->post('auth/login', 'Auth\AuthController@login');
+$this->get('logout', 'Auth\AuthController@logout');
+$this->get('auth/2fa', 'Auth\AuthController@showTwoFactorAuth');
+$this->post('auth/2fa', 'Auth\AuthController@postTwoFactor');
 
 # Sitemap
 Route::get('sitemap', 'Front\HomeController@sitemap');

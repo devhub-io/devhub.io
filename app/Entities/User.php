@@ -23,4 +23,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Returns if a user has enabled two factor authentication.
+     *
+     * @return bool
+     */
+    public function getHasTwoFactorAttribute()
+    {
+        return trim($this->google2fa_secret_key) !== '';
+    }
 }
