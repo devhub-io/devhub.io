@@ -27,6 +27,8 @@ class AuthController extends Controller
                 return redirect('auth/2fa');
             }
 
+            Auth::attempt($loginData);
+
             return redirect('admin');
         }
 
