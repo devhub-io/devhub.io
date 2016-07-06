@@ -91,9 +91,11 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="/">@lang('front.home')</a></li>
-                    @foreach($one_column as $item)
-                    <li><a href="{{ l_url('category', [$item->slug]) }}">@lang('category.'.$item->slug)</a></li>
-                    @endforeach
+                    @if(isset($one_column))
+                        @foreach($one_column as $item)
+                            <li><a href="{{ l_url('category', [$item->slug]) }}">@lang('category.'.$item->slug)</a></li>
+                        @endforeach
+                    @endif
                 </ul>
             </div>
         </div>
@@ -136,9 +138,11 @@
                 <div class="footer-menu">
                     <h2 class="footer-wid-title">@lang('front.category')</h2>
                     <ul>
-                        @foreach($one_column as $item)
-                        <li><a href="{{ l_url('category', [$item->slug]) }}">@lang('category.'.$item->slug)</a></li>
-                        @endforeach
+                        @if(isset($one_column))
+                            @foreach($one_column as $item)
+                            <li><a href="{{ l_url('category', [$item->slug]) }}">@lang('category.'.$item->slug)</a></li>
+                            @endforeach
+                        @endif
                     </ul>
                 </div>
             </div>
