@@ -193,6 +193,9 @@
 
         <!-- page content -->
         <div class="right_col" role="main">
+            <div style="margin: 65px 10px 10px 10px;">
+                @include('flash::message')
+            </div>
             @yield('contents')
         </div>
         <!-- /page content -->

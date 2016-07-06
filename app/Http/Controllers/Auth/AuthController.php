@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Auth;
+use Flash;
 use Session;
 
 class AuthController extends Controller
@@ -29,6 +30,7 @@ class AuthController extends Controller
             return redirect('admin');
         }
 
+        Flash::error('Invalid Email/Password');
         return redirect('auth/login');
     }
 
@@ -58,11 +60,13 @@ class AuthController extends Controller
             } else {
                 Auth::logout();
 
-                return redirect('auth/login')->withError('Invalid Token');
+                Flash::error('Invalid Token');
+                return redirect('auth/login');
             }
         }
 
-        return redirect('auth/login')->withError('Invalid Token');
+        Flash::error('Invalid Token');
+        return redirect('auth/login');
     }
 
 }
