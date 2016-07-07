@@ -24,7 +24,7 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
         return Category::class;
     }
 
-    
+
 
     /**
      * Boot up the repository, pushing criteria
@@ -40,6 +40,6 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
      */
     public function findBySlug($slug)
     {
-        return $this->model->where('slug', $slug)->first();
+        return $this->model->where('slug', $slug)->firstOrFail();
     }
 }
