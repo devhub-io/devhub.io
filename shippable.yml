@@ -14,6 +14,8 @@ before_script:
 - mkdir -p shippable/codecoverage
 - sudo apt-get update
 - sudo apt-get install php-mbstring
+- mysql -e "GRANT ALL ON *.* TO shippable@localhost IDENTIFIED BY ''; FLUSH PRIVILEGES;"
+- mysql -e 'create database shippable;'
 - cp .env.example .env
 - composer self-update
 - composer install
