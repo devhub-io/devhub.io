@@ -28,6 +28,7 @@ Route::group(['namespace' => 'Front', 'prefix' => Localization::setLocale(), 'mi
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@index');
     Route::resource('repos', 'ReposController');
+    Route::get('repos/{id}/change_enable', 'ReposController@change_enable');
     Route::resource('categories', 'CategoriesController');
     Route::get('url', 'UrlController@index');
     Route::get('url/{id}/delete', 'UrlController@delete');

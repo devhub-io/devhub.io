@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers\Front;
 
+use SEO;
+use DB;
 use App;
+use Carbon\Carbon;
+use App\Http\Requests;
+use App\Repositories\CategoryRepository;
 use App\Entities\ReposUrl;
 use App\Http\Controllers\Controller;
 use App\Repositories\ReposRepository;
-use DB;
 use Illuminate\Http\Request;
-use App\Http\Requests;
-use App\Repositories\CategoryRepository;
 use League\Glide\Responses\LaravelResponseFactory;
 use League\Glide\ServerFactory;
 use League\Glide\Signatures\SignatureException;
 use League\Glide\Signatures\SignatureFactory;
-use SEO;
 
 
 class HomeController extends Controller
@@ -135,7 +136,7 @@ class HomeController extends Controller
             return redirect('submit?status=exists&url=' . urlencode(l_url('repos', [$repos[0]->slug])));
         } else {
             if (!ReposUrl::where('url', $url)->first()) {
-                ReposUrl::insert(['url' => $url]);
+                ReposUrl::insert(['url' => $url, 'created_at' => Carbon::now()]);
             }
         }
 

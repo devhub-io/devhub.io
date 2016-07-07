@@ -90,4 +90,20 @@ class ReposController extends Controller
         }
     }
 
+    /**
+     * Change enable
+     *
+     * @param  int $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function change_enable($id)
+    {
+        $repository = $this->repository->find($id);
+        $repository->status = $repository->status == 1 ? 0 : 1;
+        $repository->save();
+        
+        return redirect()->back();
+    }
+
 }

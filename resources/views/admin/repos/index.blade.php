@@ -79,16 +79,15 @@
                                 </td>
                                 <td>
                                     @if($item->status == 1)
-                                    <button type="button" class="btn btn-success btn-xs">启用</button>
+                                    <a href="{{ url("admin/repos/{$item->id}/change_enable") }}" class="btn btn-success btn-xs" title="点击禁用">启用</a>
                                     @else
-                                    <button type="button" class="btn btn-danger btn-xs">禁用</button>
+                                    <a href="{{ url("admin/repos/{$item->id}/change_enable") }}" class="btn btn-danger btn-xs" title="点击启用">禁用</a>
                                     @endif
                                 </td>
                                 <td>
                                     <a href="{{ url('repos', [$item->slug]) }}" target="_blank" class="btn btn-primary btn-xs"><i class="fa fa-home"></i> 前台展示 </a>
                                     <a href="#" class="btn btn-warning btn-xs"><i class="fa fa-feed"></i> 抓取 </a>
                                     <a href="{{ url("admin/repos/{$item->id}/edit") }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> 修改 </a>
-                                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> 禁用 </a>
                                 </td>
                             </tr>
                             @endforeach
