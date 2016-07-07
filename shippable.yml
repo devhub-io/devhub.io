@@ -12,6 +12,7 @@ services:
 before_script:
 - mkdir -p shippable/testresults
 - mkdir -p shippable/codecoverage
+- sudo apt-get install php-mbstring
 - cp .env.example .env
 - composer self-update
 - composer install
