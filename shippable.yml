@@ -1,0 +1,23 @@
+build_image: drydock/u14php7all:tip
+
+language:
+  - php
+
+php:
+  - '7.0'
+
+services:
+  - redis
+
+before_script:
+- mkdir -p shippable/testresults
+- mkdir -p shippable/codecoverage
+- echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+- composer self-update
+- composer install
+
+build:
+  ci:
+    - mkdir -p shippable/testresults
+    - mkdir -p shippable/codecoverage
+    - phpunit  --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage
