@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use Carbon\Carbon;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\ReposRepository;
@@ -52,7 +53,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
             'subscribers_count' => $data['open_issues_count'] ?: 0,
             'repos_created_at' => $data['created_at'],
             'repos_updated_at' => $data['updated_at'],
-            'fetched_at' => date('Y-m-d H:i:s'),
+            'fetched_at' => Carbon::now(),
         ]);
     }
 
@@ -62,7 +63,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function findBySlug($slug)
     {
-        return $this->model->where('slug', $slug)->where('status', 1)->firstOrFail();
+        return $this->model->where('status', 1)->where('slug', $slug)->firstOrFail();
     }
 
     /**
@@ -71,7 +72,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function findHottest($limit = 5)
     {
-        return $this->model->orderBy('stargazers_count', 'DESC')->limit($limit)->get();
+        return $this->model->where('status', 1)->orderBy('stargazers_count', 'DESC')->limit($limit)->get();
     }
 
     /**
@@ -80,7 +81,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function findNewest($limit = 5)
     {
-        return $this->model->orderBy('repos_created_at', 'DESC')->limit($limit)->get();
+        return $this->model->where('status', 1)->orderBy('repos_created_at', 'DESC')->limit($limit)->get();
     }
 
     /**
@@ -89,7 +90,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function findTrend($limit = 5)
     {
-        return $this->model->orderBy('repos_updated_at', 'DESC')->limit($limit)->get();
+        return $this->model->where('status', 1)->orderBy('repos_updated_at', 'DESC')->limit($limit)->get();
     }
 
     /**
@@ -98,7 +99,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function findRecommend($limit = 10)
     {
-        return $this->model->orderBy('stargazers_count', 'DESC')->limit($limit)->get();
+        return $this->model->where('status', 1)->orderBy('stargazers_count', 'DESC')->limit($limit)->get();
     }
 
     /**$limit
@@ -117,6 +118,6 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function search($keyword, $where = [], $limit = 15)
     {
-        return $this->model->where('title', 'LIKE', '%' . $keyword .'%')->where($where)->paginate($limit);
+        return $this->model->where('status', 1)->where('title', 'LIKE', '%' . $keyword .'%')->where($where)->paginate($limit);
     }
 }
