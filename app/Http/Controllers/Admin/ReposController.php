@@ -47,10 +47,11 @@ class ReposController extends Controller
      */
     public function index()
     {
+        $keyword = request()->get('keyword');
         $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
-        $repos = $this->repository->paginate(10);
+        $repos = $this->repository->searchList($keyword);
 
-        return view('admin.repos.index', compact('repos'));
+        return view('admin.repos.index', compact('repos', 'keyword'));
     }
 
     /**
@@ -102,7 +103,7 @@ class ReposController extends Controller
         $repository = $this->repository->find($id);
         $repository->status = $repository->status == 1 ? 0 : 1;
         $repository->save();
-        
+
         return redirect()->back();
     }
 
