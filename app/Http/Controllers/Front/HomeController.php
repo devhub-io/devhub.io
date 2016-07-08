@@ -193,7 +193,7 @@ class HomeController extends Controller
             }
 
             // repos
-            $posts = DB::table('repos')->orderBy('created_at', 'desc')->get();
+            $posts = DB::table('repos')->where('status', 1)->orderBy('created_at', 'desc')->get();
             foreach ($posts as $post)
             {
                 $sitemap->add(url('repos', [$post->slug]), $post->updated_at, '1.0', 'daily');
