@@ -17,4 +17,17 @@ return [
     'tool' => 'Tool',
     'read' => 'Reading',
 
+    'swift' => 'Swift',
+    'javascript' => 'JavaScript',
+    'java' => 'Java',
+    'python' => 'Python',
+    'ruby' => 'Ruby',
+    'php' => 'PHP',
+    'html' => 'HTML',
+    'cpp' => 'C++',
+    'css' => 'CSS',
+    'c' => 'C',
+    'c-sharp' => 'C#',
+    'objective-c' => 'Objective-C',
+    'go' => 'Go',
 ];
