@@ -36,7 +36,7 @@
                                     <select class="form-control" name="category_id">
                                         <option value="0">--</option>
                                         @foreach($categories as $item)
-                                            <option value="{{ $item->id }}" @if($repository->category_id == $item->id) selected @endif>{{ $item->title }}</option>
+                                            <option value="{{ $item->id }}" @if($repository->category_id == $item->id) selected @endif>@if($item->parent_id > 0) -- @endif{{ $item->title }}</option>
                                         @endforeach
                                     </select>
                                 </div>
