@@ -10,7 +10,8 @@
                         <div class="row">
                             @foreach($repos as $item)
                                 <div class="col-sm-6 col-md-4">
-                                    <div class="thumbnail"><a href="{{ l_url('repos', [$item->slug]) }}">
+                                    <div class="thumbnail" style="height: 362px;">
+                                        <a href="{{ l_url('repos', [$item->slug]) }}">
                                             <img src="{{ $item->image > 0 ? image_url($item->image, ['w' => 300]) : 'holder.js/300x300' }}"></a>
                                         <div class="caption">
                                             <a href="{{ l_url('repos', [$item->slug]) }}"><h3>{{ $item->title }}</h3></a>
