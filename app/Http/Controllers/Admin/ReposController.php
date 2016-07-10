@@ -85,7 +85,7 @@ class ReposController extends Controller
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
             $this->repository->update($request->all(), $id);
 
-            return redirect('admin/repos');
+            return redirect()->back();
         } catch (ValidatorException $e) {
             return redirect()->back()->withErrors($e->getMessageBag())->withInput();
         }
