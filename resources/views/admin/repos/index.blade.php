@@ -42,6 +42,7 @@
                                 <th style="width: 15%">名称</th>
                                 <th>图片</th>
                                 <th>分类</th>
+                                <th>语言</th>
                                 <th>标识</th>
                                 <th>统计</th>
                                 <th>状态</th>
@@ -59,6 +60,7 @@
                                 </td>
                                 <td><img src="{{ image_url($item->image, ['w' => 100]) }}" alt=""></td>
                                 <td>{{ $item->category->title or '-' }}</td>
+                                <td>{{ $item->language }}</td>
                                 <td>{{ $item->slug }}</td>
                                 <td>
                                     <ul class="list-inline">
