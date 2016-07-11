@@ -10,6 +10,7 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Session\TokenMismatchException;
 
 class Handler extends ExceptionHandler
 {
@@ -38,7 +39,7 @@ class Handler extends ExceptionHandler
         parent::report($e);
 
         // Rollber
-        if ($this->shouldReport($e)) {
+        if ($this->shouldReport($e) && !($e instanceof TokenMismatchException)) {
             $this->initRollbar();
             Rollbar::report_exception($e);
         }
