@@ -24,6 +24,7 @@ class Handler extends ExceptionHandler
         HttpException::class,
         ModelNotFoundException::class,
         ValidationException::class,
+        TokenMismatchException::class,
     ];
 
     /**
@@ -39,7 +40,7 @@ class Handler extends ExceptionHandler
         parent::report($e);
 
         // Rollber
-        if ($this->shouldReport($e) && !($e instanceof TokenMismatchException)) {
+        if ($this->shouldReport($e)) {
             $this->initRollbar();
             Rollbar::report_exception($e);
         }
