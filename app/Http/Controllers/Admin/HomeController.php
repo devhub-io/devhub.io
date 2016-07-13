@@ -37,7 +37,7 @@ class HomeController extends Controller
     public function index()
     {
         $repos_count = $this->reposRepository->count();
-        
+
         $topBrowsers = Analytics::fetchTopBrowsers(Period::days(31));
         $topBrowsers = $topBrowsers->take(10);
 

@@ -3,8 +3,12 @@
 namespace App\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use Prettus\Repository\Contracts\Transformable;
+use Prettus\Repository\Traits\TransformableTrait;
 
-class ReposUrl extends Model
+class ReposUrl extends Model implements Transformable
 {
+    use TransformableTrait;
+    
     protected $table = 'repos_url';
 }
