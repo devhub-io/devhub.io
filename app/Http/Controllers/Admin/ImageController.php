@@ -36,11 +36,12 @@ class ImageController extends Controller
             if (!File::isDirectory($upload_dir)) {
                 File::makeDirectory($upload_dir, 0755, true);
             }
-            $filename = md5(time() . $image->getRealPath()) . '.' . $image->getClientOriginalExtension();
+            $filename_md5 = md5(time() . $image->getRealPath());
+            $filename =  $filename_md5 . '.' . $image->getClientOriginalExtension();
             $image->move($upload_dir, $filename);
 
             // save
-            Image::create(['url' => $upload_path . '/' . $filename, 'slug' => $filename]);
+            Image::create(['url' => $upload_path . '/' . $filename, 'slug' => $filename_md5]);
         }
 
         return redirect('admin/images');
