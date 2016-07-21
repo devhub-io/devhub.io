@@ -46,6 +46,17 @@ interface ReposRepository extends RepositoryInterface
      */
     public function findRecommend($limit = 10);
 
+    /**
+     * Find data by multiple values in one field
+     *
+     * @param       $field
+     * @param array $values
+     * @param array $columns
+     *
+     * @return mixed
+     */
+    public function findWhereInPaginate($field, array $values, $columns = ['*']);
+
     /**$limit
      * @return int
      */

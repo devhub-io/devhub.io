@@ -98,7 +98,7 @@
                             </tbody>
                         </table>
                         <!-- end project list -->
-                        {{ $repos->links() }}
+                        {{ $repos->appends(['keyword' => $keyword])->links() }}
                     </div>
                 </div>
             </div>

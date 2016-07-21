@@ -130,4 +130,18 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
     {
         return $this->model->with('category')->where('title', 'LIKE', '%' . $keyword . '%')->where($where)->orderBy('id', 'desc')->paginate(10);
     }
+
+    /**
+     * Find data by multiple values in one field
+     *
+     * @param       $field
+     * @param array $values
+     * @param array $columns
+     *
+     * @return mixed
+     */
+    public function findWhereInPaginate($field, array $values, $columns = ['*'])
+    {
+        return $this->model->whereIn($field, $values)->paginate(15);
+    }
 }

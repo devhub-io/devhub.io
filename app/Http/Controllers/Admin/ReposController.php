@@ -65,7 +65,7 @@ class ReposController extends Controller
     {
         $repository = $this->repository->find($id);
         $categories = $this->categoryRepository->all();
-        $images = Image::paginate(10);
+        $images = Image::latest('id')->paginate(10);
 
         return view('admin.repos.edit', compact('repository', 'categories', 'images'));
     }

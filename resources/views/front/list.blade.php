@@ -31,6 +31,11 @@
                             </div>
                             @endforeach
                         </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{ $repos->links() }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
