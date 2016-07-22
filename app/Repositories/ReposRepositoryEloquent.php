@@ -142,6 +142,6 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function findWhereInPaginate($field, array $values, $columns = ['*'])
     {
-        return $this->model->whereIn($field, $values)->paginate(15);
+        return $this->model->whereIn($field, $values)->where('status', 1)->paginate(15);
     }
 }
