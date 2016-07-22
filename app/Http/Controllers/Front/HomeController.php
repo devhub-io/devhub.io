@@ -91,6 +91,7 @@ class HomeController extends Controller
 
         $parsedown = new \Parsedown();
         $markdown = $parsedown->text($repos->readme);
+        $markdown = str_replace('<a', '<a rel="nofollow" ', $markdown);
 
         SEO::setTitle($repos->title);
 
