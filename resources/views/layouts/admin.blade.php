@@ -64,6 +64,7 @@
                                     <li><a href="{{ url('admin/repos') }}">资源</a></li>
                                     <li><a href="{{ url('admin/url') }}">链接</a></li>
                                     <li><a href="{{ url('admin/images') }}">图片</a></li>
+                                    <li><a href="{{ url('admin/sites') }}">站点</a></li>
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-sitemap"></i> System <span class="fa fa-chevron-down"></span></a>

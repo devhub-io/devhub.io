@@ -35,6 +35,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     Route::get('url/{id}/fetch', 'UrlController@fetch');
     Route::get('images', 'ImageController@index');
     Route::post('images', 'ImageController@store');
+    Route::get('sites', 'SiteController@index');
+    Route::post('sites', 'SiteController@store');
     Route::get('images/{id}/delete', 'ImageController@delete');
     Route::get('user/profile', 'UserController@profile');
     Route::post('user/profile', 'UserController@profile_store');

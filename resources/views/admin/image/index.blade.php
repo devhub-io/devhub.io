@@ -4,7 +4,7 @@
 <div class="">
     <div class="page-title">
         <div class="title_left">
-            <h3>Image</h3>
+            <h3>Images</h3>
         </div>
     </div>
 
