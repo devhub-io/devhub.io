@@ -20,6 +20,7 @@ return [
     'enter_email' => '输入邮箱',
     'subscribe' => '订阅',
     'website' => '网站',
+    'sites' => '酷站',
 
     'popular' => '热门',
     'latest' => '最新',

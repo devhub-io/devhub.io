@@ -22,6 +22,7 @@ Route::group(['namespace' => 'Front', 'prefix' => Localization::setLocale(), 'mi
     Route::get('search', 'HomeController@search');
     Route::get('submit', 'HomeController@submit');
     Route::post('submit', 'HomeController@submit_store');
+    Route::get('sites', 'HomeController@sites');
 });
 
 # Admin
@@ -38,6 +39,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     Route::get('sites', 'SiteController@index');
     Route::post('sites', 'SiteController@store');
     Route::get('images/{id}/delete', 'ImageController@delete');
+    Route::get('sites/{id}/delete', 'SiteController@delete');
     Route::get('user/profile', 'UserController@profile');
     Route::post('user/profile', 'UserController@profile_store');
 });

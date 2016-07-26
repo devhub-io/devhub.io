@@ -6,9 +6,9 @@ use SEO;
 use DB;
 use App;
 use Carbon\Carbon;
-use App\Http\Requests;
 use App\Repositories\CategoryRepository;
 use App\Entities\ReposUrl;
+use App\Entities\Site;
 use App\Http\Controllers\Controller;
 use App\Repositories\ReposRepository;
 use Illuminate\Http\Request;
@@ -200,5 +200,12 @@ class HomeController extends Controller
 
         // show your sitemap (options: 'xml' (default), 'html', 'txt', 'ror-rss', 'ror-rdf')
         return $sitemap->render('xml');
+    }
+
+    public function sites()
+    {
+        $sites = Site::where('is_enable', true)->where('level', 1)->orderBy('category')->orderBy('sort')->get()->groupBy('category');
+
+        return view('front.sites', compact('sites'));
     }
 }

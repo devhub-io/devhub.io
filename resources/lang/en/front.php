@@ -20,6 +20,7 @@ return [
     'enter_email' => 'Enter e-mail',
     'subscribe' => 'Subscribe',
     'website' => 'Website',
+    'sites' => 'Sites',
 
     'popular' => 'Popular',
     'latest' => 'Top new',

@@ -27,6 +27,7 @@
                 <div class="user-menu">
                     <ul>
                         <li><a href="#"><i class="fa fa-user"></i> @lang('front.my_account')</a></li>
+                        <li><a href="{{ l_url('sites') }}"><i class="fa fa-sitemap"></i> @lang('front.sites')</a></li>
                         <li><a href="{{ l_url('submit') }}"><i class="fa fa-plus"></i> @lang('front.submit_repository')</a></li>
                     </ul>
                 </div>

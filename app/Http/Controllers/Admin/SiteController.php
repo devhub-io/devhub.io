@@ -15,6 +15,11 @@ use File;
 
 class SiteController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $sites = Site::all();
@@ -23,6 +28,9 @@ class SiteController extends Controller
         return view('admin.sites.index', compact('sites', 'categories'));
     }
 
+    /**
+     * @return \Redirect
+     */
     public function store()
     {
         $input = request()->except('icon');
@@ -42,6 +50,19 @@ class SiteController extends Controller
             $input['icon'] = $upload_path . '/' . $filename;
             Site::create($input);
         }
+
+        return redirect('admin/sites');
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function delete($id)
+    {
+        $image = Site::find($id);
+        Site::destroy($id);
+        File::delete(public_path($image->icon));
 
         return redirect('admin/sites');
     }

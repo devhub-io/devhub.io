@@ -50,7 +50,7 @@
                                     <td>{{ $item->sort }}</td>
                                     <td>{{ $item->updated_at }}</td>
                                     <td>
-                                        <a class="btn btn-danger btn-xs" href="{{ url("admin/images/{$item->id}/delete") }}">删除</a>
+                                        <a class="btn btn-danger btn-xs" href="{{ url("admin/sites/{$item->id}/delete") }}">删除</a>
                                     </td>
                                 </tr>
                             @endforeach
