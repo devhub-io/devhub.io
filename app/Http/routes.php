@@ -38,6 +38,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     Route::post('images', 'ImageController@store');
     Route::get('sites', 'SiteController@index');
     Route::post('sites', 'SiteController@store');
+    Route::get('site', 'SiteController@show');
     Route::get('images/{id}/delete', 'ImageController@delete');
     Route::get('sites/{id}/delete', 'SiteController@delete');
     Route::get('user/profile', 'UserController@profile');

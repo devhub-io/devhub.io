@@ -5,9 +5,10 @@
         .favicon {
             width: 20px;
             height: 20px;
+            margin-right: 5px;
         }
         .site {
-            margin-bottom: 12px;
+            margin-bottom: 20px;
         }
         .site-index {
             font-size: 15px;

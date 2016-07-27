@@ -35,7 +35,7 @@ class SiteController extends Controller
     {
         $input = request()->except('icon');
         $image = request()->file('icon');
-        if ($image->isValid()) {
+        if ($image && $image->isValid()) {
             // file
             $upload_path = 'upload/sites/' . date('Y/m/d');
             $upload_dir = public_path($upload_path);
@@ -48,8 +48,11 @@ class SiteController extends Controller
 
             // save
             $input['icon'] = $upload_path . '/' . $filename;
-            Site::create($input);
+        } else {
+            $input['icon'] = '';
         }
+
+        Site::create($input);
 
         return redirect('admin/sites');
     }
@@ -65,5 +68,12 @@ class SiteController extends Controller
         File::delete(public_path($image->icon));
 
         return redirect('admin/sites');
+    }
+
+    public function show()
+    {
+        $site = Site::find(request()->get('id'));
+
+        return \Response::json($site);
     }
 }
