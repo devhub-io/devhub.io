@@ -43,6 +43,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     Route::get('sites/{id}/delete', 'SiteController@delete');
     Route::get('user/profile', 'UserController@profile');
     Route::post('user/profile', 'UserController@profile_store');
+    Route::get('collection', 'CollectionController@index');
 });
 
 # Image
