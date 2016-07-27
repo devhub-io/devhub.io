@@ -202,8 +202,13 @@ class HomeController extends Controller
         return $sitemap->render('xml');
     }
 
+    /**
+     * @return mixed
+     */
     public function sites()
     {
+        SEO::setTitle(trans('front.sites'));
+
         $sites = Site::where('is_enable', true)->where('level', 1)->orderBy('category')->orderBy('sort')->get()->groupBy('category');
 
         return view('front.sites', compact('sites'));
