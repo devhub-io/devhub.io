@@ -31,7 +31,7 @@
                                 <th>图标</th>
                                 <th>标题</th>
                                 <th>URL</th>
-                                <th>描述</th>
+                                <th width="15%">描述</th>
                                 <th>排序</th>
                                 <th>更新时间</th>
                                 <th>操作</th>
