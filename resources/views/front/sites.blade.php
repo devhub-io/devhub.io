@@ -32,7 +32,7 @@
                     <div class="panel-body row">
                         @foreach($group as $item)
                             <div class="col-md-2 site">
-                                <a data-content="{{ $item->description }}" href="{{ $item->url }}" target="_blank"  title="{{ $item->title }}"><img src="{{ asset($item->icon) }}" class="favicon">{{ $item->title }}</a>
+                                <a data-content="{{ $item->description }}" href="{{ $item->url }}" target="_blank" rel="nofollow" title="{{ $item->title }}"><img src="{{ asset($item->icon) }}" class="favicon">{{ $item->title }}</a>
                             </div>
                         @endforeach
                     </div>
