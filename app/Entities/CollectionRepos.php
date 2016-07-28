@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
@@ -10,5 +10,10 @@ class CollectionRepos extends Model implements Transformable
 {
     use TransformableTrait;
 
-    protected $fillable = ['collection_id', 'repos_id'];
+    protected $fillable = ['collection_id', 'repos_id', 'is_enable', 'sort'];
+
+    public function repos()
+    {
+         return $this->belongsTo('App\Entities\Repos');
+    }
 }

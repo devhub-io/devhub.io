@@ -28,22 +28,40 @@ Route::group(['namespace' => 'Front', 'prefix' => Localization::setLocale(), 'mi
 # Admin
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@index');
+
+    # Repos
     Route::resource('repos', 'ReposController');
     Route::get('repos/{id}/change_enable', 'ReposController@change_enable');
     Route::resource('categories', 'CategoriesController');
+
+    # Url
     Route::get('url', 'UrlController@index');
     Route::get('url/{id}/delete', 'UrlController@delete');
     Route::get('url/{id}/fetch', 'UrlController@fetch');
+
+    # Images
     Route::get('images', 'ImageController@index');
     Route::post('images', 'ImageController@store');
+    Route::get('images/{id}/delete', 'ImageController@delete');
+
+    # Sites
     Route::get('sites', 'SiteController@index');
     Route::post('sites', 'SiteController@store');
     Route::get('site', 'SiteController@show');
-    Route::get('images/{id}/delete', 'ImageController@delete');
     Route::get('sites/{id}/delete', 'SiteController@delete');
+
+    # User
     Route::get('user/profile', 'UserController@profile');
     Route::post('user/profile', 'UserController@profile_store');
-    Route::get('collection', 'CollectionController@index');
+
+    # Collections
+    Route::get('collections', 'CollectionController@index');
+    Route::post('collections', 'CollectionController@store');
+    Route::get('collections/{id}/change_enable', 'CollectionController@change_enable');
+    Route::get('collections/{id}/delete', 'CollectionController@delete');
+    Route::get('collections/{id}/repos', 'CollectionController@repos');
+    Route::post('collections/{id}/repos', 'CollectionController@repos_store');
+    Route::get('collections/{id}/repos/{repos_id}/change_enable', 'CollectionController@repos_change_enable');
 });
 
 # Image

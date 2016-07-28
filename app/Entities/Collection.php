@@ -10,5 +10,7 @@ class Collection extends Model implements Transformable
 {
     use TransformableTrait;
 
-    protected $fillable = ['title', 'slug'];
+    protected $table = 'collection';
+
+    protected $fillable = ['title', 'slug', 'sort'];
 }

@@ -22,7 +22,7 @@ class SiteController extends Controller
      */
     public function index()
     {
-        $sites = Site::all();
+        $sites = Site::orderBy('id', 'desc')->paginate(30);
         $categories = Category::where('parent_id', 0)->get();
 
         return view('admin.sites.index', compact('sites', 'categories'));
@@ -54,7 +54,7 @@ class SiteController extends Controller
 
         Site::create($input);
 
-        return redirect('admin/sites');
+        return redirect()->back();
     }
 
     /**
@@ -67,7 +67,7 @@ class SiteController extends Controller
         Site::destroy($id);
         File::delete(public_path($image->icon));
 
-        return redirect('admin/sites');
+        return redirect()->back();
     }
 
     public function show()

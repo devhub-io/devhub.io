@@ -1,10 +1,15 @@
 @extends('layouts.admin')
 
+@section('styles')
+    <link href="{{ asset('components/select2/select2.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('components/select2-bootstrap-css/select2-bootstrap.min.css') }}">
+@endsection
+
 @section('contents')
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Collections</h3>
+                <h3>{{ $collection->title }} - Repos</h3>
             </div>
         </div>
 
@@ -36,31 +41,29 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($collections as $item)
+                            @foreach($repos as $item)
                                 <tr>
                                     <td>{{ $item->id }}</td>
-                                    <td>{{ $item->title }}</td>
-                                    <td>{{ $item->slug }}</td>
-                                    <td><img src="{{ asset($item->image) }}" alt=""></td>
+                                    <td>{{ $item->repos->title }}</td>
+                                    <td>{{ $item->repos->slug }}</td>
+                                    <td><img src="{{ image_url($item->repos->image, ['w' => 100]) }}" alt=""></td>
                                     <td>{{ $item->sort }}</td>
                                     <td>{{ $item->updated_at }}</td>
                                     <td>
                                         @if($item->is_enable == 1)
-                                            <a href="{{ url("admin/collections/{$item->id}/change_enable") }}" class="btn btn-success btn-xs" title="点击禁用">启用</a>
+                                            <a href="{{ url("admin/collections/{$id}/repos/{$item->id}/change_enable") }}" class="btn btn-success btn-xs" title="点击禁用">启用</a>
                                         @else
-                                            <a href="{{ url("admin/collections/{$item->id}/change_enable") }}" class="btn btn-danger btn-xs" title="点击启用">禁用</a>
+                                            <a href="{{ url("admin/collections/{$id}/repos/{$item->id}/change_enable") }}" class="btn btn-danger btn-xs" title="点击启用">禁用</a>
                                         @endif
                                     </td>
                                     <td>
-                                        <a class="btn btn-info btn-xs" href="{{ url("admin/collections/{$item->id}/repos") }}">集合</a>
-                                        <a class="btn btn-default btn-xs" href="javascript:void(0);">修改</a>
-                                        <a class="btn btn-danger btn-xs" href="{{ url("admin/collections/{$item->id}/delete") }}">删除</a>
+                                        <a class="btn btn-danger btn-xs" href="{{ url("admin/collections/{$item->id}/delete") }}">移除</a>
                                     </td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
-                        {{ $collections->links() }}
+                        {{ $repos->links() }}
                     </div>
                 </div>
             </div>
@@ -72,18 +75,18 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">添加集合</h4>
+                    <h4 class="modal-title">添加资源到集合</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ url('admin/collections') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ url("admin/collections/{$id}/repos") }}" method="post" enctype="multipart/form-data">
                         {!! csrf_field() !!}
                         <div class="form-group">
-                            <label for="title">标题</label>
-                            <input type="text" id="title" name="title" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="slug">标识</label>
-                            <input type="text" id="slug" name="slug" class="form-control">
+                            <label for="repos_id">资源</label>
+                            <select name="repos_id" id="repos_id" class="form-control" style="width: 500px;">
+                                @foreach($all_repos as $item)
+                                <option value="{{ $item->id }}">{{ $item->slug }} | {{ $item->title }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="sort">排序</label>
@@ -98,30 +101,8 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('components/knockout/dist/knockout.js') }}"></script>
+    <script src="{{ asset('components/select2/select2.min.js') }}"></script>
     <script>
-        var viewModel = {
-            title: ko.observable(''),
-            url: ko.observable(''),
-            category: ko.observable(''),
-            level: ko.observable(1),
-            description: ko.observable(''),
-            icon: ko.observable(''),
-            sort: ko.observable(0),
-
-            editSite: function (id) {
-                $.get('{{ url('admin/site') }}', {id: id}, function (res) {
-                    console.log(res);
-                });
-
-                $('#editModal').modal('show');
-            },
-
-            saveSite: function () {
-                console.log('11')
-            }
-        };
-
-        ko.applyBindings(viewModel);
+        $('#repos_id').select2();
     </script>
 @endsection
