@@ -12,7 +12,7 @@
                         @foreach($recommend as $item)
                         <div class="single-product">
                             <div class="product-f-image">
-                                <img src="{{ $item->image > 0 ? image_url($item->image, ['w' => 210]) : 'holder.js/210x269' }}" alt="">
+                                <img src="{{ $item->image > 0 ? image_url($item->image, ['w' => 210]) : 'holder.js/210x269' }}" alt="{{ $item->title }}" title="{{ $item->title }}">
                                 <div class="product-hover">
                                     <a href="{{ l_url('repos', [$item->slug]) }}" class="view-details-link"><i class="fa fa-link"></i> @lang('front.see_details')</a>
                                 </div>
@@ -38,14 +38,11 @@
                 <div class="brand-wrapper">
                     <h2 class="section-title">@lang('front.topic')</h2>
                     <div class="brand-list">
-                        <img src="{{ url("img/services_logo__1.jpg") }}" alt="" width="270" height="120">
-                        <img src="{{ url("img/services_logo__2.jpg") }}" alt="" width="270" height="120">
-                        <img src="{{ url("img/services_logo__3.jpg") }}" alt="" width="270" height="120">
-                        <img src="{{ url("img/services_logo__4.jpg") }}" alt="" width="270" height="120">
-                        <img src="{{ url("img/services_logo__1.jpg") }}" alt="" width="270" height="120">
-                        <img src="{{ url("img/services_logo__2.jpg") }}" alt="" width="270" height="120">
-                        <img src="{{ url("img/services_logo__3.jpg") }}" alt="" width="270" height="120">
-                        <img src="{{ url("img/services_logo__4.jpg") }}" alt="" width="270" height="120">
+                        @foreach($collections as $item)
+                            <a href="{{ l_url('collection', [$item->slug]) }}">
+                                <img src="{{ $item->image ? asset($item->image) : 'holder.js/270x270' }}" alt="{{ $item->title }}" title="{{ $item->title }}" width="270" height="270">
+                            </a>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -63,7 +60,7 @@
                     <a href="" class="wid-view-more">@lang('front.view_all')</a>
                     @foreach($hot as $item)
                     <div class="single-wid-product">
-                        <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->image > 0 ? image_url($item->image, ['w' => 100]) : 'holder.js/100x90' }}" alt="" class="product-thumb"></a>
+                        <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->image > 0 ? image_url($item->image, ['w' => 100]) : 'holder.js/100x90' }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="product-thumb"></a>
                         <h2><a href="{{ l_url('repos', [$item->slug]) }}">{{ $item->title }}</a></h2>
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i> {{ $item->stargazers_count }}
@@ -78,7 +75,7 @@
                     <a href="#" class="wid-view-more">@lang('front.view_all')</a>
                     @foreach($new as $item)
                         <div class="single-wid-product">
-                            <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->image > 0 ? image_url($item->image, ['w' => 100]) : 'holder.js/100x90' }}" alt="" class="product-thumb"></a>
+                            <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->image > 0 ? image_url($item->image, ['w' => 100]) : 'holder.js/100x90' }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="product-thumb"></a>
                             <h2><a href="{{ l_url('repos', [$item->slug]) }}">{{ $item->title }}</a></h2>
                             <div class="product-wid-rating">
                                 <i class="fa fa-star"></i> {{ $item->stargazers_count }}
@@ -93,7 +90,7 @@
                     <a href="#" class="wid-view-more">@lang('front.view_all')</a>
                     @foreach($trend as $item)
                         <div class="single-wid-product">
-                            <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->image > 0 ? image_url($item->image, ['w' => 100]) : 'holder.js/100x90' }}" alt="" class="product-thumb"></a>
+                            <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->image > 0 ? image_url($item->image, ['w' => 100]) : 'holder.js/100x90' }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="product-thumb"></a>
                             <h2><a href="{{ l_url('repos', [$item->slug]) }}">{{ $item->title }}</a></h2>
                             <div class="product-wid-rating">
                                 <i class="fa fa-star"></i> {{ $item->stargazers_count }}

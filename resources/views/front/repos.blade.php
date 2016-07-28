@@ -17,7 +17,7 @@
     <div class="container">
         <div class="row" style="margin: 50px 0 50px 0">
             <div class="col-md-4 col-sm-4 hidden-xs">
-                <img class="cover" src="{{ $repos->image > 0 ? image_url($repos->image, ['w' => 300]) : 'holder.js/300x300' }}">
+                <img class="cover" src="{{ $repos->image > 0 ? image_url($repos->image, ['w' => 300]) : 'holder.js/300x300' }}" alt="{{ $repos->title }}" title="{{ $repos->title }}">
             </div>
             <div class="col-md-8 col-sm-8">
                 <div class="repo-title">

@@ -8,6 +8,8 @@ use App;
 use Carbon\Carbon;
 use App\Repositories\CategoryRepository;
 use App\Entities\ReposUrl;
+use App\Entities\Collection;
+use App\Entities\CollectionRepos;
 use App\Entities\Site;
 use App\Http\Controllers\Controller;
 use App\Repositories\ReposRepository;
@@ -56,7 +58,9 @@ class HomeController extends Controller
 
         $recommend = $this->reposRepository->findRecommend();
 
-        return view('front.home', compact('hot', 'new', 'trend', 'recommend'));
+        $collections = Collection::where('is_enable', 1)->orderBy('sort')->get();
+
+        return view('front.home', compact('hot', 'new', 'trend', 'recommend', 'collections'));
     }
 
     /**
@@ -212,5 +216,16 @@ class HomeController extends Controller
         $sites = Site::where('is_enable', true)->where('level', 1)->orderBy('category')->orderBy('sort')->get()->groupBy('category');
 
         return view('front.sites', compact('sites'));
+    }
+
+    /**
+     * @return mixed
+     */
+    public function collection($slug)
+    {
+        $collection = Collection::where('slug', $slug)->first();
+        $repos = CollectionRepos::with('repos')->where('collection_id', $collection->id)->orderBy('sort')->get();
+
+        return view('front.collection', compact('repos', 'collection'));
     }
 }
