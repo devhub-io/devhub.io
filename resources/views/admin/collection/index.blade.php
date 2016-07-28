@@ -41,7 +41,7 @@
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->title }}</td>
                                     <td>{{ $item->slug }}</td>
-                                    <td><img src="{{ asset($item->image) }}" alt=""></td>
+                                    <td><img src="{{ asset($item->image) }}" alt="" width="100" height="100"></td>
                                     <td>{{ $item->sort }}</td>
                                     <td>{{ $item->updated_at }}</td>
                                     <td>
@@ -53,6 +53,7 @@
                                     </td>
                                     <td>
                                         <a class="btn btn-info btn-xs" href="{{ url("admin/collections/{$item->id}/repos") }}">集合</a>
+                                        <a class="btn btn-success btn-xs" href="{{ url("admin/collections/{$item->id}/cover") }}">生成封面</a>
                                         <a class="btn btn-default btn-xs" href="javascript:void(0);">修改</a>
                                         <a class="btn btn-danger btn-xs" href="{{ url("admin/collections/{$item->id}/delete") }}">删除</a>
                                     </td>

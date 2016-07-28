@@ -58,10 +58,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     Route::get('collections', 'CollectionController@index');
     Route::post('collections', 'CollectionController@store');
     Route::get('collections/{id}/change_enable', 'CollectionController@change_enable');
+    Route::get('collections/{id}/cover', 'CollectionController@cover');
     Route::get('collections/{id}/delete', 'CollectionController@delete');
     Route::get('collections/{id}/repos', 'CollectionController@repos');
     Route::post('collections/{id}/repos', 'CollectionController@repos_store');
     Route::get('collections/{id}/repos/{repos_id}/change_enable', 'CollectionController@repos_change_enable');
+    Route::get('collections/{id}/repos/{repos_id}/delete', 'CollectionController@repos_delete');
 });
 
 # Image

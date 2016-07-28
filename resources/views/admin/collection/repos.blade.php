@@ -57,7 +57,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a class="btn btn-danger btn-xs" href="{{ url("admin/collections/{$item->id}/delete") }}">移除</a>
+                                        <a class="btn btn-danger btn-xs" href="{{ url("admin/collections/{$id}/repos/{$item->repos_id}/delete") }}">移除</a>
                                     </td>
                                 </tr>
                             @endforeach
