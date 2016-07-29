@@ -40,7 +40,7 @@
                             <td>{{ $item->slug }}</td>
                             <td>{{ $item->created_at }}</td>
                             <td>
-                                <a class="btn btn-danger btn-xs" href="{{ url("admin/images/{$item->id}/delete") }}">删除</a>
+                                <a class="btn btn-danger btn-xs" href="javascript:confirmDelete('{{ url("admin/images/{$item->id}/delete") }}')">删除</a>
                             </td>
                         </tr>
                         @endforeach
@@ -73,4 +73,14 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+@endsection
+
+@section('scripts')
+    <script>
+        function confirmDelete(url) {
+            if(confirm('确实删除?')){
+                location.href = url;
+            }
+        }
+    </script>
 @endsection

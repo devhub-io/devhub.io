@@ -41,7 +41,7 @@
                                 <td>{{ $category->parent_id }}</td>
                                 <td>
                                     <a href="{{ url("admin/categories/{$category->id}/edit") }}" class="btn btn-default btn-xs">修改</a>
-                                    <form action="{{ url("admin/categories/{$category->id}") }}" method="post">
+                                    <form action="{{ url("admin/categories/{$category->id}") }}" method="post" onsubmit="return confirmDelete()">
                                         {!! csrf_field() !!}
                                         <input type="hidden" name="_method" value="DELETE">
                                         <button class="btn btn-danger btn-xs" type="submit">删除</button>
@@ -56,4 +56,12 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        function confirmDelete() {
+            return confirm('确实删除?');
+        }
+    </script>
 @endsection

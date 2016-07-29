@@ -56,7 +56,7 @@
                                         <a href="{{ url('collection', [$item->slug]) }}" target="_blank" class="btn btn-primary btn-xs"><i class="fa fa-home"></i> 前台展示 </a>
                                         <a class="btn btn-success btn-xs" href="{{ url("admin/collections/{$item->id}/cover") }}">生成封面</a>
                                         <a class="btn btn-default btn-xs" href="javascript:void(0);">修改</a>
-                                        <a class="btn btn-danger btn-xs" href="{{ url("admin/collections/{$item->id}/delete") }}">删除</a>
+                                        <a class="btn btn-danger btn-xs" href="javascript:confirmDelete('{{ url("admin/collections/{$item->id}/delete") }}')">删除</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -126,5 +126,11 @@
         };
 
         ko.applyBindings(viewModel);
+
+        function confirmDelete(url) {
+            if(confirm('确实删除?')){
+                location.href = url;
+            }
+        }
     </script>
 @endsection

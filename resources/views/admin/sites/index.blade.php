@@ -52,7 +52,7 @@
                                     <td>{{ $item->updated_at }}</td>
                                     <td>
                                         <a class="btn btn-info btn-xs" href="javascript:void(0);" data-id="{{ $item->id }}" data-bind="click: editSite">修改</a>
-                                        <a class="btn btn-danger btn-xs" href="{{ url("admin/sites/{$item->id}/delete") }}">删除</a>
+                                        <a class="btn btn-danger btn-xs" href="javascript:confirmDelete('{{ url("admin/sites/{$item->id}/delete") }}')">删除</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -196,5 +196,11 @@
         };
 
         ko.applyBindings(viewModel);
+
+        function confirmDelete(url) {
+            if(confirm('确实删除?')){
+                location.href = url;
+            }
+        }
     </script>
 @endsection
