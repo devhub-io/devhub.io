@@ -58,6 +58,6 @@ class ImageController extends Controller
         File::delete(public_path($image->url));
         Cache::forget("goods:image:{$image->slug}");
 
-        return redirect('admin/images');
+        return redirect()->back();
     }
 }
