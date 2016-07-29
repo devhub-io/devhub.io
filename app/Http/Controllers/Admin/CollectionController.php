@@ -34,7 +34,7 @@ class CollectionController extends Controller
 
     public function cover($id)
     {
-        $repos = CollectionRepos::with('repos')->whereHas('repos', function ($query) {
+        $repos = CollectionRepos::with('repos')->where('collection_id', $id)->whereHas('repos', function ($query) {
             $query->where('image', '>', 0);
         })->orderBy('sort')->paginate(9);
 

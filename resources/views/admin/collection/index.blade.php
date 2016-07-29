@@ -90,6 +90,7 @@
                             <label for="sort">排序</label>
                             <input type="number" id="sort" name="sort" class="form-control" value="0">
                         </div>
+                        <input type="hidden" name="is_enable" value="0">
                         <button type="submit" class="btn btn-info">添加</button>
                     </form>
                 </div>

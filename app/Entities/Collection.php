@@ -12,5 +12,5 @@ class Collection extends Model implements Transformable
 
     protected $table = 'collection';
 
-    protected $fillable = ['title', 'slug', 'sort'];
+    protected $fillable = ['title', 'slug', 'sort', 'is_enable'];
 }
