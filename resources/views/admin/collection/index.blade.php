@@ -53,7 +53,7 @@
                                     </td>
                                     <td>
                                         <a class="btn btn-info btn-xs" href="{{ url("admin/collections/{$item->id}/repos") }}">集合资源管理</a>
-                                        <a href="{{ url('collections', [$item->slug]) }}" target="_blank" class="btn btn-primary btn-xs"><i class="fa fa-home"></i> 前台展示 </a>
+                                        <a href="{{ url('collection', [$item->slug]) }}" target="_blank" class="btn btn-primary btn-xs"><i class="fa fa-home"></i> 前台展示 </a>
                                         <a class="btn btn-success btn-xs" href="{{ url("admin/collections/{$item->id}/cover") }}">生成封面</a>
                                         <a class="btn btn-default btn-xs" href="javascript:void(0);">修改</a>
                                         <a class="btn btn-danger btn-xs" href="{{ url("admin/collections/{$item->id}/delete") }}">删除</a>
