@@ -17,6 +17,7 @@
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
                             <li><a href="javascript:void(0);" data-toggle="modal" data-target="#uploadModal"><i class="fa fa-plus"></i></a></li>
+                            <li><a href="{{ url('sites') }}" target="_blank"><i class="fa fa-home"></i></a></li>
                         </ul>
                         <div class="clearfix"></div>
                     </div>
