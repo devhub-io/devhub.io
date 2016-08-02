@@ -200,6 +200,15 @@ class HomeController extends Controller
             foreach ($posts as $post) {
                 $sitemap->add(url('repos', [$post->slug]), $post->updated_at, '1.0', 'daily');
             }
+
+            // collections
+            $collections = Collection::where('is_enable', 1)->orderBy('created_at', 'desc')->get();
+            foreach ($collections as $collection) {
+                $sitemap->add(url('collection', [$collection->slug]), $collection->updated_at, '1.0', 'daily');
+            }
+
+            // sites
+            $sitemap->add(url('sites'), '2016-07-01T00:00:00+00:00', '1.0', 'daily');
         }
 
         // show your sitemap (options: 'xml' (default), 'html', 'txt', 'ror-rss', 'ror-rdf')
@@ -223,7 +232,7 @@ class HomeController extends Controller
      */
     public function collection($slug)
     {
-        $collection = Collection::where('slug', $slug)->first();
+        $collection = Collection::where('slug', $slug)->where('is_enable', 1)->first();
         $repos = CollectionRepos::with('repos')->where('collection_id', $collection->id)->orderBy('sort')->get();
 
         SEO::setTitle($collection->title . ' - Collections');
