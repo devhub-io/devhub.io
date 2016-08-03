@@ -39,22 +39,30 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function createFromGithubAPI(array $data)
     {
-        return $this->create([
-            'title' => $data['name'],
-            'slug' => str_replace('/', '-', $data['full_name']),
-            'description' => $data['description'] ?: '',
-            'language' => $data['language'] ?: '',
-            'homepage' => $data['homepage'] ?: '',
-            'github' => $data['html_url'] ?: '',
-            'stargazers_count' => $data['stargazers_count'] ?: 0,
-            'watchers_count' => $data['watchers_count'] ?: 0,
-            'open_issues_count' => $data['open_issues_count'] ?: 0,
-            'forks_count' => $data['forks_count'] ?: 0,
-            'subscribers_count' => $data['open_issues_count'] ?: 0,
-            'repos_created_at' => $data['created_at'],
-            'repos_updated_at' => $data['updated_at'],
-            'fetched_at' => Carbon::now(),
-        ]);
+        $slug = str_replace('/', '-', $data['full_name']);
+
+        $find = $this->model->where('slug', $slug)->first();
+
+        if ($find) {
+            return false;
+        } else {
+            return $this->create([
+                'title' => $data['name'],
+                'slug' => $slug,
+                'description' => $data['description'] ?: '',
+                'language' => $data['language'] ?: '',
+                'homepage' => $data['homepage'] ?: '',
+                'github' => $data['html_url'] ?: '',
+                'stargazers_count' => $data['stargazers_count'] ?: 0,
+                'watchers_count' => $data['watchers_count'] ?: 0,
+                'open_issues_count' => $data['open_issues_count'] ?: 0,
+                'forks_count' => $data['forks_count'] ?: 0,
+                'subscribers_count' => $data['open_issues_count'] ?: 0,
+                'repos_created_at' => $data['created_at'],
+                'repos_updated_at' => $data['updated_at'],
+                'fetched_at' => Carbon::now(),
+            ]);
+        }
     }
 
     /**

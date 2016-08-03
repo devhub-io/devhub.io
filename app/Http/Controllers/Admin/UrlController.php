@@ -61,9 +61,11 @@ class UrlController extends Controller
             $repo = $client->api('repo')->show($matches[1], $matches[2]);
             $repos = $this->reposRepository->createFromGithubAPI($repo);
 
-            $readme = $client->api('repo')->contents()->readme($matches[1], $matches[2]);
-            $readme = file_get_contents($readme['download_url']);
-            $this->reposRepository->update(['readme' => $readme], $repos->id);
+            if ($repos) {
+                $readme = $client->api('repo')->contents()->readme($matches[1], $matches[2]);
+                $readme = file_get_contents($readme['download_url']);
+                $this->reposRepository->update(['readme' => $readme], $repos->id);
+            }
         }
 
         return redirect('admin/url');

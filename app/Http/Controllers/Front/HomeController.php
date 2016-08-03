@@ -232,7 +232,7 @@ class HomeController extends Controller
      */
     public function collection($slug)
     {
-        $collection = Collection::where('slug', $slug)->where('is_enable', 1)->first();
+        $collection = Collection::where('slug', $slug)->where('is_enable', 1)->firstOrFail();
         $repos = CollectionRepos::with('repos')->where('collection_id', $collection->id)->orderBy('sort')->get();
 
         SEO::setTitle($collection->title . ' - Collections');
