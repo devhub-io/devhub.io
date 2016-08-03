@@ -66,6 +66,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     Route::post('collections/{id}/repos', 'CollectionController@repos_store');
     Route::get('collections/{id}/repos/{repos_id}/change_enable', 'CollectionController@repos_change_enable');
     Route::get('collections/{id}/repos/{repos_id}/delete', 'CollectionController@repos_delete');
+
+    # API
+    Route::get('api/status', 'ApiController@status');
 });
 
 # Image
