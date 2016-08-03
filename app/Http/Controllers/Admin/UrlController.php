@@ -62,7 +62,7 @@ class UrlController extends Controller
     public function fetch($id)
     {
         $url = ReposUrl::find($id);
-        $re = "/https:\\/\\/github\\.com\\/([0-9a-zA-Z\\-\\.]*)\\/([0-9a-zA-Z\\-\\.]*)/";
+        $re = "/https?:\\/\\/github\\.com\\/([0-9a-zA-Z\\-\\.]*)\\/([0-9a-zA-Z\\-\\.]*)/";
         preg_match($re, $url->url, $matches);
         if ($matches) {
             $client = new \Github\Client();
