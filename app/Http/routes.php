@@ -37,6 +37,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
 
     # Url
     Route::get('url', 'UrlController@index');
+    Route::post('url', 'UrlController@store');
     Route::get('url/{id}/delete', 'UrlController@delete');
     Route::get('url/{id}/fetch', 'UrlController@fetch');
 

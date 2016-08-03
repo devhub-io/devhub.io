@@ -9,6 +9,8 @@ use Prettus\Repository\Traits\TransformableTrait;
 class ReposUrl extends Model implements Transformable
 {
     use TransformableTrait;
-    
+
     protected $table = 'repos_url';
+
+    protected $fillable = ['url'];
 }

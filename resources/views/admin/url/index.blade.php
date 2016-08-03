@@ -16,6 +16,7 @@
                     <div class="x_title">
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                            <li><a href="javascript:void(0);" data-toggle="modal" data-target="#addModal"><i class="fa fa-plus"></i></a></li>
                         </ul>
                         <div class="clearfix"></div>
                     </div>
@@ -50,4 +51,25 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="addModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">添加链接</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ url('admin/url') }}" method="post" enctype="multipart/form-data">
+                        {!! csrf_field() !!}
+                        <div class="form-group">
+                            <label for="url">链接</label>
+                            <input type="text" id="url" name="url" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-info">添加</button>
+                    </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 @endsection

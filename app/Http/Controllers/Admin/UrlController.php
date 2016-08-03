@@ -36,6 +36,14 @@ class UrlController extends Controller
         return view('admin.url.index', compact('urls'));
     }
 
+    public function store()
+    {
+        $input = request()->all();
+        ReposUrl::create($input);
+
+        return redirect()->back();
+    }
+
     /**
      * @param $id
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
