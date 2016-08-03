@@ -35,7 +35,7 @@ if (!function_exists('image_url')) {
         $key = "goods:image:$slug";
         if (!Cache::has($key)) {
             $image = Image::where('slug', $slug)->first();
-            if($image) {
+            if ($image) {
                 Cache::put("goods:image:{$image->id}", $image, 365 * 24 * 60);
                 Cache::put("goods:image:{$image->slug}", $image, 365 * 24 * 60);
             } else {
@@ -45,7 +45,7 @@ if (!function_exists('image_url')) {
             $image = Cache::get($key);
         }
 
-        $urlBuilder->setBaseUrl(getenv('STATIC_DOMAIN'));
+        $urlBuilder->setBaseUrl('//' . getenv('STATIC_DOMAIN'));
 
         return $urlBuilder->getUrl("/image/{$image->slug}", $params);
     }
