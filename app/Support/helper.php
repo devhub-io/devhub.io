@@ -45,6 +45,8 @@ if (!function_exists('image_url')) {
             $image = Cache::get($key);
         }
 
+        $urlBuilder->setBaseUrl(getenv('STATIC_DOMAIN'));
+
         return $urlBuilder->getUrl("/image/{$image->slug}", $params);
     }
 
