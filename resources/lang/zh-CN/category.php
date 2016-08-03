@@ -34,6 +34,14 @@ return [
     'rust' => 'Rust',
     'lua' => 'Lua',
     'scala' => 'Scala',
+    'typescript' => 'TypeScript',
 
     'books' => 'Books',
+    'database' => '数据库',
+    'cloud-service' => '云服务',
+    'nosql' => 'NoSQL',
+    'security' => '安全',
+    'algorithm' => '算法',
+    'linux' => 'Linux',
+    'shell' => 'Shell',
 ];
