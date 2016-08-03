@@ -30,4 +30,10 @@ return [
     'c-sharp' => 'C#',
     'objective-c' => 'Objective-C',
     'go' => 'Go',
+    'clojure' => 'Clojure',
+    'rust' => 'Rust',
+    'lua' => 'Lua',
+    'scala' => 'Scala',
+
+    'books' => 'Books',
 ];
