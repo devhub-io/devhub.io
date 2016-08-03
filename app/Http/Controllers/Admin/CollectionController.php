@@ -141,7 +141,7 @@ class CollectionController extends Controller
     {
         $collection = Collection::find($id);
         $repos = CollectionRepos::with('repos')->where('collection_id', $id)->orderBy('sort')->paginate(50);
-        $all_repos = Repos::select('id', 'title', 'slug')->get();
+        $all_repos = Repos::select('id', 'title', 'slug')->orderBy('id', 'desc')->get();
 
         return view('admin.collection.repos', compact('repos', 'id', 'all_repos', 'collection'));
     }
