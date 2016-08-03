@@ -235,7 +235,7 @@ class HomeController extends Controller
         $collection = Collection::where('slug', $slug)->where('is_enable', 1)->firstOrFail();
         $repos = CollectionRepos::with('repos')->where('collection_id', $collection->id)->orderBy('sort')->get();
 
-        SEO::setTitle($collection->title . ' - Collections');
+        SEO::setTitle($collection->title . ' - Collection');
 
         return view('front.collection', compact('repos', 'collection'));
     }
