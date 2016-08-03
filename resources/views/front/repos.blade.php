@@ -1,7 +1,7 @@
 @extends('layouts.front')
 
 @section('styles')
-    <link rel="stylesheet" href="{{ asset('css/github-markdown.css') }}">
+    <link rel="stylesheet" href="{{ cdn_asset('css/github-markdown.css') }}">
     <style>
         .markdown-body {
             box-sizing: border-box;

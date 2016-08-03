@@ -44,7 +44,7 @@
                                     <td>{{ $item->id }}</td>
                                     <td>@lang("category.{$item->category}")</td>
                                     <td>{{ $item->level == 1 ? '推荐' : '友链' }}</td>
-                                    <th scope="row"><img src="{{ asset($item->icon) }}" alt="" width="32" height="32"></th>
+                                    <th scope="row"><img src="{{ cdn_asset($item->icon) }}" alt="" width="32" height="32"></th>
                                     <td>{{ $item->title }}</td>
                                     <td><a href="{{ $item->url }}" target="_blank">{{ $item->url }}</a></td>
                                     <td>{{ $item->description }}</td>
@@ -171,7 +171,7 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('components/knockout/dist/knockout.js') }}"></script>
+    <script src="{{ cdn_asset('components/knockout/dist/knockout.js') }}"></script>
     <script>
         var viewModel = {
             title: ko.observable(''),

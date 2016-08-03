@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
 @section('styles')
-    <link href="{{ asset('components/select2/select2.css') }}" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('components/select2-bootstrap-css/select2-bootstrap.min.css') }}">
+    <link href="{{ cdn_asset('components/select2/select2.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ cdn_asset('components/select2-bootstrap-css/select2-bootstrap.min.css') }}">
 @endsection
 
 @section('contents')
@@ -101,7 +101,7 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('components/select2/select2.min.js') }}"></script>
+    <script src="{{ cdn_asset('components/select2/select2.min.js') }}"></script>
     <script>
         $('#repos_id').select2();
     </script>

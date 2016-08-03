@@ -11,7 +11,7 @@
     <link rel="search" type="application/opensearchdescription+xml" href="{{ url('opensearch.xml') }}" title="DevelopHub">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{{ elixir('css/all.css') }}">
+    <link rel="stylesheet" href="{{ cdn_asset(elixir('css/all.css')) }}">
     @yield('styles')
     <!--[if lt IE 9]>
     <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -179,8 +179,8 @@
 
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="{{ asset('components/holderjs/holder.min.js') }}"></script>
-<script src="{{ elixir('js/app.js') }}"></script>
+<script src="{{ cdn_asset('components/holderjs/holder.min.js') }}"></script>
+<script src="{{ cdn_asset(elixir('js/app.js')) }}"></script>
 @yield('scripts')
 {{--<script type="text/javascript">var switchTo5x=true;</script>--}}
 {{--<script type="text/javascript" src="https://ws.sharethis.com/button/buttons.js"></script>--}}

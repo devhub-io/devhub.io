@@ -41,7 +41,7 @@
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->title }}</td>
                                     <td>{{ $item->slug }}</td>
-                                    <td><img src="{{ asset($item->image) }}" alt="" width="100" height="100"></td>
+                                    <td><img src="{{ cdn_asset($item->image) }}" alt="" width="100" height="100"></td>
                                     <td>{{ $item->sort }}</td>
                                     <td>{{ $item->updated_at }}</td>
                                     <td>
@@ -101,7 +101,7 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('components/knockout/dist/knockout.js') }}"></script>
+    <script src="{{ cdn_asset('components/knockout/dist/knockout.js') }}"></script>
     <script>
         var viewModel = {
             title: ko.observable(''),

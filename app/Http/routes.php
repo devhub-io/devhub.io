@@ -12,7 +12,7 @@
 */
 
 # Front
-Route::group(['namespace' => 'Front', 'prefix' => Localization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect']], function () {
+Route::group(['domain' => getenv('WWW_DOMAIN'), 'namespace' => 'Front', 'prefix' => Localization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect']], function () {
 
     App::setLocale(Localization::getCurrentLocaleRegional());
 
@@ -24,10 +24,13 @@ Route::group(['namespace' => 'Front', 'prefix' => Localization::setLocale(), 'mi
     Route::get('submit', 'HomeController@submit');
     Route::post('submit', 'HomeController@submit_store');
     Route::get('sites', 'HomeController@sites');
+
+    # Sitemap
+    Route::get('sitemap', 'HomeController@sitemap');
 });
 
 # Admin
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function () {
+Route::group(['domain' => getenv('WWW_DOMAIN'), 'prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@index');
 
     # Repos
@@ -71,8 +74,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     Route::get('api/status', 'ApiController@status');
 });
 
-# Image
-Route::get('image/{slug}', 'Front\HomeController@image');
+# Static
+Route::group(['domain' => getenv('STATIC_DOMAIN')], function () {
+    Route::get('image/{slug}', 'Front\HomeController@image');
+});
 
 # Auth
 $this->get('auth/login', 'Auth\AuthController@showLoginForm');
@@ -80,6 +85,3 @@ $this->post('auth/login', 'Auth\AuthController@login');
 $this->get('logout', 'Auth\AuthController@logout');
 $this->get('auth/2fa', 'Auth\AuthController@showTwoFactorAuth');
 $this->post('auth/2fa', 'Auth\AuthController@postTwoFactor');
-
-# Sitemap
-Route::get('sitemap', 'Front\HomeController@sitemap');

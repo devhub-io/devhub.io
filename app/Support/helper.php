@@ -49,3 +49,16 @@ if (!function_exists('image_url')) {
     }
 
 }
+
+if (!function_exists('cdn_asset')) {
+    /**
+     * Generate a url for the application.
+     *
+     * @param  string $path
+     * @return Illuminate\Contracts\Routing\UrlGenerator|string
+     */
+    function cdn_asset($path)
+    {
+        return '//' . getenv('CDN_DOMAIN') . '/' . trim($path, '/');
+    }
+}

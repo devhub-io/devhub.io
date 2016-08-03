@@ -40,7 +40,7 @@
                     <div class="brand-list">
                         @foreach($collections as $item)
                             <a href="{{ l_url('collection', [$item->slug]) }}">
-                                <img src="{{ $item->image ? asset($item->image) : 'holder.js/270x270' }}" alt="{{ $item->title }}" title="{{ $item->title }}" width="270" height="270">
+                                <img src="{{ $item->image ? cdn_asset($item->image) : 'holder.js/270x270' }}" alt="{{ $item->title }}" title="{{ $item->title }}" width="270" height="270">
                             </a>
                         @endforeach
                     </div>
