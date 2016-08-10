@@ -19,4 +19,8 @@ return [
      */
     'cache_lifetime_in_minutes' => 60 * 24,
 
+    /*
+     * The directory where the underlying Google_Client will store it's cache files.
+     */
+    'cache_location' => storage_path('app/google-analytics/google-cache/'),
 ];
