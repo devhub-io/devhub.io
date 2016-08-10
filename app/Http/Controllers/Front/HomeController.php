@@ -105,6 +105,16 @@ class HomeController extends Controller
 
         SEO::setTitle($repos->title);
 
+        $category = $this->categoryRepository->find($repos->category_id);
+        if ($category) {
+            if ($category->parent_id == 0) {
+                view()->share('current_category_slug', $category->slug);
+            } else {
+                $parent_category = $this->categoryRepository->find($category->parent_id);
+                view()->share('current_category_slug', $parent_category->slug);
+            }
+        }
+
         return view('front.repos', compact('repos', 'markdown'));
     }
 
