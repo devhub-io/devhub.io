@@ -33,7 +33,8 @@
         "zizaco/entrust": "^1.7",
         "predis/predis": "^1.1",
         "intervention/image": "^2.3",
-        "hieu-le/active": "^3.2"
+        "hieu-le/active": "^3.2",
+        "barryvdh/laravel-translation-manager": "^0.2.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

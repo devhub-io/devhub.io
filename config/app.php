@@ -169,6 +169,7 @@ return [
         PragmaRX\Google2FA\Vendor\Laravel\ServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
         HieuLe\Active\ActiveServiceProvider::class,
+        Barryvdh\TranslationManager\ManagerServiceProvider::class,
 
         /*
          * Application Service Providers...

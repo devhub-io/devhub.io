@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "05356fb8ab48e4df2bf73e7eae0ef6ca",
-    "content-hash": "f86677d21eb49ebe38a5ba01970b2b49",
+    "hash": "0a021832205890bf3ca521cca9f23318",
+    "content-hash": "2f30668c849463d58fd217894c905fd5",
     "packages": [
         {
             "name": "arcanedev/log-viewer",
@@ -393,6 +393,55 @@
             "description": "BaconQrCode is a QR code generator for PHP.",
             "homepage": "https://github.com/Bacon/BaconQrCode",
             "time": "2016-01-09 22:55:35"
+        },
+        {
+            "name": "barryvdh/laravel-translation-manager",
+            "version": "v0.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/barryvdh/laravel-translation-manager.git",
+                "reference": "8589559fa48ca463d69fcdcb09119d5711c54734"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/barryvdh/laravel-translation-manager/zipball/8589559fa48ca463d69fcdcb09119d5711c54734",
+                "reference": "8589559fa48ca463d69fcdcb09119d5711c54734",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.0.x|5.1.x|5.2.x",
+                "illuminate/translation": "5.0.x|5.1.x|5.2.x",
+                "php": ">=5.4.0",
+                "symfony/finder": "~2.3|~3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Barryvdh\\TranslationManager\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "Manage Laravel Translations",
+            "keywords": [
+                "laravel",
+                "translations",
+                "translator"
+            ],
+            "time": "2016-05-27 05:25:10"
         },
         {
             "name": "christian-riesen/base32",
