@@ -42,6 +42,7 @@ class HomeController extends Controller
         $this->categoryRepository = $categoryRepository;
         $this->reposRepository = $reposRepository;
 
+        view()->share('current_category_slug', '');
         view()->share('one_column', $this->categoryRepository->findWhere(['parent_id' => 0]));
     }
 
@@ -76,9 +77,14 @@ class HomeController extends Controller
                 $child_id[] = $item->id;
             }
             $repos = $this->reposRepository->findWhereInPaginate('category_id', $child_id ?: [-1]);
+
+            view()->share('current_category_slug', $slug);
         } else {
             $child_category = $this->categoryRepository->findWhere(['parent_id' => $category->parent_id]);
             $repos = $this->reposRepository->findWhereInPaginate('category_id', [$category->id]);
+
+            $parent_category = $this->categoryRepository->find($category->parent_id);
+            view()->share('current_category_slug', $parent_category->slug);
         }
 
         SEO::setTitle(trans("category.{$category->slug}"));

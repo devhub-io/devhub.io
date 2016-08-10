@@ -168,6 +168,7 @@ return [
         Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
         PragmaRX\Google2FA\Vendor\Laravel\ServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
+        HieuLe\Active\ActiveServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -228,13 +229,14 @@ return [
         'Purifier' => Mews\Purifier\Facades\Purifier::class,
         'Flash' => Laracasts\Flash\Flash::class,
         'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
-        'SEOMeta'   => Artesaos\SEOTools\Facades\SEOMeta::class,
+        'SEOMeta' => Artesaos\SEOTools\Facades\SEOMeta::class,
         'OpenGraph' => Artesaos\SEOTools\Facades\OpenGraph::class,
-        'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
+        'Twitter' => Artesaos\SEOTools\Facades\TwitterCard::class,
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
-        'Localization'   => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
+        'Localization' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
         'Google2FA' => PragmaRX\Google2FA\Vendor\Laravel\Facade::class,
-        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
+        'Entrust' => Zizaco\Entrust\EntrustFacade::class,
+        'Active' => HieuLe\Active\Facades\Active::class,
 
     ],
 
