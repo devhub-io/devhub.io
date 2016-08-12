@@ -1,9 +1,6 @@
 <?php
 
 // Home
-use App\Entities\Category;
-use App\Entities\Repos;
-
 Breadcrumbs::register('home', function ($breadcrumbs) {
     $breadcrumbs->push(trans('front.home'), l_url('/'));
 });
