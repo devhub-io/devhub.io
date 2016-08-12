@@ -10,11 +10,16 @@
             margin: 0 auto;
             padding: 45px;
         }
+        .breadcrumb {
+            margin-top: 25px;
+        }
     </style>
 @endsection
 
 @section('contents')
     <div class="container">
+        {!! Breadcrumbs::render('repos', $repos) !!}
+
         <div class="row" style="margin: 50px 0 50px 0">
             <div class="col-md-4 col-sm-4 hidden-xs">
                 <img class="cover" src="{{ $repos->image > 0 ? image_url($repos->image, ['w' => 300]) : 'holder.js/300x300' }}" alt="{{ $repos->title }}" title="{{ $repos->title }}">

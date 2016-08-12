@@ -170,6 +170,7 @@ return [
         Zizaco\Entrust\EntrustServiceProvider::class,
         HieuLe\Active\ActiveServiceProvider::class,
         Barryvdh\TranslationManager\ManagerServiceProvider::class,
+        DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -238,6 +239,7 @@ return [
         'Google2FA' => PragmaRX\Google2FA\Vendor\Laravel\Facade::class,
         'Entrust' => Zizaco\Entrust\EntrustFacade::class,
         'Active' => HieuLe\Active\Facades\Active::class,
+        'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
 
     ],
 
