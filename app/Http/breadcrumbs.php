@@ -5,13 +5,13 @@ use App\Entities\Category;
 use App\Entities\Repos;
 
 Breadcrumbs::register('home', function ($breadcrumbs) {
-    $breadcrumbs->push('Home', l_url('/'));
+    $breadcrumbs->push(trans('front.home'), l_url('/'));
 });
 
 // Home > [Category]
 Breadcrumbs::register('category', function ($breadcrumbs, $category) {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push($category->title, l_url('category', $category->slug));
+    $breadcrumbs->push(trans("category.{$category->slug}"), l_url('category', $category->slug));
 });
 
 // Home > [Category] > [Repos]
