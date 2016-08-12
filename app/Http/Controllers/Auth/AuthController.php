@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use Auth;
 use Flash;
 use Session;
+use App\Http\Controllers\Controller;
 
 class AuthController extends Controller
 {
