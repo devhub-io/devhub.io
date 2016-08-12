@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Entities\Image;
-use App\Http\Controllers\Controller;
-use App\Http\Requests;
 use Cache;
 use File;
-
+use App\Entities\Image;
+use App\Http\Controllers\Controller;
 
 class ImageController extends Controller
 {

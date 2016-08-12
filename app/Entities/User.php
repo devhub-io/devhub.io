@@ -3,13 +3,14 @@
 namespace App\Entities;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Zizaco\Entrust\Traits\EntrustPermissionTrait;
-use Zizaco\Entrust\Traits\EntrustRoleTrait;
+use Venturecraft\Revisionable\RevisionableTrait;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 class User extends Authenticatable
 {
-    use EntrustUserTrait;
+    use RevisionableTrait, EntrustUserTrait {
+        EntrustUserTrait::boot insteadof RevisionableTrait;
+    }
 
     /**
      * The attributes that are mass assignable.

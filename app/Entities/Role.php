@@ -7,9 +7,10 @@
 
 namespace App\Entities;
 
+use Venturecraft\Revisionable\RevisionableTrait;
 use Zizaco\Entrust\EntrustRole;
 
 class Role extends EntrustRole
 {
-
+    use RevisionableTrait;
 }

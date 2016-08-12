@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests;
 use PragmaRX\Google2FA\Google2FA;
 
 class UserController extends Controller

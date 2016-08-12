@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Response;
 use App\Http\Controllers\Controller;
-use App\Http\Requests;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
 use App\Http\Requests\CategoryCreateRequest;
 use App\Http\Requests\CategoryUpdateRequest;
 use App\Repositories\CategoryRepository;
 use App\Validators\CategoryValidator;
-use Response;
-
 
 class CategoriesController extends Controller
 {

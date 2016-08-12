@@ -35,7 +35,8 @@
         "intervention/image": "^2.3",
         "hieu-le/active": "^3.2",
         "barryvdh/laravel-translation-manager": "^0.2.2",
-        "davejamesmiller/laravel-breadcrumbs": "^3.0"
+        "davejamesmiller/laravel-breadcrumbs": "^3.0",
+        "venturecraft/revisionable": "^1.28"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

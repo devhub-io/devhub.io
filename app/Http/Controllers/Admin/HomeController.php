@@ -6,9 +6,7 @@ use Analytics;
 use App\Http\Controllers\Controller;
 use App\Repositories\CategoryRepository;
 use App\Repositories\ReposRepository;
-use App\Http\Requests;
 use Spatie\Analytics\Period;
-
 
 class HomeController extends Controller
 {
