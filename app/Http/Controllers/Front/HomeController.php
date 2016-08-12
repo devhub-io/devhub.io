@@ -104,6 +104,7 @@ class HomeController extends Controller
         $markdown = str_replace('<a', '<a rel="nofollow" ', $markdown);
 
         SEO::setTitle($repos->title);
+        SEO::setDescription($repos->description);
 
         $category = $this->categoryRepository->find($repos->category_id);
         if ($category) {
