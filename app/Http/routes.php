@@ -58,6 +58,10 @@ Route::group(['domain' => getenv('WWW_DOMAIN'), 'prefix' => 'admin', 'namespace'
     # User
     Route::get('user/profile', 'UserController@profile');
     Route::post('user/profile', 'UserController@profile_store');
+    Route::get('user', 'UserController@index');
+    Route::post('user', 'UserController@store');
+    Route::get('user/{id}/delete', 'UserController@delete');
+    Route::post('user/password', 'UserController@password');
 
     # Collections
     Route::get('collections', 'CollectionController@index');

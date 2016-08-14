@@ -16,6 +16,9 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class CollectionController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         $collections = Collection::orderBy('id', 'desc')->paginate(30);
@@ -23,6 +26,9 @@ class CollectionController extends Controller
         return view('admin.collection.index', compact('collections'));
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store()
     {
         $input = request()->all();
@@ -31,6 +37,10 @@ class CollectionController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function cover($id)
     {
         $repos = CollectionRepos::with('repos')->where('collection_id', $id)->whereHas('repos', function ($query) {
@@ -127,6 +137,10 @@ class CollectionController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function delete($id)
     {
         $collection = Collection::find($id);
@@ -136,6 +150,10 @@ class CollectionController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function repos($id)
     {
         $collection = Collection::find($id);
@@ -145,6 +163,10 @@ class CollectionController extends Controller
         return view('admin.collection.repos', compact('repos', 'id', 'all_repos', 'collection'));
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function repos_store($id)
     {
         $repos_id = request()->get('repos_id');
@@ -156,6 +178,11 @@ class CollectionController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * @param $id
+     * @param $repos_id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function repos_change_enable($id, $repos_id)
     {
         $collection_repos = CollectionRepos::where('collection_id', $id)->where('repos_id', $repos_id)->first();
@@ -165,6 +192,11 @@ class CollectionController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * @param $id
+     * @param $repos_id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function repos_delete($id, $repos_id)
     {
         CollectionRepos::where('collection_id', $id)->where('repos_id', $repos_id)->delete();

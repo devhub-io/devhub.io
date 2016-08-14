@@ -39,4 +39,12 @@ class User extends Authenticatable
     {
         return trim($this->google2fa_secret_key) !== '';
     }
+
+    /**
+     * @param $value
+     */
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = \Hash::make($value);
+    }
 }
