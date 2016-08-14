@@ -12,6 +12,9 @@ class Repos extends Model implements Transformable
     use TransformableTrait;
     use RevisionableTrait;
 
+    /**
+     * @var array
+     */
     protected $fillable = [
         'title', 'slug', 'description', 'language', 'homepage', 'github', 'stargazers_count', 'watchers_count',
         'open_issues_count', 'forks_count', 'subscribers_count', 'repos_created_at', 'repos_updated_at', 'fetched_at',

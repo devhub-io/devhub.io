@@ -12,6 +12,9 @@ class Category extends Model implements Transformable
     use TransformableTrait;
     use RevisionableTrait;
 
+    /**
+     * @var array
+     */
     protected $fillable = ['title', 'slug', 'parent_id'];
 
 }

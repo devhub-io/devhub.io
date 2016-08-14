@@ -32,6 +32,7 @@ class CollectionController extends Controller
     public function store()
     {
         $input = request()->all();
+        $input['user_id'] = \Auth::id();
         Collection::create($input);
 
         return redirect()->back();

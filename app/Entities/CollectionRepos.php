@@ -12,8 +12,14 @@ class CollectionRepos extends Model implements Transformable
     use TransformableTrait;
     use RevisionableTrait;
 
+    /**
+     * @var array
+     */
     protected $fillable = ['collection_id', 'repos_id', 'is_enable', 'sort'];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function repos()
     {
          return $this->belongsTo('App\Entities\Repos');

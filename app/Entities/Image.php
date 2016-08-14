@@ -12,5 +12,8 @@ class Image extends Model implements Transformable
     use TransformableTrait;
     use RevisionableTrait;
 
+    /**
+     * @var array
+     */
     protected $fillable = ['url', 'slug'];
 }
