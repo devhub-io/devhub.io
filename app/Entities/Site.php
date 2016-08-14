@@ -12,5 +12,5 @@ class Site extends Model implements Transformable
     use TransformableTrait;
     use RevisionableTrait;
 
-    protected $fillable = ['title', 'url', 'category', 'sort', 'is_enable', 'icon', 'level', 'description'];
+    protected $fillable = ['title', 'url', 'category', 'sort', 'is_enable', 'icon', 'level', 'description', 'user_id'];
 }

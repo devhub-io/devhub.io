@@ -50,6 +50,7 @@ class SiteController extends Controller
         } else {
             $input['icon'] = '';
         }
+        $input['user_id'] = \Auth::user()->id;
 
         Site::create($input);
 
