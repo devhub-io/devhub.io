@@ -74,6 +74,9 @@ Route::group(['domain' => getenv('WWW_DOMAIN'), 'prefix' => 'admin', 'namespace'
     Route::get('collections/{id}/repos/{repos_id}/change_enable', 'CollectionController@repos_change_enable');
     Route::get('collections/{id}/repos/{repos_id}/delete', 'CollectionController@repos_delete');
 
+    # Subscribe
+    Route::get('subscribe', 'SubscribeController@index');
+
     # API
     Route::get('api/status', 'ApiController@status');
 });
