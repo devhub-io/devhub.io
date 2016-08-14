@@ -20,7 +20,7 @@ class Collection extends Model implements Transformable
     /**
      * @var array
      */
-    protected $fillable = ['title', 'slug', 'sort', 'is_enable'];
+    protected $fillable = ['title', 'slug', 'sort', 'is_enable', 'user_id'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

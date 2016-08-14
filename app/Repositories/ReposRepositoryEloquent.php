@@ -47,6 +47,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
             return false;
         } else {
             return $this->create([
+                'user_id' => \Auth::id(),
                 'title' => $data['name'],
                 'slug' => $slug,
                 'description' => $data['description'] ?: '',

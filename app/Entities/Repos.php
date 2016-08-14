@@ -18,7 +18,7 @@ class Repos extends Model implements Transformable
     protected $fillable = [
         'title', 'slug', 'description', 'language', 'homepage', 'github', 'stargazers_count', 'watchers_count',
         'open_issues_count', 'forks_count', 'subscribers_count', 'repos_created_at', 'repos_updated_at', 'fetched_at',
-        'readme', 'image', 'category_id',
+        'readme', 'image', 'category_id', 'user_id',
     ];
 
     /**
@@ -27,5 +27,13 @@ class Repos extends Model implements Transformable
     public function category()
     {
         return $this->belongsTo('App\Entities\Category');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Entities\User');
     }
 }
