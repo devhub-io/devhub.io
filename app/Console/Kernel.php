@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        // Commands\Inspire::class,
+        Commands\SyncUserActivatedTime::class,
     ];
 
     /**
@@ -25,10 +25,14 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        // Backup
         $date = Carbon::now()->toW3cString();
         $environment = env('APP_ENV');
         $schedule->command(
             "db:backup --database=mysql --destination=local --destinationPath=/{$environment}/DevelopHub_{$environment}_{$date} --compression=gzip"
         )->twiceDaily(13,21);
+
+        // Sync user activated time
+        $schedule->command('develophub:sync-user-activated-time')->everyTenMinutes();
     }
 }
