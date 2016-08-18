@@ -171,6 +171,7 @@ return [
         HieuLe\Active\ActiveServiceProvider::class,
         Barryvdh\TranslationManager\ManagerServiceProvider::class,
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
+        AltThree\Badger\BadgerServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -240,6 +241,7 @@ return [
         'Entrust' => Zizaco\Entrust\EntrustFacade::class,
         'Active' => HieuLe\Active\Facades\Active::class,
         'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
+        'Badger' => AltThree\Badger\Facades\Badger::class,
 
     ],
 

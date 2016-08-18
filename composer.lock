@@ -4,9 +4,71 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e4a5de341e90b725ca748b5f117ca50b",
-    "content-hash": "2b7c012060dc66827f7e4c80d22391a1",
+    "hash": "71a84786b791e186124d6808f04bcae3",
+    "content-hash": "bf4bf77efbd0af7ea6f42408baccc991",
     "packages": [
+        {
+            "name": "alt-three/badger",
+            "version": "v3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/AltThree/Badger.git",
+                "reference": "c5de4afcefcc0dd6576d2ae4bd5d5e83fb0cb8d9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/AltThree/Badger/zipball/c5de4afcefcc0dd6576d2ae4bd5d5e83fb0cb8d9",
+                "reference": "c5de4afcefcc0dd6576d2ae4bd5d5e83fb0cb8d9",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "5.1.*|5.2.*|5.3.*",
+                "illuminate/support": "5.1.*|5.2.*|5.3.*",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "graham-campbell/testbench": "^3.1",
+                "phpunit/phpunit": "^4.8|^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "AltThree\\Badger\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "James Brooks",
+                    "email": "james@alt-three.com"
+                },
+                {
+                    "name": "Graham Campbell",
+                    "email": "graham@alt-three.com"
+                },
+                {
+                    "name": "Joseph Cohen",
+                    "email": "joe@alt-three.com"
+                }
+            ],
+            "description": "A Badge Generator For Laravel 5",
+            "keywords": [
+                "Alt Three",
+                "badge",
+                "badger",
+                "shield",
+                "svg"
+            ],
+            "time": "2016-04-22 17:23:42"
+        },
         {
             "name": "arcanedev/log-viewer",
             "version": "3.10.1",

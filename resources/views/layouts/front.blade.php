@@ -121,6 +121,11 @@
                         {{--<span class='st_pinterest_large' displayText='Pinterest'></span>--}}
                         {{--<span class='st_email_large' displayText='Email'></span>--}}
                     {{--</div>--}}
+                    @if(isset($badger))
+                        @foreach($badger as $item)
+                            {!! $item !!}
+                        @endforeach
+                    @endif
                 </div>
             </div>
 

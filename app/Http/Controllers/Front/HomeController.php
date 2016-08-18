@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use Badger;
 use SEO;
 use DB;
 use App;
@@ -44,6 +45,11 @@ class HomeController extends Controller
 
         view()->share('current_category_slug', '');
         view()->share('one_column', $this->categoryRepository->findWhere(['parent_id' => 0]));
+        view()->share('badger', [
+            Badger::generate('Server', 'Nginx', 'brightgreen', 'plastic'),
+            Badger::generate('CDN', 'CloudFlare', '#1abc9c', 'plastic'),
+            Badger::generate('Framework', 'Laravel', 'blue', 'plastic'),
+        ]);
     }
 
     /**
