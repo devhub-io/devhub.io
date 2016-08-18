@@ -137,6 +137,7 @@
                         <li><a href="#">@lang('front.contact_us')</a></li>
                         <li><a href="//status.develophub.net/">@lang('front.status')</a></li>
                         <li><a href="#">@lang('front.api')</a></li>
+                        <li><a href="{{ l_url('feed') }}" target="_blank" title="RSS Link">Feed</a></li>
                     </ul>
                 </div>
             </div>

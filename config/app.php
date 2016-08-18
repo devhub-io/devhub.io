@@ -172,6 +172,7 @@ return [
         Barryvdh\TranslationManager\ManagerServiceProvider::class,
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
         AltThree\Badger\BadgerServiceProvider::class,
+        Roumen\Feed\FeedServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -242,6 +243,7 @@ return [
         'Active' => HieuLe\Active\Facades\Active::class,
         'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
         'Badger' => AltThree\Badger\Facades\Badger::class,
+        'Feed' => Roumen\Feed\Feed::class,
 
     ],
 

@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Front;
 
 use Badger;
+use Config;
+use Localization;
 use SEO;
 use DB;
 use App;
+use URL;
 use Carbon\Carbon;
+use Roumen\Feed\Feed;
 use App\Repositories\CategoryRepository;
 use App\Entities\ReposUrl;
 use App\Entities\Collection;
@@ -261,5 +265,52 @@ class HomeController extends Controller
         SEO::setTitle($collection->title . ' - Collection');
 
         return view('front.collection', compact('repos', 'collection'));
+    }
+
+    /**
+     * @return mixed
+     */
+    public function feed()
+    {
+        // create new feed
+        $feed = new Feed();
+
+        // multiple feeds are supported
+        // if you are using caching you should set different cache keys for your feeds
+
+        // cache the feed for 60 minutes (second parameter is optional)
+        $feed->setCache(60, 'feed:repos');
+
+        // check if there is cached feed and build new only if is not
+        if (!$feed->isCached()) {
+            // creating rss feed with our most recent 20 posts
+            $posts = DB::table('repos')->orderBy('created_at', 'desc')->take(100)->get();
+
+            // set your feed's title, description, link, pubdate and language
+            $feed->title = Config::get('seotools.meta.defaults.title');
+            $feed->description = Config::get('seotools.meta.defaults.description');
+            $feed->logo = '';
+            $feed->link = l_url('feed');
+            $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
+            $feed->pubdate = $posts[0]->created_at;
+            $feed->lang = Localization::getCurrentLocaleRegional();
+            $feed->setShortening(true); // true or false
+            $feed->setTextLimit(100); // maximum length of description text
+
+            foreach ($posts as $post) {
+                list($author, $repos) = explode('-', $post->slug);
+
+                // set item's title, author, url, pubdate, description, content, enclosure (optional)*
+                $feed->add($post->title, $author, l_url('repos', [$post->slug]), $post->created_at, $post->description, $post->readme);
+            }
+        }
+
+        // first param is the feed format
+        // optional: second param is cache duration (value of 0 turns off caching)
+        // optional: you can set custom cache key with 3rd param as string
+        return $feed->render('atom');
+
+        // to return your feed as a string set second param to -1
+        // $xml = $feed->render('atom', -1);
     }
 }

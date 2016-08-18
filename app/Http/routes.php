@@ -27,6 +27,9 @@ Route::group(['domain' => getenv('WWW_DOMAIN'), 'namespace' => 'Front', 'prefix'
 
     # Sitemap
     Route::get('sitemap', 'HomeController@sitemap');
+
+    # Feed
+    Route::get('feed', 'HomeController@feed');
 });
 
 # Admin

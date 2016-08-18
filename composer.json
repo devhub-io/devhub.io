@@ -37,7 +37,8 @@
         "barryvdh/laravel-translation-manager": "^0.2.2",
         "davejamesmiller/laravel-breadcrumbs": "^3.0",
         "venturecraft/revisionable": "^1.28",
-        "alt-three/badger": "^3.1"
+        "alt-three/badger": "^3.1",
+        "roumen/feed": "^2.10"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
