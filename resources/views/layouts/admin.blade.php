@@ -66,7 +66,13 @@
                                     <li><a href="{{ url('admin/images') }}">图片</a></li>
                                     <li><a href="{{ url('admin/sites') }}">站点</a></li>
                                     <li><a href="{{ url('admin/collections') }}">集合</a></li>
-                                    <li><a href="{{ url('admin/subscribe') }}">订阅</a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-envelope"></i> Mail <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="{{ url('admin/mail/template') }}">Template</a></li>
+                                    <li><a href="{{ url('admin/mail/subscriber') }}">Subscriber</a></li>
+                                    <li><a href="{{ url('admin/mail/publish') }}">Publish</a></li>
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-sitemap"></i> System <span class="fa fa-chevron-down"></span></a>

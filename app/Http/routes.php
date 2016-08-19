@@ -82,6 +82,12 @@ Route::group(['domain' => getenv('WWW_DOMAIN'), 'prefix' => 'admin', 'namespace'
 
     # API
     Route::get('api/status', 'ApiController@status');
+
+    # Mail
+    Route::get('mail/template', 'MailController@template');
+    Route::get('mail/subscriber', 'MailController@subscriber');
+    Route::get('mail/subscriber/{address}', 'MailController@members');
+    Route::get('mail/publish', 'MailController@publish');
 });
 
 # Static
