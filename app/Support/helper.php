@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of develophub.net.
+ *
+ * (c) DevelopHub <master@develophub.net>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 use App\Entities\Image;
 use League\Glide\Urls\UrlBuilderFactory;
 

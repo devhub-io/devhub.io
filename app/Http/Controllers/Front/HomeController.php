@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of develophub.net.
+ *
+ * (c) DevelopHub <master@develophub.net>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\Http\Controllers\Front;
 
 use Badger;
@@ -23,7 +32,6 @@ use League\Glide\Responses\LaravelResponseFactory;
 use League\Glide\ServerFactory;
 use League\Glide\Signatures\SignatureException;
 use League\Glide\Signatures\SignatureFactory;
-
 
 class HomeController extends Controller
 {

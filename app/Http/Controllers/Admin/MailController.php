@@ -1,12 +1,15 @@
 <?php
-/**
- * User: yuan
- * Date: 16/8/19
- * Time: 13:17
+
+/*
+ * This file is part of develophub.net.
+ *
+ * (c) DevelopHub <master@develophub.net>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace App\Http\Controllers\Admin;
-
 
 use App\Http\Controllers\Controller;
 use App\Support\Mailgun;
