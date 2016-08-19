@@ -65,14 +65,19 @@ class UrlController extends Controller
         $re = "/https?:\\/\\/github\\.com\\/([0-9a-zA-Z\\-\\.]*)\\/([0-9a-zA-Z\\-\\.]*)/";
         preg_match($re, $url->url, $matches);
         if ($matches) {
-            $client = new \Github\Client();
-            $repo = $client->api('repo')->show($matches[1], $matches[2]);
-            $repos = $this->reposRepository->createFromGithubAPI($repo);
+            try {
+                $client = new \Github\Client();
+                $repo = $client->api('repo')->show($matches[1], $matches[2]);
+                $repos = $this->reposRepository->createFromGithubAPI($repo);
 
-            if ($repos) {
-                $readme = $client->api('repo')->contents()->readme($matches[1], $matches[2]);
-                $readme = file_get_contents($readme['download_url']);
-                $this->reposRepository->update(['readme' => $readme], $repos->id);
+                if ($repos) {
+                    $readme = $client->api('repo')->contents()->readme($matches[1], $matches[2]);
+                    $readme = file_get_contents($readme['download_url']);
+                    $this->reposRepository->update(['readme' => $readme], $repos->id);
+                }
+            } catch (\Exception $e) {
+                \Log::error($e->getMessage());
+                \Log::error($e->getTraceAsString());
             }
         }
 
