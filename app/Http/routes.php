@@ -12,7 +12,7 @@
 */
 
 # Front
-Route::group(['domain' => getenv('WWW_DOMAIN'), 'namespace' => 'Front', 'prefix' => Localization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect']], function () {
+Route::group(['domain' => env('WWW_DOMAIN'), 'namespace' => 'Front', 'prefix' => Localization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect']], function () {
 
     App::setLocale(Localization::getCurrentLocaleRegional());
 
@@ -33,7 +33,7 @@ Route::group(['domain' => getenv('WWW_DOMAIN'), 'namespace' => 'Front', 'prefix'
 });
 
 # Admin
-Route::group(['domain' => getenv('WWW_DOMAIN'), 'prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function () {
+Route::group(['domain' => env('WWW_DOMAIN'), 'prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@index');
 
     # Repos
@@ -91,7 +91,7 @@ Route::group(['domain' => getenv('WWW_DOMAIN'), 'prefix' => 'admin', 'namespace'
 });
 
 # Static
-Route::group(['domain' => getenv('STATIC_DOMAIN')], function () {
+Route::group(['domain' => env('STATIC_DOMAIN')], function () {
     Route::get('image/{slug}', 'Front\HomeController@image');
 });
 

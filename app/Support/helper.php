@@ -45,7 +45,7 @@ if (!function_exists('image_url')) {
             $image = Cache::get($key);
         }
 
-        $urlBuilder->setBaseUrl('//' . getenv('STATIC_DOMAIN'));
+        $urlBuilder->setBaseUrl('//' . env('STATIC_DOMAIN'));
 
         return $urlBuilder->getUrl("/image/{$image->slug}", $params);
     }
@@ -61,6 +61,6 @@ if (!function_exists('cdn_asset')) {
      */
     function cdn_asset($path)
     {
-        return '//' . getenv('CDN_DOMAIN') . '/' . trim($path, '/');
+        return '//' . env('CDN_DOMAIN') . '/' . trim($path, '/');
     }
 }
