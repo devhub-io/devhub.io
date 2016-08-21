@@ -15,6 +15,7 @@ use Cache;
 use File;
 use App\Entities\Image;
 use App\Http\Controllers\Controller;
+use Flash;
 
 class ImageController extends Controller
 {
@@ -36,19 +37,23 @@ class ImageController extends Controller
     public function store()
     {
         $image = request()->file('image');
-        if ($image->isValid()) {
+        if ($image && $image->isValid()) {
             // file
             $upload_path = 'upload/images/' . date('Y/m/d');
             $upload_dir = public_path($upload_path);
             if (!File::isDirectory($upload_dir)) {
                 File::makeDirectory($upload_dir, 0755, true);
             }
-            $filename_md5 = md5(time() . $image->getRealPath());
-            $filename =  $filename_md5 . '.' . $image->getClientOriginalExtension();
+
+            $file_md5 = md5_file($image->getRealPath());
+            $filename = $file_md5 . '.' . $image->getClientOriginalExtension();
             $image->move($upload_dir, $filename);
 
-            // save
-            Image::create(['url' => $upload_path . '/' . $filename, 'slug' => $filename_md5]);
+            if (!Image::where('slug', $file_md5)->first()) {
+                Image::create(['url' => $upload_path . '/' . $filename, 'slug' => $file_md5]);
+            } else {
+                Flash::error('重复上传相同的图片');
+            }
         }
 
         return redirect('admin/images');

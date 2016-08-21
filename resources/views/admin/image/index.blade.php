@@ -65,7 +65,7 @@
                     {!! csrf_field() !!}
                     <div class="form-group">
                         <label for="image">图片</label>
-                        <input type="file" id="image" name="image">
+                        <input type="file" id="image" name="image" required="required">
                     </div>
                     <button type="submit" class="btn btn-info">上传</button>
                 </form>

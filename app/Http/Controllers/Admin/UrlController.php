@@ -14,6 +14,8 @@ namespace App\Http\Controllers\Admin;
 use App\Entities\ReposUrl;
 use App\Http\Controllers\Controller;
 use App\Repositories\ReposRepository;
+use Flash;
+use Log;
 
 class UrlController extends Controller
 {
@@ -78,10 +80,13 @@ class UrlController extends Controller
                     $readme = $client->api('repo')->contents()->readme($matches[1], $matches[2]);
                     $readme = file_get_contents($readme['download_url']);
                     $this->reposRepository->update(['readme' => $readme], $repos->id);
+                } else {
+                    Flash::error('已抓取过');
                 }
             } catch (\Exception $e) {
-                \Log::error($e->getMessage());
-                \Log::error($e->getTraceAsString());
+                Log::error($e->getMessage());
+                Log::error($e->getTraceAsString());
+                Flash::error($e->getMessage());
             }
         }
 

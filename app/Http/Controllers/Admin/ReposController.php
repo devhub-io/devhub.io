@@ -20,6 +20,7 @@ use App\Http\Requests\ReposUpdateRequest;
 use App\Repositories\ReposRepository;
 use App\Validators\ReposValidator;
 use Response;
+use SEOMeta;
 
 
 class ReposController extends Controller
@@ -74,6 +75,8 @@ class ReposController extends Controller
         $repository = $this->repository->find($id);
         $categories = $this->categoryRepository->all();
         $images = Image::latest('id')->paginate(10);
+
+        SEOMeta::setTitle($repository->title);
 
         return view('admin.repos.edit', compact('repository', 'categories', 'images'));
     }
