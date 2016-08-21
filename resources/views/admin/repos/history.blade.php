@@ -4,7 +4,7 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Revision History</h3>
+                <h3>{{ $repository->title }} - Revision History</h3>
             </div>
         </div>
 

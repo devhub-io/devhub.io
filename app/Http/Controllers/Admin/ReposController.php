@@ -144,6 +144,8 @@ class ReposController extends Controller
         $repository = $this->repository->find($id);
         $history = $repository->revisionHistory;
 
-        return view('admin.repos.history', compact('history'));
+        SEOMeta::setTitle($repository->title .' - Revision History');
+
+        return view('admin.repos.history', compact('history', 'repository'));
     }
 }
