@@ -95,6 +95,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
             'subscribers_count' => $data['open_issues_count'] ?: 0,
             'repos_created_at' => $data['created_at'],
             'repos_updated_at' => $data['updated_at'],
+            'fetched_at' => Carbon::now(),
         ], $id);
     }
 
