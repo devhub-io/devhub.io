@@ -1,5 +1,21 @@
 @extends('layouts.front')
 
+@section('styles')
+    <style>
+        .single-sidebar li {
+            border-bottom: 1px solid #f1f1f1;
+            padding: 10px 0 10px 20px;
+        }
+        .single-sidebar li.active {
+            color: #fff;
+            background-color: #1abc9c;
+        }
+        .single-sidebar li.active a {
+            color: #fff;
+        }
+    </style>
+@endsection
+
 @section('contents')
     <div class="single-product-area">
         <div class="zigzag-bottom"></div>
@@ -10,7 +26,7 @@
                         <h2 class="sidebar-title">@lang('front.child_category')</h2>
                         <ul>
                             @foreach($child_category as $item)
-                            <li><a href="{{ l_url('category', [$item->slug]) }}">@lang('category.'.$item->slug)</a></li>
+                            <li class="{{ active_class($item->slug == $slug) }}"><a href="{{ l_url('category', [$item->slug]) }}">@lang('category.'.$item->slug)</a></li>
                             @endforeach
                         </ul>
                     </div>

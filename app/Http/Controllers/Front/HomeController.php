@@ -107,7 +107,7 @@ class HomeController extends Controller
 
         SEO::setTitle(trans("category.{$category->slug}"));
 
-        return view('front.list', compact('repos', 'child_category'));
+        return view('front.list', compact('repos', 'child_category', 'slug'));
     }
 
     /**
