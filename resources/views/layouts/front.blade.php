@@ -70,7 +70,7 @@
             <div class="col-sm-6">
                 <div class="shopping-item">
                     <form action="{{ l_url('search') }}">
-                        <input type="search" name="keyword" value="" placeholder="@lang('front.search_repository')">
+                        <input type="search" name="keyword" value="" placeholder="@lang('front.search_placeholder')">
                     </form>
                 </div>
             </div>

@@ -14,7 +14,7 @@ return [
     'submit_repository' => 'Submit Repository',
     'my_account' => 'My Account',
     'choose_language' => 'Choose A Language',
-    'search_repository' => 'Search Repository...',
+    'search_placeholder' => 'Search...',
     'category' => 'Category',
     'latest_repositories' => 'Latest Resources',
     'enter_email' => 'Enter e-mail',

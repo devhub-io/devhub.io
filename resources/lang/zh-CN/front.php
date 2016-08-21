@@ -14,7 +14,7 @@ return [
     'submit_repository' => '提交库',
     'my_account' => '我的账号',
     'choose_language' => '选择语言',
-    'search_repository' => '搜索库...',
+    'search_placeholder' => '搜索...',
     'category' => '分类',
     'latest_repositories' => '最新资源',
     'enter_email' => '输入邮箱',
