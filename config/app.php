@@ -173,6 +173,7 @@ return [
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
         AltThree\Badger\BadgerServiceProvider::class,
         Roumen\Feed\FeedServiceProvider::class,
+        Mews\Captcha\CaptchaServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -244,6 +245,7 @@ return [
         'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
         'Badger' => AltThree\Badger\Facades\Badger::class,
         'Feed' => Roumen\Feed\Feed::class,
+        'Captcha' => Mews\Captcha\Facades\Captcha::class,
 
     ],
 

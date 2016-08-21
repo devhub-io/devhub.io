@@ -14,6 +14,7 @@ namespace App\Http\Controllers\Auth;
 use Auth;
 use Flash;
 use Session;
+use Validator;
 use App\Http\Controllers\Controller;
 
 class AuthController extends Controller
@@ -25,6 +26,13 @@ class AuthController extends Controller
 
     public function login()
     {
+        $rulues = ['captcha' => 'required|captcha'];
+        $validator = Validator::make(request()->all(), $rulues);
+        if ($validator->fails()) {
+            Flash::error('Invalid Captcha');
+            return redirect('auth/login');
+        }
+
         $loginData = request()->only(['email', 'password']);
 
         if (Auth::validate($loginData)) {
