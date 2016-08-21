@@ -42,7 +42,8 @@
         "mailgun/mailgun-php": "^2.1",
         "php-http/curl-client": "^1.5",
         "mews/captcha": "^2.1",
-        "yajra/laravel-datatables-oracle": "^6.17"
+        "yajra/laravel-datatables-oracle": "^6.17",
+        "laravel/socialite": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

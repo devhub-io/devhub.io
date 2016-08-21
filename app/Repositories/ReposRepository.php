@@ -26,6 +26,13 @@ interface ReposRepository extends RepositoryInterface
     public function createFromGithubAPI(array $data);
 
     /**
+     * @param $id
+     * @param array $data
+     * @return mixed
+     */
+    public function updateFromGithubAPI($id, array $data);
+
+    /**
      * @param $slug
      * @return mixed
      */

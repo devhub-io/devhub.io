@@ -11,13 +11,19 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Entities\Service;
 use App\Http\Controllers\Controller;
+use Auth;
 
 class ApiController extends Controller
 {
     public function status()
     {
         $client = new \Github\Client();
+        $github = Service::query()->where('provider', 'github')->where('user_id', Auth::id())->first();
+        if($github) {
+            $client->authenticate($github->token, null, \Github\Client::AUTH_URL_TOKEN);
+        }
         $rateLimits = $client->api('rate_limit')->getRateLimits();
 
         ob_start();

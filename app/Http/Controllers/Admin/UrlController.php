@@ -12,8 +12,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Entities\ReposUrl;
+use App\Entities\Service;
 use App\Http\Controllers\Controller;
 use App\Repositories\ReposRepository;
+use Auth;
 use Flash;
 use Log;
 
@@ -73,6 +75,12 @@ class UrlController extends Controller
         if ($matches) {
             try {
                 $client = new \Github\Client();
+
+                $github = Service::query()->where('provider', 'github')->where('user_id', Auth::id())->first();
+                if ($github) {
+                    $client->authenticate($github->token, null, \Github\Client::AUTH_URL_TOKEN);
+                }
+
                 $repo = $client->api('repo')->show($matches[1], $matches[2]);
                 $repos = $this->reposRepository->createFromGithubAPI($repo);
 

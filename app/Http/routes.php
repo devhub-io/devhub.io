@@ -50,6 +50,7 @@ Route::group(['domain' => env('WWW_DOMAIN'), 'prefix' => 'admin', 'namespace' =>
     Route::get('repos/{id}/change_enable', 'ReposController@change_enable');
     Route::get('repos/{id}/change_recommend', 'ReposController@change_recommend');
     Route::get('repos/{id}/history', 'ReposController@history');
+    Route::get('repos/{id}/fetch', 'ReposController@fetch');
 
     # categories
     Route::resource('categories', 'CategoriesController');
@@ -102,6 +103,10 @@ Route::group(['domain' => env('WWW_DOMAIN'), 'prefix' => 'admin', 'namespace' =>
     Route::get('mail/subscriber', 'MailController@subscriber');
     Route::get('mail/subscriber/{address}', 'MailController@members');
     Route::get('mail/publish', 'MailController@publish');
+
+    # Socialite
+    Route::get('github/redirect', 'SocialiteController@redirectToProviderGithub');
+    Route::get('github/callback', 'SocialiteController@handleProviderCallbackGithub');
 });
 
 # Static

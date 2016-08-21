@@ -33,5 +33,13 @@
                 </form>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                @if(!$github)
+                <a href="{{ url('admin/github/redirect') }}">Github 授权</a>
+                @endif
+            </div>
+        </div>
     </div>
 @endsection

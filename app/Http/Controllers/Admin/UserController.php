@@ -11,9 +11,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Flash;
+use Auth;
+use App\Entities\Service;
 use App\Entities\User;
 use App\Http\Controllers\Controller;
-use Flash;
 use PragmaRX\Google2FA\Google2FA;
 
 class UserController extends Controller
@@ -37,7 +39,9 @@ class UserController extends Controller
             $url = '';
         }
 
-        return view('admin.user.profile', compact('url'));
+        $github = Service::query()->where('provider', 'github')->where('user_id', Auth::id())->first();
+
+        return view('admin.user.profile', compact('url', 'github'));
     }
 
     /**
