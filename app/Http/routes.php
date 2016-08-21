@@ -98,6 +98,7 @@ Route::group(['domain' => env('WWW_DOMAIN'), 'prefix' => 'admin', 'namespace' =>
 
     # Mail
     Route::get('mail/template', 'MailController@template');
+    Route::get('mail/template/data', 'MailController@template_data');
     Route::get('mail/subscriber', 'MailController@subscriber');
     Route::get('mail/subscriber/{address}', 'MailController@members');
     Route::get('mail/publish', 'MailController@publish');

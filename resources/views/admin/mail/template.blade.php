@@ -22,47 +22,18 @@
                     </div>
                     <div class="x_content">
 
-                        <table class="table">
+                        <table class="table table-bordered" id="users-table">
                             <thead>
                             <tr>
-                                <th>#</th>
-                                <th>标题</th>
-                                <th>标识</th>
-                                <th>图片</th>
-                                <th>排序</th>
-                                <th>更新时间</th>
-                                <th>状态</th>
-                                <th>操作</th>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Created At</th>
+                                <th>Updated At</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            @foreach($subscribe as $item)
-                                <tr>
-                                    <td>{{ $item->id }}</td>
-                                    <td>{{ $item->title }}</td>
-                                    <td>{{ $item->slug }}</td>
-                                    <td><img src="{{ cdn_asset($item->image) }}" alt="" width="100" height="100"></td>
-                                    <td>{{ $item->sort }}</td>
-                                    <td>{{ $item->updated_at }}</td>
-                                    <td>
-                                        @if($item->is_enable == 1)
-                                            <a href="{{ url("admin/subscribe/{$item->id}/change_enable") }}" class="btn btn-success btn-xs" title="点击禁用">启用</a>
-                                        @else
-                                            <a href="{{ url("admin/subscribe/{$item->id}/change_enable") }}" class="btn btn-danger btn-xs" title="点击启用">禁用</a>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-info btn-xs" href="{{ url("admin/subscribe/{$item->id}/repos") }}">集合资源管理</a>
-                                        <a href="{{ url('subscribe', [$item->slug]) }}" target="_blank" class="btn btn-primary btn-xs"><i class="fa fa-home"></i> 前台展示 </a>
-                                        <a class="btn btn-success btn-xs" href="{{ url("admin/subscribe/{$item->id}/cover") }}">生成封面</a>
-                                        <a class="btn btn-default btn-xs" href="javascript:void(0);">修改</a>
-                                        <a class="btn btn-danger btn-xs" href="javascript:confirmDelete('{{ url("admin/subscribe/{$item->id}/delete") }}')">删除</a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
                         </table>
-                        {{ $subscribe->links() }}
                     </div>
                 </div>
             </div>
@@ -101,36 +72,21 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ cdn_asset('components/knockout/dist/knockout.js') }}"></script>
     <script>
-        var viewModel = {
-            title: ko.observable(''),
-            url: ko.observable(''),
-            category: ko.observable(''),
-            level: ko.observable(1),
-            description: ko.observable(''),
-            icon: ko.observable(''),
-            sort: ko.observable(0),
-
-            editSite: function (id) {
-                $.get('{{ url('admin/site') }}', {id: id}, function (res) {
-                    console.log(res);
-                });
-
-                $('#editModal').modal('show');
-            },
-
-            saveSite: function () {
-                console.log('11')
-            }
-        };
-
-        ko.applyBindings(viewModel);
-
-        function confirmDelete(url) {
-            if(confirm('确实删除?')){
-                location.href = url;
-            }
-        }
+        $(function() {
+            $('#users-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: '{{ url('admin/mail/template/data') }}',
+                columns: [
+                    { data: 'id', name: 'id' },
+                    { data: 'title', name: 'title' },
+                    { data: 'slug', name: 'slug' },
+                    { data: 'created_at', name: 'created_at' },
+                    { data: 'updated_at', name: 'updated_at' },
+                    {data: 'action', name: 'action', orderable: false, searchable: false}
+                ]
+            });
+        });
     </script>
 @endsection

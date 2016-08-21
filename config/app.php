@@ -174,6 +174,7 @@ return [
         AltThree\Badger\BadgerServiceProvider::class,
         Roumen\Feed\FeedServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
+        Yajra\Datatables\DatatablesServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -246,6 +247,7 @@ return [
         'Badger' => AltThree\Badger\Facades\Badger::class,
         'Feed' => Roumen\Feed\Feed::class,
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
+        'Datatables' => Yajra\Datatables\Facades\Datatables::class,
 
     ],
 

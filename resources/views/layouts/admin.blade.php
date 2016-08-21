@@ -19,6 +19,8 @@
     <link href="/components/gentelella/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
     <!-- bootstrap-progressbar -->
     <link href="/components/gentelella/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- datatables -->
+    <link href="/components/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="/components/gentelella/build/css/custom.min.css" rel="stylesheet">
@@ -239,7 +241,8 @@
 <script src="/components/gentelella/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
 <!-- iCheck -->
 <script src="/components/gentelella/vendors/iCheck/icheck.min.js"></script>
-
+<!-- datatables -->
+<script src="/components/datatables.net/js/jquery.dataTables.min.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="/components/gentelella/build/js/custom.min.js"></script>
 

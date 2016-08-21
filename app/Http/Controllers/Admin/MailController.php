@@ -11,6 +11,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Entities\Repos;
 use App\Http\Controllers\Controller;
 use App\Support\Mailgun;
 
@@ -29,6 +30,17 @@ class MailController extends Controller
     public function template()
     {
         return view('admin.mail.template');
+    }
+
+    public function template_data()
+    {
+        return \Datatables::of(Repos::query())
+
+            ->addColumn('action', function($repos){
+                return '<a href="#edit-'.$repos->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+            })
+            ->editColumn('id', 'ID: {{ $id }}')
+            ->make(true);
     }
 
     public function subscriber()
