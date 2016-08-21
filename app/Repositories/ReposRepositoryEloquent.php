@@ -160,6 +160,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function findWhereInPaginate($field, array $values, $columns = ['*'])
     {
-        return $this->model->whereIn($field, $values)->where('status', true)->paginate(15);
+        return $this->model->select(\DB::raw('repos.*, IF(image > 0, 1, 0) as has_image'))->whereIn($field, $values)->where('status', true)
+            ->orderBy('has_image', 'DESC')->orderBy('repos_updated_at', 'DESC')->paginate(15);
     }
 }
