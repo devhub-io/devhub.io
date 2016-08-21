@@ -112,10 +112,24 @@ class ReposController extends Controller
     public function change_enable($id)
     {
         $repository = $this->repository->find($id);
-        $repository->status = $repository->status == 1 ? 0 : 1;
+        $repository->status = !$repository->status == true;
         $repository->save();
 
         return redirect()->back();
     }
 
+    /**
+     * Change recommend
+     *
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function change_recommend($id)
+    {
+        $repository = $this->repository->find($id);
+        $repository->is_recommend = !$repository->is_recommend == true;
+        $repository->save();
+
+        return redirect()->back();
+    }
 }

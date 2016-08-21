@@ -81,7 +81,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function findBySlug($slug)
     {
-        return $this->model->where('status', 1)->where('slug', $slug)->firstOrFail();
+        return $this->model->where('status', true)->where('slug', $slug)->firstOrFail();
     }
 
     /**
@@ -90,7 +90,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function findHottest($limit = 5)
     {
-        return $this->model->where('status', 1)->orderBy('stargazers_count', 'DESC')->limit($limit)->get();
+        return $this->model->where('status', true)->orderBy('stargazers_count', 'DESC')->limit($limit)->get();
     }
 
     /**
@@ -99,7 +99,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function findNewest($limit = 5)
     {
-        return $this->model->where('status', 1)->orderBy('repos_created_at', 'DESC')->limit($limit)->get();
+        return $this->model->where('status', true)->orderBy('repos_created_at', 'DESC')->limit($limit)->get();
     }
 
     /**
@@ -108,7 +108,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function findTrend($limit = 5)
     {
-        return $this->model->where('status', 1)->orderBy('repos_updated_at', 'DESC')->limit($limit)->get();
+        return $this->model->where('status', true)->orderBy('repos_updated_at', 'DESC')->limit($limit)->get();
     }
 
     /**
@@ -117,7 +117,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function findRecommend($limit = 10)
     {
-        return $this->model->where('status', 1)->orderBy('stargazers_count', 'DESC')->limit($limit)->get();
+        return $this->model->where('status', true)->where('is_recommend', true)->orderBy('stargazers_count', 'DESC')->limit($limit)->get();
     }
 
     /**$limit
@@ -136,7 +136,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function search($keyword, $where = [], $limit = 15)
     {
-        return $this->model->where('status', 1)->where('title', 'LIKE', '%' . $keyword . '%')->where($where)->paginate($limit);
+        return $this->model->where('status', true)->where('title', 'LIKE', '%' . $keyword . '%')->where($where)->paginate($limit);
     }
 
     /**
@@ -160,6 +160,6 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function findWhereInPaginate($field, array $values, $columns = ['*'])
     {
-        return $this->model->whereIn($field, $values)->where('status', 1)->paginate(15);
+        return $this->model->whereIn($field, $values)->where('status', true)->paginate(15);
     }
 }

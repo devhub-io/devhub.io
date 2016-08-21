@@ -48,6 +48,7 @@ Route::group(['domain' => env('WWW_DOMAIN'), 'prefix' => 'admin', 'namespace' =>
     # Repos
     Route::resource('repos', 'ReposController');
     Route::get('repos/{id}/change_enable', 'ReposController@change_enable');
+    Route::get('repos/{id}/change_recommend', 'ReposController@change_recommend');
     Route::resource('categories', 'CategoriesController');
 
     # Url

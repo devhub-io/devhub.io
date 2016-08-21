@@ -38,12 +38,13 @@
                             <thead>
                             <tr>
                                 <th style="width: 1%">#</th>
-                                <th style="width: 15%">名称</th>
+                                <th style="width: 12%">名称</th>
                                 <th>图片</th>
                                 <th>分类</th>
                                 <th>语言</th>
                                 <th>标识</th>
                                 <th>统计</th>
+                                <th>推荐</th>
                                 <th>状态</th>
                                 <th style="width: 20%">操作</th>
                             </tr>
@@ -79,6 +80,13 @@
                                             <i class="glyphicon glyphicon-adjust"></i> {{ $item->open_issues_count }}
                                         </li>
                                     </ul>
+                                </td>
+                                <td>
+                                    @if($item->is_recommend == 1)
+                                        <a href="{{ url("admin/repos/{$item->id}/change_recommend") }}" class="btn btn-success btn-xs" title="点击禁用推荐">推荐</a>
+                                    @else
+                                        <a href="{{ url("admin/repos/{$item->id}/change_recommend") }}" class="btn btn-info btn-xs" title="点击启用推荐">-</a>
+                                    @endif
                                 </td>
                                 <td>
                                     @if($item->status == 1)
