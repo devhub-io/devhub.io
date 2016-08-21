@@ -75,10 +75,10 @@ class CollectionController extends Controller
                 $type = 2;
             } else if ($count >= 4 && $count <= 8) {
                 $n = 2;
-                $type = 3;
+                $type = 4;
             } else {
                 $n = 3;
-                $type = 4;
+                $type = 9;
             }
 
             $repos_width = ($image_width - $margin_width * 2) / $n;
