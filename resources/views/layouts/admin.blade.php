@@ -195,6 +195,12 @@
                                 </li>
                             </ul>
                         </li>
+
+                        <li>
+                            <a href="{{ url('/') }}" target="_blank">
+                                <i class="fa fa-home"></i>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>

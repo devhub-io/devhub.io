@@ -98,6 +98,7 @@
                                 <td>
                                     <a href="{{ url('repos', [$item->slug]) }}" target="_blank" class="btn btn-primary btn-xs"><i class="fa fa-home"></i> 前台展示 </a>
                                     <a href="#" class="btn btn-warning btn-xs"><i class="fa fa-feed"></i> 抓取 </a>
+                                    <a href="{{ url("admin/repos/$item->id/history") }}" class="btn btn-primary btn-xs" target="_blank"><i class="fa fa-history"></i> 修改记录</a>
                                     <a href="{{ url("admin/repos/{$item->id}/edit") }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> 修改 </a>
                                 </td>
                             </tr>

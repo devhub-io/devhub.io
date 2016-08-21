@@ -132,4 +132,18 @@ class ReposController extends Controller
 
         return redirect()->back();
     }
+
+    /**
+     * Revision history
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function history($id)
+    {
+        $repository = $this->repository->find($id);
+        $history = $repository->revisionHistory;
+
+        return view('admin.repos.history', compact('history'));
+    }
 }
