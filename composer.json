@@ -43,7 +43,8 @@
         "php-http/curl-client": "^1.5",
         "mews/captcha": "^2.1",
         "yajra/laravel-datatables-oracle": "^6.17",
-        "laravel/socialite": "^2.0"
+        "laravel/socialite": "^2.0",
+        "algolia/algoliasearch-laravel": "^1.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

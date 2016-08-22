@@ -189,7 +189,26 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="{{ cdn_asset(elixir('js/app.js')) }}"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.18.0/algoliasearch.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.21.3/autocomplete.min.js"></script>
 @yield('scripts')
+<script>
+    var client = algoliasearch('{{ env('ALGOLIA_ID') }}', '{{ env('ALGOLIA_SEARCH_KEY') }}');
+    var index = client.initIndex('repos');
+    autocomplete('input[name=keyword]', { hint: false }, [
+        {
+            source: autocomplete.sources.hits(index, { hitsPerPage: 5 }),
+            displayKey: 'title',
+            templates: {
+                suggestion: function(suggestion) {
+                    return suggestion._highlightResult.title.value;
+                }
+            }
+        }
+    ]).on('autocomplete:selected', function(event, suggestion, dataset) {
+        console.log(suggestion, dataset);
+    });
+</script>
 {{--<script type="text/javascript">var switchTo5x=true;</script>--}}
 {{--<script type="text/javascript" src="https://ws.sharethis.com/button/buttons.js"></script>--}}
 {{--<script type="text/javascript">stLight.options({publisher: "f6598daa-4ed2-462c-9c4c-ec742a440449", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>--}}

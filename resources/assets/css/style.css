@@ -1003,3 +1003,18 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
 .pagination > li > a, .pagination > li > span {
   color: #1abc9c;
 }
+
+.aa-suggestions {
+    width: 300px;
+    background-color: #ffffff;
+    border: 1px solid #353535;
+}
+.aa-suggestions div {
+    padding: 3px 0 3px 10px;
+}
+.aa-suggestions div em {
+    color: #00aeef;
+}
+.aa-cursor {
+    background-color: #1abc9c;
+}

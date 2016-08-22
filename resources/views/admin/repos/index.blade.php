@@ -29,6 +29,7 @@
                     <div class="x_title">
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                            <li><a href="{{ url('admin/repos/reindex') }}" title="重构搜索索引"><i class="fa fa-refresh"></i></a></li>
                         </ul>
                         <div class="clearfix"></div>
                     </div>

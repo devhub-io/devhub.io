@@ -93,7 +93,7 @@ class ReposController extends Controller
      * @param  ReposUpdateRequest $request
      * @param  string $id
      *
-     * @return Response
+     * @return Response|\Illuminate\Http\RedirectResponse
      */
     public function update(ReposUpdateRequest $request, $id)
     {
@@ -188,6 +188,17 @@ class ReposController extends Controller
                 Flash::error($e->getMessage());
             }
         }
+
+        return redirect()->back();
+    }
+
+    /**
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function reindex()
+    {
+        Repos::reindex();
 
         return redirect()->back();
     }

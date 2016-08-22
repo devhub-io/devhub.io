@@ -46,11 +46,12 @@ Route::group(['domain' => env('WWW_DOMAIN'), 'prefix' => 'admin', 'namespace' =>
     Route::get('/', 'HomeController@index');
 
     # Repos
-    Route::resource('repos', 'ReposController');
+    Route::resource('repos', 'ReposController', ['only' => ['index', 'edit', 'update']]);
     Route::get('repos/{id}/change_enable', 'ReposController@change_enable');
     Route::get('repos/{id}/change_recommend', 'ReposController@change_recommend');
     Route::get('repos/{id}/history', 'ReposController@history');
     Route::get('repos/{id}/fetch', 'ReposController@fetch');
+    Route::get('repos/reindex', 'ReposController@reindex');
 
     # categories
     Route::resource('categories', 'CategoriesController');

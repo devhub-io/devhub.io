@@ -144,7 +144,7 @@ class HomeController extends Controller
     public function search(Request $request)
     {
         $keyword = $request->get('keyword');
-        $repos = $this->reposRepository->search($keyword);
+        $repos = $this->reposRepository->search($keyword, request()->get('page', 1));
 
         SEO::setTitle($keyword);
 

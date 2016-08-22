@@ -176,6 +176,7 @@ return [
         Mews\Captcha\CaptchaServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        AlgoliaSearch\Laravel\AlgoliaServiceProvider::class,
 
         /*
          * Application Service Providers...
