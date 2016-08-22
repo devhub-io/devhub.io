@@ -197,7 +197,7 @@
     var index = client.initIndex('repos');
     autocomplete('input[name=keyword]', { hint: false }, [
         {
-            source: autocomplete.sources.hits(index, { hitsPerPage: 5 }),
+            source: autocomplete.sources.hits(index, { hitsPerPage: 10, filters: "status=1" }),
             displayKey: 'title',
             templates: {
                 suggestion: function(suggestion) {

@@ -162,7 +162,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
         $result = \App\Entities\Repos::search($keyword, ['filters' => 'status=1', 'hitsPerPage' => $limit, 'page' => $page -1]);
 
         if ($result) {
-            $paginator = new LengthAwarePaginator(json_decode(json_encode($result['hits'])), $result['nbHits'], $limit, $page);
+            $paginator = new LengthAwarePaginator(json_decode(json_encode($result['hits'])), $result['nbHits'], $limit, $page, ['path' => l_url('search')]);
             return $paginator;
         } else {
             return null;
