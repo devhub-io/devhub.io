@@ -12,7 +12,7 @@
                         @foreach($recommend as $item)
                         <div class="single-product">
                             <div class="product-f-image">
-                                <img src="{{ $item->image > 0 ? image_url($item->image, ['w' => 210]) : 'holder.js/210x269' }}" alt="{{ $item->title }}" title="{{ $item->title }}">
+                                <img data-src="{{ $item->image > 0 ? image_url($item->image, ['w' => 210]) : cdn_asset('img/210x269.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="lazyload">
                                 <div class="product-hover">
                                     <a href="{{ l_url('repos', [$item->slug]) }}" class="view-details-link"><i class="fa fa-link"></i> @lang('front.see_details')</a>
                                 </div>
@@ -40,7 +40,7 @@
                     <div class="brand-list">
                         @foreach($collections as $item)
                             <a href="{{ l_url('collection', [$item->slug]) }}">
-                                <img src="{{ $item->image ? cdn_asset($item->image) : 'holder.js/270x270' }}" alt="{{ $item->title }}" title="{{ $item->title }}" width="270" height="270">
+                                <img data-src="{{ $item->image ? cdn_asset($item->image) : cdn_asset('img/270x270.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" width="270" height="270" class="lazyload">
                             </a>
                         @endforeach
                     </div>
@@ -60,7 +60,7 @@
                     <a href="" class="wid-view-more">@lang('front.view_all')</a>
                     @foreach($hot as $item)
                     <div class="single-wid-product">
-                        <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->image > 0 ? image_url($item->image, ['w' => 100]) : 'holder.js/100x90' }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="product-thumb"></a>
+                        <a href="{{ l_url('repos', [$item->slug]) }}"><img data-src="{{ $item->image > 0 ? image_url($item->image, ['w' => 100]) : cdn_asset('img/100x90.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="product-thumb lazyload"></a>
                         <h2><a href="{{ l_url('repos', [$item->slug]) }}">{{ $item->title }}</a></h2>
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i> {{ $item->stargazers_count }}
@@ -75,7 +75,7 @@
                     <a href="#" class="wid-view-more">@lang('front.view_all')</a>
                     @foreach($new as $item)
                         <div class="single-wid-product">
-                            <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->image > 0 ? image_url($item->image, ['w' => 100]) : 'holder.js/100x90' }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="product-thumb"></a>
+                            <a href="{{ l_url('repos', [$item->slug]) }}"><img data-src="{{ $item->image > 0 ? image_url($item->image, ['w' => 100]) : cdn_asset('img/100x90.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="product-thumb lazyload"></a>
                             <h2><a href="{{ l_url('repos', [$item->slug]) }}">{{ $item->title }}</a></h2>
                             <div class="product-wid-rating">
                                 <i class="fa fa-star"></i> {{ $item->stargazers_count }}
@@ -90,7 +90,7 @@
                     <a href="#" class="wid-view-more">@lang('front.view_all')</a>
                     @foreach($trend as $item)
                         <div class="single-wid-product">
-                            <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->image > 0 ? image_url($item->image, ['w' => 100]) : 'holder.js/100x90' }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="product-thumb"></a>
+                            <a href="{{ l_url('repos', [$item->slug]) }}"><img data-src="{{ $item->image > 0 ? image_url($item->image, ['w' => 100]) : cdn_asset('img/100x90.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="product-thumb lazyload"></a>
                             <h2><a href="{{ l_url('repos', [$item->slug]) }}">{{ $item->title }}</a></h2>
                             <div class="product-wid-rating">
                                 <i class="fa fa-star"></i> {{ $item->stargazers_count }}
