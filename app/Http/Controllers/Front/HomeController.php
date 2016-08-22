@@ -222,7 +222,7 @@ class HomeController extends Controller
         if (!$sitemap->isCached()) {
             // add item to the sitemap (url, date, priority, freq)
             $sitemap->add(url('/'), '2016-07-01T00:00:00+00:00', '1.0', 'daily');
-            $sitemap->add(url('submit'), '2016-07-01T00:00:00+00:00', '0.8', 'daily');
+            // $sitemap->add(url('submit'), '2016-07-01T00:00:00+00:00', '0.8', 'daily');
 
             // category
             $posts = DB::table('categories')->orderBy('created_at', 'desc')->get();
