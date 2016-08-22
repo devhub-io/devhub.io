@@ -188,7 +188,6 @@
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/2.0.1/lazysizes.min.js"></script>
 <script src="{{ cdn_asset(elixir('js/app.js')) }}"></script>
 @yield('scripts')
 {{--<script type="text/javascript">var switchTo5x=true;</script>--}}

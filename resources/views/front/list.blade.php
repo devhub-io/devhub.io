@@ -38,7 +38,7 @@
                             @foreach($repos as $item)
                             <div class="col-sm-6 col-md-4">
                                 <div class="thumbnail" style="height: 362px;">
-                                    <a href="{{ l_url('repos', [$item->slug]) }}"><img data-src="{{ $item->image > 0 ? image_url($item->image, ['h' => 200]) : cdn_asset('img/200x200.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="lazyload"></a>
+                                    <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->image > 0 ? image_url($item->image, ['h' => 200]) : cdn_asset('img/200x200.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="lazyload"></a>
                                     <div class="caption">
                                         <a href="{{ l_url('repos', [$item->slug]) }}"><h3>{{ $item->title }}</h3></a>
                                         <p>{{ $item->description }}</p>
