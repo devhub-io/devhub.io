@@ -10,7 +10,7 @@
                         <div class="row">
                             @foreach($repos as $item)
                                 <div class="col-sm-6 col-md-4">
-                                    <div class="thumbnail" style="height: 362px;">
+                                    <div class="thumbnail" style="height: 400px;">
                                         <a href="{{ l_url('repos', [$item->slug]) }}">
                                             <img src="{{ $item->image > 0 ? image_url($item->image, ['w' => 300]) : cdn_asset('img/300x300.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="lazyload"></a>
                                         <div class="caption">
