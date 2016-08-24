@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "edc2274ae1da320f2ee3f5948c49a7e5",
-    "content-hash": "fc20a0f8fd5eb69c1d54f71f99707559",
+    "hash": "56044fbf77999d4e17b854389ca48417",
+    "content-hash": "8ff513e9d94e5d29f8eeb0ae0ec38f98",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -57,53 +57,6 @@
             "description": "Algolia Search API Client for PHP",
             "homepage": "https://github.com/algolia/algoliasearch-client-php",
             "time": "2016-08-05 13:06:14"
-        },
-        {
-            "name": "algolia/algoliasearch-laravel",
-            "version": "1.2.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/algolia/algoliasearch-laravel.git",
-                "reference": "144e0bf59bef74d16a5e4c6f99d4cf6c128c887a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/algolia/algoliasearch-laravel/zipball/144e0bf59bef74d16a5e4c6f99d4cf6c128c887a",
-                "reference": "144e0bf59bef74d16a5e4c6f99d4cf6c128c887a",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.9",
-                "vinkla/algolia": "~2.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "~0.9",
-                "orchestra/testbench": "3.1.*",
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "AlgoliaSearch\\Laravel\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Laravel Algolia extension",
-            "keywords": [
-                "algolia",
-                "api",
-                "laravel",
-                "search"
-            ],
-            "time": "2016-08-22 11:32:54"
         },
         {
             "name": "alt-three/badger",
@@ -1202,16 +1155,16 @@
         },
         {
             "name": "firebase/php-jwt",
-            "version": "v3.0.0",
+            "version": "v4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/firebase/php-jwt.git",
-                "reference": "fa8a06e96526eb7c0eeaa47e4f39be59d21f16e1"
+                "reference": "dccf163dc8ed7ed6a00afc06c51ee5186a428d35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/fa8a06e96526eb7c0eeaa47e4f39be59d21f16e1",
-                "reference": "fa8a06e96526eb7c0eeaa47e4f39be59d21f16e1",
+                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/dccf163dc8ed7ed6a00afc06c51ee5186a428d35",
+                "reference": "dccf163dc8ed7ed6a00afc06c51ee5186a428d35",
                 "shasum": ""
             },
             "require": {
@@ -1241,7 +1194,7 @@
             ],
             "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
             "homepage": "https://github.com/firebase/php-jwt",
-            "time": "2015-07-22 18:31:08"
+            "time": "2016-07-18 04:51:16"
         },
         {
             "name": "google/apiclient",
@@ -1285,65 +1238,6 @@
                 "google"
             ],
             "time": "2016-06-06 21:22:48"
-        },
-        {
-            "name": "graham-campbell/manager",
-            "version": "v2.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/GrahamCampbell/Laravel-Manager.git",
-                "reference": "fd9052082e2c69c9a67d3e8d7dfa94cb33f8ab0b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-Manager/zipball/fd9052082e2c69c9a67d3e8d7dfa94cb33f8ab0b",
-                "reference": "fd9052082e2c69c9a67d3e8d7dfa94cb33f8ab0b",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/contracts": "5.1.*|5.2.*|5.3.*",
-                "illuminate/support": "5.1.*|5.2.*|5.3.*",
-                "php": ">=5.5.9"
-            },
-            "require-dev": {
-                "graham-campbell/testbench-core": "^1.1",
-                "mockery/mockery": "^0.9.4",
-                "phpunit/phpunit": "^4.8|^5.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.4-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "GrahamCampbell\\Manager\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Graham Campbell",
-                    "email": "graham@alt-three.com"
-                }
-            ],
-            "description": "Manager Provides Some Manager Functionality For Laravel 5",
-            "keywords": [
-                "Graham Campbell",
-                "GrahamCampbell",
-                "Laravel Manager",
-                "Laravel-Manager",
-                "connector",
-                "framework",
-                "interface",
-                "laravel",
-                "manager"
-            ],
-            "time": "2016-04-26 14:27:59"
         },
         {
             "name": "gregwar/captcha",
@@ -2098,20 +1992,20 @@
         },
         {
             "name": "laravel/passport",
-            "version": "v0.2.4",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/passport.git",
-                "reference": "ee63ae81a437c560e7b1a36a92e1c59ba2140a11"
+                "reference": "55fb99f5feb3572634b6d37a8aa43bd8a7148960"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/passport/zipball/ee63ae81a437c560e7b1a36a92e1c59ba2140a11",
-                "reference": "ee63ae81a437c560e7b1a36a92e1c59ba2140a11",
+                "url": "https://api.github.com/repos/laravel/passport/zipball/55fb99f5feb3572634b6d37a8aa43bd8a7148960",
+                "reference": "55fb99f5feb3572634b6d37a8aa43bd8a7148960",
                 "shasum": ""
             },
             "require": {
-                "firebase/php-jwt": "~3.0",
+                "firebase/php-jwt": "~4.0",
                 "guzzlehttp/guzzle": "~6.0",
                 "illuminate/auth": "~5.3",
                 "illuminate/console": "~5.3",
@@ -2158,11 +2052,11 @@
                 "oauth",
                 "passport"
             ],
-            "time": "2016-08-21 12:37:55"
+            "time": "2016-08-23 12:49:27"
         },
         {
             "name": "laravel/scout",
-            "version": "v0.1.2",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/scout.git",
@@ -5372,62 +5266,6 @@
                 "revision"
             ],
             "time": "2016-08-02 02:32:00"
-        },
-        {
-            "name": "vinkla/algolia",
-            "version": "2.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/vinkla/laravel-algolia.git",
-                "reference": "d1a9e73dacf72ef1d593fa7bf4bc19a3816efae1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/vinkla/laravel-algolia/zipball/d1a9e73dacf72ef1d593fa7bf4bc19a3816efae1",
-                "reference": "d1a9e73dacf72ef1d593fa7bf4bc19a3816efae1",
-                "shasum": ""
-            },
-            "require": {
-                "algolia/algoliasearch-client-php": "^1.6.3",
-                "graham-campbell/manager": "^2.4",
-                "illuminate/contracts": "5.1.* || 5.2.* || 5.3.*",
-                "illuminate/support": "5.1.* || 5.2.* || 5.3.*",
-                "php": "^5.6.4 || ^7.0"
-            },
-            "require-dev": {
-                "graham-campbell/testbench": "^3.2",
-                "mockery/mockery": "^0.9.5",
-                "phpunit/phpunit": "^5.4"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.4-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Vinkla\\Algolia\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Vincent Klaiber",
-                    "email": "hello@vinkla.com"
-                }
-            ],
-            "description": "An Algolia bridge for Laravel",
-            "keywords": [
-                "algolia",
-                "api",
-                "laravel",
-                "search"
-            ],
-            "time": "2016-07-11 19:12:28"
         },
         {
             "name": "vlucas/phpdotenv",

@@ -153,20 +153,12 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
 
     /**
      * @param $keyword
-     * @param int $page
      * @param int $limit
      * @return mixed
      */
-    public function search($keyword, $page = 1, $limit = 15)
+    public function search($keyword, $limit = 15)
     {
-        $result = \App\Entities\Repos::search($keyword, ['filters' => 'status=1', 'hitsPerPage' => $limit, 'page' => $page -1]);
-
-        if ($result) {
-            $paginator = new LengthAwarePaginator(json_decode(json_encode($result['hits'])), $result['nbHits'], $limit, $page, ['path' => l_url('search')]);
-            return $paginator;
-        } else {
-            return null;
-        }
+        return $this->model->search($keyword)->where('status', 1)->paginate($limit);
     }
 
     /**

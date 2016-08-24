@@ -193,8 +193,8 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.21.3/autocomplete.min.js"></script>
 @yield('scripts')
 <script>
-    var client = algoliasearch('{{ env('ALGOLIA_ID') }}', '{{ env('ALGOLIA_SEARCH_KEY') }}');
-    var index = client.initIndex('repos');
+    var client = algoliasearch('{{ env('ALGOLIA_APP_ID') }}', '{{ env('ALGOLIA_SEARCH_KEY') }}');
+    var index = client.initIndex('{{ env('SCOUT_PREFIX') }}repos');
     autocomplete('input[name=keyword]', { hint: false }, [
         {
             source: autocomplete.sources.hits(index, { hitsPerPage: 10, filters: "status=1" }),

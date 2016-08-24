@@ -11,8 +11,8 @@
 
 namespace App\Entities;
 
-use AlgoliaSearch\Laravel\AlgoliaEloquentTrait;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 use Venturecraft\Revisionable\RevisionableTrait;
@@ -21,31 +21,7 @@ class Repos extends Model implements Transformable
 {
     use TransformableTrait;
     use RevisionableTrait;
-    use AlgoliaEloquentTrait;
-
-    /*
-     * Algolia Search
-     */
-
-    public $indices = ['repos'];
-
-    public function autoIndex()
-    {
-        if (\App::environment() === 'test') {
-            return false;
-        }
-
-        return true;
-    }
-
-    public function autoDelete()
-    {
-        if (\App::environment() === 'test') {
-            return false;
-        }
-
-        return true;
-    }
+    use Searchable;
 
     /**
      * @var array

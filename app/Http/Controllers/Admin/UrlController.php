@@ -11,13 +11,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Auth;
+use Flash;
+use Log;
 use App\Entities\ReposUrl;
 use App\Entities\Service;
 use App\Http\Controllers\Controller;
 use App\Repositories\ReposRepository;
-use Auth;
-use Flash;
-use Log;
 
 class UrlController extends Controller
 {

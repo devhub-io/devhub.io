@@ -9,10 +9,10 @@
     "require": {
         "php": ">=5.6.4",
         "laravel/framework": "5.3.*",
-        "laravel/scout": "^0.1.2",
-        "laravel/passport": "^0.2.4",
-        "laracasts/flash": "~2.0",
+        "laravel/scout": "^1.0",
+        "laravel/passport": "^1.0",
         "laravel/socialite": "^2.0",
+        "laracasts/flash": "~2.0",
         "roumen/sitemap": "2.6.*",
         "artesaos/seotools": "0.9.*",
         "arrilot/laravel-widgets": "^3.4",
@@ -45,7 +45,7 @@
         "mailgun/mailgun-php": "^2.1",
         "php-http/curl-client": "^1.5",
         "mews/captcha": "^2.1",
-        "algolia/algoliasearch-laravel": "^1.2"
+        "algolia/algoliasearch-client-php": "^1.10"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

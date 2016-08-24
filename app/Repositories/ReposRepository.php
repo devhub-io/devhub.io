@@ -80,11 +80,10 @@ interface ReposRepository extends RepositoryInterface
 
     /**
      * @param $keyword
-     * @param int $page
      * @param int $limit
      * @return mixed
      */
-    public function search($keyword, $page = 1, $limit = 15);
+    public function search($keyword, $limit = 15);
 
     /**
      * @param $keyword

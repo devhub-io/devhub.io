@@ -167,6 +167,8 @@ return [
          * Package Service Providers...
          */
 	    Laravel\Passport\PassportServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
+        Laravel\Scout\ScoutServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         Roumen\Sitemap\SitemapServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
@@ -186,8 +188,6 @@ return [
         AltThree\Badger\BadgerServiceProvider::class,
         Roumen\Feed\FeedServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
-        Laravel\Socialite\SocialiteServiceProvider::class,
-        AlgoliaSearch\Laravel\AlgoliaServiceProvider::class,
 
         /*
          * Application Service Providers...
