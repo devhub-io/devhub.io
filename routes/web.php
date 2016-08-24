@@ -11,12 +11,12 @@
 
 /*
 |--------------------------------------------------------------------------
-| Application Routes
+| Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
+| This file is where you may define all of the routes that are handled
+| by your application. Just tell Laravel the URIs it should respond
+| to using a Closure or controller method. Build something great!
 |
 */
 
@@ -91,9 +91,6 @@ Route::group(['domain' => env('WWW_DOMAIN'), 'prefix' => 'admin', 'namespace' =>
     Route::post('collections/{id}/repos', 'CollectionController@repos_store');
     Route::get('collections/{id}/repos/{repos_id}/change_enable', 'CollectionController@repos_change_enable');
     Route::get('collections/{id}/repos/{repos_id}/delete', 'CollectionController@repos_delete');
-
-    # Subscribe
-    Route::get('subscribe', 'SubscribeController@index');
 
     # API
     Route::get('api/status', 'ApiController@status');

@@ -4,6 +4,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Application Name
+    |--------------------------------------------------------------------------
+    |
+    | This value is the name of your application. This value is used when the
+    | framework needs to place the application's name in a notification or
+    | any other location as required by the application or its packages.
+    */
+
+    'name' => 'DevelopHub',
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Environment
     |--------------------------------------------------------------------------
     |
@@ -140,6 +152,7 @@ return [
         Illuminate\Foundation\Providers\FoundationServiceProvider::class,
         Illuminate\Hashing\HashServiceProvider::class,
         Illuminate\Mail\MailServiceProvider::class,
+        Illuminate\Notifications\NotificationServiceProvider::class,
         Illuminate\Pagination\PaginationServiceProvider::class,
         Illuminate\Pipeline\PipelineServiceProvider::class,
         Illuminate\Queue\QueueServiceProvider::class,
@@ -151,8 +164,9 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
-         * Third-party Service Providers...
+         * Package Service Providers...
          */
+	    Laravel\Passport\PassportServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         Roumen\Sitemap\SitemapServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
@@ -168,13 +182,10 @@ return [
         Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
         PragmaRX\Google2FA\Vendor\Laravel\ServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
-        HieuLe\Active\ActiveServiceProvider::class,
-        Barryvdh\TranslationManager\ManagerServiceProvider::class,
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
         AltThree\Badger\BadgerServiceProvider::class,
         Roumen\Feed\FeedServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
-        Yajra\Datatables\DatatablesServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         AlgoliaSearch\Laravel\AlgoliaServiceProvider::class,
 
@@ -182,6 +193,7 @@ return [
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
+        // App\Providers\BroadcastServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
@@ -218,6 +230,7 @@ return [
         'Lang' => Illuminate\Support\Facades\Lang::class,
         'Log' => Illuminate\Support\Facades\Log::class,
         'Mail' => Illuminate\Support\Facades\Mail::class,
+        'Notification' => Illuminate\Support\Facades\Notification::class,
         'Password' => Illuminate\Support\Facades\Password::class,
         'Queue' => Illuminate\Support\Facades\Queue::class,
         'Redirect' => Illuminate\Support\Facades\Redirect::class,
@@ -244,12 +257,10 @@ return [
         'Localization' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
         'Google2FA' => PragmaRX\Google2FA\Vendor\Laravel\Facade::class,
         'Entrust' => Zizaco\Entrust\EntrustFacade::class,
-        'Active' => HieuLe\Active\Facades\Active::class,
         'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
         'Badger' => AltThree\Badger\Facades\Badger::class,
         'Feed' => Roumen\Feed\Feed::class,
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
-        'Datatables' => Yajra\Datatables\Facades\Datatables::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
     ],

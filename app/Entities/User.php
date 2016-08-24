@@ -14,11 +14,13 @@ namespace App\Entities;
 use Cache;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Venturecraft\Revisionable\RevisionableTrait;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 class User extends Authenticatable
 {
+    use Notifiable;
     use RevisionableTrait, EntrustUserTrait {
         EntrustUserTrait::boot insteadof RevisionableTrait;
     }

@@ -34,13 +34,7 @@ class MailController extends Controller
 
     public function template_data()
     {
-        return \Datatables::of(Repos::query())
-
-            ->addColumn('action', function($repos){
-                return '<a href="#edit-'.$repos->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
-            })
-            ->editColumn('id', 'ID: {{ $id }}')
-            ->make(true);
+        return [];
     }
 
     public function subscriber()

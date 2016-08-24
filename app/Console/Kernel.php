@@ -11,6 +11,7 @@
 
 namespace App\Console;
 
+use App;
 use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -36,12 +37,22 @@ class Kernel extends ConsoleKernel
     {
         // Backup
         $date = Carbon::now()->toW3cString();
-        $environment = env('APP_ENV');
+        $environment = App::environment();
         $schedule->command(
             "db:backup --database=mysql --destination=local --destinationPath=/{$environment}/DevelopHub_{$environment}_{$date} --compression=gzip"
         )->twiceDaily(13,21);
 
         // Sync user activated time
         $schedule->command('develophub:sync-user-activated-time')->everyTenMinutes();
+    }
+
+    /**
+     * Register the Closure based commands for the application.
+     *
+     * @return void
+     */
+    protected function commands()
+    {
+        require base_path('routes/console.php');
     }
 }
