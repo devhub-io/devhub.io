@@ -109,12 +109,4 @@ class User extends Authenticatable
         return $this->pushover;
     }
 
-    /**
-     * @return mixed
-     */
-    public function routeNotificationForPushbullet()
-    {
-        return new \NotificationChannels\Pushbullet\Targets\Email($this->email);
-    }
-
 }

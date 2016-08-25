@@ -166,7 +166,6 @@ return [
         /*
          * Package Service Providers...
          */
-	    //Laravel\Passport\PassportServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Laravel\Scout\ScoutServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
@@ -189,7 +188,6 @@ return [
         Roumen\Feed\FeedServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
         NotificationChannels\Pushover\PushoverServiceProvider::class,
-        //NotificationChannels\Pushbullet\PushbulletServiceProvider::class,
         HieuLe\Active\ActiveServiceProvider::class,
 
         /*

@@ -46,7 +46,6 @@
         "mews/captcha": "^2.1",
         "algolia/algoliasearch-client-php": "^1.10",
         "laravel-notification-channels/pushover": "^0.0.2",
-        "laravel-notification-channels/pushbullet": "^0.0.1",
         "hieu-le/active": "^3.3"
     },
     "require-dev": {

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "02a550e1176cebc80507f945661eee51",
-    "content-hash": "6e26e9a22c56fc8b99b6e5b41e38c5b9",
+    "hash": "1f66c69bdd7e2f6f44bed4481fd43818",
+    "content-hash": "3d6e5dea8d22f44071dd1275f8fa15be",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -1925,53 +1925,6 @@
             ],
             "description": "Easy flash notifications",
             "time": "2016-07-11 20:46:02"
-        },
-        {
-            "name": "laravel-notification-channels/pushbullet",
-            "version": "0.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel-notification-channels/pushbullet.git",
-                "reference": "c5ca26a9746dc4d0c86898a03c46fa7fb6bdbf6f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel-notification-channels/pushbullet/zipball/c5ca26a9746dc4d0c86898a03c46fa7fb6bdbf6f",
-                "reference": "c5ca26a9746dc4d0c86898a03c46fa7fb6bdbf6f",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^6.2",
-                "illuminate/events": "^5.3@dev",
-                "illuminate/notifications": "^5.3@dev",
-                "illuminate/support": "^5.3@dev",
-                "php": ">=5.6.4"
-            },
-            "require-dev": {
-                "mockery/mockery": "^0.9.5",
-                "phpunit/phpunit": "4.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "NotificationChannels\\Pushbullet\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Alex Plekhanov",
-                    "email": "alex@plekhanov.us",
-                    "homepage": "https://alex.plekhanov.us",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Laravel 5.3 Notifications Pushbullet Driver",
-            "homepage": "https://github.com/laravel-notification-channels/pushbullet",
-            "time": "2016-08-13 12:56:47"
         },
         {
             "name": "laravel-notification-channels/pushover",
