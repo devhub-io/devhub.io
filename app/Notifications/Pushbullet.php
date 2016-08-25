@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use NotificationChannels\Pushbullet\PushbulletChannel;
 use NotificationChannels\Pushbullet\PushbulletMessage;
 
-class PushBullet extends Notification
+class Pushbullet extends Notification
 {
     use Queueable;
 
