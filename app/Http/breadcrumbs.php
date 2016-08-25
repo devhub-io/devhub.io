@@ -17,7 +17,9 @@ Breadcrumbs::register('home', function ($breadcrumbs) {
 // Home > [Category]
 Breadcrumbs::register('category', function ($breadcrumbs, $category) {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push(trans("category.{$category->slug}"), l_url('category', $category->slug));
+    if (!empty($category->slug)) {
+        $breadcrumbs->push(trans("category.{$category->slug}"), l_url('category', $category->slug));
+    }
 });
 
 // Home > [Category] > [Repos]

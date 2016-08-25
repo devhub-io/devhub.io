@@ -124,13 +124,17 @@ class HomeController extends Controller
         SEO::setTitle($repos->title);
         SEO::setDescription($repos->description);
 
-        $category = $this->categoryRepository->find($repos->category_id);
-        if ($category) {
-            if ($category->parent_id == 0) {
-                view()->share('current_category_slug', $category->slug);
-            } else {
-                $parent_category = $this->categoryRepository->find($category->parent_id);
-                view()->share('current_category_slug', $parent_category->slug);
+        if ($repos->category_id > 0) {
+            $category = $this->categoryRepository->find($repos->category_id);
+            if ($category) {
+                if ($category->parent_id == 0) {
+                    view()->share('current_category_slug', $category->slug);
+                } else {
+                    if ($category->parent_id > 0) {
+                        $parent_category = $this->categoryRepository->find($category->parent_id);
+                        view()->share('current_category_slug', $parent_category->slug);
+                    }
+                }
             }
         }
 
