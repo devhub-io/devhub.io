@@ -160,7 +160,7 @@ class ReposController extends Controller
     public function fetch($id)
     {
         $repos = Repos::query()->findOrFail($id);
-        dispatch(new GithubFetch(Auth::id(), $repos->github));
+        dispatch(new GithubFetch(Auth::id(), $repos->github, $repos->id));
 
         return redirect()->back();
     }

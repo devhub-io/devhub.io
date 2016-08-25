@@ -25,15 +25,22 @@ class GithubFetch implements ShouldQueue
     protected $url;
 
     /**
+     * @var
+     */
+    protected $repos_id;
+
+    /**
      * Create a new job instance.
      *
      * @param $user_id
      * @param $url
+     * @param int $repos_id
      */
-    public function __construct($user_id, $url)
+    public function __construct($user_id, $url, $repos_id = 0)
     {
         $this->user_id = $user_id;
         $this->url = $url;
+        $this->repos_id = $repos_id;
     }
 
     /**
@@ -54,13 +61,23 @@ class GithubFetch implements ShouldQueue
                     $client->authenticate($github->token, null, \Github\Client::AUTH_URL_TOKEN);
                 }
 
-                $repo = $client->api('repo')->show($matches[1], $matches[2]);
-                $repos = $reposRepository->createFromGithubAPI((int)$this->user_id, $repo);
+                if ($this->repos_id > 0) {
+                    $repo = $client->api('repo')->show($matches[1], $matches[2]);
+                    $repos = $reposRepository->updateFromGithubAPI($this->repos_id, $repo);
 
-                if ($repos) {
                     $readme = $client->api('repo')->contents()->readme($matches[1], $matches[2]);
                     $readme = file_get_contents($readme['download_url']);
-                    $reposRepository->update(['readme' => $readme], $repos->id);
+                    if ($repos->readme != $readme) {
+                        $reposRepository->update(['readme' => $readme], $repos->id);
+                    }
+                } else {
+                    $repo = $client->api('repo')->show($matches[1], $matches[2]);
+                    $repos = $reposRepository->createFromGithubAPI((int)$this->user_id, $repo);
+                    if ($repos) {
+                        $readme = $client->api('repo')->contents()->readme($matches[1], $matches[2]);
+                        $readme = file_get_contents($readme['download_url']);
+                        $reposRepository->update(['readme' => $readme], $repos->id);
+                    }
                 }
             } catch (\Exception $e) {
                 Log::error($e->getMessage());
