@@ -58,7 +58,7 @@ class Pushover extends Notification
     {
         return PushoverMessage::create($this->content)
             ->title($this->title)
-            ->sound('incoming')
+            ->sound('pushover')
             ->normalPriority()
             ->url($this->url);
     }

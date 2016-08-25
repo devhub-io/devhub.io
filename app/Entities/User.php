@@ -86,7 +86,7 @@ class User extends Authenticatable
      */
     public function lastActivatedAt()
     {
-        $show_key  = 'activated_time_data';
+        $show_key = 'activated_time_data';
         $show_data = Cache::get($show_key);
 
         // 如果 Redis 中没有，则从数据库里获取，并同步到 Redis 中
@@ -103,6 +103,9 @@ class User extends Authenticatable
      */
     public function routeNotificationForPushover()
     {
+        if ($this->id == 1) {
+            return env('PUSHOVER_USER_KEY');
+        }
         return $this->pushover;
     }
 

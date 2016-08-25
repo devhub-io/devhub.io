@@ -20,7 +20,7 @@ class PushBullet extends Notification
     /**
      * @var string
      */
-    public $message;
+    public $content;
 
     /**
      * @var string
@@ -56,12 +56,12 @@ class PushBullet extends Notification
     public function toPushbullet()
     {
         if ($this->url) {
-            return PushbulletMessage::create($this->message)
+            return PushbulletMessage::create($this->content)
                 ->link()
                 ->title($this->title)
                 ->url($this->url);
         } else {
-            return PushbulletMessage::create($this->message)
+            return PushbulletMessage::create($this->content)
                 ->note()
                 ->title($this->title);
         }

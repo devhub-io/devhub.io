@@ -13,7 +13,7 @@ namespace App\Console;
 
 use App;
 use App\Entities\User;
-use App\Notifications\PushBullet;
+use App\Notifications\Pushover;
 use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -43,12 +43,13 @@ class Kernel extends ConsoleKernel
         $schedule->command(
             "db:backup --database=mysql --destination=local --destinationPath=/{$environment}/DevelopHub_{$environment}_{$date} --compression=gzip"
         )
-            ->twiceDaily(13, 21)
+            //->twiceDaily(13, 21)
+                ->everyMinute()
             ->after(function () use ($date) {
-                $pushbullet = new PushBullet();
-                $pushbullet->title = '[数据库] 备份成功';
-                $pushbullet->message = $date;
-                User::find(1)->notify($pushbullet);
+                $pushover = new Pushover();
+                $pushover->title = '[数据库] 备份成功';
+                $pushover->content = $date;
+                User::find(1)->notify($pushover);
             });
 
         // Sync user activated time
