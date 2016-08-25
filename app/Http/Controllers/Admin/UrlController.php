@@ -40,7 +40,7 @@ class UrlController extends Controller
      */
     public function index()
     {
-        $urls = ReposUrl::paginate(10);
+        $urls = ReposUrl::paginate(20);
         return view('admin.url.index', compact('urls'));
     }
 
