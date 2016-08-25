@@ -13,15 +13,10 @@ require('laravel-elixir-vue');
  |
  */
 
-elixir(mix => {
-    mix.sass('app.scss')
-    .webpack('app.js');
-});
-
 elixir.config.sourcemaps = false;
-
 elixir(function (mix) {
-    mix.styles([
+    mix
+        .styles([
             'owl.carousel.css',
             'style.css',
             'responsive.css'
@@ -29,7 +24,6 @@ elixir(function (mix) {
         .scripts([
             'owl.carousel.min.js',
             'jquery.sticky.js',
-            'jquery.easing.1.3.min.js',
             'main.js'
         ], 'public/js/app.js')
         .version(['css/all.css', 'js/app.js']);
