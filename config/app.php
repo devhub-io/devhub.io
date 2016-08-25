@@ -190,6 +190,7 @@ return [
         Mews\Captcha\CaptchaServiceProvider::class,
         NotificationChannels\Pushover\PushoverServiceProvider::class,
         NotificationChannels\Pushbullet\PushbulletServiceProvider::class,
+        HieuLe\Active\ActiveServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -264,6 +265,7 @@ return [
         'Feed' => Roumen\Feed\Feed::class,
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Active' => HieuLe\Active\Facades\Active::class,
 
     ],
 
