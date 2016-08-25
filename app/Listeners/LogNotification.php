@@ -5,6 +5,7 @@ namespace App\Listeners;
 use Illuminate\Notifications\Events\NotificationSent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Log;
 
 class LogNotification
 {
@@ -26,6 +27,6 @@ class LogNotification
      */
     public function handle(NotificationSent $event)
     {
-        //
+        Log::info("Notification $event->channel {$event->notification->id}");
     }
 }
