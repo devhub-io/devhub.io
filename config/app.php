@@ -189,7 +189,7 @@ return [
         Roumen\Feed\FeedServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
         NotificationChannels\Pushover\PushoverServiceProvider::class,
-        NotificationChannels\Pushbullet\PushbulletServiceProvider::class,
+        //NotificationChannels\Pushbullet\PushbulletServiceProvider::class,
         HieuLe\Active\ActiveServiceProvider::class,
 
         /*
