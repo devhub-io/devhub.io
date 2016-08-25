@@ -97,4 +97,21 @@ class User extends Authenticatable
 
         return $show_data[$this->id];
     }
+
+    /**
+     * @return mixed
+     */
+    public function routeNotificationForPushover()
+    {
+        return $this->pushover;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function routeNotificationForPushbullet()
+    {
+        return new \NotificationChannels\Pushbullet\Targets\Email($this->email);
+    }
+
 }

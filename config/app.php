@@ -188,6 +188,8 @@ return [
         AltThree\Badger\BadgerServiceProvider::class,
         Roumen\Feed\FeedServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
+        NotificationChannels\Pushover\PushoverServiceProvider::class,
+        NotificationChannels\Pushbullet\PushbulletServiceProvider::class,
 
         /*
          * Application Service Providers...

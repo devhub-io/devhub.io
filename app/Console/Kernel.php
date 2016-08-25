@@ -12,6 +12,8 @@
 namespace App\Console;
 
 use App;
+use App\Entities\User;
+use App\Notifications\PushBullet;
 use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -30,7 +32,7 @@ class Kernel extends ConsoleKernel
     /**
      * Define the application's command schedule.
      *
-     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+     * @param  \Illuminate\Console\Scheduling\Schedule $schedule
      * @return void
      */
     protected function schedule(Schedule $schedule)
@@ -40,7 +42,14 @@ class Kernel extends ConsoleKernel
         $environment = App::environment();
         $schedule->command(
             "db:backup --database=mysql --destination=local --destinationPath=/{$environment}/DevelopHub_{$environment}_{$date} --compression=gzip"
-        )->twiceDaily(13,21);
+        )
+            ->twiceDaily(13, 21)
+            ->after(function () use ($date) {
+                $pushbullet = new PushBullet();
+                $pushbullet->title = '[数据库] 备份成功';
+                $pushbullet->message = $date;
+                User::find(1)->notify($pushbullet);
+            });
 
         // Sync user activated time
         $schedule->command('develophub:sync-user-activated-time')->everyTenMinutes();

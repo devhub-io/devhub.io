@@ -50,4 +50,13 @@ return [
         'redirect' => env('GITHUB_REDIRECT'),
     ],
 
+    'pushover' => [
+        'token' => env('PUSHOVER_TOKEN'),
+    ],
+
+    'pushbullet' => [
+        'access_token' => env('PUSHBULLET_ACCESS_TOKEN')
+    ]
+
+
 ];
