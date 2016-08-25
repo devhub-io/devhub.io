@@ -116,11 +116,10 @@
                 <div class="footer-about-us">
                     <h2><span>DevelopHub</span></h2>
                     <p>@lang('front.about_develophub')</p>
-                    @if(isset($badger))
-                        @foreach($badger as $item)
-                            {!! $item !!}
-                        @endforeach
-                    @endif
+                    <div class="footer-social">
+                        <a target="_blank" href="#"><i class="fa fa-facebook"></i></a>
+                        <a target="_blank" href="https://twitter.com/HubDevelop"><i class="fa fa-twitter"></i></a>
+                    </div>
                 </div>
             </div>
 
@@ -172,6 +171,15 @@
             <div class="col-md-8">
                 <div class="copyright">
                     <p>&copy; 2016 DevelopHub. All Rights Reserved.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="footer-card-icon">
+                    @if(isset($badger))
+                        @foreach($badger as $item)
+                            {!! $item !!}
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>
