@@ -43,8 +43,7 @@ class Kernel extends ConsoleKernel
         $schedule->command(
             "db:backup --database=mysql --destination=local --destinationPath=/{$environment}/DevelopHub_{$environment}_{$date} --compression=gzip"
         )
-            //->twiceDaily(13, 21)
-                ->everyMinute()
+            ->twiceDaily(13, 21)
             ->after(function () use ($date) {
                 $pushover = new Pushover();
                 $pushover->title = '[数据库] 备份成功';
