@@ -11,22 +11,19 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Auth;
+use Response;
+use SEOMeta;
 use App\Entities\Image;
 use App\Entities\Repos;
-use App\Entities\Service;
 use App\Http\Controllers\Controller;
+use App\Jobs\GithubFetch;
 use App\Repositories\CategoryRepository;
-use Auth;
-use Flash;
-use Log;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
 use App\Http\Requests\ReposUpdateRequest;
 use App\Repositories\ReposRepository;
 use App\Validators\ReposValidator;
-use Response;
-use SEOMeta;
-
 
 class ReposController extends Controller
 {
@@ -163,31 +160,7 @@ class ReposController extends Controller
     public function fetch($id)
     {
         $repos = Repos::query()->findOrFail($id);
-        $re = "/https?:\\/\\/github\\.com\\/([0-9a-zA-Z\\-\\.]*)\\/([0-9a-zA-Z\\-\\.]*)/";
-        preg_match($re, $repos->github, $matches);
-        if ($matches) {
-            try {
-                $client = new \Github\Client();
-
-                $github = Service::query()->where('provider', 'github')->where('user_id', Auth::id())->first();
-                if ($github) {
-                    $client->authenticate($github->token, null, \Github\Client::AUTH_URL_TOKEN);
-                }
-
-                $repo = $client->api('repo')->show($matches[1], $matches[2]);
-                $repos = $this->repository->updateFromGithubAPI($id, $repo);
-
-                $readme = $client->api('repo')->contents()->readme($matches[1], $matches[2]);
-                $readme = file_get_contents($readme['download_url']);
-                if ($repos->readme != $readme) {
-                    $this->repository->update(['readme' => $readme], $repos->id);
-                }
-            } catch (\Exception $e) {
-                Log::error($e->getMessage());
-                Log::error($e->getTraceAsString());
-                Flash::error($e->getMessage());
-            }
-        }
+        dispatch(new GithubFetch(Auth::id(), $repos->github));
 
         return redirect()->back();
     }

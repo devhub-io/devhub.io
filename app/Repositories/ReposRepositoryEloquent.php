@@ -13,6 +13,7 @@ namespace App\Repositories;
 
 use Carbon\Carbon;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Str;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Entities\Repos;
@@ -42,10 +43,11 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
     }
 
     /**
+     * @param $user_id
      * @param array $data
      * @return mixed
      */
-    public function createFromGithubAPI(array $data)
+    public function createFromGithubAPI($user_id, array $data)
     {
         $slug = str_replace('/', '-', $data['full_name']);
 
@@ -55,10 +57,10 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
             return false;
         } else {
             return $this->create([
-                'user_id' => \Auth::id(),
+                'user_id' => $user_id,
                 'title' => $data['name'],
                 'slug' => $slug,
-                'description' => $data['description'] ?: '',
+                'description' => Str::substr($data['description'], 0, 255) ?: '',
                 'language' => $data['language'] ?: '',
                 'homepage' => $data['homepage'] ?: '',
                 'github' => $data['html_url'] ?: '',
@@ -67,9 +69,13 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
                 'open_issues_count' => $data['open_issues_count'] ?: 0,
                 'forks_count' => $data['forks_count'] ?: 0,
                 'subscribers_count' => $data['open_issues_count'] ?: 0,
-                'repos_created_at' => $data['created_at'],
-                'repos_updated_at' => $data['updated_at'],
+                'repos_created_at' => date('Y-m-d H:i:s', strtotime($data['created_at'])),
+                'repos_updated_at' => date('Y-m-d H:i:s', strtotime($data['updated_at'])),
                 'fetched_at' => Carbon::now(),
+                'category_id' => 0,
+                'readme' => '',
+                'issue_response' => 0,
+                'is_recommend' => false,
             ]);
         }
     }
