@@ -116,14 +116,6 @@
                 <div class="footer-about-us">
                     <h2><span>DevelopHub</span></h2>
                     <p>@lang('front.about_develophub')</p>
-                    {{--<div class="footer-social">--}}
-                        {{--<span class='st_sharethis_large' displayText='ShareThis'></span>--}}
-                        {{--<span class='st_facebook_large' displayText='Facebook'></span>--}}
-                        {{--<span class='st_twitter_large' displayText='Tweet'></span>--}}
-                        {{--<span class='st_linkedin_large' displayText='LinkedIn'></span>--}}
-                        {{--<span class='st_pinterest_large' displayText='Pinterest'></span>--}}
-                        {{--<span class='st_email_large' displayText='Email'></span>--}}
-                    {{--</div>--}}
                     @if(isset($badger))
                         @foreach($badger as $item)
                             {!! $item !!}
@@ -195,23 +187,20 @@
 <script>
     var client = algoliasearch('{{ env('ALGOLIA_APP_ID') }}', '{{ env('ALGOLIA_SEARCH_KEY') }}');
     var index = client.initIndex('{{ env('SCOUT_PREFIX') }}repos');
-    autocomplete('input[name=keyword]', { hint: false }, [
+    autocomplete('input[name=keyword]', {hint: false}, [
         {
-            source: autocomplete.sources.hits(index, { hitsPerPage: 10, filters: "status=1" }),
+            source: autocomplete.sources.hits(index, {hitsPerPage: 10, filters: "status=1"}),
             displayKey: 'title',
             templates: {
-                suggestion: function(suggestion) {
+                suggestion: function (suggestion) {
                     return suggestion._highlightResult.title.value;
                 }
             }
         }
-    ]).on('autocomplete:selected', function(event, suggestion, dataset) {
+    ]).on('autocomplete:selected', function (event, suggestion, dataset) {
         console.log(suggestion, dataset);
     });
 </script>
-{{--<script type="text/javascript">var switchTo5x=true;</script>--}}
-{{--<script type="text/javascript" src="https://ws.sharethis.com/button/buttons.js"></script>--}}
-{{--<script type="text/javascript">stLight.options({publisher: "f6598daa-4ed2-462c-9c4c-ec742a440449", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>--}}
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
