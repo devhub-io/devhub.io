@@ -333,15 +333,11 @@ class HomeController extends Controller
      */
     public function subscribe_confirm()
     {
-        $request_url = url(request()->server('REQUEST_URI'));
-
-        if (UrlSigner::validate($request_url)) {
-            $slug = request()->get('slug');
-            $mail = Cache::get("mail:$slug");
-            if ($mail) {
-                $mg = new Mailgun();
-                $mg->setMember(Mailgun::WEEKLY_MAIL_LIST, $mail, '', '', true);
-            }
+        $slug = request()->get('slug');
+        $mail = Cache::get("mail:$slug");
+        if ($mail) {
+            $mg = new Mailgun();
+            $mg->setMember(Mailgun::WEEKLY_MAIL_LIST, $mail, '', '', true);
         }
 
         return view('front.subscribe.confirm');
@@ -352,15 +348,11 @@ class HomeController extends Controller
      */
     public function unsubscribe()
     {
-        $request_url = url(request()->server('REQUEST_URI'));
-
-        if (UrlSigner::validate($request_url)) {
-            $slug = request()->get('slug');
-            $mail = Cache::get("mail:$slug");
-            if ($mail) {
-                $mg = new Mailgun();
-                $mg->setMember(Mailgun::WEEKLY_MAIL_LIST, $mail, '', '', false);
-            }
+        $slug = request()->get('slug');
+        $mail = Cache::get("mail:$slug");
+        if ($mail) {
+            $mg = new Mailgun();
+            $mg->setMember(Mailgun::WEEKLY_MAIL_LIST, $mail, '', '', false);
         }
 
         return view('front.subscribe.confirm');
