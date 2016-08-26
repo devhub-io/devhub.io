@@ -13,9 +13,7 @@ namespace App\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\CategoryRepository;
 use App\Entities\Category;
-use App\Validators\CategoryValidator;
 
 /**
  * Class CategoryRepositoryEloquent

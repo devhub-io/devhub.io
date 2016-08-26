@@ -12,7 +12,6 @@
 namespace App\Repositories;
 
 use Carbon\Carbon;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Str;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
@@ -170,11 +169,12 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
     /**
      * @param $keyword
      * @param array $where
+     * @param int $limit
      * @return mixed
      */
-    public function searchList($keyword, $where = [])
+    public function searchList($keyword, $where = [], $limit = 10)
     {
-        return $this->model->with('category')->where('title', 'LIKE', '%' . $keyword . '%')->where($where)->orderBy('id', 'desc')->paginate(10);
+        return $this->model->with('category')->where('title', 'LIKE', '%' . $keyword . '%')->where($where)->orderBy('id', 'desc')->paginate($limit);
     }
 
     /**

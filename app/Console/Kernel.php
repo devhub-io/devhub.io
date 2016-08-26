@@ -27,6 +27,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\SyncUserActivatedTime::class,
+        Commands\FetchEarliestRepos::class,
     ];
 
     /**
@@ -53,6 +54,9 @@ class Kernel extends ConsoleKernel
 
         // Sync user activated time
         $schedule->command('develophub:sync-user-activated-time')->everyTenMinutes();
+
+        // Fetch
+        $schedule->command('develophub:fetch-earliest-repos')->cron('*/25 * * * * *');
     }
 
     /**
