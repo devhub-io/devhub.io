@@ -30,11 +30,15 @@ class Pushover extends Notification
     /**
      * Create a new notification instance.
      *
-     * @return void
+     * @param $title
+     * @param $content
+     * @param string $url
      */
-    public function __construct()
+    public function __construct($title = '', $content, $url = '')
     {
-        //
+        $this->title = $title;
+        $this->content = $content;
+        $this->url = $url;
     }
 
     /**

@@ -46,10 +46,7 @@ class Kernel extends ConsoleKernel
         )
             ->twiceDaily(13, 21)
             ->after(function () use ($date) {
-                $pushover = new Pushover();
-                $pushover->title = '[数据库] 备份成功';
-                $pushover->content = $date;
-                User::find(1)->notify($pushover);
+                User::find(1)->notify(new Pushover('[数据库] 备份成功', $date));
             });
 
         // Sync user activated time
