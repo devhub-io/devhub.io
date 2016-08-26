@@ -11,6 +11,7 @@
 
 namespace App\Support;
 
+use Config;
 use Mailgun\Mailgun as MailgunClient;
 
 class Mailgun
@@ -25,10 +26,15 @@ class Mailgun
      */
     protected $domain;
 
+    /**
+     * @var string
+     */
+    const WEEKLY_MAIL_LIST = 'weekly@develophub.net';
+
     public function __construct()
     {
-        $this->domain = \Config::get('services.mailgun.domain');
-        $key = \Config::get('services.mailgun.secret');
+        $this->domain = Config::get('services.mailgun.domain');
+        $key = Config::get('services.mailgun.secret');
         $this->mailgun = new MailgunClient($key);
     }
 
@@ -70,11 +76,11 @@ class Mailgun
     public function setMember($listAddress, $address, $name, $description, $subscribed = true)
     {
         return $result = $this->mailgun->post("lists/$listAddress/members", array(
-            'address' => 'bar@example.com',
-            'name' => 'Bob Bar',
-            'description' => 'Developer',
-            'subscribed' => true,
-            'vars' => '{"age": 26}'
+            'address' => $address,
+            'name' => $name,
+            'description' => $description,
+            'subscribed' => $subscribed,
+            'vars' => '{}'
         ));
     }
 

@@ -11,13 +11,15 @@
 
 namespace App\Http\Controllers\Front;
 
-use Badger;
-use Config;
-use Localization;
-use SEO;
+use Cache;
 use DB;
 use App;
-use URL;
+use SEO;
+use Badger;
+use Config;
+use UrlSigner;
+use Localization;
+use App\Support\Mailgun;
 use Carbon\Carbon;
 use Roumen\Feed\Feed;
 use App\Repositories\CategoryRepository;
@@ -324,5 +326,43 @@ class HomeController extends Controller
 
         // to return your feed as a string set second param to -1
         // $xml = $feed->render('atom', -1);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function subscribe_confirm()
+    {
+        $request_url = url(request()->server('REQUEST_URI'));
+
+        if (UrlSigner::validate($request_url)) {
+            $slug = request()->get('slug');
+            $mail = Cache::get("mail:$slug");
+            if ($mail) {
+                $mg = new Mailgun();
+                $mg->setMember(Mailgun::WEEKLY_MAIL_LIST, $mail, '', '', true);
+            }
+        }
+
+        return view('front.subscribe.confirm');
+    }
+
+    /**
+     * @return mixed
+     */
+    public function unsubscribe()
+    {
+        $request_url = url(request()->server('REQUEST_URI'));
+
+        if (UrlSigner::validate($request_url)) {
+            $slug = request()->get('slug');
+            $mail = Cache::get("mail:$slug");
+            if ($mail) {
+                $mg = new Mailgun();
+                $mg->setMember(Mailgun::WEEKLY_MAIL_LIST, $mail, '', '', false);
+            }
+        }
+
+        return view('front.subscribe.confirm');
     }
 }

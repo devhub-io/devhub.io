@@ -39,6 +39,10 @@ Route::group(['domain' => env('WWW_DOMAIN'), 'namespace' => 'Front', 'prefix' =>
 
     # Feed
     Route::get('feed', 'HomeController@feed');
+
+    # Subscribe
+    Route::get('subscribe/confirm', 'HomeController@subscribe_confirm');
+    Route::get('unsubscribe', 'HomeController@unsubscribe');
 });
 
 # Admin
