@@ -67,11 +67,10 @@ class CategoriesController extends Controller
      *
      * @param  CategoryCreateRequest $request
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(CategoryCreateRequest $request)
     {
-
         try {
 
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
@@ -94,7 +93,6 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-
         $category = $this->repository->find($id);
         $categories = $this->repository->all();
 
@@ -108,11 +106,10 @@ class CategoriesController extends Controller
      * @param  CategoryUpdateRequest $request
      * @param  string            $id
      *
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(CategoryUpdateRequest $request, $id)
     {
-
         try {
 
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
