@@ -59,7 +59,7 @@
                                     <br>
                                     <small>抓取于 {{ $item->fetched_at }}</small>
                                 </td>
-                                <td><img src="{{ image_url($item->image, ['w' => 100]) }}" alt=""></td>
+                                <td><img src="{{ $item->image > 0 ? image_url($item->image, ['w' => 100]) : '' }}" alt=""></td>
                                 <td>{{ $item->category->title or '-' }}</td>
                                 <td>{{ $item->language }}</td>
                                 <td>{{ $item->slug }}</td>
