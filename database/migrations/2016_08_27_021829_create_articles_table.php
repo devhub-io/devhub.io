@@ -16,6 +16,7 @@ class CreateArticlesTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('slug');
+            $table->string('description', 500);
             $table->text('content');
             $table->string('url');
             $table->integer('user_id')->default(0);

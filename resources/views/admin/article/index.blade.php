@@ -38,13 +38,12 @@
                             <thead>
                             <tr>
                                 <th style="width: 1%">#</th>
-                                <th style="width: 12%">标题</th>
-                                <th>内容</th>
-                                <th>标识</th>
+                                <th style="width: 20%">标题</th>
+                                <th style="width: 15%">描述</th>
                                 <th>URL</th>
                                 <th>统计</th>
                                 <th>状态</th>
-                                <th style="width: 20%">操作</th>
+                                <th style="width: 100px">操作</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -56,8 +55,7 @@
                                         <br>
                                         <small>抓取于 {{ $item->fetched_at }}</small>
                                     </td>
-                                    <td>{{ $item->content }}</td>
-                                    <td>{{ $item->slug }}</td>
+                                    <td>{{ $item->description }}</td>
                                     <td>{{ $item->url }}</td>
                                     <td>
                                         <ul class="list-inline">

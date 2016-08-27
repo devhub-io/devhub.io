@@ -11,7 +11,7 @@
         <div class="clearfix"></div>
 
         <div class="row">
-            <div class="col-md-8 col-sm-10 col-xs-12">
+            <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
                         <ul class="nav navbar-right panel_toolbox">
@@ -28,7 +28,7 @@
                                 <th>#</th>
                                 <th>URL</th>
                                 <th>添加时间</th>
-                                <th>操作</th>
+                                <th width="200px">操作</th>
                             </tr>
                             </thead>
                             <tbody>

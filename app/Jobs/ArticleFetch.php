@@ -11,6 +11,9 @@
 
 namespace App\Jobs;
 
+use Embed\Embed;
+use Carbon\Carbon;
+use App\Entities\Article;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -49,6 +52,22 @@ class ArticleFetch implements ShouldQueue
      */
     public function handle()
     {
-        //
+        $info = Embed::create($this->url);
+        if ($this->article_id) {
+            $article = Article::find($this->article_id);
+            $article->title = $info->getTitle();
+            $article->description = $info->getDescription();
+            $article->fetched_at = Carbon::now();
+            $article->save();
+        } else {
+            if (!$ex = Article::query()->where('url', $this->url)->first()) {
+                Article::create([
+                    'title' => $info->getTitle(),
+                    'description' => $info->getDescription(),
+                    'url' => $this->url,
+                    'fetched_at' => Carbon::now(),
+                ]);
+            }
+        }
     }
 }
