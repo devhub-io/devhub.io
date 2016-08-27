@@ -171,7 +171,7 @@ class ReposController extends Controller
      */
     public function reindex()
     {
-        Repos::reindex();
+        Repos::query()->get()->searchable();
 
         return redirect()->back();
     }
