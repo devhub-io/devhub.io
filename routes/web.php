@@ -120,6 +120,8 @@ Route::group(['domain' => env('WWW_DOMAIN'), 'prefix' => 'admin', 'namespace' =>
     Route::get('articles/url/{id}/fetch', 'ArticleController@url_fetch');
     Route::get('articles/url/{id}/delete', 'ArticleController@url_delete');
     Route::post('articles/url', 'ArticleController@url_store');
+    Route::post('articles/all_url', 'ArticleController@all_url_store');
+    Route::get('articles/fetch_all_url', 'ArticleController@fetch_all_url');
 });
 
 # Static

@@ -15,13 +15,14 @@ use App\Entities\Article;
 use App\Entities\ArticleUrl;
 use App\Http\Controllers\Controller;
 use App\Jobs\ArticleFetch;
+use Carbon\Carbon;
 
 class ArticleController extends Controller
 {
     public function index()
     {
         $keyword = request()->get('keyword');
-        $articles = Article::query()->paginate(20);
+        $articles = Article::query()->orderBy('id', 'desc')->paginate(20);
 
         return view('admin.article.index', compact('articles', 'keyword'));
     }
@@ -58,7 +59,7 @@ class ArticleController extends Controller
 
     public function url_list()
     {
-        $urls = ArticleUrl::paginate(20);
+        $urls = ArticleUrl::query()->orderBy('id', 'desc')->paginate(20);
 
         return view('admin.article.url_list', compact('urls'));
     }
@@ -84,6 +85,33 @@ class ArticleController extends Controller
     public function url_delete($id)
     {
         ArticleUrl::destroy($id);
+
+        return redirect()->back();
+    }
+
+    public function all_url_store()
+    {
+        $url = request()->get('url');
+
+        $urls = explode("\n", $url);
+        $insert = [];
+        foreach ($urls as $item) {
+            $insert[] = ['url' => $item, 'created_at' => Carbon::now()];
+        }
+
+        ArticleUrl::insert($insert);
+
+        return redirect()->back();
+    }
+
+    public function fetch_all_url()
+    {
+        $urls = ArticleUrl::query()->get();
+
+        foreach ($urls as $item) {
+            dispatch(new ArticleFetch($item->url));
+            $item->delete();
+        }
 
         return redirect()->back();
     }

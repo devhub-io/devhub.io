@@ -86,7 +86,6 @@
                                     <li><a href="{{ url('admin/user') }}">用户</a></li>
                                     <li><a href="{{ url('log-viewer') }}">日志</a></li>
                                     <li><a href="{{ url('admin/api/status') }}">API</a></li>
-                                    <li><a href="{{ url('translations') }}" target="_blank">翻译</a></li>
                                 </ul>
                             </li>
                         </ul>
