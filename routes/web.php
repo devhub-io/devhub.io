@@ -111,6 +111,15 @@ Route::group(['domain' => env('WWW_DOMAIN'), 'prefix' => 'admin', 'namespace' =>
     # Socialite
     Route::get('github/redirect', 'SocialiteController@redirectToProviderGithub');
     Route::get('github/callback', 'SocialiteController@handleProviderCallbackGithub');
+
+    # Article
+    Route::get('articles', 'ArticleController@index');
+    Route::get('articles/{id}/change_enable', 'ArticleController@change_enable');
+    Route::get('articles/{id}/fetch', 'ArticleController@fetch');
+    Route::get('articles/url', 'ArticleController@url_list');
+    Route::get('articles/url/{id}/fetch', 'ArticleController@url_fetch');
+    Route::get('articles/url/{id}/delete', 'ArticleController@url_delete');
+    Route::post('articles/url', 'ArticleController@url_store');
 });
 
 # Static

@@ -58,7 +58,7 @@
                     <div class="menu_section">
                         <h3>&nbsp;</h3>
                         <ul class="nav side-menu">
-                            <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                            <li><a><i class="fa fa-file"></i> Repos <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="{{ url('admin/categories') }}">分类</a></li>
                                     <li><a href="{{ url('admin/repos') }}">资源</a></li>
@@ -66,6 +66,12 @@
                                     <li><a href="{{ url('admin/images') }}">图片</a></li>
                                     <li><a href="{{ url('admin/sites') }}">站点</a></li>
                                     <li><a href="{{ url('admin/collections') }}">集合</a></li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-archive"></i> Article <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="{{ url('admin/articles') }}">内容</a></li>
+                                    <li><a href="{{ url('admin/articles/url') }}">链接</a></li>
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-envelope"></i> Mail <span class="fa fa-chevron-down"></span></a>

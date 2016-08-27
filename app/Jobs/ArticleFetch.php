@@ -1,0 +1,54 @@
+<?php
+
+/*
+ * This file is part of develophub.net.
+ *
+ * (c) DevelopHub <master@develophub.net>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace App\Jobs;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Queue\ShouldQueue;
+
+class ArticleFetch implements ShouldQueue
+{
+    use InteractsWithQueue, Queueable, SerializesModels;
+
+    /**
+     * @var string
+     */
+    protected $url;
+
+    /**
+     * @var
+     */
+    protected $article_id;
+
+    /**
+     * Create a new job instance.
+     *
+     * @param $url
+     * @param $article_id
+     */
+    public function __construct($url = '', $article_id = 0)
+    {
+        $this->url = $url;
+        $this->article_id = $article_id;
+    }
+
+    /**
+     * Execute the job.
+     *
+     * @return void
+     */
+    public function handle()
+    {
+        //
+    }
+}
