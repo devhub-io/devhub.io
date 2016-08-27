@@ -76,12 +76,14 @@ class HomeController extends Controller
         $hot = $this->reposRepository->findHottest();
         $new = $this->reposRepository->findNewest();
         $trend = $this->reposRepository->findTrend();
-
         $recommend = $this->reposRepository->findRecommend();
+
+        $hot_url = App\Entities\Article::query()->orderBy('up_number', 'desc')->limit(10)->get();
+        $new_url = App\Entities\Article::query()->orderBy('fetched_at', 'desc')->limit(10)->get();
 
         $collections = Collection::where('is_enable', 1)->orderBy('sort')->get();
 
-        return view('front.home', compact('hot', 'new', 'trend', 'recommend', 'collections'));
+        return view('front.home', compact('hot', 'new', 'trend', 'recommend', 'collections', 'hot_url', 'new_url'));
     }
 
     /**
@@ -356,5 +358,18 @@ class HomeController extends Controller
         }
 
         return view('front.subscribe.confirm');
+    }
+
+    /**
+     * @return mixed
+     */
+    public function link()
+    {
+        $target = request()->get('target');
+        if($target) {
+            return redirect()->to($target);
+        } else {
+            return redirect('/');
+        }
     }
 }

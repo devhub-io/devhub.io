@@ -31,10 +31,10 @@
                 </div>
                 <div class="menu hidden-xs">
                     @if($repos->homepage)
-                    <a target="_blank" href="{{ $repos->homepage }}" rel="nofollow"><i class="fa fa-home"></i> @lang('front.homepage') </a>
+                    <a target="_blank" href="{{ link_url($repos->homepage) }}" rel="nofollow"><i class="fa fa-home"></i> @lang('front.homepage') </a>
                     @endif
                     @if($repos->github)
-                    <a target="_blank" href="{{ $repos->github }}" class="gitbtn" rel="nofollow"><i class="fa fa-github"></i> Github </a>
+                    <a target="_blank" href="{{ link_url($repos->github) }}" class="gitbtn" rel="nofollow"><i class="fa fa-github"></i> Github </a>
                     @endif
                 </div>
                 <div class="params hidden-xs">

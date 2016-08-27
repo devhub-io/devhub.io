@@ -73,3 +73,16 @@ if (!function_exists('cdn_asset')) {
         return '//' . env('CDN_DOMAIN') . '/' . trim($path, '/');
     }
 }
+
+if (!function_exists('link_url')) {
+    /**
+     * Generate a url for the application.
+     *
+     * @param $url
+     * @return \Illuminate\Contracts\Routing\UrlGenerator|string
+     */
+    function link_url($url)
+    {
+        return url("link?target=" . urlencode($url));
+    }
+}

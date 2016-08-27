@@ -1,8 +1,7 @@
 @extends('layouts.front')
 
 @section('contents')
-<div class="maincontent-area">
-    <div class="zigzag-bottom"></div>
+<div class="product-widget-area" style="padding-bottom: 50px;">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -29,6 +28,46 @@
         </div>
     </div>
 </div> <!-- End main content area -->
+
+<div class=" maincontent-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            @if($hot_url->count())
+            <div class="col-md-6">
+                <div class="single-product-widget">
+                    <h2 class="product-wid-title">@lang('front.popular')</h2>
+                    <a href="" class="wid-view-more">@lang('front.view_all')</a>
+                    @foreach($hot_url as $item)
+                        <div class="single-wid-product" style="margin-bottom: 0;">
+                            <h2 style="height: 20px;"><a href="{{ link_url($item->url) }}" rel="nofollow" target="_blank" style="color: #1abc9c;" title="{{ $item->description }}">{{ \Illuminate\Support\Str::substr($item->title, 0, 50) }}</a></h2>
+                            <div class="product-wid-rating">
+                                <i class="fa fa-star"></i> {{ $item->up_number }}  <span style="color: #565656">{{ $item->fetched_at }}</span>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            @endif
+            @if($new_url->count())
+            <div class="col-md-6">
+                <div class="single-product-widget">
+                    <h2 class="product-wid-title">@lang('front.latest')</h2>
+                    <a href="#" class="wid-view-more">@lang('front.view_all')</a>
+                    @foreach($new_url as $item)
+                        <div class="single-wid-product" style="margin-bottom: 0;">
+                            <h2 style="height: 20px;"><a href="{{ link_url($item->url) }}" rel="nofollow" target="_blank" style="color: #1abc9c;" title="{{ $item->description }}">{{ \Illuminate\Support\Str::substr($item->title, 0, 50) }}</a></h2>
+                            <div class="product-wid-rating">
+                                <i class="fa fa-star"></i> {{ $item->up_number }} <span style="color: #565656">{{ $item->fetched_at }}</span>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            @endif
+        </div>
+    </div>
+</div> <!-- End product widget area -->
 
 <div class="brands-area">
     <div class="zigzag-bottom"></div>

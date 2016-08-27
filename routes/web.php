@@ -45,6 +45,9 @@ Route::group(['domain' => env('WWW_DOMAIN'), 'namespace' => 'Front', 'prefix' =>
         Route::get('subscribe/confirm', 'HomeController@subscribe_confirm');
         Route::get('unsubscribe', 'HomeController@unsubscribe');
     });
+
+    # Link
+    Route::get('link', 'HomeController@link');
 });
 
 # Admin

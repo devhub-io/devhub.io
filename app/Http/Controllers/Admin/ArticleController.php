@@ -96,7 +96,7 @@ class ArticleController extends Controller
         $urls = explode("\n", $url);
         $insert = [];
         foreach ($urls as $item) {
-            $insert[] = ['url' => $item, 'created_at' => Carbon::now()];
+            $insert[] = ['url' => trim($item), 'created_at' => Carbon::now()];
         }
 
         ArticleUrl::insert($insert);
