@@ -36,7 +36,7 @@
                             @foreach($history as $item)
                                 <tr>
                                     <td>{{ $item->id }}</td>
-                                    <td>{{ $item->userResponsible()->name }}</td>
+                                    <td>{{ $item->userResponsible() ? $item->userResponsible()->name : '-' }}</td>
                                     <td>{{ $item->key }}</td>
                                     <td>{{ $item->old_value }}</td>
                                     <td>{{ $item->new_value }}</td>

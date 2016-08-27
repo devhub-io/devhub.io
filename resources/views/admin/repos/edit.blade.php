@@ -45,7 +45,7 @@
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">图片</label>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
                                     <input type="hidden" name="image" value="{{ $repository->image }}" id="image_id">
-                                    <img src="{{ image_url($repository->image, ['w' => 100]) }}" alt="" id="image_url">
+                                    <img src="{{ $repository->image > 0 ? image_url($repository->image, ['w' => 100]) : '' }}" alt="" id="image_url">
                                     <button class="btn btn-info" type="button" data-toggle="modal" data-target="#imagesModal">选择图片</button>
                                 </div>
                             </div>
