@@ -79,6 +79,9 @@
                                         </li>
                                         <li title="issues">
                                             <i class="glyphicon glyphicon-adjust"></i> {{ $item->open_issues_count }}
+                                        </li>|
+                                        <li title="Pageviews">
+                                            <i class="glyphicon glyphicon-modal-window"></i> {{ $item->view_number }}
                                         </li>
                                     </ul>
                                 </td>

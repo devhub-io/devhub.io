@@ -11,6 +11,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use Auth;
 use Cache;
 use DB;
 use App;
@@ -123,7 +124,7 @@ class HomeController extends Controller
 
         $parsedown = new \Parsedown();
         $markdown = $parsedown->text($repos->readme);
-        $markdown = str_replace('<a', '<a rel="nofollow" ', $markdown);
+        $markdown = str_replace('<a', '<a rel="nofollow noreferrer" ', $markdown);
 
         SEO::setTitle($repos->title);
         SEO::setDescription($repos->description);
@@ -140,6 +141,12 @@ class HomeController extends Controller
                     }
                 }
             }
+        }
+
+        // Pageviews
+        if((Auth::id() && Auth::id() != 1) || !Auth::check()) {
+            $repos->view_number = $repos->view_number + 1;
+            $repos->save();
         }
 
         return view('front.repos', compact('repos', 'markdown'));
