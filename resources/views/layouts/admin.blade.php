@@ -243,6 +243,8 @@
 <script src="/components/gentelella/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
 <!-- iCheck -->
 <script src="/components/gentelella/vendors/iCheck/icheck.min.js"></script>
+<!-- Custom Theme Scripts -->
+<script src="/components/gentelella/build/js/custom.min.js"></script>
 
 @yield('scripts')
 </body>
