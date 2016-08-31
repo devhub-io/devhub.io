@@ -10,14 +10,15 @@ services:
   - redis
 
 before_script:
-- mkdir -p shippable/testresults
-- mkdir -p shippable/codecoverage
-- sudo apt-get update
-- sudo apt-get install php-mbstring
-- cp .env.example .env
-- composer self-update
-- composer install
-- php artisan key:generate
+  - mkdir -p shippable/testresults
+  - mkdir -p shippable/codecoverage
+  - sudo apt-get update
+  - sudo apt-get install php-mbstring
+  - echo "zend_extension = xdebug.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  - cp .env.example .env
+  - composer self-update
+  - composer install
+  - php artisan key:generate
 
 build:
   ci:
