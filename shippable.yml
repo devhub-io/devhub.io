@@ -13,7 +13,7 @@ before_script:
   - sudo apt-get update
   - sudo apt-get install php-mbstring
   - sudo apt-get install php-xdebug
-  - sudo apt-get install php-pdo
+  - sudo apt-get install php-sqlite3
   - cp .env.example .env
   - composer self-update
   - composer install
