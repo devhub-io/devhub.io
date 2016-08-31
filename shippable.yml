@@ -23,4 +23,4 @@ build:
   ci:
     - mkdir -p shippable/testresults
     - mkdir -p shippable/codecoverage
-    #- phpunit  --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage
+    - phpunit  --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage

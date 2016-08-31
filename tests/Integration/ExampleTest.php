@@ -13,7 +13,7 @@ class ExampleTest extends TestCase
      */
     public function testHome()
     {
-        // $this->visit('/');
+         $this->visit('/')->seeInElement('title', 'DevelopHub');
     }
 
     /**
