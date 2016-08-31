@@ -13,6 +13,18 @@ class ExampleTest extends TestCase
      */
     public function testHome()
     {
-        $this->visit('/');
+        // $this->visit('/');
+    }
+
+    /**
+     * test Database
+     *
+     * @return void
+     */
+    public function testDatabase()
+    {
+        $this->seeInDatabase('users', [
+            'name' => 'admin'
+        ]);
     }
 }

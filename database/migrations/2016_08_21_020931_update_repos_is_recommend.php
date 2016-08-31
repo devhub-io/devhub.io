@@ -13,7 +13,7 @@ class UpdateReposIsRecommend extends Migration
     public function up()
     {
         Schema::table('repos', function (Blueprint $table) {
-            $table->boolean('is_recommend')->defalut(false);
+            $table->boolean('is_recommend')->default(false);
         });
     }
 

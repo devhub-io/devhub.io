@@ -22,4 +22,17 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
 
         return $app;
     }
+
+    /**
+     * Setup the test environment.
+     *
+     * @return void
+     */
+    protected function setUp()
+    {
+        parent::setUp();
+
+        $this->artisan('migrate');
+        $this->seed();
+    }
 }

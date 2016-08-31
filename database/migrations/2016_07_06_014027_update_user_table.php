@@ -13,7 +13,7 @@ class UpdateUserTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('google2fa_secret_key');
+            $table->string('google2fa_secret_key')->default('');
         });
     }
 

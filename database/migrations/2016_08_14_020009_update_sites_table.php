@@ -13,7 +13,7 @@ class UpdateSitesTable extends Migration
     public function up()
     {
         Schema::table('sites', function (Blueprint $table) {
-            $table->integer('user_id');
+            $table->integer('user_id')->default(0);
         });
     }
 

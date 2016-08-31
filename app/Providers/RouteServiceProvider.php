@@ -49,7 +49,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapApiRoutes();
 
-        //
+        $this->breadcrumbs();
     }
 
     /**
@@ -85,5 +85,13 @@ class RouteServiceProvider extends ServiceProvider
         ], function ($router) {
             require base_path('routes/api.php');
         });
+    }
+
+    /**
+     * Breadcrumbs
+     */
+    protected function breadcrumbs()
+    {
+        require_once base_path('routes/breadcrumbs.php');
     }
 }

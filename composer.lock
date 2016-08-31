@@ -781,16 +781,16 @@
         },
         {
             "name": "davejamesmiller/laravel-breadcrumbs",
-            "version": "3.0.0",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/davejamesmiller/laravel-breadcrumbs.git",
-                "reference": "5a5d5d1b1f5780359604f7fde11bbf810ff3e9e4"
+                "reference": "460bf79e83ff9e3db1e3f1c40169d8893893f8ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/davejamesmiller/laravel-breadcrumbs/zipball/5a5d5d1b1f5780359604f7fde11bbf810ff3e9e4",
-                "reference": "5a5d5d1b1f5780359604f7fde11bbf810ff3e9e4",
+                "url": "https://api.github.com/repos/davejamesmiller/laravel-breadcrumbs/zipball/460bf79e83ff9e3db1e3f1c40169d8893893f8ff",
+                "reference": "460bf79e83ff9e3db1e3f1c40169d8893893f8ff",
                 "shasum": ""
             },
             "require": {
@@ -800,7 +800,7 @@
             },
             "require-dev": {
                 "mockery/mockery": "0.9.*",
-                "orchestra/testbench": "3.0.*",
+                "orchestra/testbench": "3.2.*|3.3.*",
                 "phpunit/phpunit": "4.*",
                 "satooshi/php-coveralls": "0.6.*"
             },
@@ -822,11 +822,11 @@
                 }
             ],
             "description": "A simple Laravel-style way to create breadcrumbs in Laravel 4+.",
-            "homepage": "https://github.com/davejamesmiller/laravel-breadcrumbs",
+            "homepage": "http://laravel-breadcrumbs.davejamesmiller.com",
             "keywords": [
                 "laravel"
             ],
-            "time": "2015-02-08 21:44:39"
+            "time": "2016-08-28 16:57:03"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1197,22 +1197,22 @@
         },
         {
             "name": "guzzle/guzzle",
-            "version": "v3.8.1",
+            "version": "v3.9.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "4de0618a01b34aa1c8c33a3f13f396dcd3882eba"
+                "url": "https://github.com/guzzle/guzzle3.git",
+                "reference": "0645b70d953bc1c067bbc8d5bc53194706b628d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/4de0618a01b34aa1c8c33a3f13f396dcd3882eba",
-                "reference": "4de0618a01b34aa1c8c33a3f13f396dcd3882eba",
+                "url": "https://api.github.com/repos/guzzle/guzzle3/zipball/0645b70d953bc1c067bbc8d5bc53194706b628d9",
+                "reference": "0645b70d953bc1c067bbc8d5bc53194706b628d9",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
                 "php": ">=5.3.3",
-                "symfony/event-dispatcher": ">=2.1"
+                "symfony/event-dispatcher": "~2.1"
             },
             "replace": {
                 "guzzle/batch": "self.version",
@@ -1239,18 +1239,21 @@
                 "guzzle/stream": "self.version"
             },
             "require-dev": {
-                "doctrine/cache": "*",
-                "monolog/monolog": "1.*",
+                "doctrine/cache": "~1.3",
+                "monolog/monolog": "~1.0",
                 "phpunit/phpunit": "3.7.*",
-                "psr/log": "1.0.*",
-                "symfony/class-loader": "*",
-                "zendframework/zend-cache": "<2.3",
-                "zendframework/zend-log": "<2.3"
+                "psr/log": "~1.0",
+                "symfony/class-loader": "~2.1",
+                "zendframework/zend-cache": "2.*,<2.3",
+                "zendframework/zend-log": "2.*,<2.3"
+            },
+            "suggest": {
+                "guzzlehttp/guzzle": "Guzzle 5 has moved to a new package name. The package you have installed, Guzzle 3, is deprecated."
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.8-dev"
+                    "dev-master": "3.9-dev"
                 }
             },
             "autoload": {
@@ -1274,7 +1277,7 @@
                     "homepage": "https://github.com/guzzle/guzzle/contributors"
                 }
             ],
-            "description": "Guzzle is a PHP HTTP client library and framework for building RESTful web service clients",
+            "description": "PHP HTTP client. This library is deprecated in favor of https://packagist.org/packages/guzzlehttp/guzzle",
             "homepage": "http://guzzlephp.org/",
             "keywords": [
                 "client",
@@ -1286,7 +1289,7 @@
                 "web service"
             ],
             "abandoned": "guzzlehttp/guzzle",
-            "time": "2014-01-28 22:29:15"
+            "time": "2015-03-18 18:23:50"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -1515,16 +1518,16 @@
         },
         {
             "name": "illuminate/notifications",
-            "version": "v5.3.0",
+            "version": "v5.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/notifications.git",
-                "reference": "c106f3025aae726f54c64f554b8522269fbf2028"
+                "reference": "df688e46eaa77a4f54d7c21570fd2cf51f0d5091"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/notifications/zipball/c106f3025aae726f54c64f554b8522269fbf2028",
-                "reference": "c106f3025aae726f54c64f554b8522269fbf2028",
+                "url": "https://api.github.com/repos/illuminate/notifications/zipball/df688e46eaa77a4f54d7c21570fd2cf51f0d5091",
+                "reference": "df688e46eaa77a4f54d7c21570fd2cf51f0d5091",
                 "shasum": ""
             },
             "require": {
@@ -1563,7 +1566,7 @@
             ],
             "description": "The Illuminate Notifications package.",
             "homepage": "https://laravel.com",
-            "time": "2016-08-21 21:33:43"
+            "time": "2016-08-26 17:24:59"
         },
         {
             "name": "intervention/image",
@@ -1929,16 +1932,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.3.2",
+            "version": "v5.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "2213ca11f6fa849ca7c96308934cc6881ab434e8"
+                "reference": "7159ffbadc79558a42ece2cdd1ec2e7e13105b5d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/2213ca11f6fa849ca7c96308934cc6881ab434e8",
-                "reference": "2213ca11f6fa849ca7c96308934cc6881ab434e8",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/7159ffbadc79558a42ece2cdd1ec2e7e13105b5d",
+                "reference": "7159ffbadc79558a42ece2cdd1ec2e7e13105b5d",
                 "shasum": ""
             },
             "require": {
@@ -2052,20 +2055,20 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-08-24 23:23:29"
+            "time": "2016-08-26 21:40:26"
         },
         {
             "name": "laravel/scout",
-            "version": "v1.0.0",
+            "version": "v1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/scout.git",
-                "reference": "fdf4030d6921aec38c51cf546fd28e8672cbc878"
+                "reference": "5f374227d054da41031b452522322361c5fb0f94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/scout/zipball/fdf4030d6921aec38c51cf546fd28e8672cbc878",
-                "reference": "fdf4030d6921aec38c51cf546fd28e8672cbc878",
+                "url": "https://api.github.com/repos/laravel/scout/zipball/5f374227d054da41031b452522322361c5fb0f94",
+                "reference": "5f374227d054da41031b452522322361c5fb0f94",
                 "shasum": ""
             },
             "require": {
@@ -2112,7 +2115,7 @@
                 "laravel",
                 "search"
             ],
-            "time": "2016-08-22 00:18:05"
+            "time": "2016-08-30 15:30:20"
         },
         {
             "name": "laravel/socialite",
@@ -3060,16 +3063,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v1.4.1",
+            "version": "v2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "c7e26a21ba357863de030f0b9e701c7d04593774"
+                "reference": "088c04e2f261c33bed6ca5245491cfca69195ccf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/c7e26a21ba357863de030f0b9e701c7d04593774",
-                "reference": "c7e26a21ba357863de030f0b9e701c7d04593774",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/088c04e2f261c33bed6ca5245491cfca69195ccf",
+                "reference": "088c04e2f261c33bed6ca5245491cfca69195ccf",
                 "shasum": ""
             },
             "require": {
@@ -3104,20 +3107,20 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2016-03-18 20:34:03"
+            "time": "2016-04-03 06:00:07"
         },
         {
             "name": "php-http/curl-client",
-            "version": "v1.5.0",
+            "version": "v1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/curl-client.git",
-                "reference": "fc7209fd29858718d444d41eb88f42188aeb7af4"
+                "reference": "8603d1529163fe4f353c61e7abb4e4ec0630dab3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/curl-client/zipball/fc7209fd29858718d444d41eb88f42188aeb7af4",
-                "reference": "fc7209fd29858718d444d41eb88f42188aeb7af4",
+                "url": "https://api.github.com/repos/php-http/curl-client/zipball/8603d1529163fe4f353c61e7abb4e4ec0630dab3",
+                "reference": "8603d1529163fe4f353c61e7abb4e4ec0630dab3",
                 "shasum": ""
             },
             "require": {
@@ -3160,7 +3163,7 @@
                 "curl",
                 "http"
             ],
-            "time": "2016-08-03 08:46:57"
+            "time": "2016-08-29 07:54:59"
         },
         {
             "name": "php-http/discovery",
@@ -4049,21 +4052,20 @@
         },
         {
             "name": "roumen/sitemap",
-            "version": "v2.6.3",
+            "version": "v2.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RoumenDamianoff/laravel-sitemap.git",
-                "reference": "5d4ccd82e94edf9ac029196ae557399a557b12bd"
+                "reference": "b56f9cf336c04257316bfdc4476e1f5eb875204e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RoumenDamianoff/laravel-sitemap/zipball/5d4ccd82e94edf9ac029196ae557399a557b12bd",
-                "reference": "5d4ccd82e94edf9ac029196ae557399a557b12bd",
+                "url": "https://api.github.com/repos/RoumenDamianoff/laravel-sitemap/zipball/b56f9cf336c04257316bfdc4476e1f5eb875204e",
+                "reference": "b56f9cf336c04257316bfdc4476e1f5eb875204e",
                 "shasum": ""
             },
             "require": {
                 "illuminate/support": "~5",
-                "paragonie/random_compat": "~1",
                 "php": ">=5.5.9"
             },
             "require-dev": {
@@ -4082,19 +4084,19 @@
             "authors": [
                 {
                     "name": "Roumen Damianoff",
-                    "email": "roumen@dawebs.com",
+                    "email": "dev@roumen.it",
                     "homepage": "https://roumen.it",
                     "role": "Developer"
                 }
             ],
-            "description": "A simple sitemap generator for Laravel.",
+            "description": "A not so simple sitemap generator for Laravel.",
             "homepage": "https://roumen.it/projects/laravel-sitemap",
             "keywords": [
                 "Sitemap",
                 "generator",
                 "laravel"
             ],
-            "time": "2016-04-27 17:02:46"
+            "time": "2016-08-27 18:07:27"
         },
         {
             "name": "simplesoftwareio/simple-qrcode",
@@ -4488,27 +4490,27 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v3.1.3",
+            "version": "v2.8.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "c0c00c80b3a69132c4e55c3e7db32b4a387615e5"
+                "reference": "889983a79a043dfda68f38c38b6dba092dd49cd8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/c0c00c80b3a69132c4e55c3e7db32b4a387615e5",
-                "reference": "c0c00c80b3a69132c4e55c3e7db32b4a387615e5",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/889983a79a043dfda68f38c38b6dba092dd49cd8",
+                "reference": "889983a79a043dfda68f38c38b6dba092dd49cd8",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.9"
+                "php": ">=5.3.9"
             },
             "require-dev": {
                 "psr/log": "~1.0",
-                "symfony/config": "~2.8|~3.0",
-                "symfony/dependency-injection": "~2.8|~3.0",
-                "symfony/expression-language": "~2.8|~3.0",
-                "symfony/stopwatch": "~2.8|~3.0"
+                "symfony/config": "~2.0,>=2.0.5|~3.0.0",
+                "symfony/dependency-injection": "~2.6|~3.0.0",
+                "symfony/expression-language": "~2.6|~3.0.0",
+                "symfony/stopwatch": "~2.3|~3.0.0"
             },
             "suggest": {
                 "symfony/dependency-injection": "",
@@ -4517,7 +4519,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.1-dev"
+                    "dev-master": "2.8-dev"
                 }
             },
             "autoload": {
@@ -4544,7 +4546,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2016-07-19 10:45:57"
+            "time": "2016-07-28 16:56:28"
         },
         {
             "name": "symfony/finder",
