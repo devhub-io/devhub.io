@@ -15,6 +15,7 @@ use Auth;
 use Cache;
 use DB;
 use App;
+use Flash;
 use SEO;
 use Badger;
 use Config;
@@ -35,6 +36,7 @@ use League\Glide\Responses\LaravelResponseFactory;
 use League\Glide\ServerFactory;
 use League\Glide\Signatures\SignatureException;
 use League\Glide\Signatures\SignatureFactory;
+use Validator;
 
 class HomeController extends Controller
 {
@@ -386,5 +388,48 @@ class HomeController extends Controller
         } else {
             return redirect('/');
         }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function login()
+    {
+        $rulues = ['email' => 'required', 'password' => 'required'];
+        $validator = Validator::make(request()->all(), $rulues);
+        if ($validator->fails()) {
+            Flash::error('Email/Password required');
+            return redirect('auth/login');
+        }
+
+        $loginData = request()->only(['email', 'password']);
+        $is_remember = (boolean)request()->get('is_remember', false);
+
+        if (Auth::validate($loginData)) {
+            Auth::attempt($loginData, $is_remember);
+
+            return redirect()->back();
+        }
+
+        Flash::error('Invalid Email/Password');
+        return redirect()->back();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function register()
+    {
+        return redirect()->back();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect('/');
     }
 }

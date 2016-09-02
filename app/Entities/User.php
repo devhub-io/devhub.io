@@ -40,7 +40,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'google2fa_secret_key'
     ];
 
     /**
@@ -106,7 +106,7 @@ class User extends Authenticatable
         if ($this->id == 1) {
             return env('PUSHOVER_USER_KEY');
         }
-        return $this->pushover;
+        return null;
     }
 
 }

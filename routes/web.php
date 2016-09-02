@@ -48,10 +48,15 @@ Route::group(['domain' => env('WWW_DOMAIN'), 'namespace' => 'Front', 'prefix' =>
 
     # Link
     Route::get('link', 'HomeController@link');
+
+    # User
+    Route::post('login', 'HomeController@login');
+    Route::post('register', 'HomeController@register');
+    Route::get('logout', 'HomeController@logout');
 });
 
 # Admin
-Route::group(['domain' => env('WWW_DOMAIN'), 'prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function () {
+Route::group(['domain' => env('WWW_DOMAIN'), 'prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin'], function () {
     Route::get('/', 'HomeController@index');
 
     # Repos

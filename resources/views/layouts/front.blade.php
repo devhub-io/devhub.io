@@ -29,7 +29,7 @@
             <div class="col-md-8">
                 <div class="user-menu">
                     <ul>
-                        <li><a href="#"><i class="fa fa-user"></i> @lang('front.my_account')</a></li>
+                        <li><a href="javascript:void(0);" data-toggle="modal" data-target="#loginModal"><i class="fa fa-user"></i> @lang('front.my_account')</a></li>
                         <li><a href="{{ l_url('sites') }}"><i class="fa fa-sitemap"></i> @lang('front.sites')</a></li>
                         {{--<li><a href="{{ l_url('submit') }}"><i class="fa fa-plus"></i> @lang('front.submit_repository')</a></li>--}}
                     </ul>
@@ -185,6 +185,43 @@
         </div>
     </div>
 </div> <!-- End footer bottom area -->
+
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Login</h4>
+            </div>
+            <div class="modal-body">
+                <form action="{{ l_url('login') }}" method="post">
+                    {!! csrf_field() !!}
+                    <div class="form-group">
+                        <label for="inputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="inputEmail1" placeholder="Email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword">Password</label>
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password">
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="is_remember" value="1"> Remember Password
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-default">Login</button>
+                </form>
+                <hr>
+                <h5>Another Account login</h5>
+                <a href="#" style="margin-right: 30px;"><i class="fa fa-github fa-3x"></i></a>
+                <a href="#" style="margin-right: 30px;"><i class="fa fa-bitbucket fa-3x"></i></a>
+                <a href="#" style="margin-right: 30px;"><i class="fa fa-google fa-3x"></i></a>
+                <a href="#" style="margin-right: 30px;"><i class="fa fa-facebook fa-3x"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
