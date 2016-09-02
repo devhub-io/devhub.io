@@ -86,3 +86,16 @@ if (!function_exists('link_url')) {
         return url("link?target=" . urlencode($url));
     }
 }
+
+if (!function_exists('stackoverflow_tagged_url')) {
+    /**
+     * stackoverflow tagged url
+     *
+     * @param $tag
+     * @return string
+     */
+    function stackoverflow_tagged_url($tag)
+    {
+        return 'http://stackoverflow.com/questions/tagged/' . $tag;
+    }
+}

@@ -18,8 +18,8 @@ use App;
 use SEO;
 use Badger;
 use Config;
-use UrlSigner;
 use Localization;
+use App\Jobs\GithubFetch;
 use App\Support\Mailgun;
 use Carbon\Carbon;
 use Roumen\Feed\Feed;
@@ -129,6 +129,7 @@ class HomeController extends Controller
         SEO::setTitle($repos->title);
         SEO::setDescription($repos->description);
 
+        // Category
         if ($repos->category_id > 0) {
             $category = $this->categoryRepository->find($repos->category_id);
             if ($category) {
@@ -144,12 +145,19 @@ class HomeController extends Controller
         }
 
         // Pageviews
-        if((Auth::id() && Auth::id() != 1) || !Auth::check()) {
+        if ((Auth::id() && Auth::id() != 1) || !Auth::check()) {
             $repos->view_number = $repos->view_number + 1;
             $repos->save();
         }
 
-        return view('front.repos', compact('repos', 'markdown'));
+        // Tag
+        $tag = '';
+        preg_match(GithubFetch::URL_REGEX, $repos->github, $matches);
+        if ($matches) {
+            $tag = $matches[2];
+        }
+
+        return view('front.repos', compact('repos', 'markdown', 'tag'));
     }
 
     /**
@@ -373,7 +381,7 @@ class HomeController extends Controller
     public function link()
     {
         $target = request()->get('target');
-        if($target) {
+        if ($target) {
             return redirect()->to($target);
         } else {
             return redirect('/');

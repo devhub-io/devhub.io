@@ -31,11 +31,12 @@
                 </div>
                 <div class="menu hidden-xs">
                     @if($repos->homepage)
-                    <a target="_blank" href="{{ link_url($repos->homepage) }}" rel="nofollow"><i class="fa fa-home"></i> @lang('front.homepage') </a>
+                    <a target="_blank" href="{{ link_url($repos->homepage) }}" rel="nofollow"><i class="fa fa-home fa-2x"></i> @lang('front.homepage') </a>
                     @endif
                     @if($repos->github)
-                    <a target="_blank" href="{{ link_url($repos->github) }}" class="gitbtn" rel="nofollow"><i class="fa fa-github"></i> Github </a>
+                    <a target="_blank" href="{{ link_url($repos->github) }}" class="gitbtn" rel="nofollow"><i class="fa fa-github fa-2x"></i> Github </a>
                     @endif
+                    <a target="_blank" href="{{ link_url(stackoverflow_tagged_url($tag)) }}" class="gitbtn" rel="nofollow"><i class="fa fa-stack-overflow fa-2x"></i> Questions </a>
                 </div>
                 <div class="params hidden-xs">
                     <div style="border-left: 0" title="@lang('front.stargazers_count')">

@@ -30,6 +30,11 @@ class GithubFetch implements ShouldQueue
     protected $repos_id;
 
     /**
+     * Regex
+     */
+    const URL_REGEX = "/https?:\\/\\/github\\.com\\/([0-9a-zA-Z\\-\\.]*)\\/([0-9a-zA-Z\\-\\.]*)/";
+
+    /**
      * Create a new job instance.
      *
      * @param $user_id
@@ -50,8 +55,7 @@ class GithubFetch implements ShouldQueue
      */
     public function handle(ReposRepository $reposRepository)
     {
-        $re = "/https?:\\/\\/github\\.com\\/([0-9a-zA-Z\\-\\.]*)\\/([0-9a-zA-Z\\-\\.]*)/";
-        preg_match($re, $this->url, $matches);
+        preg_match(self::URL_REGEX, $this->url, $matches);
         if ($matches) {
             try {
                 $client = new \Github\Client();
