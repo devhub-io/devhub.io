@@ -55,8 +55,13 @@ return [
     ],
 
     'pushbullet' => [
-        'access_token' => env('PUSHBULLET_ACCESS_TOKEN')
-    ]
+        'access_token' => env('PUSHBULLET_ACCESS_TOKEN'),
+    ],
 
+    'bitbucket' => [
+        'client_id' => env('BITBUCKET_CLIENT_ID'),
+        'client_secret' => env('BITBUCKET_CLIENT_SECRET'),
+        'redirect' => env('BITBUCKET_REDIRECT'),
+    ],
 
 ];

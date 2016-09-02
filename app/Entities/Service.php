@@ -26,4 +26,12 @@ class Service extends Model implements Transformable
      * @var array
      */
     protected $fillable = ['user_id', 'provider', 'name', 'token', 'secret', 'refresh_token', 'expires_at', 'options'];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Entities\User');
+    }
 }

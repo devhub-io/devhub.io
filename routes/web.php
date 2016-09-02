@@ -53,6 +53,12 @@ Route::group(['domain' => env('WWW_DOMAIN'), 'namespace' => 'Front', 'prefix' =>
     Route::post('login', 'HomeController@login');
     Route::post('register', 'HomeController@register');
     Route::get('logout', 'HomeController@logout');
+
+    # Socialite
+    Route::get('socialite/github/redirect', 'SocialiteController@redirectToProviderGithub');
+    Route::get('socialite/github/callback', 'SocialiteController@handleProviderCallbackGithub');
+    Route::get('socialite/bitbucket/redirect', 'SocialiteController@redirectToProviderBitbucket');
+    Route::get('socialite/bitbucket/callback', 'SocialiteController@handleProviderCallbackBitbucket');
 });
 
 # Admin
@@ -115,10 +121,6 @@ Route::group(['domain' => env('WWW_DOMAIN'), 'prefix' => 'admin', 'namespace' =>
     Route::get('mail/subscriber', 'MailController@subscriber');
     Route::get('mail/subscriber/{address}', 'MailController@members');
     Route::get('mail/publish', 'MailController@publish');
-
-    # Socialite
-    Route::get('github/redirect', 'SocialiteController@redirectToProviderGithub');
-    Route::get('github/callback', 'SocialiteController@handleProviderCallbackGithub');
 
     # Article
     Route::get('articles', 'ArticleController@index');

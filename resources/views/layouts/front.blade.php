@@ -214,10 +214,8 @@
                 </form>
                 <hr>
                 <h5>Another Account login</h5>
-                <a href="#" style="margin-right: 30px;"><i class="fa fa-github fa-3x"></i></a>
-                <a href="#" style="margin-right: 30px;"><i class="fa fa-bitbucket fa-3x"></i></a>
-                <a href="#" style="margin-right: 30px;"><i class="fa fa-google fa-3x"></i></a>
-                <a href="#" style="margin-right: 30px;"><i class="fa fa-facebook fa-3x"></i></a>
+                <a href="{{ l_url('socialite/github/redirect') }}" style="margin-right: 30px;"><i class="fa fa-github fa-3x"></i></a>
+                <a href="{{ l_url('socialite/bitbucket/redirect') }}" style="margin-right: 30px;"><i class="fa fa-bitbucket fa-3x"></i></a>
             </div>
         </div>
     </div>
