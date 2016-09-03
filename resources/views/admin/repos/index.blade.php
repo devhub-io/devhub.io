@@ -9,6 +9,11 @@
 
             <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <div>
+                        <a href="?sort=view_number" class="btn {{ $sort && $sort == 'view_number' ? 'btn-info' : 'btn-default' }}">浏览量降序排序</a>
+                        <a href="?sort=stargazers_count" class="btn {{ $sort && $sort == 'stargazers_count' ? 'btn-info' : 'btn-default' }}">收藏量降序排序</a>
+                        <a href="{{ url('admin/repos') }}" class="btn btn-warning">清除</a>
+                    </div>
                     <form action="" method="get">
                         <div class="input-group">
                             <input class="form-control" placeholder="Search for..." type="text" name="keyword" value="{{ $keyword }}">

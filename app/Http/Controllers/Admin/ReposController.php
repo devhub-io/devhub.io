@@ -59,10 +59,11 @@ class ReposController extends Controller
     public function index()
     {
         $keyword = request()->get('keyword');
+        $sort = request()->get('sort', '');
         $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
-        $repos = $this->repository->searchList($keyword);
+        $repos = $this->repository->searchList($keyword, [], 10, $sort);
 
-        return view('admin.repos.index', compact('repos', 'keyword'));
+        return view('admin.repos.index', compact('repos', 'keyword', 'sort'));
     }
 
     /**
