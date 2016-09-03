@@ -175,7 +175,10 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function searchList($keyword, $where = [], $limit = 10, $sort = '')
     {
-        $builder = $this->model->with('category')->where('title', 'LIKE', '%' . $keyword . '%')->where($where);
+        $builder = $this->model->with('category')->where($where);
+        if ($keyword) {
+            $builder->where('title', 'LIKE', '%' . $keyword . '%');
+        }
         if ($sort) {
             $builder->orderBy($sort, 'desc');
         }
