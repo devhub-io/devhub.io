@@ -26,7 +26,7 @@
             </div>
             <div class="col-md-8 col-sm-8">
                 <div class="repo-title">
-                    <h1>{{ $repos->title }}</h1>
+                    <h1>{{ $repos->title }} <span class="line">{{ $repos->trends }}</span></h1>
                     <p>{{ $repos->description }}</p>
                 </div>
                 <div class="menu hidden-xs">

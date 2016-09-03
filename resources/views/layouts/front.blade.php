@@ -191,6 +191,7 @@
 <script src="{{ cdn_asset(elixir('js/app.js')) }}"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.18.0/algoliasearch.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.21.3/autocomplete.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/peity/3.2.0/jquery.peity.min.js"></script>
 @yield('scripts')
 <script>
     var client = algoliasearch('{{ env('ALGOLIA_APP_ID') }}', '{{ env('ALGOLIA_SEARCH_KEY') }}');
@@ -208,6 +209,8 @@
     ]).on('autocomplete:selected', function (event, suggestion, dataset) {
         console.log(suggestion, dataset);
     });
+
+    $("span.line").peity("line");
 </script>
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
