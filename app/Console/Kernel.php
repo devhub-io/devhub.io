@@ -29,6 +29,7 @@ class Kernel extends ConsoleKernel
         Commands\SyncUserActivatedTime::class,
         Commands\FetchEarliestRepos::class,
         Commands\ReposUpdateTrend::class,
+        Commands\FetchPageUrl::class,
     ];
 
     /**

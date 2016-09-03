@@ -70,6 +70,8 @@ Route::group(['domain' => env('WWW_DOMAIN'), 'prefix' => 'admin', 'namespace' =>
     Route::post('url', 'UrlController@store');
     Route::get('url/{id}/delete', 'UrlController@delete');
     Route::get('url/{id}/fetch', 'UrlController@fetch');
+    Route::post('all_url', 'UrlController@all_url_store');
+    Route::get('fetch_all_url', 'UrlController@fetch_all_url');
 
     # Images
     Route::get('images', 'ImageController@index');
