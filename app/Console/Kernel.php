@@ -58,7 +58,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('develophub:fetch-earliest-repos')->cron('*/25 * * * * *');
 
         // Trend
-        $schedule->command('develophub:repos-update-trend')->weeklyOn(4);
+        $schedule->command('develophub:repos-update-trend')->cron('* * * * 2,6');
     }
 
     /**
