@@ -61,6 +61,7 @@ Route::group(['domain' => env('WWW_DOMAIN'), 'prefix' => 'admin', 'namespace' =>
     Route::get('repos/{id}/history', 'ReposController@history');
     Route::get('repos/{id}/fetch', 'ReposController@fetch');
     Route::get('repos/reindex', 'ReposController@reindex');
+    Route::get('repos/enable', 'ReposController@enable');
 
     # categories
     Route::resource('categories', 'CategoriesController');
