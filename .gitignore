@@ -5,7 +5,7 @@ Homestead.yaml
 Homestead.json
 .env
 .idea
-/storage/url.txt
+/storage/*.txt
 
 # IDE
 .phpstorm.meta.php

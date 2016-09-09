@@ -33,23 +33,27 @@ class FetchPageUrl extends Command
      */
     public function handle()
     {
-        $url = 'https://github-ranking.com/repositories?page=';
-        $regex = "/<a class=\"list-group-item paginated_item\" href=\"(.*)\">/";
+        @unlink(storage_path('url.txt'));
 
-        $github_urls = [];
-        foreach (range(1, 10) as $page) {
+        $url = 'https://github.com/search?o=desc&q=of&s=stars&type=Repositories&utf8=%E2%9C%93&p=';
+        $regex = "/<h3 class=\"repo-list-name\">\s+<a href=\"(.*)\">(.*)<\/a>/";
+
+        foreach (range(1, 100) as $page) {
             $html = file_get_contents($url . $page);
             preg_match_all($regex, $html, $matches);
 
+            $github_urls = [];
             if (isset($matches[1])) {
                 foreach ($matches[1] as $item) {
                     $github_urls[] = 'https://github.com' . $item;
                 }
             }
-        }
+            $text = implode("\n", $github_urls);
+            $handle = fopen(storage_path('url.txt'), 'a+');
+            fwrite($handle, "\n" . $text);
 
-        unlink(storage_path('url.txt'));
-        $text = implode("\n", $github_urls);
-        file_put_contents(storage_path('url.txt'), $text);
+            $this->info("Page: $page");
+            sleep(10);
+        }
     }
 }

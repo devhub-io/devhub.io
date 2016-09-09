@@ -30,6 +30,7 @@ class Kernel extends ConsoleKernel
         Commands\FetchEarliestRepos::class,
         Commands\ReposUpdateTrend::class,
         Commands\FetchPageUrl::class,
+        Commands\DiffUrlFIle::class,
     ];
 
     /**
