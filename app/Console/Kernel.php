@@ -31,6 +31,7 @@ class Kernel extends ConsoleKernel
         Commands\ReposUpdateTrend::class,
         Commands\FetchPageUrl::class,
         Commands\DiffUrlFIle::class,
+        Commands\SettingReposCategory::class,
     ];
 
     /**
