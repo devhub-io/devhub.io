@@ -58,11 +58,18 @@ class ReposController extends Controller
      */
     public function index()
     {
-        $keyword = request()->get('keyword');
+        $keyword = request()->get('keyword', '');
+        $sort = request()->get('sort', '');
         $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
-        $repos = $this->repository->searchList($keyword);
+        $repos = $this->repository->searchList($keyword, [], 10, $sort);
 
-        return view('admin.repos.index', compact('repos', 'keyword'));
+        $ids = [];
+        foreach ($repos as $item) {
+            $ids[] = $item->id;
+        }
+        $ids = implode(',', $ids);
+
+        return view('admin.repos.index', compact('repos', 'keyword', 'sort', 'ids'));
     }
 
     /**
@@ -172,6 +179,21 @@ class ReposController extends Controller
     public function reindex()
     {
         Repos::query()->get()->searchable();
+
+        return redirect()->back();
+    }
+
+    /**
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function enable()
+    {
+        $ids = request()->get('id');
+        $ids = explode(',', $ids);
+        Repos::query()->whereIn('id', $ids ?: [-1])->update([
+            'status' => true,
+        ]);
 
         return redirect()->back();
     }

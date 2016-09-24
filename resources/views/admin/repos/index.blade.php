@@ -9,6 +9,11 @@
 
             <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <div>
+                        <a href="?sort=view_number&keyword={{ $keyword }}" class="btn {{ $sort && $sort == 'view_number' ? 'btn-info' : 'btn-default' }}">浏览量降序排序</a>
+                        <a href="?sort=stargazers_count&keyword={{ $keyword }}" class="btn {{ $sort && $sort == 'stargazers_count' ? 'btn-info' : 'btn-default' }}">收藏量降序排序</a>
+                        <a href="{{ url('admin/repos') }}" class="btn btn-warning">清除</a>
+                    </div>
                     <form action="" method="get">
                         <div class="input-group">
                             <input class="form-control" placeholder="Search for..." type="text" name="keyword" value="{{ $keyword }}">
@@ -30,6 +35,7 @@
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
                             <li><a href="{{ url('admin/repos/reindex') }}" title="重构搜索索引"><i class="fa fa-refresh"></i></a></li>
+                            <li><a href="{{ url('admin/repos/enable?id=' . $ids) }}" title="当前页全部启用"><i class="fa fa-check-square"></i></a></li>
                         </ul>
                         <div class="clearfix"></div>
                     </div>
@@ -110,7 +116,7 @@
                             </tbody>
                         </table>
                         <!-- end project list -->
-                        {{ $repos->appends(['keyword' => $keyword])->links() }}
+                        {{ $repos->appends(['keyword' => $keyword, 'sort' => $sort])->links() }}
                     </div>
                 </div>
             </div>

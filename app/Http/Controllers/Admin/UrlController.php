@@ -16,6 +16,7 @@ use App\Jobs\GithubFetch;
 use App\Entities\ReposUrl;
 use App\Http\Controllers\Controller;
 use App\Repositories\ReposRepository;
+use Carbon\Carbon;
 
 class UrlController extends Controller
 {
@@ -71,5 +72,32 @@ class UrlController extends Controller
         dispatch(new GithubFetch(Auth::id(), $url->url));
 
         return redirect('admin/url');
+    }
+
+    public function all_url_store()
+    {
+        $url = request()->get('url');
+
+        $urls = explode("\n", $url);
+        $insert = [];
+        foreach ($urls as $item) {
+            $insert[] = ['url' => trim($item), 'created_at' => Carbon::now()];
+        }
+
+        ReposUrl::insert($insert);
+
+        return redirect()->back();
+    }
+
+    public function fetch_all_url()
+    {
+        $urls = ReposUrl::query()->get();
+
+        foreach ($urls as $item) {
+            dispatch(new GithubFetch(Auth::id(), $item->url));
+            $item->delete();
+        }
+
+        return redirect()->back();
     }
 }

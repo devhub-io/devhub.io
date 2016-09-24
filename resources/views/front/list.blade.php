@@ -41,6 +41,7 @@
                                     <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->image > 0 ? image_url($item->image, ['h' => 200]) : cdn_asset('img/200x200.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="lazyload"></a>
                                     <div class="caption">
                                         <a href="{{ l_url('repos', [$item->slug]) }}"><h3>{{ $item->title }}</h3></a>
+                                        <span class="line">{{ $item->trends }}</span>
                                         <p>{{ $item->description }}</p>
                                     </div>
                                 </div>

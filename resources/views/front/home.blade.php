@@ -104,6 +104,9 @@
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i> {{ $item->stargazers_count }}
                         </div>
+                        <div title="Trends">
+                            <span class="line">{{ $item->trends }}</span>
+                        </div>
                     </div>
                     @endforeach
                 </div>
@@ -119,6 +122,9 @@
                             <div class="product-wid-rating">
                                 <i class="fa fa-star"></i> {{ $item->stargazers_count }}
                             </div>
+                            <div title="Trends">
+                                <span class="line">{{ $item->trends }}</span>
+                            </div>
                         </div>
                     @endforeach
                 </div>
@@ -133,6 +139,9 @@
                             <h2><a href="{{ l_url('repos', [$item->slug]) }}">{{ $item->title }}</a></h2>
                             <div class="product-wid-rating">
                                 <i class="fa fa-star"></i> {{ $item->stargazers_count }}
+                            </div>
+                            <div title="Trends">
+                                <span class="line">{{ $item->trends }}</span>
                             </div>
                         </div>
                     @endforeach

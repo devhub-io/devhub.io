@@ -17,6 +17,8 @@
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
                             <li><a href="javascript:void(0);" data-toggle="modal" data-target="#addModal"><i class="fa fa-plus"></i></a></li>
+                            <li><a href="javascript:void(0);" data-toggle="modal" data-target="#addAllModal"><i class="fa fa-plus-circle"></i></a></li>
+                            <li><a href="{{ url('admin/fetch_all_url') }}"><i class="fa fa-send"></i></a></li>
                         </ul>
                         <div class="clearfix"></div>
                     </div>
@@ -65,6 +67,27 @@
                         <div class="form-group">
                             <label for="url">链接</label>
                             <input type="text" id="url" name="url" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-info">添加</button>
+                    </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="addAllModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">批量添加链接</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ url('admin/all_url') }}" method="post" enctype="multipart/form-data">
+                        {!! csrf_field() !!}
+                        <div class="form-group">
+                            <label for="url">链接</label>
+                            <textarea id="url" name="url" class="form-control" rows="20"></textarea>
                         </div>
                         <button type="submit" class="btn btn-info">添加</button>
                     </form>

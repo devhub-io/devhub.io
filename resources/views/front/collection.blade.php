@@ -18,6 +18,7 @@
                                         <a href="{{ l_url('repos', [$item->repos->slug]) }}"><img src="{{ $item->repos->image > 0 ? image_url($item->repos->image, ['h' => 200]) : cdn_asset('img/200x200.png') }}" alt="{{ $item->repos->title }}" title="{{ $item->repos->title }}"></a>
                                         <div class="caption">
                                             <a href="{{ l_url('repos', [$item->repos->slug]) }}"><h3>{{ $item->repos->title }}</h3></a>
+                                            <span class="line">{{ $item->repos->trends }}</span>
                                             <p>{{ $item->repos->description }}</p>
                                         </div>
                                     </div>

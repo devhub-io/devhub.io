@@ -28,6 +28,10 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Commands\SyncUserActivatedTime::class,
         Commands\FetchEarliestRepos::class,
+        Commands\ReposUpdateTrend::class,
+        Commands\FetchPageUrl::class,
+        Commands\DiffUrlFIle::class,
+        Commands\SettingReposCategory::class,
     ];
 
     /**
@@ -54,6 +58,9 @@ class Kernel extends ConsoleKernel
 
         // Fetch
         $schedule->command('develophub:fetch-earliest-repos')->cron('*/25 * * * * *');
+
+        // Trend
+        $schedule->command('develophub:repos-update-trend')->cron('* * * * 2,6');
     }
 
     /**
