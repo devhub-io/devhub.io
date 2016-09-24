@@ -29,7 +29,7 @@
             <div class="col-md-8">
                 <div class="user-menu">
                     <ul>
-                        <li><a href="javascript:void(0);" data-toggle="modal" data-target="#loginModal"><i class="fa fa-user"></i> @lang('front.my_account')</a></li>
+                        <li><a href="javascript:void(0);"><i class="fa fa-user"></i> @lang('front.my_account')</a></li>
                         <li><a href="{{ l_url('sites') }}"><i class="fa fa-sitemap"></i> @lang('front.sites')</a></li>
                         {{--<li><a href="{{ l_url('submit') }}"><i class="fa fa-plus"></i> @lang('front.submit_repository')</a></li>--}}
                     </ul>
@@ -195,7 +195,7 @@
                 <h4 class="modal-title" id="myModalLabel">Login</h4>
             </div>
             <div class="modal-body">
-                <form action="{{ l_url('login') }}" method="post">
+                <form action="#" method="post">
                     {!! csrf_field() !!}
                     <div class="form-group">
                         <label for="inputEmail1">Email address</label>
