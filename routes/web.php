@@ -135,6 +135,10 @@ Route::group(['domain' => env('WWW_DOMAIN'), 'prefix' => 'admin', 'namespace' =>
     Route::post('articles/url', 'ArticleController@url_store');
     Route::post('articles/all_url', 'ArticleController@all_url_store');
     Route::get('articles/fetch_all_url', 'ArticleController@fetch_all_url');
+
+    # Queue
+    Route::get('queue/status', 'QueueController@status');
+    Route::get('failed_jobs/{id}/delete', 'QueueController@failed_jobs_delete');
 });
 
 # Static

@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of develophub.net.
+ *
+ * (c) DevelopHub <master@develophub.net>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\Console\Commands;
 
 use DB;
@@ -44,6 +53,8 @@ class SettingReposCategory extends Command
                 $language = 'cpp';
             } else if ($language == 'c#') {
                 $language = 'c-sharp';
+            } else if ($language == 'objective-c++') {
+                $language = 'objective-cpp';
             }
             $category = DB::table('categories')->where('slug', $language)->first();
             if ($category) {
