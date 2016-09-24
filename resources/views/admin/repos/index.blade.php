@@ -8,12 +8,13 @@
             </div>
 
             <div class="title_right">
-                <div class="col-md-6 col-sm-6 col-xs-12 form-group pull-right top_search">
+                <div class="col-md-7 col-sm-7 col-xs-12 form-group pull-right top_search">
                     <div>
                         <a href="?sort=view_number&keyword={{ $keyword }}" class="btn {{ $sort && $sort == 'view_number' ? 'btn-info' : 'btn-default' }}">浏览量↓</a>
                         <a href="?sort=stargazers_count&keyword={{ $keyword }}" class="btn {{ $sort && $sort == 'stargazers_count' ? 'btn-info' : 'btn-default' }}">收藏量↓</a>
                         <a href="?sort=fetched_at&keyword={{ $keyword }}" class="btn {{ $sort && $sort == 'fetched_at' ? 'btn-info' : 'btn-default' }}">抓取时间↓</a>
                         <a href="?empty=category_id&keyword={{ $keyword }}" class="btn {{ $empty && $empty == 'category_id' ? 'btn-info' : 'btn-default' }}">未设分类</a>
+                        <a href="?empty=status&keyword={{ $keyword }}" class="btn {{ $empty && $empty == 'status' ? 'btn-info' : 'btn-default' }}">禁用</a>
                         <a href="{{ url('admin/repos') }}" class="btn btn-warning">清除</a>
                     </div>
                     <form action="" method="get">
