@@ -60,8 +60,16 @@ class ReposController extends Controller
     {
         $keyword = request()->get('keyword', '');
         $sort = request()->get('sort', '');
+        $empty = request()->get('empty', '');
         $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
-        $repos = $this->repository->searchList($keyword, [], 10, $sort);
+        $where = [];
+        if ($empty) {
+            $where = function ($query) use ($empty) {
+                $query->where("$empty", 0);
+            };
+        }
+
+        $repos = $this->repository->searchList($keyword, $where, 10, $sort);
 
         $ids = [];
         foreach ($repos as $item) {
@@ -69,7 +77,7 @@ class ReposController extends Controller
         }
         $ids = implode(',', $ids);
 
-        return view('admin.repos.index', compact('repos', 'keyword', 'sort', 'ids'));
+        return view('admin.repos.index', compact('repos', 'keyword', 'sort', 'ids', 'empty'));
     }
 
     /**

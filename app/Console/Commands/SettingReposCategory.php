@@ -39,7 +39,13 @@ class SettingReposCategory extends Command
     {
         $repos = Repos::query()->where('category_id', 0)->select('id', 'category_id', 'language')->get();
         foreach ($repos as $item) {
-            $category = DB::table('categories')->where('slug', strtolower($item->language))->first();
+            $language = strtolower($item->language);
+            if ($language == 'c++') {
+                $language = 'cpp';
+            } else if ($language == 'c#') {
+                $language = 'c-sharp';
+            }
+            $category = DB::table('categories')->where('slug', $language)->first();
             if ($category) {
                 $item->category_id = $category->id;
                 $item->save();

@@ -61,6 +61,9 @@ class Kernel extends ConsoleKernel
 
         // Trend
         $schedule->command('develophub:repos-update-trend')->cron('* * * * 2,6');
+
+        // Category
+        $schedule->command('develophub:setting-repos-category')->daily();
     }
 
     /**
