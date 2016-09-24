@@ -113,30 +113,45 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
     }
 
     /**
-     * @param $limit
+     * @param int $limit
+     * @param bool $has_image
      * @return mixed
      */
-    public function findHottest($limit = 5)
+    public function findHottest($limit = 5, $has_image = true)
     {
-        return $this->model->where('status', true)->where('image', '>', 0)->orderBy('stargazers_count', 'DESC')->paginate($limit);
+        $list = $this->model->where('status', true);
+        if ($has_image) {
+            $list->where('image', '>', 0);
+        }
+        return $list->orderBy('stargazers_count', 'DESC')->paginate($limit);
     }
 
     /**
      * @param int $limit
+     * @param bool $has_image
      * @return mixed
      */
-    public function findNewest($limit = 5)
+    public function findNewest($limit = 5, $has_image = true)
     {
-        return $this->model->where('status', true)->where('image', '>', 0)->orderBy('repos_created_at', 'DESC')->paginate($limit);
+        $list = $this->model->where('status', true);
+        if ($has_image) {
+            $list->where('image', '>', 0);
+        }
+        return $list->orderBy('repos_created_at', 'DESC')->paginate($limit);
     }
 
     /**
      * @param int $limit
+     * @param bool $has_image
      * @return mixed
      */
-    public function findTrend($limit = 5)
+    public function findTrend($limit = 5, $has_image = true)
     {
-        return $this->model->where('status', true)->where('image', '>', 0)->orderBy('repos_updated_at', 'DESC')->paginate($limit);
+        $list = $this->model->where('status', true);
+        if ($has_image) {
+            $list->where('image', '>', 0);
+        }
+        return $list->orderBy('repos_updated_at', 'DESC')->paginate($limit);
     }
 
     /**

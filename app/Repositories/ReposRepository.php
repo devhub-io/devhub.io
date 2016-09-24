@@ -40,22 +40,25 @@ interface ReposRepository extends RepositoryInterface
     public function findBySlug($slug);
 
     /**
-     * @param $limit
+     * @param int $limit
+     * @param bool $has_image
      * @return mixed
      */
-    public function findHottest($limit = 5);
+    public function findHottest($limit = 5, $has_image = true);
 
     /**
      * @param int $limit
+     * @param bool $has_image
      * @return mixed
      */
-    public function findNewest($limit = 5);
+    public function findNewest($limit = 5, $has_image = true);
 
     /**
      * @param int $limit
+     * @param bool $has_image
      * @return mixed
      */
-    public function findTrend($limit = 5);
+    public function findTrend($limit = 5, $has_image = true);
 
     /**
      * @param int $limit
