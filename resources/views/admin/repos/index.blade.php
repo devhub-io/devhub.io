@@ -56,7 +56,7 @@
                                 <th>统计</th>
                                 <th>推荐</th>
                                 <th>状态</th>
-                                <th style="width: 20%">操作</th>
+                                <th style="width: 10%">操作</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -109,10 +109,10 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ url('repos', [$item->slug]) }}" target="_blank" class="btn btn-primary btn-xs"><i class="fa fa-home"></i> 前台展示 </a>
-                                    <a href="{{ url("admin/repos/$item->id/fetch") }}" class="btn btn-warning btn-xs"><i class="fa fa-feed"></i> 抓取 </a>
-                                    <a href="{{ url("admin/repos/$item->id/history") }}" class="btn btn-primary btn-xs" target="_blank"><i class="fa fa-history"></i> 修改记录</a>
-                                    <a href="{{ url("admin/repos/$item->id/edit") }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> 修改 </a>
+                                    <a href="{{ url('repos', [$item->slug]) }}" target="_blank" class="btn btn-primary btn-xs"><i class="fa fa-home"></i></a>
+                                    <a href="{{ url("admin/repos/$item->id/history") }}" class="btn btn-info btn-xs" target="_blank" title="修改历史"><i class="fa fa-history"></i></a>
+                                    <a href="{{ url("admin/repos/$item->id/fetch") }}" class="btn btn-warning btn-xs" title="抓取"><i class="fa fa-feed"></i>  </a>
+                                    <a href="{{ url("admin/repos/$item->id/edit") }}" class="btn btn-info btn-xs" title="修改"><i class="fa fa-pencil"></i></a>
                                 </td>
                             </tr>
                             @endforeach
