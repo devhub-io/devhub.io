@@ -59,6 +59,9 @@ Route::group(['domain' => env('WWW_DOMAIN'), 'namespace' => 'Front', 'prefix' =>
     Route::get('socialite/github/callback', 'SocialiteController@handleProviderCallbackGithub');
     Route::get('socialite/bitbucket/redirect', 'SocialiteController@redirectToProviderBitbucket');
     Route::get('socialite/bitbucket/callback', 'SocialiteController@handleProviderCallbackBitbucket');
+
+    # List
+    Route::get('list/{type}', 'HomeController@type_lists');
 });
 
 # Admin

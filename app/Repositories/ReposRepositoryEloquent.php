@@ -118,7 +118,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function findHottest($limit = 5)
     {
-        return $this->model->where('status', true)->where('image', '>', 0)->orderBy('stargazers_count', 'DESC')->limit($limit)->get();
+        return $this->model->where('status', true)->where('image', '>', 0)->orderBy('stargazers_count', 'DESC')->paginate($limit);
     }
 
     /**
@@ -127,7 +127,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function findNewest($limit = 5)
     {
-        return $this->model->where('status', true)->where('image', '>', 0)->orderBy('repos_created_at', 'DESC')->limit($limit)->get();
+        return $this->model->where('status', true)->where('image', '>', 0)->orderBy('repos_created_at', 'DESC')->paginate($limit);
     }
 
     /**
@@ -136,7 +136,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function findTrend($limit = 5)
     {
-        return $this->model->where('status', true)->where('image', '>', 0)->orderBy('repos_updated_at', 'DESC')->limit($limit)->get();
+        return $this->model->where('status', true)->where('image', '>', 0)->orderBy('repos_updated_at', 'DESC')->paginate($limit);
     }
 
     /**

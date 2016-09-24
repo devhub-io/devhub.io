@@ -96,7 +96,7 @@
             <div class="col-md-4">
                 <div class="single-product-widget">
                     <h2 class="product-wid-title">@lang('front.popular')</h2>
-                    <a href="" class="wid-view-more">@lang('front.view_all')</a>
+                    <a href="{{ l_url('list/popular') }}" class="wid-view-more">@lang('front.view_all')</a>
                     @foreach($hot as $item)
                     <div class="single-wid-product">
                         <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->image > 0 ? image_url($item->image, ['w' => 100]) : cdn_asset('img/100x90.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="product-thumb lazyload"></a>
@@ -114,7 +114,7 @@
             <div class="col-md-4">
                 <div class="single-product-widget">
                     <h2 class="product-wid-title">@lang('front.latest')</h2>
-                    <a href="#" class="wid-view-more">@lang('front.view_all')</a>
+                    <a href="{{ l_url('list/newest') }}" class="wid-view-more">@lang('front.view_all')</a>
                     @foreach($new as $item)
                         <div class="single-wid-product">
                             <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->image > 0 ? image_url($item->image, ['w' => 100]) : cdn_asset('img/100x90.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="product-thumb lazyload"></a>
@@ -132,7 +132,7 @@
             <div class="col-md-4">
                 <div class="single-product-widget">
                     <h2 class="product-wid-title">@lang('front.trend')</h2>
-                    <a href="#" class="wid-view-more">@lang('front.view_all')</a>
+                    <a href="{{ l_url('list/trend') }}" class="wid-view-more">@lang('front.view_all')</a>
                     @foreach($trend as $item)
                         <div class="single-wid-product">
                             <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->image > 0 ? image_url($item->image, ['w' => 100]) : cdn_asset('img/100x90.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="product-thumb lazyload"></a>

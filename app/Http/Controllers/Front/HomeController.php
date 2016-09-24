@@ -120,6 +120,34 @@ class HomeController extends Controller
     /**
      * @return \Illuminate\Http\Response
      */
+    public function type_lists($type)
+    {
+        switch($type) {
+            case 'popular':
+                $repos = $this->reposRepository->findHottest(12);
+                $t = 'popular';
+                break;
+            case 'newest':
+                $repos = $this->reposRepository->findNewest(12);
+                $t = 'latest';
+                break;
+            case 'trend':
+                $repos = $this->reposRepository->findTrend(12);
+                $t = 'trend';
+                break;
+            default:
+                $t = '-';
+        }
+
+        $title = trans("front.{$t}");
+        SEO::setTitle($title);
+
+        return view('front.list', compact('repos', 'slug', 'title'));
+    }
+
+    /**
+     * @return \Illuminate\Http\Response
+     */
     public function repos($slug)
     {
         $repos = $this->reposRepository->findBySlug($slug);
