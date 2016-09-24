@@ -49,7 +49,7 @@ class FetchPageUrl extends Command
         $regex = "/<h3 class=\"repo-list-name\">\s+<a href=\"(.*)\">(.*)<\/a>/";
 
         foreach (range(1, 100) as $page) {
-            $html = file_get_contents($url . $page);
+            $html = @file_get_contents($url . $page);
             preg_match_all($regex, $html, $matches);
 
             $github_urls = [];
