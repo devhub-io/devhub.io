@@ -78,7 +78,12 @@ class Repos extends Model implements Transformable
 
         $prev_trend = ReposTrend::where('repos_id', $this->id)->where('id', '<', $today_trend->id)->orderBy('id', 'desc')->first();
         if ($prev_trend) {
-            $trend = ($this->overall() - $prev_trend->overall) / $now->diffInDays(Carbon::parse($prev_trend->date));
+            $diffDay = $now->diffInDays(Carbon::parse($prev_trend->date));
+            if ($diffDay > 0) {
+                $trend = ($this->overall() - $prev_trend->overall) / $now->diffInDays(Carbon::parse($prev_trend->date));
+            } else {
+                $trend = 0;
+            }
         } else {
             $trend = 0;
         }

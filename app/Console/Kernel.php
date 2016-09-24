@@ -57,7 +57,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('develophub:sync-user-activated-time')->everyTenMinutes();
 
         // Fetch
-        $schedule->command('develophub:fetch-earliest-repos')->cron('*/25 * * * * *');
+        $schedule->command('develophub:fetch-earliest-repos')->cron('*/5 * * * * *');
 
         // Trend
         $schedule->command('develophub:repos-update-trend')->cron('* * * * 2,6');

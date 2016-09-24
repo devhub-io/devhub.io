@@ -46,7 +46,7 @@ class FetchEarliestRepos extends Command
      */
     public function handle()
     {
-        $repos = Repos::orderBy('fetched_at')->limit(10)->get();
+        $repos = Repos::orderBy('fetched_at')->limit(50)->get();
         foreach ($repos as $item) {
             dispatch(new GithubFetch(1, $item->github, $item->id));
         }
