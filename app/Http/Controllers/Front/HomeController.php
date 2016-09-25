@@ -122,7 +122,7 @@ class HomeController extends Controller
      */
     public function type_lists($type)
     {
-        switch($type) {
+        switch ($type) {
             case 'popular':
                 $repos = $this->reposRepository->findHottest(12, false);
                 $t = 'popular';
@@ -284,7 +284,7 @@ class HomeController extends Controller
             }
 
             // repos
-            $posts = DB::table('repos')->where('status', 1)->orderBy('created_at', 'desc')->get();
+            $posts = DB::table('repos')->select(['id', 'slug', 'updated_at'])->where('status', 1)->orderBy('created_at', 'desc')->get();
             foreach ($posts as $post) {
                 $sitemap->add(url('repos', [$post->slug]), $post->updated_at, '1.0', 'daily');
             }
