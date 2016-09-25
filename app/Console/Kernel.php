@@ -32,6 +32,7 @@ class Kernel extends ConsoleKernel
         Commands\FetchPageUrl::class,
         Commands\DiffUrlFIle::class,
         Commands\SettingReposCategory::class,
+        Commands\FetchGithubSearch::class,
     ];
 
     /**

@@ -44,26 +44,31 @@ class FetchPageUrl extends Command
     {
         @unlink(storage_path('url.txt'));
 
-        $keyword = 'on';
-        $url = 'https://github.com/search?o=desc&q=' . $keyword . '&s=stars&type=Repositories&utf8=%E2%9C%93&p=';
-        $regex = "/<h3 class=\"repo-list-name\">\s+<a href=\"(.*)\">(.*)<\/a>/";
+        $alphabet = 'cdefghijklmnopqrstuvwxyz';
+        $alphabet = str_split($alphabet);
 
-        foreach (range(1, 100) as $page) {
-            $html = @file_get_contents($url . $page);
-            preg_match_all($regex, $html, $matches);
+        foreach ($alphabet as $a) {
+            $keyword = $a;
+            $url = 'https://github.com/search?o=desc&q=' . $keyword . '&s=stars&type=Repositories&utf8=%E2%9C%93&p=';
+            $regex = "/<h3 class=\"repo-list-name\">\s+<a href=\"(.*)\">(.*)<\/a>/";
 
-            $github_urls = [];
-            if (isset($matches[1])) {
-                foreach ($matches[1] as $item) {
-                    $github_urls[] = 'https://github.com' . $item;
+            foreach (range(1, 100) as $page) {
+                $html = @file_get_contents($url . $page);
+                preg_match_all($regex, $html, $matches);
+
+                $github_urls = [];
+                if (isset($matches[1])) {
+                    foreach ($matches[1] as $item) {
+                        $github_urls[] = 'https://github.com' . $item;
+                    }
                 }
-            }
-            $text = implode("\n", $github_urls);
-            $handle = fopen(storage_path('url.txt'), 'a+');
-            fwrite($handle, "\n" . $text);
+                $text = implode("\n", $github_urls);
+                $handle = fopen(storage_path('url.txt'), 'a+');
+                fwrite($handle, "\n" . $text);
 
-            $this->info("Page: $page");
-            sleep(10);
+                $this->info("Alphabet: $a, Page: $page");
+                sleep(10);
+            }
         }
     }
 }

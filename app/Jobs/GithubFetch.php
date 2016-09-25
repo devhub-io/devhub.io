@@ -1,8 +1,18 @@
 <?php
 
+/*
+ * This file is part of develophub.net.
+ *
+ * (c) DevelopHub <master@develophub.net>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\Jobs;
 
 use Log;
+use App\Entities\Repos;
 use App\Repositories\ReposRepository;
 use App\Entities\Service;
 use Illuminate\Bus\Queueable;
@@ -75,6 +85,9 @@ class GithubFetch implements ShouldQueue
                         $reposRepository->update(['readme' => $readme], $repos->id);
                     }
                 } else {
+                    if ($ex_repos = Repos::where('slug', $matches[1] . '-' . $matches[2])->first()) {
+                        return;
+                    }
                     $repo = $client->api('repo')->show($matches[1], $matches[2]);
                     $repos = $reposRepository->createFromGithubAPI((int)$this->user_id, $repo);
                     if ($repos) {
