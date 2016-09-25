@@ -51,7 +51,7 @@
                             <td>{{ $item->connection }}</td>
                             <td>{{ $item->queue }}</td>
                             <td>{{ $item->payload }}</td>
-                            <td>{{ $item->exception }}</td>
+                            <td>{{ substr($item->exception, 0, 250) }}</td>
                             <td>{{ $item->failed_at }}</td>
                             <td>
                                 <a class="btn btn-danger btn-xs"
