@@ -20,7 +20,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class GithubFetch implements ShouldQueue
+class GithubUpdate implements ShouldQueue
 {
     use InteractsWithQueue, Queueable, SerializesModels;
 
@@ -35,6 +35,11 @@ class GithubFetch implements ShouldQueue
     protected $url;
 
     /**
+     * @var
+     */
+    protected $repos_id;
+
+    /**
      * Regex
      */
     const URL_REGEX = "/https?:\\/\\/github\\.com\\/([0-9a-zA-Z\\-\\.]*)\\/([0-9a-zA-Z\\-\\.]*)/";
@@ -44,11 +49,13 @@ class GithubFetch implements ShouldQueue
      *
      * @param $user_id
      * @param $url
+     * @param int $repos_id
      */
-    public function __construct($user_id, $url)
+    public function __construct($user_id, $url, $repos_id = 0)
     {
         $this->user_id = $user_id;
         $this->url = $url;
+        $this->repos_id = $repos_id;
     }
 
     /**
@@ -68,15 +75,12 @@ class GithubFetch implements ShouldQueue
                     $client->authenticate($github->token, null, \Github\Client::AUTH_URL_TOKEN);
                 }
 
-                if ($ex_repos = Repos::where('slug', $matches[1] . '-' . $matches[2])->first()) {
-                    return;
-                }
-
                 $repo = $client->api('repo')->show($matches[1], $matches[2]);
-                $repos = $reposRepository->createFromGithubAPI((int)$this->user_id, $repo);
-                if ($repos) {
-                    $readme = $client->api('repo')->contents()->readme($matches[1], $matches[2]);
-                    $readme = file_get_contents($readme['download_url']);
+                $repos = $reposRepository->updateFromGithubAPI($this->repos_id, $repo);
+
+                $readme = $client->api('repo')->contents()->readme($matches[1], $matches[2]);
+                $readme = file_get_contents($readme['download_url']);
+                if ($repos->readme != $readme) {
                     $reposRepository->update(['readme' => $readme], $repos->id);
                 }
             } catch (\Exception $e) {

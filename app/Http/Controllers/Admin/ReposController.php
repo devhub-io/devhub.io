@@ -17,7 +17,7 @@ use SEOMeta;
 use App\Entities\Image;
 use App\Entities\Repos;
 use App\Http\Controllers\Controller;
-use App\Jobs\GithubFetch;
+use App\Jobs\GithubUpdate;
 use App\Repositories\CategoryRepository;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
@@ -175,7 +175,7 @@ class ReposController extends Controller
     public function fetch($id)
     {
         $repos = Repos::query()->findOrFail($id);
-        dispatch(new GithubFetch(Auth::id(), $repos->github, $repos->id));
+        dispatch(new GithubUpdate(Auth::id(), $repos->github, $repos->id));
 
         return redirect()->back();
     }
