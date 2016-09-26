@@ -31,8 +31,8 @@ class Kernel extends ConsoleKernel
         Commands\ReposUpdateTrend::class,
         Commands\FetchPageUrl::class,
         Commands\DiffUrlFIle::class,
-        Commands\SettingReposCategory::class,
         Commands\FetchGithubSearch::class,
+        Commands\ReposProcess::class,
     ];
 
     /**
@@ -63,8 +63,8 @@ class Kernel extends ConsoleKernel
         // Trend
         // $schedule->command('develophub:repos-update-trend')->days([1, 5]);
 
-        // Category
-        $schedule->command('develophub:setting-repos-category')->daily();
+        // Process
+        $schedule->command('develophub:repos-process')->daily();
     }
 
     /**

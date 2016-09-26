@@ -15,21 +15,21 @@ use DB;
 use App\Entities\Repos;
 use Illuminate\Console\Command;
 
-class SettingReposCategory extends Command
+class ReposProcess extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'develophub:setting-repos-category';
+    protected $signature = 'develophub:repos-process';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Setting Repos category';
+    protected $description = 'Repos Process';
 
     /**
      * Create a new command instance.
@@ -41,11 +41,24 @@ class SettingReposCategory extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
     public function handle()
     {
+        $this->info('Process .js');
+        $repos = DB::table('repos')->where('title', 'like', '%.js')->where('status', 1)->select(['id'])->get();
+        foreach ($repos as $item) {
+            DB::table('repos')->where('id', $item->id)->update(['status' => 0]);
+            $this->info('Repos: ' . $item->id);
+        }
+
+        $this->info('Process .css');
+        $repos = DB::table('repos')->where('title', 'like', '%.css')->where('status', 1)->select(['id'])->get();
+        foreach ($repos as $item) {
+            DB::table('repos')->where('id', $item->id)->update(['status' => 0]);
+            $this->info('Repos: ' . $item->id);
+        }
+
+        $this->info('Process category');
         $repos = Repos::query()->where('category_id', 0)->select('id', 'category_id', 'language')->get();
         foreach ($repos as $item) {
             $language = strtolower($item->language);
@@ -65,6 +78,7 @@ class SettingReposCategory extends Command
                 $this->info($item->id);
             }
         }
+
         $this->info('All Done!');
     }
 }
