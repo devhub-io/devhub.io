@@ -13,7 +13,6 @@ namespace App\Entities;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Scout\Searchable;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 use Venturecraft\Revisionable\RevisionableTrait;
@@ -22,7 +21,6 @@ class Repos extends Model implements Transformable
 {
     use TransformableTrait;
     use RevisionableTrait;
-    use Searchable;
 
     /**
      * @var array
