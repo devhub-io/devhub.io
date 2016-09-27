@@ -69,7 +69,7 @@ class ReposController extends Controller
             };
         }
 
-        $repos = $this->repository->searchList($keyword, $where, 10, $sort);
+        $repos = $this->repository->searchList($keyword, $where, 100, $sort);
 
         $ids = [];
         foreach ($repos as $item) {
