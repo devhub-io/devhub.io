@@ -44,6 +44,7 @@ class ReposProcess extends Command
      */
     public function handle()
     {
+        // .js
         $this->info('Process .js');
         $repos = DB::table('repos')->where('title', 'like', '%.js')->where('status', 1)->select(['id'])->get();
         foreach ($repos as $item) {
@@ -51,6 +52,7 @@ class ReposProcess extends Command
             $this->info('Repos: ' . $item->id);
         }
 
+        // .css
         $this->info('Process .css');
         $repos = DB::table('repos')->where('title', 'like', '%.css')->where('status', 1)->select(['id'])->get();
         foreach ($repos as $item) {
@@ -58,6 +60,7 @@ class ReposProcess extends Command
             $this->info('Repos: ' . $item->id);
         }
 
+        // category
         $this->info('Process category');
         $repos = Repos::query()->where('category_id', 0)->select('id', 'category_id', 'language')->get();
         foreach ($repos as $item) {
@@ -77,6 +80,15 @@ class ReposProcess extends Command
             } else {
                 $this->info($item->id);
             }
+        }
+
+        // star < 5
+        $this->info('Process star < 5');
+        $repos = Repos::query()->where('stargazers_count', '<', 5)->select('id')->get();
+        foreach ($repos as $item) {
+            $item->status = 0;
+            $item->save();
+            $this->info($item->id);
         }
 
         $this->info('All Done!');
