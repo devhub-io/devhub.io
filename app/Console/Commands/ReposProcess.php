@@ -84,7 +84,7 @@ class ReposProcess extends Command
 
         // star < 5
         $this->info('Process star < 5');
-        $repos = Repos::query()->where('stargazers_count', '<', 5)->select('id')->get();
+        $repos = Repos::query()->where('stargazers_count', '<', 5)->where('image', '<>', 0)->select('id')->get();
         foreach ($repos as $item) {
             $item->status = 0;
             $item->save();

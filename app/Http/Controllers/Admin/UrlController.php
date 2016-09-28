@@ -11,12 +11,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Auth;
+use App\Jobs\GithubPageFetchUrl;
 use App\Jobs\GithubFetch;
 use App\Entities\ReposUrl;
 use App\Http\Controllers\Controller;
 use App\Repositories\ReposRepository;
 use Carbon\Carbon;
+use Auth;
 
 class UrlController extends Controller
 {
@@ -79,9 +80,12 @@ class UrlController extends Controller
         $url = request()->get('url');
 
         $urls = explode("\n", $url);
+        $urls = array_unique(array_filter($urls));
         $insert = [];
         foreach ($urls as $item) {
-            $insert[] = ['url' => trim($item), 'created_at' => Carbon::now()];
+            if (trim($item)) {
+                $insert[] = ['url' => trim($item), 'created_at' => Carbon::now()];
+            }
         }
 
         ReposUrl::insert($insert);
@@ -96,6 +100,18 @@ class UrlController extends Controller
         foreach ($urls as $item) {
             dispatch(new GithubFetch(Auth::id(), $item->url));
             $item->delete();
+        }
+
+        return redirect()->back();
+    }
+
+    public function fetch_page_url()
+    {
+        $keyword = request()->get('url_keyword', '');
+        if ($keyword) {
+            foreach (range(1, 100) as $page) {
+                dispatch(new GithubPageFetchUrl($keyword, $page));
+            }
         }
 
         return redirect()->back();
