@@ -107,7 +107,7 @@ class AnalyticsGithub extends Command
                             'path' => $item['path'],
                             'mode' => $item['mode'],
                             'type' => $item['type'],
-                            'url' => $item['url'],
+                            'url' => isset($item['url']) ? $item['url'] : '',
                         ]);
                     }
                 }
