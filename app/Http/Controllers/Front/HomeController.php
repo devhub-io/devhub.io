@@ -181,13 +181,23 @@ class HomeController extends Controller
         }
 
         // Tag
-        $tag = '';
-        preg_match(GithubFetch::URL_REGEX, $repos->github, $matches);
-        if ($matches) {
-            $tag = $matches[2];
+        $tag = $repos->repo;
+
+        // Languages
+        $languages = [];
+        if ($repos->languages) {
+            $total = 0;
+            foreach ($repos->languages as $item) {
+                $total += $item->bytes;
+            }
+            if ($total) {
+                foreach ($repos->languages as $item) {
+                    $languages[$item->language] = (int)round($item->bytes / $total * 100);
+                }
+            }
         }
 
-        return view('front.repos', compact('repos', 'markdown', 'tag'));
+        return view('front.repos', compact('repos', 'markdown', 'tag', 'languages'));
     }
 
     /**

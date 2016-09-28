@@ -48,6 +48,30 @@ class Repos extends Model implements Transformable
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function tags()
+    {
+        return $this->hasMany('App\Entities\ReposTag');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function contributors()
+    {
+        return $this->hasMany('App\Entities\ReposContributor');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function languages()
+    {
+        return $this->hasMany('App\Entities\ReposLanguage');
+    }
+
+    /**
      * @return integer
      */
     public function overall()

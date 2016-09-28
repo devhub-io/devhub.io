@@ -21,10 +21,10 @@
         {!! Breadcrumbs::render('repos', $repos) !!}
 
         <div class="row" style="margin: 50px 0 50px 0">
-            <div class="col-md-4 col-sm-4 hidden-xs">
+            <div class="col-md-3 col-sm-4 hidden-xs">
                 <img class="cover" src="{{ $repos->image > 0 ? image_url($repos->image, ['w' => 300]) : cdn_asset('img/300x300.png') }}" alt="{{ $repos->title }}" title="{{ $repos->title }}">
             </div>
-            <div class="col-md-8 col-sm-8">
+            <div class="col-md-7 col-sm-8">
                 <div class="repo-title">
                     <h1>{{ $repos->title }} <span class="line">{{ $repos->trends }}</span></h1>
                     <p>{{ $repos->description }}</p>
@@ -53,11 +53,43 @@
                     {{--</div>--}}
                 </div>
             </div>
+            <div class="col-md-2">
+                <table class="table">
+                    @foreach($languages as $language => $num)
+                    <tr>
+                        <td>{{ $language }}</td>
+                        <td>{{ $num }}%</td>
+                    </tr>
+                    @endforeach
+                </table>
+            </div>
         </div>
         <div class="row">
-            <article class="col-md-12 markdown-body">
+            <article class="col-md-8 markdown-body">
                 {!! $markdown !!}
             </article>
+
+            <div class="col-md-4">
+                @if($repos->tags)
+                    <h3>Releases</h3>
+                    <div>
+                        @foreach($repos->tags as $tag)
+                            <div>-&nbsp;&nbsp; {{ $tag->name }} <a href="{{ $tag->zipball_url }}" rel="nofollow"><i class="fa fa-file-archive-o"> zip</i></a> <a href="{{ $tag->tarball_url }}" rel="nofollow"><i class="fa fa-file-archive-o"> tar</i></a></div>
+                        @endforeach
+                    </div>
+                @endif
+
+                <br>
+
+                @if($repos->contributors)
+                    <h3>Top Contributors</h3>
+                    @foreach($repos->contributors as $contributor)
+                    <a href="{{ $contributor->html_url }}" target="_blank" rel="nofollow">
+                        <img src="{{ $contributor->avatar_url }}" alt="{{ $contributor->login }}" class="pull-left" width="60" height="60">
+                    </a>
+                    @endforeach
+                @endif
+            </div>
         </div>
     </div>
 @endsection
