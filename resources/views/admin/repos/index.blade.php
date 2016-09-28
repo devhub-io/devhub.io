@@ -8,7 +8,7 @@
             </div>
 
             <div class="title_right">
-                <div class="col-md-7 col-sm-7 col-xs-12 form-group pull-right top_search">
+                <div class="col-md-8 col-sm-8 col-xs-12 form-group pull-right top_search">
                     <div>
                         <a href="?sort=view_number&keyword={{ $keyword }}" class="btn {{ $sort && $sort == 'view_number' ? 'btn-info' : 'btn-default' }}">浏览量↓</a>
                         <a href="?sort=stargazers_count&keyword={{ $keyword }}" class="btn {{ $sort && $sort == 'stargazers_count' ? 'btn-info' : 'btn-default' }}">收藏量↓</a>
@@ -68,6 +68,7 @@
                                     <b>{{ $item->title }}</b>
                                     <br>
                                     <small>抓取于 {{ $item->fetched_at }}</small>
+                                    <br>
                                     <small>分析于 {{ $item->analytics_at }}</small>
                                 </td>
                                 <td><img src="{{ $item->image > 0 ? image_url($item->image, ['w' => 100]) : '' }}" alt=""></td>
