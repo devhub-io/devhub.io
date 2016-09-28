@@ -116,6 +116,7 @@
                 <div class="footer-about-us">
                     <h2><span>DevelopHub</span></h2>
                     <p>@lang('front.about_develophub')</p>
+                    <p>Currently tracking <a href="{{ l_url('list/newest') }}" style="color: white">{{ $repos_total }}</a> open source projects</p>
                     <div class="footer-social">
                         <a target="_blank" href="#"><i class="fa fa-facebook"></i></a>
                         <a target="_blank" href="https://twitter.com/HubDevelop"><i class="fa fa-twitter"></i></a>

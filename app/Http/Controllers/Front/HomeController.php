@@ -67,6 +67,7 @@ class HomeController extends Controller
             Badger::generate('CDN', 'CloudFlare', '#1abc9c', 'plastic'),
             Badger::generate('Framework', 'Laravel', 'blue', 'plastic'),
         ]);
+        view()->share('repos_total', DB::table('repos')->where('status', 1)->count());
     }
 
     /**
