@@ -70,7 +70,7 @@
             </article>
 
             <div class="col-md-4">
-                @if($repos->tags)
+                @if($repos->tags->count() > 0)
                     <h3>Releases</h3>
                     <div>
                         @foreach($repos->tags as $tag)
@@ -81,7 +81,7 @@
 
                 <br>
 
-                @if($repos->contributors)
+                @if($repos->contributors->count() > 0)
                     <h3>Top Contributors</h3>
                     @foreach($repos->contributors as $contributor)
                     <a href="{{ $contributor->html_url }}" target="_blank" rel="nofollow">
