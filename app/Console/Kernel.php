@@ -33,6 +33,7 @@ class Kernel extends ConsoleKernel
         Commands\DiffUrlFIle::class,
         Commands\FetchGithubSearch::class,
         Commands\ReposProcess::class,
+        Commands\AnalyticsGithub::class,
     ];
 
     /**

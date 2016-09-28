@@ -32,6 +32,11 @@ class ReposProcess extends Command
     protected $description = 'Repos Process';
 
     /**
+     * Regex
+     */
+    const URL_REGEX = "/https?:\\/\\/github\\.com\\/([0-9a-zA-Z\\-\\.]*)\\/([0-9a-zA-Z\\-\\.]*)/";
+
+    /**
      * Create a new command instance.
      */
     public function __construct()
@@ -89,6 +94,19 @@ class ReposProcess extends Command
             $item->status = 0;
             $item->save();
             $this->info($item->id);
+        }
+
+        // owner repo
+        $this->info('Process owner repo');
+        $repos = Repos::query()->where('owner', '')->select(['id', 'owner', 'repo', 'github'])->get();
+        foreach ($repos as $item) {
+            preg_match(self::URL_REGEX, $item->github, $matches);
+            if ($matches) {
+                $item->owner = $matches[1];
+                $item->repo = $matches[2];
+                $item->save();
+                $this->info($item->id);
+            }
         }
 
         $this->info('All Done!');
