@@ -13,6 +13,7 @@
                         <a href="?sort=view_number&keyword={{ $keyword }}" class="btn {{ $sort && $sort == 'view_number' ? 'btn-info' : 'btn-default' }}">浏览量↓</a>
                         <a href="?sort=stargazers_count&keyword={{ $keyword }}" class="btn {{ $sort && $sort == 'stargazers_count' ? 'btn-info' : 'btn-default' }}">收藏量↓</a>
                         <a href="?sort=fetched_at&keyword={{ $keyword }}" class="btn {{ $sort && $sort == 'fetched_at' ? 'btn-info' : 'btn-default' }}">抓取时间↓</a>
+                        <a href="?sort=analytics_at&keyword={{ $keyword }}" class="btn {{ $sort && $sort == 'analytics_at' ? 'btn-info' : 'btn-default' }}">分析时间↓</a>
                         <a href="?empty=category_id&keyword={{ $keyword }}" class="btn {{ $empty && $empty == 'category_id' ? 'btn-info' : 'btn-default' }}">未设分类</a>
                         <a href="?empty=status&keyword={{ $keyword }}" class="btn {{ $empty && $empty == 'status' ? 'btn-info' : 'btn-default' }}">禁用</a>
                         <a href="{{ url('admin/repos') }}" class="btn btn-warning">清除</a>
@@ -67,6 +68,7 @@
                                     <b>{{ $item->title }}</b>
                                     <br>
                                     <small>抓取于 {{ $item->fetched_at }}</small>
+                                    <small>分析于 {{ $item->analytics_at }}</small>
                                 </td>
                                 <td><img src="{{ $item->image > 0 ? image_url($item->image, ['w' => 100]) : '' }}" alt=""></td>
                                 <td>{{ $item->category->title or '-' }}</td>
