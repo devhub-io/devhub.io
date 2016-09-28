@@ -192,9 +192,10 @@ class HomeController extends Controller
             }
             if ($total) {
                 foreach ($repos->languages as $item) {
-                    $languages[$item->language] = (int)round($item->bytes / $total * 100);
+                    $languages[$item->language] = round($item->bytes / $total * 100, 2);
                 }
             }
+            $languages = array_slice($languages, 0, 5);
         }
 
         return view('front.repos', compact('repos', 'markdown', 'tag', 'languages'));
