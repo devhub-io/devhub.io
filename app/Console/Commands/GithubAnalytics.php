@@ -11,21 +11,21 @@ use App\Entities\Service;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 
-class AnalyticsGithub extends Command
+class GithubAnalytics extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'develophub:analytics-github';
+    protected $signature = 'develophub:github:analytics';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Analytics Github';
+    protected $description = 'Github Analytics';
 
     /**
      * Create a new command instance.

@@ -5,21 +5,21 @@ namespace App\Console\Commands;
 use DB;
 use Illuminate\Console\Command;
 
-class FetchReadmeUrl extends Command
+class GithubFetchReadmeUrl extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'develophub:fetch-readme-url';
+    protected $signature = 'develophub:github:fetch-readme-url';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Fetch Readme Url';
+    protected $description = 'Github Fetch Readme Url';
 
     /**
      * Regex

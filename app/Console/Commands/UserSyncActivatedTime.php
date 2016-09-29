@@ -15,21 +15,21 @@ use App\Entities\User;
 use Cache;
 use Illuminate\Console\Command;
 
-class SyncUserActivatedTime extends Command
+class UserSyncActivatedTime extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'develophub:sync-user-activated-time';
+    protected $signature = 'develophub:user:sync-activated-time';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Sync user activated time';
+    protected $description = 'User Sync activated time';
 
     /**
      * Create a new command instance.

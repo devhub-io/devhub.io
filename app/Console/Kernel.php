@@ -28,13 +28,13 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\SyncUserActivatedTime::class,
+        Commands\UserSyncActivatedTime::class,
+        Commands\GithubFetchPageUrl::class,
+        Commands\GithubFetchSearch::class,
+        Commands\GithubAnalytics::class,
+        Commands\GithubFetchReadmeUrl::class,
         Commands\ReposUpdateTrend::class,
-        Commands\FetchPageUrl::class,
-        Commands\FetchGithubSearch::class,
         Commands\ReposProcess::class,
-        Commands\AnalyticsGithub::class,
-        Commands\FetchReadmeUrl::class,
     ];
 
     /**
@@ -57,7 +57,7 @@ class Kernel extends ConsoleKernel
             });
 
         // Sync user activated time
-        $schedule->command('develophub:sync-user-activated-time')->everyTenMinutes();
+        $schedule->command('develophub:user:sync-activated-time')->everyTenMinutes();
 
         // Fetch
         $schedule->call(function () {
@@ -71,7 +71,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('develophub:repos-update-trend')->days([1, 5]);
 
         // Process
-        $schedule->command('develophub:repos-process')->daily();
+        $schedule->command('develophub:repos:process')->daily();
     }
 
     /**
