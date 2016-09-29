@@ -30,31 +30,19 @@ class GithubUpdate implements ShouldQueue
     protected $user_id;
 
     /**
-     * @var string
-     */
-    protected $url;
-
-    /**
      * @var
      */
     protected $repos_id;
 
     /**
-     * Regex
-     */
-    const URL_REGEX = "/https?:\\/\\/github\\.com\\/([0-9a-zA-Z\\-\\.]*)\\/([0-9a-zA-Z\\-\\.]*)/";
-
-    /**
      * Create a new job instance.
      *
      * @param $user_id
-     * @param $url
      * @param int $repos_id
      */
-    public function __construct($user_id, $url, $repos_id = 0)
+    public function __construct($user_id, $repos_id)
     {
         $this->user_id = $user_id;
-        $this->url = $url;
         $this->repos_id = $repos_id;
     }
 
@@ -65,28 +53,27 @@ class GithubUpdate implements ShouldQueue
      */
     public function handle(ReposRepository $reposRepository)
     {
-        preg_match(self::URL_REGEX, $this->url, $matches);
-        if ($matches) {
-            try {
-                $client = new \Github\Client();
+        try {
+            $client = new \Github\Client();
 
-                $github = Service::query()->where('provider', 'github')->where('user_id', (int)$this->user_id)->first();
-                if ($github) {
-                    $client->authenticate($github->token, null, \Github\Client::AUTH_URL_TOKEN);
-                }
+            $github = Service::query()->where('provider', 'github')->where('user_id', (int)$this->user_id)->first();
+            if ($github) {
+                $client->authenticate($github->token, null, \Github\Client::AUTH_URL_TOKEN);
+            }
 
-                $repo = $client->api('repo')->show($matches[1], $matches[2]);
+            $find_repos = Repos::query()->select(['id', 'owner', 'repo'])->find($this->repos_id);
+            if ($find_repos) {
+                $repo = $client->repo()->show($find_repos->owner, $find_repos->repo);
                 $repos = $reposRepository->updateFromGithubAPI($this->repos_id, $repo);
 
-                $readme = $client->api('repo')->contents()->readme($matches[1], $matches[2]);
-                $readme = file_get_contents($readme['download_url']);
-                if ($repos->readme != $readme) {
+                $readme = $client->repo()->contents()->readme($find_repos->owner, $find_repos->repo);
+                $readme = @file_get_contents($readme['download_url']);
+                if (!empty($readme) && $repos->readme != $readme) {
                     $reposRepository->update(['readme' => $readme], $repos->id);
                 }
-            } catch (\Exception $e) {
-                Log::error($e->getMessage());
-                Log::error($e->getTraceAsString());
             }
+        } catch (\Exception $e) {
+            Log::error('GithubUpdate ' . $e->getMessage());
         }
     }
 }

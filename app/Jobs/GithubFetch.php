@@ -72,16 +72,17 @@ class GithubFetch implements ShouldQueue
                     return;
                 }
 
-                $repo = $client->api('repo')->show($matches[1], $matches[2]);
+                $repo = $client->repo()->show($matches[1], $matches[2]);
                 $repos = $reposRepository->createFromGithubAPI((int)$this->user_id, $repo);
                 if ($repos) {
-                    $readme = $client->api('repo')->contents()->readme($matches[1], $matches[2]);
-                    $readme = file_get_contents($readme['download_url']);
-                    $reposRepository->update(['readme' => $readme], $repos->id);
+                    $readme = $client->repo()->contents()->readme($matches[1], $matches[2]);
+                    $readme = @file_get_contents($readme['download_url']);
+                    if (!empty($readme)) {
+                        $reposRepository->update(['readme' => $readme], $repos->id);
+                    }
                 }
             } catch (\Exception $e) {
-                Log::error($e->getMessage());
-                Log::error($e->getTraceAsString());
+                Log::error('GithubFetch ' . $e->getMessage());
             }
         }
     }

@@ -12,7 +12,6 @@
 namespace App\Console\Commands;
 
 use App\Entities\Repos;
-use App\Jobs\GithubFetch;
 use App\Jobs\GithubUpdate;
 use Illuminate\Console\Command;
 
@@ -42,14 +41,12 @@ class FetchEarliestRepos extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
     public function handle()
     {
         $repos = Repos::orderBy('fetched_at')->limit(50)->get();
         foreach ($repos as $item) {
-            dispatch(new GithubUpdate(1, $item->github, $item->id));
+            dispatch(new GithubUpdate(1, $item->id));
         }
     }
 }

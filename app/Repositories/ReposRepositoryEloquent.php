@@ -48,6 +48,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function createFromGithubAPI($user_id, array $data)
     {
+        list($owner, $repo) = explode('/', $data['full_name']);
         $slug = str_replace('/', '-', $data['full_name']);
 
         $find = $this->model->where('slug', $slug)->first();
@@ -75,6 +76,8 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
                 'readme' => '',
                 'issue_response' => 0,
                 'is_recommend' => false,
+                'owner' => $owner,
+                'repo' => $repo,
             ]);
         }
     }

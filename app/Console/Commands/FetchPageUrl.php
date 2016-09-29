@@ -44,8 +44,7 @@ class FetchPageUrl extends Command
     {
         @unlink(storage_path('url.txt'));
 
-        $alphabet = 'cdefghijklmnopqrstuvwxyz';
-        $alphabet = str_split($alphabet);
+        $alphabet = ['error', 'warning', 'info'];
 
         foreach ($alphabet as $a) {
             $keyword = $a;
@@ -66,9 +65,11 @@ class FetchPageUrl extends Command
                 $handle = fopen(storage_path('url.txt'), 'a+');
                 fwrite($handle, "\n" . $text);
 
-                $this->info("Alphabet: $a, Page: $page");
+                $this->info("Keyword: $a, Page: $page");
                 sleep(10);
             }
         }
+
+        $this->info('All Done');
     }
 }
