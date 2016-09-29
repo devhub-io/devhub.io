@@ -44,7 +44,7 @@ class FetchPageUrl extends Command
     {
         @unlink(storage_path('url.txt'));
 
-        $alphabet = ['error', 'warning', 'info'];
+        $alphabet = ['php', 'python', 'javascript', 'ruby', 'java', 'swift', 'android', 'objective-c', 'ios', 'nginx', 'apache', 'module'];
 
         foreach ($alphabet as $a) {
             $keyword = $a;

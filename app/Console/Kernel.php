@@ -34,6 +34,7 @@ class Kernel extends ConsoleKernel
         Commands\FetchGithubSearch::class,
         Commands\ReposProcess::class,
         Commands\AnalyticsGithub::class,
+        Commands\FetchReadmeUrl::class,
     ];
 
     /**
