@@ -57,15 +57,15 @@ class Kernel extends ConsoleKernel
             });
 
         // Sync user activated time
+        $schedule->command('develophub:sync-user-activated-time')->everyTenMinutes();
+
+        // Fetch
         $schedule->call(function () {
             $repos = Repos::orderBy('fetched_at')->limit(50)->get();
             foreach ($repos as $item) {
                 dispatch(new GithubUpdate(1, $item->id));
             }
-        })->everyTenMinutes();
-
-        // Fetch
-        $schedule->command('develophub:fetch-earliest-repos')->cron('*/5 * * * * *');
+        })->cron('*/5 * * * * *');
 
         // Trend
         // $schedule->command('develophub:repos-update-trend')->days([1, 5]);
