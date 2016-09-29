@@ -72,6 +72,14 @@ class Repos extends Model implements Transformable
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function badges()
+    {
+        return $this->hasMany('App\Entities\ReposBadge');
+    }
+
+    /**
      * @return integer
      */
     public function overall()

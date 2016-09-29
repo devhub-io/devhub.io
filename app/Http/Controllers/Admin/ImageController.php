@@ -13,9 +13,9 @@ namespace App\Http\Controllers\Admin;
 
 use Cache;
 use File;
+use Flash;
 use App\Entities\Image;
 use App\Http\Controllers\Controller;
-use Flash;
 
 class ImageController extends Controller
 {

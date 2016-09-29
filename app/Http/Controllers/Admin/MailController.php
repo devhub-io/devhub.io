@@ -11,7 +11,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Entities\Repos;
 use App\Http\Controllers\Controller;
 use App\Support\Mailgun;
 

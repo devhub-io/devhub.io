@@ -20,7 +20,7 @@ use SEO;
 use Badger;
 use Config;
 use Localization;
-use App\Jobs\GithubFetch;
+use Validator;
 use App\Support\Mailgun;
 use Carbon\Carbon;
 use Roumen\Feed\Feed;
@@ -36,7 +36,6 @@ use League\Glide\Responses\LaravelResponseFactory;
 use League\Glide\ServerFactory;
 use League\Glide\Signatures\SignatureException;
 use League\Glide\Signatures\SignatureFactory;
-use Validator;
 
 class HomeController extends Controller
 {

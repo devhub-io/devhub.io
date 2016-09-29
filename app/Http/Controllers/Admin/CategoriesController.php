@@ -11,7 +11,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Response;
 use App\Http\Controllers\Controller;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
