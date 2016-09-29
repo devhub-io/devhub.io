@@ -99,3 +99,16 @@ if (!function_exists('stackoverflow_tagged_url')) {
         return 'http://stackoverflow.com/questions/tagged/' . $tag;
     }
 }
+
+if (!function_exists('badge_image_url')) {
+    /**
+     * badge image url
+     *
+     * @param $name
+     * @return \Illuminate\Contracts\Routing\UrlGenerator|string
+     */
+    function badge_image_url($name)
+    {
+        return cdn_asset('img/badges/' . strtolower($name) . '.png');
+    }
+}

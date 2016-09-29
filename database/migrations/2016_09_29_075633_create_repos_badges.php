@@ -16,7 +16,7 @@ class CreateReposBadges extends Migration
         Schema::create('repos_badges', function (Blueprint $table) {
             $table->integer('repos_id')->index();
             $table->string('name', 50)->index();
-            $table->string('package_url');
+            $table->string('url');
         });
     }
 

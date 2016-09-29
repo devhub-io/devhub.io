@@ -15,14 +15,14 @@ use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
-class ReposTree extends Model implements Transformable
+class ReposBadge extends Model implements Transformable
 {
     use TransformableTrait;
 
     /**
      * @var array
      */
-    protected $fillable = ['repos_id', 'name', 'package_url'];
+    protected $fillable = ['repos_id', 'name', 'url'];
 
     /**
      * @var bool

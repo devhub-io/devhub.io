@@ -26,7 +26,12 @@
             </div>
             <div class="col-md-7 col-sm-8">
                 <div class="repo-title">
-                    <h1>{{ $repos->title }} <span class="line">{{ $repos->trends }}</span></h1>
+                    <h1>
+                        {{ $repos->title }} <span class="line" title="Trends">{{ $repos->trends }}</span>
+                        @foreach($repos->badges as $badge)
+                            <img src="{{ badge_image_url($badge->name) }}" alt="{{ $badge->name }} package" title="{{ $badge->name }} package" width="20" height="20">
+                        @endforeach
+                    </h1>
                     <p>{{ $repos->description }}</p>
                 </div>
                 <div class="menu hidden-xs">

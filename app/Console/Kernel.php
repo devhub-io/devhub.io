@@ -33,6 +33,7 @@ class Kernel extends ConsoleKernel
         Commands\GithubFetchSearch::class,
         Commands\GithubAnalytics::class,
         Commands\GithubFetchReadmeUrl::class,
+        Commands\GithubBadges::class,
         Commands\ReposUpdateTrend::class,
         Commands\ReposProcess::class,
     ];
