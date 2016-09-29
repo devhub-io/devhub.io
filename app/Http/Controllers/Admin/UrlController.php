@@ -95,7 +95,7 @@ class UrlController extends Controller
 
     public function fetch_all_url()
     {
-        $urls = ReposUrl::query()->get();
+        $urls = ReposUrl::query()->limit(3000)->get();
 
         foreach ($urls as $item) {
             dispatch(new GithubFetch(Auth::id(), $item->url));

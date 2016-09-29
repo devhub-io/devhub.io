@@ -19,7 +19,7 @@
                             <li><a href="javascript:void(0);" data-toggle="modal" data-target="#addModal" title="添加链接"><i class="fa fa-plus"></i></a></li>
                             <li><a href="javascript:void(0);" data-toggle="modal" data-target="#addAllModal" title="添加关键词抓取"><i class="fa fa-plus-circle"></i></a></li>
                             <li><a href="javascript:void(0);" data-toggle="modal" data-target="#fetchKeywordModal" title="批量添加链接"><i class="fa fa-key"></i></a></li>
-                            <li><a href="{{ url('admin/fetch_all_url') }}" title="全部链接添加到队列"><i class="fa fa-send"></i></a></li>
+                            <li><a href="{{ url('admin/fetch_all_url') }}" title="添加到队列"><i class="fa fa-send"></i></a></li>
                         </ul>
                         <div class="clearfix"></div>
                     </div>
