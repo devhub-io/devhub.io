@@ -24,12 +24,13 @@ use Validator;
 use App\Support\Mailgun;
 use Carbon\Carbon;
 use Roumen\Feed\Feed;
-use App\Repositories\CategoryRepository;
 use App\Entities\ReposUrl;
 use App\Entities\Collection;
 use App\Entities\CollectionRepos;
 use App\Entities\Site;
+use App\Entities\Article;
 use App\Http\Controllers\Controller;
+use App\Repositories\CategoryRepository;
 use App\Repositories\ReposRepository;
 use Illuminate\Http\Request;
 use League\Glide\Responses\LaravelResponseFactory;
@@ -60,13 +61,19 @@ class HomeController extends Controller
         $this->reposRepository = $reposRepository;
 
         view()->share('current_category_slug', '');
-        view()->share('one_column', $this->categoryRepository->findWhere(['parent_id' => 0]));
-        view()->share('badger', [
-            Badger::generate('Server', 'Nginx', 'brightgreen', 'plastic'),
-            Badger::generate('CDN', 'CloudFlare', '#1abc9c', 'plastic'),
-            Badger::generate('Framework', 'Laravel', 'blue', 'plastic'),
-        ]);
-        view()->share('repos_total', DB::table('repos')->where('status', 1)->count());
+        view()->share('one_column', Cache::remember('front:one_coumen', 31 * 24 * 60, function () {
+            return $this->categoryRepository->findWhere(['parent_id' => 0]);
+        }));
+        view()->share('badger', Cache::remember('front:badger', 60 * 24, function () {
+            return [
+                Badger::generate('Server', 'Nginx', 'brightgreen', 'plastic'),
+                Badger::generate('CDN', 'CloudFlare', '#1abc9c', 'plastic'),
+                Badger::generate('Framework', 'Laravel', 'blue', 'plastic'),
+            ];
+        }));
+        view()->share('repos_total', Cache::remember('front:repos_total', 60 * 24, function () {
+            return DB::table('repos')->where('status', 1)->count();
+        }));
     }
 
     /**
@@ -79,12 +86,16 @@ class HomeController extends Controller
         $hot = $this->reposRepository->findHottest();
         $new = $this->reposRepository->findNewest();
         $trend = $this->reposRepository->findTrend();
-        $recommend = $this->reposRepository->findRecommend();
+        $recommend = Cache::remember('front:index:recommend', 7 * 24 * 60, function () {
+            return $this->reposRepository->findRecommend();
+        });
 
-        $hot_url = App\Entities\Article::query()->orderBy('up_number', 'desc')->limit(10)->get();
-        $new_url = App\Entities\Article::query()->orderBy('fetched_at', 'desc')->limit(10)->get();
+        $hot_url = Article::query()->orderBy('up_number', 'desc')->limit(10)->get();
+        $new_url = Article::query()->orderBy('fetched_at', 'desc')->limit(10)->get();
 
-        $collections = Collection::where('is_enable', 1)->orderBy('sort')->get();
+        $collections = Cache::remember('front:index:collections', 3 * 24 * 60, function () {
+            return Collection::where('is_enable', 1)->orderBy('sort')->get();
+        });
 
         return view('front.home', compact('hot', 'new', 'trend', 'recommend', 'collections', 'hot_url', 'new_url'));
     }
