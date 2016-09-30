@@ -49,22 +49,6 @@ class ReposProcess extends Command
      */
     public function handle()
     {
-        // .js
-        $this->info('Process .js');
-        $repos = DB::table('repos')->where('title', 'like', '%.js')->where('status', 1)->select(['id'])->get();
-        foreach ($repos as $item) {
-            DB::table('repos')->where('id', $item->id)->update(['status' => 0]);
-            $this->info('Repos: ' . $item->id);
-        }
-
-        // .css
-        $this->info('Process .css');
-        $repos = DB::table('repos')->where('title', 'like', '%.css')->where('status', 1)->select(['id'])->get();
-        foreach ($repos as $item) {
-            DB::table('repos')->where('id', $item->id)->update(['status' => 0]);
-            $this->info('Repos: ' . $item->id);
-        }
-
         // category
         $this->info('Process category');
         $repos = Repos::query()->where('category_id', 0)->select('id', 'category_id', 'language')->get();
