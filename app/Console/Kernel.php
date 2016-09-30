@@ -62,7 +62,7 @@ class Kernel extends ConsoleKernel
 
         // Fetch
         $schedule->call(function () {
-            $repos = Repos::orderBy('fetched_at')->limit(50)->get();
+            $repos = Repos::select('id')->orderBy('fetched_at')->limit(50)->get();
             foreach ($repos as $item) {
                 dispatch(new GithubUpdate(1, $item->id));
             }

@@ -163,7 +163,9 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function findRecommend($limit = 10)
     {
-        return $this->model->where('status', true)->where('image', '>', 0)->where('is_recommend', true)->orderBy('stargazers_count', 'DESC')->limit($limit)->get();
+        return $this->model->where('status', true)
+            ->where('image', '>', 0)
+            ->where('is_recommend', true)->orderBy('stargazers_count', 'DESC')->limit($limit)->get();
     }
 
     /**$limit
