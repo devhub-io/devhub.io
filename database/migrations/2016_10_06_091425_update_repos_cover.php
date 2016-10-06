@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateReposAnalyticsAt extends Migration
+class UpdateReposCover extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class UpdateReposAnalyticsAt extends Migration
     public function up()
     {
         Schema::table('repos', function (Blueprint $table) {
-            $table->timestamp('analytics_at')->nullable();
+            $table->string('cover');
         });
     }
 
@@ -26,7 +26,7 @@ class UpdateReposAnalyticsAt extends Migration
     public function down()
     {
         Schema::table('repos', function (Blueprint $table) {
-            $table->dropColumn('analytics_at');
+            $table->dropColumn('cover');
         });
     }
 }

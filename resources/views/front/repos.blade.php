@@ -22,7 +22,7 @@
 
         <div class="row" style="margin: 50px 0 50px 0">
             <div class="col-md-3 col-sm-4 hidden-xs">
-                <img class="cover" src="{{ $repos->image > 0 ? image_url($repos->image, ['w' => 300]) : cdn_asset('img/300x300.png') }}" alt="{{ $repos->title }}" title="{{ $repos->title }}">
+                <img class="cover" src="{{ $repos->image > 0 ? image_url($repos->image, ['w' => 300]) : ($repos->cover ? $repos->cover : cdn_asset('img/300x300.png')) }}" alt="{{ $repos->title }}" title="{{ $repos->title }}">
             </div>
             <div class="col-md-7 col-sm-8">
                 <div class="repo-title">

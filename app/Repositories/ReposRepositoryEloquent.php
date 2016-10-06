@@ -78,6 +78,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
                 'is_recommend' => false,
                 'owner' => $owner,
                 'repo' => $repo,
+                'cover' => isset($data['owner']['avatar_url']) ? $data['owner']['avatar_url'] : '',
             ]);
         }
     }
@@ -103,6 +104,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
             'repos_created_at' => $data['created_at'],
             'repos_updated_at' => $data['updated_at'],
             'fetched_at' => Carbon::now(),
+            'cover' => isset($data['owner']['avatar_url']) ? $data['owner']['avatar_url'] : '',
         ], $id);
     }
 
