@@ -89,7 +89,7 @@ class ReposUpdateTrend extends Command
 
             $this->info('Ropes: ' . $item->id);
         }
-        
+
         $this->info('All Done!');
     }
 }
