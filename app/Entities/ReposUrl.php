@@ -19,7 +19,6 @@ use Venturecraft\Revisionable\RevisionableTrait;
 class ReposUrl extends Model implements Transformable
 {
     use TransformableTrait;
-    use RevisionableTrait;
 
     /**
      * @var string

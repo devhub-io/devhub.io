@@ -69,10 +69,13 @@ class Kernel extends ConsoleKernel
         })->cron('*/5 * * * * *');
 
         // Trend
-        // $schedule->command('develophub:repos-update-trend')->days([1, 5]);
+        $schedule->command('develophub:repos-update-trend')->mondays();
 
         // Process
         $schedule->command('develophub:repos:process')->daily();
+
+        // Badges
+        $schedule->command('develophub:github:badges')->daily();
     }
 
     /**
