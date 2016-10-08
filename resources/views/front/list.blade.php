@@ -44,7 +44,7 @@
                                     <div class="caption">
                                         <a href="{{ l_url('repos', [$item->slug]) }}"><h3>{{ $item->title }}</h3></a>
                                         <span class="line">{{ $item->trends }}</span>
-                                        <p>{{ $item->description }}</p>
+                                        <p>{{ mb_substr($item->description, 0, 100) }}</p>
                                     </div>
                                 </div>
                             </div>
