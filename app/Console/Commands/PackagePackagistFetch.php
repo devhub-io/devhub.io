@@ -51,10 +51,13 @@ class PackagePackagistFetch extends Command
             return file_get_contents('https://packagist.org/packages/list.json');
         });
         $list = json_decode($list_json, true);
+        $total = count($list['packageNames']);
+        $index = 0;
         foreach ($list['packageNames'] as $packageName) {
+            $index++;
             $ex_package = DB::table('packages')->where('provider', 'packagist')->where('name', $packageName)->select('id')->first();
             if ($ex_package) {
-                $this->info("Pass " . $packageName);
+                $this->info("Pass " . $packageName . " ($index / $total)");
                 continue;
             }
 
@@ -73,7 +76,7 @@ class PackagePackagistFetch extends Command
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]);
-            $this->info($packageName);
+            $this->info($packageName . " ($index / $total)");
         }
         $this->info('All done!');
     }

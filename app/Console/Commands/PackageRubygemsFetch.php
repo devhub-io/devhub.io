@@ -51,8 +51,10 @@ class PackageRubygemsFetch extends Command
             $gems_txt = file_get_contents(storage_path() . '/gems.txt');
             return explode("\n", $gems_txt);
         });
-
+        $total = count($list);
+        $index = 0;
         foreach ($list as $packageName) {
+            $index++;
             $packageName = explode(' ', $packageName);
             $packageName = isset($packageName[0]) ? $packageName[0] : '';
             if (empty($packageName)) {
@@ -60,7 +62,7 @@ class PackageRubygemsFetch extends Command
             }
             $ex_package = DB::table('packages')->where('provider', 'rubygems')->where('name', $packageName)->select('id')->first();
             if ($ex_package) {
-                $this->info("Pass " . $packageName);
+                $this->info("Pass " . $packageName . " ($index / $total)");
                 continue;
             }
 
@@ -77,7 +79,7 @@ class PackageRubygemsFetch extends Command
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]);
-            $this->info($packageName);
+            $this->info($packageName . " ($index / $total)");
         }
         $this->info('All done!');
     }
