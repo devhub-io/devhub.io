@@ -14,6 +14,7 @@ namespace App\Console;
 use App;
 use App\Entities\Repos;
 use App\Entities\User;
+use App\Jobs\GithubAnalytics;
 use App\Jobs\GithubUpdate;
 use App\Notifications\Pushover;
 use Carbon\Carbon;
@@ -62,9 +63,17 @@ class Kernel extends ConsoleKernel
 
         // Fetch
         $schedule->call(function () {
-            $repos = Repos::where('status', true)->select('id')->orderBy('fetched_at')->limit(50)->get();
+            $repos = Repos::query()->where('status', true)->select('id')->orderBy('fetched_at')->limit(50)->get();
             foreach ($repos as $item) {
                 dispatch(new GithubUpdate(1, $item->id));
+            }
+        })->cron('*/5 * * * * *');
+
+        // Analytics
+        $schedule->call(function () {
+            $repos = Repos::query()->where('status', true)->select('id')->orderBy('analytics_at', 'asc')->orderBy('stargazers_count', 'desc')->limit(50)->get();
+            foreach ($repos as $item) {
+                dispatch(new GithubAnalytics(1, $item->id));
             }
         })->cron('*/5 * * * * *');
 
