@@ -55,28 +55,32 @@ class PackagePackagistFetch extends Command
         $index = 0;
         foreach ($list['packageNames'] as $packageName) {
             $index++;
-            $ex_package = DB::table('packages')->where('provider', 'packagist')->where('name', $packageName)->select('id')->first();
-            if ($ex_package) {
-                $this->info("Pass " . $packageName . " ($index / $total)");
-                continue;
+            try {
+                $ex_package = DB::table('packages')->where('provider', 'packagist')->where('name', $packageName)->select('id')->first();
+                if ($ex_package) {
+                    $this->info("Pass " . $packageName . " ($index / $total)");
+                    continue;
+                }
+
+                $package_json = file_get_contents("https://packagist.org/packages/$packageName.json");
+                $package = json_decode($package_json, true);
+                $repository = isset($package['package']['repository']) ? $package['package']['repository'] : '';
+                $repository = str_replace('.git', '', $repository);
+                $repository = str_replace('git://', 'https://', $repository);
+
+                DB::table('packages')->insert([
+                    'provider' => 'packagist',
+                    'name' => $packageName,
+                    'repository' => $repository,
+                    'json' => $package_json,
+                    'fetched_at' => Carbon::now(),
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ]);
+                $this->info($packageName . " ($index / $total)");
+            } catch (\Exception $e) {
+                $this->error($e->getMessage());
             }
-
-            $package_json = file_get_contents("https://packagist.org/packages/$packageName.json");
-            $package = json_decode($package_json, true);
-            $repository = isset($package['package']['repository']) ? $package['package']['repository'] : '';
-            $repository = str_replace('.git', '', $repository);
-            $repository = str_replace('git://', 'https://', $repository);
-
-            DB::table('packages')->insert([
-                'provider' => 'packagist',
-                'name' => $packageName,
-                'repository' => $repository,
-                'json' => $package_json,
-                'fetched_at' => Carbon::now(),
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ]);
-            $this->info($packageName . " ($index / $total)");
         }
         $this->info('All done!');
     }

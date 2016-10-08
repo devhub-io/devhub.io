@@ -55,31 +55,35 @@ class PackageGosearchFetch extends Command
         $index = 0;
         foreach ($list as $packageName) {
             $index++;
-            $ex_package = DB::table('packages')->where('provider', 'go-search')->where('name', $packageName)->select('id')->first();
-            if ($ex_package) {
-                $this->info("Pass " . $packageName . " ($index / $total)");
-                continue;
+            try {
+                $ex_package = DB::table('packages')->where('provider', 'go-search')->where('name', $packageName)->select('id')->first();
+                if ($ex_package) {
+                    $this->info("Pass " . $packageName . " ($index / $total)");
+                    continue;
+                }
+
+                $package_json = file_get_contents("http://go-search.org/api?action=package&id=" . urlencode($packageName));
+                $package = json_decode($package_json, true);
+                unset($package['Imported']);
+                unset($package['TestImported']);
+                unset($package['Imports']);
+                unset($package['TestImports']);
+                $package_json = json_encode($package);
+                $repository = "https://" . $packageName;
+
+                DB::table('packages')->insert([
+                    'provider' => 'go-search',
+                    'name' => $packageName,
+                    'repository' => $repository,
+                    'json' => $package_json,
+                    'fetched_at' => Carbon::now(),
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ]);
+                $this->info($packageName . " ($index / $total)");
+            } catch (\Exception $e) {
+                $this->error($e->getMessage());
             }
-
-            $package_json = file_get_contents("http://go-search.org/api?action=package&id=" . urlencode($packageName));
-            $package = json_decode($package_json, true);
-            unset($package['Imported']);
-            unset($package['TestImported']);
-            unset($package['Imports']);
-            unset($package['TestImports']);
-            $package_json = json_encode($package);
-            $repository = "https://" . $packageName;
-
-            DB::table('packages')->insert([
-                'provider' => 'go-search',
-                'name' => $packageName,
-                'repository' => $repository,
-                'json' => $package_json,
-                'fetched_at' => Carbon::now(),
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ]);
-            $this->info($packageName . " ($index / $total)");
         }
         $this->info('All done!');
     }

@@ -55,31 +55,35 @@ class PackageRubygemsFetch extends Command
         $index = 0;
         foreach ($list as $packageName) {
             $index++;
-            $packageName = explode(' ', $packageName);
-            $packageName = isset($packageName[0]) ? $packageName[0] : '';
-            if (empty($packageName)) {
-                continue;
-            }
-            $ex_package = DB::table('packages')->where('provider', 'rubygems')->where('name', $packageName)->select('id')->first();
-            if ($ex_package) {
-                $this->info("Pass " . $packageName . " ($index / $total)");
-                continue;
-            }
+            try {
+                $packageName = explode(' ', $packageName);
+                $packageName = isset($packageName[0]) ? $packageName[0] : '';
+                if (empty($packageName)) {
+                    continue;
+                }
+                $ex_package = DB::table('packages')->where('provider', 'rubygems')->where('name', $packageName)->select('id')->first();
+                if ($ex_package) {
+                    $this->info("Pass " . $packageName . " ($index / $total)");
+                    continue;
+                }
 
-            $package_json = file_get_contents("https://rubygems.org/api/v1/gems/$packageName.json");
-            $package = json_decode($package_json, true);
-            $repository = isset($package['source_code_uri']) ? $package['source_code_uri'] : (isset($package['homepage_uri']) ? $package['homepage_uri'] : '');
+                $package_json = file_get_contents("https://rubygems.org/api/v1/gems/$packageName.json");
+                $package = json_decode($package_json, true);
+                $repository = isset($package['source_code_uri']) ? $package['source_code_uri'] : (isset($package['homepage_uri']) ? $package['homepage_uri'] : '');
 
-            DB::table('packages')->insert([
-                'provider' => 'rubygems',
-                'name' => $packageName,
-                'repository' => $repository,
-                'json' => $package_json,
-                'fetched_at' => Carbon::now(),
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ]);
-            $this->info($packageName . " ($index / $total)");
+                DB::table('packages')->insert([
+                    'provider' => 'rubygems',
+                    'name' => $packageName,
+                    'repository' => $repository,
+                    'json' => $package_json,
+                    'fetched_at' => Carbon::now(),
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ]);
+                $this->info($packageName . " ($index / $total)");
+            } catch (\Exception $e) {
+                $this->error($e->getMessage());
+            }
         }
         $this->info('All done!');
     }
