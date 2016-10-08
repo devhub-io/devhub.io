@@ -39,6 +39,7 @@ class Kernel extends ConsoleKernel
         Commands\ReposProcess::class,
         Commands\PackagePackagistFetch::class,
         Commands\PackageGosearchFetch::class,
+        Commands\PackageRubygemsFetch::class,
     ];
 
     /**

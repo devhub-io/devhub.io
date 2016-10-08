@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of develophub.net.
+ *
+ * (c) DevelopHub <master@develophub.net>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\Console\Commands;
 
 use Cache;
@@ -21,7 +30,7 @@ class PackageGosearchFetch extends Command
      *
      * @var string
      */
-    protected $description = 'Package Packagist Fetch';
+    protected $description = 'Package Go-search Fetch';
 
     /**
      * Create a new command instance.
@@ -45,6 +54,7 @@ class PackageGosearchFetch extends Command
         foreach ($list as $packageName) {
             $ex_package = DB::table('packages')->where('provider', 'go-search')->where('name', $packageName)->select('id')->first();
             if ($ex_package) {
+                $this->info("Pass " . $packageName);
                 continue;
             }
 

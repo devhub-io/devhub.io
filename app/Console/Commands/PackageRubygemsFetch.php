@@ -12,25 +12,25 @@
 namespace App\Console\Commands;
 
 use Cache;
-use DB;
 use Carbon\Carbon;
+use DB;
 use Illuminate\Console\Command;
 
-class PackagePackagistFetch extends Command
+class PackageRubygemsFetch extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'develophub:package:packagist-fetch';
+    protected $signature = 'develophub:package:rubygems-fetch';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Package Packagist Fetch';
+    protected $description = 'Package Rubygems Fetch';
 
     /**
      * Create a new command instance.
@@ -47,25 +47,29 @@ class PackagePackagistFetch extends Command
      */
     public function handle()
     {
-        $list_json = Cache::remember('package:packagist:list-json', 24 * 60, function () {
-            return file_get_contents('https://packagist.org/packages/list.json');
+        $list = Cache::remember('package:rubygems:list-json', 24 * 60, function () {
+            $gems_txt = file_get_contents(storage_path() . '/gems.txt');
+            return explode("\n", $gems_txt);
         });
-        $list = json_decode($list_json, true);
-        foreach ($list['packageNames'] as $packageName) {
-            $ex_package = DB::table('packages')->where('provider', 'packagist')->where('name', $packageName)->select('id')->first();
+
+        foreach ($list as $packageName) {
+            $packageName = explode(' ', $packageName);
+            $packageName = isset($packageName[0]) ? $packageName[0] : '';
+            if (empty($packageName)) {
+                continue;
+            }
+            $ex_package = DB::table('packages')->where('provider', 'rubygems')->where('name', $packageName)->select('id')->first();
             if ($ex_package) {
                 $this->info("Pass " . $packageName);
                 continue;
             }
 
-            $package_json = file_get_contents("https://packagist.org/packages/$packageName.json");
+            $package_json = file_get_contents("https://rubygems.org/api/v1/gems/$packageName.json");
             $package = json_decode($package_json, true);
-            $repository = isset($package['package']['repository']) ? $package['package']['repository'] : '';
-            $repository = str_replace('.git', '', $repository);
-            $repository = str_replace('git://', 'https://', $repository);
+            $repository = isset($package['source_code_uri']) ? $package['source_code_uri'] : (isset($package['homepage_uri']) ? $package['homepage_uri'] : '');
 
             DB::table('packages')->insert([
-                'provider' => 'packagist',
+                'provider' => 'rubygems',
                 'name' => $packageName,
                 'repository' => $repository,
                 'json' => $package_json,
