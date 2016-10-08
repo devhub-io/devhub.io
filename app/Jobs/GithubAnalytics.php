@@ -11,6 +11,7 @@
 
 namespace App\Jobs;
 
+use Log;
 use Carbon\Carbon;
 use App\Entities\Repos;
 use App\Entities\ReposContributor;
@@ -130,7 +131,7 @@ class GithubAnalytics implements ShouldQueue
             $repos->analytics_at = Carbon::now();
             $repos->save();
         } catch (\Exception $e) {
-            $this->error($e->getMessage());
+            Log::error($e->getMessage());
         }
     }
 }
