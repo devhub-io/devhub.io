@@ -90,6 +90,9 @@ class Kernel extends ConsoleKernel
 
         // Badges
         $schedule->command('develophub:github:badges')->daily();
+
+        // Sitemap
+        $schedule->command('develophub:site:generate-sitemap')->daily();
     }
 
     /**
