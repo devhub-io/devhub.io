@@ -71,7 +71,7 @@ class UrlController extends Controller
     public function fetch($id)
     {
         $url = ReposUrl::find($id);
-        dispatch(new GithubFetch(Auth::id(), $url->url));
+        dispatch(new GithubFetch(1, $url->url));
 
         return redirect('admin/url');
     }
@@ -99,9 +99,7 @@ class UrlController extends Controller
         $urls = ReposUrl::query()->limit(3000)->get();
 
         foreach ($urls as $item) {
-            if (!DB::table('repos')->select('id')->where('github', $item->url)->exists()) {
-                dispatch(new GithubFetch(Auth::id(), $item->url));
-            }
+            dispatch(new GithubFetch(1, $item->url));
             $item->delete();
         }
 

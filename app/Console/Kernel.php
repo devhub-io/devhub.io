@@ -40,6 +40,7 @@ class Kernel extends ConsoleKernel
         Commands\PackagePackagistFetch::class,
         Commands\PackageGosearchFetch::class,
         Commands\PackageRubygemsFetch::class,
+        Commands\UrlPushQueue::class,
     ];
 
     /**
