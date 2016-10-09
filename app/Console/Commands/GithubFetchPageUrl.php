@@ -44,7 +44,7 @@ class GithubFetchPageUrl extends Command
     {
         @unlink(storage_path('url.txt'));
 
-        $alphabet = ['gc', 'web', 'and', 'for', 'on', 'the', 'osx', 'windows', 'linux', 'user'];
+        $alphabet = ['xo', 'execute', 'int', 'string', 'range'];
 
         foreach ($alphabet as $a) {
             $keyword = $a;
