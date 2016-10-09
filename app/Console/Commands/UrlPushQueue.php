@@ -43,6 +43,8 @@ class UrlPushQueue extends Command
             if (!DB::table('repos')->select('id')->where('github', $item->url)->exists()) {
                 dispatch(new GithubFetch(1, $item->url));
                 $this->info($item->url);
+            } else {
+                $this->info('pass');
             }
             $item->delete();
         }
