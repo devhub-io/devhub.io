@@ -63,12 +63,11 @@ class GithubFetch implements ShouldQueue
             try {
                 $client = new \Github\Client();
 
-                if ($ex_repos = Repos::where('slug', $matches[1] . '-' . $matches[2])->select('id')->first()) {
+                if (Repos::where('slug', $matches[1] . '-' . $matches[2])->select('id')->exists()) {
                     return;
                 }
 
-                $github = Service::query()->where('provider', 'github')->where('user_id', (int)$this->user_id)->first();
-                if ($github) {
+                if ($github = Service::query()->where('provider', 'github')->where('user_id', (int)$this->user_id)->first();) {
                     $client->authenticate($github->token, null, \Github\Client::AUTH_URL_TOKEN);
                 }
 
