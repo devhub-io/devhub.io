@@ -56,8 +56,7 @@ class PackageGosearchFetch extends Command
         foreach ($list as $packageName) {
             $index++;
             try {
-                $ex_package = DB::table('packages')->where('provider', 'go-search')->where('name', $packageName)->select('id')->first();
-                if ($ex_package) {
+                if (DB::table('packages')->where('provider', 'go-search')->where('name', $packageName)->select('id')->exists()) {
                     $this->info("Pass " . $packageName . " ($index / $total)");
                     continue;
                 }

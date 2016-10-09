@@ -18,6 +18,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\ReposRepository;
 use Carbon\Carbon;
 use Auth;
+use DB;
 
 class UrlController extends Controller
 {
@@ -98,7 +99,9 @@ class UrlController extends Controller
         $urls = ReposUrl::query()->limit(3000)->get();
 
         foreach ($urls as $item) {
-            dispatch(new GithubFetch(Auth::id(), $item->url));
+            if (!DB::table('repos')->select('id')->where('github', $item->url)->exists()) {
+                dispatch(new GithubFetch(Auth::id(), $item->url));
+            }
             $item->delete();
         }
 

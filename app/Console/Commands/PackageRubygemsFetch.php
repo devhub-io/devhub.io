@@ -61,8 +61,7 @@ class PackageRubygemsFetch extends Command
                 if (empty($packageName)) {
                     continue;
                 }
-                $ex_package = DB::table('packages')->where('provider', 'rubygems')->where('name', $packageName)->select('id')->first();
-                if ($ex_package) {
+                if (DB::table('packages')->where('provider', 'rubygems')->where('name', $packageName)->select('id')->exists()) {
                     $this->info("Pass " . $packageName . " ($index / $total)");
                     continue;
                 }

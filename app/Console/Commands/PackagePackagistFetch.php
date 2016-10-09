@@ -56,8 +56,7 @@ class PackagePackagistFetch extends Command
         foreach ($list['packageNames'] as $packageName) {
             $index++;
             try {
-                $ex_package = DB::table('packages')->where('provider', 'packagist')->where('name', $packageName)->select('id')->first();
-                if ($ex_package) {
+                if (DB::table('packages')->where('provider', 'packagist')->where('name', $packageName)->select('id')->exists()) {
                     $this->info("Pass " . $packageName . " ($index / $total)");
                     continue;
                 }

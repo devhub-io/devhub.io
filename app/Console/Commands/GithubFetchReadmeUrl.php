@@ -45,10 +45,8 @@ class GithubFetchReadmeUrl extends Command
 
             if (isset($match[0])) {
                 foreach ($match[0] as $url) {
-                    $ex_repos = DB::table('repos')->select('id')->where('github', $url)->first();
-                    if (!$ex_repos) {
-                        $ex_url = DB::table('repos_url')->select('id')->where('url', $url)->first();
-                        if (!$ex_url) {
+                    if (!DB::table('repos')->select('id')->where('github', $url)->exists()) {
+                        if (!DB::table('repos_url')->select('id')->where('url', $url)->exists()) {
                             DB::table('repos_url')->insert([
                                 'url' => $url,
                                 'created_at' => date('Y-m-d H:i:s'),
