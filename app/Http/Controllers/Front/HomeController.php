@@ -14,7 +14,6 @@ namespace App\Http\Controllers\Front;
 use Auth;
 use Cache;
 use DB;
-use App;
 use Flash;
 use SEO;
 use Badger;
@@ -279,50 +278,6 @@ class HomeController extends Controller
 
         return $server->getImageResponse($image->url, request()->all());
 
-    }
-
-    /**
-     * @return mixed
-     */
-    public function sitemap()
-    {
-        // create new sitemap object
-        $sitemap = App::make("sitemap");
-
-        // set cache key (string), duration in minutes (Carbon|Datetime|int), turn on/off (boolean)
-        // by default cache is disabled
-        $sitemap->setCache('front:sitemap', 60);
-
-        // check if there is cached sitemap and build new only if is not
-        if (!$sitemap->isCached()) {
-            // add item to the sitemap (url, date, priority, freq)
-            $sitemap->add(url('/'), '2016-07-01T00:00:00+00:00', '1.0', 'daily');
-            // $sitemap->add(url('submit'), '2016-07-01T00:00:00+00:00', '0.8', 'daily');
-
-            // category
-            $posts = DB::table('categories')->orderBy('created_at', 'desc')->get();
-            foreach ($posts as $post) {
-                $sitemap->add(url('category', [$post->slug]), $post->updated_at, '0.9', 'daily');
-            }
-
-            // repos
-            $posts = DB::table('repos')->select(['id', 'slug', 'updated_at'])->where('status', 1)->orderBy('created_at', 'desc')->get();
-            foreach ($posts as $post) {
-                $sitemap->add(url('repos', [$post->slug]), $post->updated_at, '1.0', 'daily');
-            }
-
-            // collections
-            $collections = Collection::where('is_enable', 1)->orderBy('created_at', 'desc')->get();
-            foreach ($collections as $collection) {
-                $sitemap->add(url('collection', [$collection->slug]), $collection->updated_at, '1.0', 'daily');
-            }
-
-            // sites
-            $sitemap->add(url('sites'), '2016-07-01T00:00:00+00:00', '1.0', 'daily');
-        }
-
-        // show your sitemap (options: 'xml' (default), 'html', 'txt', 'ror-rss', 'ror-rdf')
-        return $sitemap->render('xml');
     }
 
     /**
