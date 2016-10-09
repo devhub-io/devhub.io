@@ -70,7 +70,7 @@ class Kernel extends ConsoleKernel
             foreach ($repos as $item) {
                 dispatch(new GithubUpdate(1, $item->id));
             }
-        })->cron('*/5 * * * * *');
+        })->cron('*/10 * * * * *');
 
         // Analytics
         $schedule->call(function () {
