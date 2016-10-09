@@ -35,7 +35,9 @@ Route::group(['domain' => env('WWW_DOMAIN'), 'namespace' => 'Front', 'prefix' =>
     Route::get('sites', 'HomeController@sites');
 
     # Sitemap
-    Route::get('sitemap', 'HomeController@sitemap');
+    Route::get('sitemap', function () {
+        return Redirect::to('sitemap.xml', 301);
+    });
 
     # Feed
     Route::get('feed', 'HomeController@feed');
