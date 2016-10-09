@@ -67,7 +67,7 @@ class GithubFetch implements ShouldQueue
                     return;
                 }
 
-                if ($github = Service::query()->where('provider', 'github')->where('user_id', (int)$this->user_id)->first();) {
+                if ($github = Service::query()->where('provider', 'github')->where('user_id', (int)$this->user_id)->first()) {
                     $client->authenticate($github->token, null, \Github\Client::AUTH_URL_TOKEN);
                 }
 
