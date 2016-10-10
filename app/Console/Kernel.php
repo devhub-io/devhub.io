@@ -83,7 +83,7 @@ class Kernel extends ConsoleKernel
         })->cron('*/5 * * * * *');
 
         // Trend
-        $schedule->command('develophub:repos-update-trend')->mondays();
+        $schedule->command('develophub:repos:update-trend')->mondays();
 
         // Process
         $schedule->command('develophub:repos:process')->daily();
