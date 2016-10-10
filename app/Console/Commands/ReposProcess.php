@@ -100,6 +100,14 @@ class ReposProcess extends Command
             }
         }
 
+        // post
+        $this->info('Post');
+        $repos = Repos::query()->where('stargazers_count', '>=', 5)->where('status', 0)->select('id')->get();
+        foreach ($repos as $item) {
+            DB::table('repos')->where('id', $item->id)->update(['status' => 1]);
+            $this->info($item->id);
+        }
+
         $this->info('All Done!');
     }
 }
