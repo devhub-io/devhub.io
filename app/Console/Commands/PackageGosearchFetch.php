@@ -48,7 +48,7 @@ class PackageGosearchFetch extends Command
     public function handle()
     {
         $list_json = Cache::remember('package:gosearch:list-json', 24 * 60, function () {
-            return file_get_contents('http://go-search.org/api?action=packages');
+            return @file_get_contents('http://go-search.org/api?action=packages');
         });
         $list = json_decode($list_json, true);
         $total = count($list);
@@ -61,7 +61,7 @@ class PackageGosearchFetch extends Command
                     continue;
                 }
 
-                $package_json = file_get_contents("http://go-search.org/api?action=package&id=" . urlencode($packageName));
+                $package_json = @file_get_contents("http://go-search.org/api?action=package&id=" . urlencode($packageName));
                 $package = json_decode($package_json, true);
                 unset($package['Imported']);
                 unset($package['TestImported']);

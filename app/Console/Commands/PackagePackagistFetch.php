@@ -48,7 +48,7 @@ class PackagePackagistFetch extends Command
     public function handle()
     {
         $list_json = Cache::remember('package:packagist:list-json', 24 * 60, function () {
-            return file_get_contents('https://packagist.org/packages/list.json');
+            return @file_get_contents('https://packagist.org/packages/list.json');
         });
         $list = json_decode($list_json, true);
         $total = count($list['packageNames']);
@@ -61,7 +61,7 @@ class PackagePackagistFetch extends Command
                     continue;
                 }
 
-                $package_json = file_get_contents("https://packagist.org/packages/$packageName.json");
+                $package_json = @file_get_contents("https://packagist.org/packages/$packageName.json");
                 $package = json_decode($package_json, true);
                 $repository = isset($package['package']['repository']) ? $package['package']['repository'] : '';
                 $repository = str_replace('.git', '', $repository);

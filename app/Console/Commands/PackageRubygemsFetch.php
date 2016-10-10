@@ -48,7 +48,7 @@ class PackageRubygemsFetch extends Command
     public function handle()
     {
         $list = Cache::remember('package:rubygems:list-json', 24 * 60, function () {
-            $gems_txt = file_get_contents(storage_path() . '/gems.txt');
+            $gems_txt = @file_get_contents(storage_path() . '/gems.txt');
             return explode("\n", $gems_txt);
         });
         $total = count($list);
@@ -66,7 +66,7 @@ class PackageRubygemsFetch extends Command
                     continue;
                 }
 
-                $package_json = file_get_contents("https://rubygems.org/api/v1/gems/$packageName.json");
+                $package_json = @file_get_contents("https://rubygems.org/api/v1/gems/$packageName.json");
                 $package = json_decode($package_json, true);
                 $repository = isset($package['source_code_uri']) ? $package['source_code_uri'] : (isset($package['homepage_uri']) ? $package['homepage_uri'] : '');
 
