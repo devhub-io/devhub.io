@@ -94,11 +94,14 @@
 
                 @if($repos->contributors->count() > 0)
                     <h3>Top Contributors</h3>
-                    @foreach($repos->contributors as $contributor)
-                    <a href="{{ $contributor->html_url }}" target="_blank" rel="nofollow">
-                        <img src="{{ $contributor->avatar_url }}" alt="{{ $contributor->login }}" class="pull-left" width="60" height="60">
-                    </a>
-                    @endforeach
+                    <div>
+                        @foreach($repos->contributors as $contributor)
+                            <a href="{{ $contributor->html_url }}" target="_blank" rel="nofollow">
+                                <img src="{{ $contributor->avatar_url }}" alt="{{ $contributor->login }}" class="pull-left" width="60" height="60">
+                            </a>
+                        @endforeach
+                    </div>
+                    <div style="clear: both"></div>
                 @endif
 
                 <br>
