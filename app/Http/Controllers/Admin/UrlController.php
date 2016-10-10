@@ -85,7 +85,7 @@ class UrlController extends Controller
         $insert = [];
         foreach ($urls as $item) {
             if (trim($item)) {
-                $insert[] = ['url' => trim($item), 'created_at' => Carbon::now()];
+                $insert[trim($item)] = ['url' => trim($item), 'created_at' => Carbon::now()];
             }
         }
 

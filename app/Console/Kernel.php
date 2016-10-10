@@ -42,6 +42,7 @@ class Kernel extends ConsoleKernel
         Commands\PackageRubygemsFetch::class,
         Commands\UrlPushQueue::class,
         Commands\SiteGenerateSitemap::class,
+        Commands\PackagePushUrl::class,
     ];
 
     /**
