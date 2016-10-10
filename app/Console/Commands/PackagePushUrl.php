@@ -65,24 +65,26 @@ class PackagePushUrl extends Command
                             continue;
                         }
 
-                        if (DB::table('repos')->where('github', $package->repository)->exists()) {
-                            $this->info('Exists repos : ' . $package->id . ' ' . $package->repository);
+                        $github_url = str_replace('http://', 'https://', $package->repository);
+
+                        if (DB::table('repos')->where('github', $github_url)->exists()) {
+                            $this->info('Exists repos : ' . $package->id . ' ' . $github_url);
                             continue;
                         }
 
                         $json = json_decode($package->json, true);
                         if (isset($json['package']['github_stars']) && $json['package']['github_stars'] >= 5) {
-                            if (!DB::table('repos_url')->where('url', $package->repository)->exists()) {
+                            if (!DB::table('repos_url')->where('url', $github_url)->exists()) {
                                 DB::table('repos_url')->insert([
-                                    'url' => $package->repository,
+                                    'url' => $github_url,
                                     'created_at' => Carbon::now(),
                                 ]);
-                                $this->info('Insert : ' . $package->id . ' ' . $package->repository);
+                                $this->info('Insert : ' . $package->id . ' ' . $github_url);
                             } else {
-                                $this->info('Exists url : ' . $package->id . ' ' . $package->repository);
+                                $this->info('Exists url : ' . $package->id . ' ' . $github_url);
                             }
                         } else {
-                            $this->info('Pass : ' . $package->id . ' ' . $package->repository);
+                            $this->info('Pass : ' . $package->id . ' ' . $github_url);
                         }
                     }
                 }
@@ -99,24 +101,26 @@ class PackagePushUrl extends Command
                             continue;
                         }
 
-                        if (DB::table('repos')->where('github', $package->repository)->exists()) {
-                            $this->info('Exists repos : ' . $package->id . ' ' . $package->repository);
+                        $github_url = str_replace('http://', 'https://', $package->repository);
+
+                        if (DB::table('repos')->where('github', $github_url)->exists()) {
+                            $this->info('Exists repos : ' . $package->id . ' ' . $github_url);
                             continue;
                         }
 
                         $json = json_decode($package->json, true);
                         if (isset($json['downloads']) && $json['downloads'] >= 100) {
-                            if (!DB::table('repos_url')->where('url', $package->repository)->exists()) {
+                            if (!DB::table('repos_url')->where('url', $github_url)->exists()) {
                                 DB::table('repos_url')->insert([
-                                    'url' => $package->repository,
+                                    'url' => $github_url,
                                     'created_at' => Carbon::now(),
                                 ]);
-                                $this->info('Insert : ' . $package->id . ' ' . $package->repository);
+                                $this->info('Insert : ' . $package->id . ' ' . $github_url);
                             } else {
-                                $this->info('Exists url : ' . $package->id . ' ' . $package->repository);
+                                $this->info('Exists url : ' . $package->id . ' ' . $github_url);
                             }
                         } else {
-                            $this->info('Pass : ' . $package->id . ' ' . $package->repository);
+                            $this->info('Pass : ' . $package->id . ' ' . $github_url);
                         }
                     }
                 }
