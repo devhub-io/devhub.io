@@ -38,7 +38,7 @@
                             @foreach($urls as $item)
                                 <tr>
                                     <th scope="row">{{ $item->id }}</th>
-                                    <td>{{ $item->url }}</td>
+                                    <td><a href="{{ $item->url }}" target="_blank">{{ $item->url }}</a></td>
                                     <td>{{ $item->created_at }}</td>
                                     <td>
                                         <a href="{{ url("admin/url/{$item->id}/fetch") }}" class="btn btn-info btn-xs">抓取</a>

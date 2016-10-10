@@ -68,20 +68,20 @@ class Kernel extends ConsoleKernel
         $schedule->command('develophub:user:sync-activated-time')->everyTenMinutes();
 
         // Fetch
-        $schedule->call(function () {
-            $repos = Repos::query()->where('status', 1)->select('id')->orderBy('fetched_at', 'asc')->limit(50)->get();
-            foreach ($repos as $item) {
-                dispatch(new GithubUpdate(1, $item->id));
-            }
-        })->cron('*/10 * * * * *');
+//        $schedule->call(function () {
+//            $repos = Repos::query()->select('id')->orderBy('fetched_at', 'asc')->limit(50)->get();
+//            foreach ($repos as $item) {
+//                dispatch(new GithubUpdate(1, $item->id));
+//            }
+//        })->cron('*/10 * * * * *');
 
         // Analytics
-        $schedule->call(function () {
-            $repos = Repos::query()->where('status', 1)->select('id')->orderBy('analytics_at', 'asc')->limit(50)->get();
-            foreach ($repos as $item) {
-                dispatch(new GithubAnalytics(1, $item->id));
-            }
-        })->cron('*/5 * * * * *');
+//        $schedule->call(function () {
+//            $repos = Repos::query()->where('status', 1)->select('id')->orderBy('analytics_at', 'asc')->limit(50)->get();
+//            foreach ($repos as $item) {
+//                dispatch(new GithubAnalytics(1, $item->id));
+//            }
+//        })->cron('*/5 * * * * *');
 
         // Trend
         // $schedule->command('develophub:repos:update-trend')->mondays();
