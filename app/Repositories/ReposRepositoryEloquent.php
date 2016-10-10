@@ -230,7 +230,8 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function relatedRepos($id, $title, $limit = 5)
     {
-        return $this->model->select(['id', 'slug', 'image', 'cover', 'title', 'description'])->where('title', 'like', "$title%")->where('id', '<>', $id)->where('status', 1)
+        return $this->model->select(['id', 'slug', 'image', 'cover', 'title', 'description'])->where('title', 'like', "$title%")
+            ->where('id', '<>', $id)->where('title', '<>', $title)->where('status', 1)
             ->orderBy('stargazers_count', 'DESC')->limit($limit)->get();
     }
 }
