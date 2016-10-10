@@ -84,7 +84,7 @@
                             </div>
                             <div class="col-md-8">
                                 <h4><a href="{{ l_url('repos', [$item->slug]) }}">{{ $item->title }}</a></h4>
-                                <p>{{ mb_substr($item->description, 0, 50) }} ...</p>
+                                <p>{{ mb_substr($item->description, 0, 80) }} ...</p>
                             </div>
                         </div>
                     @endforeach
