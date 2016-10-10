@@ -75,17 +75,6 @@
             </article>
 
             <div class="col-md-4" style="margin-bottom: 50px">
-                @if($repos->tags->count() > 0)
-                    <h3>Releases</h3>
-                    <div>
-                        @foreach($repos->tags as $tag)
-                            <div>-&nbsp;&nbsp; {{ $tag->name }} <a href="{{ $tag->zipball_url }}" rel="nofollow"><i class="fa fa-file-archive-o"> zip</i></a> <a href="{{ $tag->tarball_url }}" rel="nofollow"><i class="fa fa-file-archive-o"> tar</i></a></div>
-                        @endforeach
-                    </div>
-                @endif
-
-                <br>
-
                 @if($related_repos->count() > 0)
                     <h3>Related Repositories</h3>
                     @foreach($related_repos as $item)
@@ -110,6 +99,17 @@
                         <img src="{{ $contributor->avatar_url }}" alt="{{ $contributor->login }}" class="pull-left" width="60" height="60">
                     </a>
                     @endforeach
+                @endif
+
+                <br>
+
+                @if($repos->tags->count() > 0)
+                    <h3>Releases</h3>
+                    <div>
+                        @foreach($repos->tags as $tag)
+                            <div>-&nbsp;&nbsp; {{ $tag->name }} <a href="{{ $tag->zipball_url }}" rel="nofollow"><i class="fa fa-file-archive-o"> zip</i></a> <a href="{{ $tag->tarball_url }}" rel="nofollow"><i class="fa fa-file-archive-o"> tar</i></a></div>
+                        @endforeach
+                    </div>
                 @endif
             </div>
         </div>
