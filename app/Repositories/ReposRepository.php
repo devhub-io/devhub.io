@@ -97,4 +97,12 @@ interface ReposRepository extends RepositoryInterface
      * @return mixed
      */
     public function searchList($keyword, $where = [], $limit = 10, $sort = '');
+
+    /**
+     * @param $id
+     * @param $title
+     * @param int $limit
+     * @return mixed
+     */
+    public function relatedRepos($id, $title, $limit = 5);
 }

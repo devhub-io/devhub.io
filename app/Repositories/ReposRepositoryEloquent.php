@@ -221,4 +221,16 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
         return $this->model->select(\DB::raw('repos.*, IF(image > 0, 1, 0) as has_image'))->whereIn($field, $values)->where('status', true)
             ->orderBy('has_image', 'DESC')->orderBy('repos_updated_at', 'DESC')->paginate(15);
     }
+
+    /**
+     * @param $id
+     * @param $title
+     * @param int $limit
+     * @return mixed
+     */
+    public function relatedRepos($id, $title, $limit = 5)
+    {
+        return $this->model->select(['id', 'slug', 'image', 'cover', 'title', 'description'])->where('title', 'like', "$title%")->where('id', '<>', $id)->where('status', 1)
+            ->orderBy('stargazers_count', 'DESC')->limit($limit)->get();
+    }
 }

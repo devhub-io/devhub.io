@@ -208,7 +208,10 @@ class HomeController extends Controller
             $languages = array_slice($languages, 0, 5);
         }
 
-        return view('front.repos', compact('repos', 'markdown', 'tag', 'languages'));
+        // Related
+        $related_repos = $this->reposRepository->relatedRepos($repos->id, $repos->title);
+
+        return view('front.repos', compact('repos', 'markdown', 'tag', 'languages', 'related_repos'));
     }
 
     /**
