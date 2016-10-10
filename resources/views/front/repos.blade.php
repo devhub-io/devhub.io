@@ -74,7 +74,7 @@
                 {!! $markdown !!}
             </article>
 
-            <div class="col-md-4">
+            <div class="col-md-4" style="margin-bottom: 50px">
                 @if($repos->tags->count() > 0)
                     <h3>Releases</h3>
                     <div>
@@ -111,9 +111,6 @@
                     </a>
                     @endforeach
                 @endif
-
-                <br>
-                <br>
             </div>
         </div>
     </div>
