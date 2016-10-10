@@ -89,7 +89,7 @@
                 @if($related_repos->count() > 0)
                     <h3>Related Repositories</h3>
                     @foreach($related_repos as $item)
-                        <div class="row">
+                        <div class="row" style="margin-bottom: 10px">
                             <div class="col-md-4">
                                 <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->image > 0 ? image_url($item->image, ['h' => 100]) : ($item->cover ? $item->cover : cdn_asset('img/200x200.png')) }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="lazyload" width="100"></a>
                             </div>
