@@ -37,7 +37,9 @@
         <div class="row">
             <div class="col-sm-12">
                 @if(!$github)
-                <a href="{{ url('admin/github/redirect') }}">Github 授权</a>
+                    <a href="{{ url('admin/github/redirect') }}">Github 授权</a>
+                @else
+                    Github 已授权
                 @endif
             </div>
         </div>

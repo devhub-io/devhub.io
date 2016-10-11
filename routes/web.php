@@ -56,10 +56,10 @@ Route::group(['domain' => env('WWW_DOMAIN'), 'namespace' => 'Front', 'prefix' =>
     Route::get('logout', 'HomeController@logout');
 
     # Socialite
-    Route::get('socialite/github/redirect', 'SocialiteController@redirectToProviderGithub');
-    Route::get('socialite/github/callback', 'SocialiteController@handleProviderCallbackGithub');
-    Route::get('socialite/bitbucket/redirect', 'SocialiteController@redirectToProviderBitbucket');
-    Route::get('socialite/bitbucket/callback', 'SocialiteController@handleProviderCallbackBitbucket');
+    //Route::get('socialite/github/redirect', 'SocialiteController@redirectToProviderGithub');
+    //Route::get('socialite/github/callback', 'SocialiteController@handleProviderCallbackGithub');
+    //Route::get('socialite/bitbucket/redirect', 'SocialiteController@redirectToProviderBitbucket');
+    //Route::get('socialite/bitbucket/callback', 'SocialiteController@handleProviderCallbackBitbucket');
 
     # List
     Route::get('list/{type}', 'HomeController@type_lists');
@@ -155,6 +155,10 @@ Route::group(['domain' => env('WWW_DOMAIN'), 'prefix' => 'admin', 'namespace' =>
     Route::get('developer_url', 'DeveloperUrlController@index');
     Route::post('all_developer_url', 'DeveloperUrlController@all_url_store');
     Route::get('fetch_all_developer_url', 'DeveloperUrlController@fetch_all_url');
+
+    # socialite
+    Route::get('github/redirect', 'SocialiteController@redirectToProviderGithub');
+    Route::get('github/callback', 'SocialiteController@handleProviderCallbackGithub');
 });
 
 # Static

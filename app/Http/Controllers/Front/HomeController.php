@@ -436,7 +436,7 @@ class HomeController extends Controller
 
         SEO::setTitle($developer->login . ' - Developer');
 
-        $owner_repos = Repos::query()->select(['id', 'slug', 'title', 'image', 'cover'])
+        $owner_repos = Repos::query()->select(['id', 'slug', 'title', 'image', 'cover', 'description', 'stargazers_count'])
             ->where('owner', $developer->login)
             ->where('status', 1)
             ->orderBy('stargazers_count', 'desc')->get();

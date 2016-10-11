@@ -47,6 +47,7 @@ class Kernel extends ConsoleKernel
         Commands\GithubFetchDeveloperUrl::class,
         Commands\SpiderFetchDeveloperUrl::class,
         Commands\DeveloperAnalyticsLanguage::class,
+        Commands\DeveloperFetch::class,
     ];
 
     /**

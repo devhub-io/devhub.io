@@ -46,7 +46,7 @@ class DeveloperUrlController extends Controller
         $urls = DB::table('developer_url')->limit(3000)->get();
 
         foreach ($urls as $item) {
-            dispatch(new GithubDeveloperFetch(1, $item->url));
+            dispatch(new GithubDeveloperFetch(2, $item->url));
             DB::table('developer_url')->where('id', $item->id)->delete();
         }
 

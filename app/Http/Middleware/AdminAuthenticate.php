@@ -27,7 +27,7 @@ class AdminAuthenticate
     public function handle($request, Closure $next, $guard = null)
     {
         if (!Auth::guard($guard)->guest()) {
-            if (Auth::id() == 1) {
+            if (Auth::id() < 10) {
                 return $next($request);
             }
         }

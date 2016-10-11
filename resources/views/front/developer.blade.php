@@ -45,11 +45,15 @@
                     <div class="row">
                         @foreach($owner_repos as $item)
                             <div class="col-md-3">
-                                <div class="thumbnail" style="height: 362px;">
-                                    <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->image > 0 ? image_url($item->image, ['h' => 200]) : ($item->cover ? $item->cover : cdn_asset('img/200x200.png')) }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="lazyload" width="200"></a>
+                                <div class="thumbnail" style="height: 150px;">
                                     <div class="caption">
                                         <a href="{{ l_url('repos', [$item->slug]) }}"><h4>{{ $item->title }}</h4></a>
-                                        <span class="line">{{ $item->trends }}</span>
+                                        <div style="margin-bottom: 10px">
+                                            <span title="star">
+                                                <i class="glyphicon glyphicon-star"></i> {{ $item->stargazers_count }}
+                                            </span>
+                                            <span class="line">{{ $item->trends }}</span>
+                                        </div>
                                         <p>{{ mb_substr($item->description, 0, 100) }}</p>
                                     </div>
                                 </div>
@@ -67,7 +71,12 @@
                                     <a href="{{ l_url('repos', [$item->repos->slug]) }}"><img src="{{ $item->repos->image > 0 ? image_url($item->repos->image, ['h' => 200]) : ($item->repos->cover ? $item->repos->cover : cdn_asset('img/200x200.png')) }}" alt="{{ $item->repos->title }}" title="{{ $item->repos->title }}" class="lazyload" width="200"></a>
                                     <div class="caption">
                                         <a href="{{ l_url('repos', [$item->slug]) }}"><h4>{{ $item->repos->title }}</h4></a>
-                                        <span class="line">{{ $item->repos->trends }}</span>
+                                        <div style="margin-bottom: 10px;">
+                                            <span title="star">
+                                                <i class="glyphicon glyphicon-star"></i> {{ $item->repos->stargazers_count }}
+                                            </span>
+                                            <span class="line">{{ $item->repos->trends }}</span>
+                                        </div>
                                         <p>{{ mb_substr($item->repos->description, 0, 100) }}</p>
                                     </div>
                                 </div>
