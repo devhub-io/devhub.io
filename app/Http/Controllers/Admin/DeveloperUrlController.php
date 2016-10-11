@@ -20,7 +20,9 @@ class DeveloperUrlController extends Controller
     public function index()
     {
         $urls = DB::table('developer_url')->orderBy('id', 'desc')->paginate(20);
-        return view('admin.developer_url.index', compact('urls'));
+        $count = DB::table('developer_url')->count();
+
+        return view('admin.developer_url.index', compact('urls', 'count'));
     }
 
     public function all_url_store()

@@ -42,7 +42,9 @@ class UrlController extends Controller
     public function index()
     {
         $urls = ReposUrl::orderBy('id', 'desc')->paginate(20);
-        return view('admin.url.index', compact('urls'));
+        $count = ReposUrl::count();
+
+        return view('admin.url.index', compact('urls', 'count'));
     }
 
     public function store()
