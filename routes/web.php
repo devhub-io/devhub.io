@@ -143,6 +143,11 @@ Route::group(['domain' => env('WWW_DOMAIN'), 'prefix' => 'admin', 'namespace' =>
     # Queue
     Route::get('queue/status', 'QueueController@status');
     Route::get('failed_jobs/{id}/delete', 'QueueController@failed_jobs_delete');
+
+    # Developer Url
+    Route::get('developer_url', 'DeveloperUrlController@index');
+    Route::post('all_developer_url', 'DeveloperUrlController@all_url_store');
+    Route::get('fetch_all_developer_url', 'DeveloperUrlController@fetch_all_url');
 });
 
 # Static

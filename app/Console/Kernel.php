@@ -43,6 +43,7 @@ class Kernel extends ConsoleKernel
         Commands\UrlPushQueue::class,
         Commands\SiteGenerateSitemap::class,
         Commands\PackagePushUrl::class,
+        Commands\GithubFetchDeveloperUrl::class,
     ];
 
     /**
