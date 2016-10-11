@@ -44,6 +44,7 @@ class Kernel extends ConsoleKernel
         Commands\SiteGenerateSitemap::class,
         Commands\PackagePushUrl::class,
         Commands\GithubFetchDeveloperUrl::class,
+        Commands\SiteFetchDeveloperUrl::class,
     ];
 
     /**

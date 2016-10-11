@@ -32,6 +32,7 @@ use App\Entities\ReposContributor;
 use App\Http\Controllers\Controller;
 use App\Repositories\CategoryRepository;
 use App\Repositories\ReposRepository;
+use App\Jobs\GithubDeveloperFetch;
 use Illuminate\Http\Request;
 use League\Glide\Responses\LaravelResponseFactory;
 use League\Glide\ServerFactory;
@@ -361,7 +362,15 @@ class HomeController extends Controller
     {
         $target = request()->get('target');
         if ($target) {
-            return redirect()->to($target);
+            preg_match(GithubDeveloperFetch::URL_REGEX, $target, $matches);
+            if ($matches) {
+                if (DB::table('developer')->where('login', $matches[1])->where('status', 1)->exists()) {
+                    $developer = DB::table('developer')->where('login', $matches[1])->where('status', 1)->first();
+                    return redirect()->to(l_url('developer', [$developer->login]));
+                }
+            } else {
+                return redirect()->to($target);
+            }
         } else {
             return redirect('/');
         }
