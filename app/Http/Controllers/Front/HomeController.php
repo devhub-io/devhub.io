@@ -229,38 +229,6 @@ class HomeController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function submit(Request $request)
-    {
-        $status = $request->get('status', '');
-        $url = $request->get('url', '');
-        $url = urldecode($url);
-
-        SEO::setTitle(trans('front.submit_repository'));
-
-        return view('front.submit', compact('status', 'url'));
-    }
-
-    /**
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function submit_store(Request $request)
-    {
-        $url = $request->get('url');
-        $repos = $this->reposRepository->findWhere(['github' => $url]);
-        if ($repos->count() > 0) {
-            return redirect('submit?status=exists&url=' . urlencode(l_url('repos', [$repos[0]->slug])));
-        } else {
-            if (!ReposUrl::where('url', $url)->first()) {
-                ReposUrl::insert(['url' => $url, 'created_at' => Carbon::now()]);
-            }
-        }
-
-        return redirect('submit?status=ok');
-    }
-
-    /**
      * @param $slug
      * @return \Illuminate\Http\Response|mixed
      */

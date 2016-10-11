@@ -30,8 +30,6 @@ Route::group(['domain' => env('WWW_DOMAIN'), 'namespace' => 'Front', 'prefix' =>
     Route::get('repos/{slug}', 'HomeController@repos');
     Route::get('collection/{slug}', 'HomeController@collection');
     Route::get('search', 'HomeController@search');
-    Route::get('submit', 'HomeController@submit');
-    Route::post('submit', 'HomeController@submit_store');
     Route::get('sites', 'HomeController@sites');
 
     # Sitemap
