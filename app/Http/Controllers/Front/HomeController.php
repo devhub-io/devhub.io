@@ -254,7 +254,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @return mixed
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function sites()
     {
@@ -266,7 +266,8 @@ class HomeController extends Controller
     }
 
     /**
-     * @return mixed
+     * @param $slug
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function collection($slug)
     {
@@ -279,7 +280,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @return mixed
+     * @return \Illuminate\Support\Facades\View
      */
     public function feed()
     {
@@ -341,7 +342,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @return mixed
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function unsubscribe()
     {
@@ -356,7 +357,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @return mixed
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function link()
     {
@@ -377,7 +378,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @return mixed
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function login()
     {
@@ -402,7 +403,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @return mixed
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function register()
     {
@@ -410,7 +411,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @return mixed
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function logout()
     {
@@ -421,7 +422,7 @@ class HomeController extends Controller
 
     /**
      * @param $login
-     * @return mixed
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function developer($login)
     {

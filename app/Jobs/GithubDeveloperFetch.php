@@ -54,6 +54,7 @@ class GithubDeveloperFetch implements ShouldQueue
 
     /**
      * Execute the job.
+     * @param ReposRepositoryEloquent $repositoryEloquent
      */
     public function handle(ReposRepositoryEloquent $repositoryEloquent)
     {
