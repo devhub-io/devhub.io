@@ -34,6 +34,12 @@
                         <td>{{ $rate_limits2['resources']['core']['remaining'] }} ({{ round($rate_limits2['resources']['core']['remaining'] / $rate_limits2['resources']['core']['limit'] * 100) }}%)</td>
                         <td>{{ date('Y-m-d H:i:s', $rate_limits2['resources']['core']['reset']) }}</td>
                     </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>{{ $rate_limits3['resources']['core']['limit'] }}</td>
+                        <td>{{ $rate_limits3['resources']['core']['remaining'] }} ({{ round($rate_limits3['resources']['core']['remaining'] / $rate_limits3['resources']['core']['limit'] * 100) }}%)</td>
+                        <td>{{ date('Y-m-d H:i:s', $rate_limits3['resources']['core']['reset']) }}</td>
+                    </tr>
                     </tbody>
                 </table>
             </div>

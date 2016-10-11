@@ -31,6 +31,12 @@ class ApiController extends Controller
         }
         $rate_limits2 = $client->api('rate_limit')->getRateLimits();
 
-        return view('admin.api.status', compact('rate_limits', 'rate_limits2'));
+        $github = Service::query()->where('provider', 'github')->where('user_id', 3)->first();
+        if ($github) {
+            $client->authenticate($github->token, null, \Github\Client::AUTH_URL_TOKEN);
+        }
+        $rate_limits3 = $client->api('rate_limit')->getRateLimits();
+
+        return view('admin.api.status', compact('rate_limits', 'rate_limits2', 'rate_limits3'));
     }
 }

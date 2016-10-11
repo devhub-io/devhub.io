@@ -51,7 +51,7 @@ class GithubAnalytics extends Command
     {
         $client = new \Github\Client();
 
-        $github = Service::query()->where('provider', 'github')->where('user_id', 1)->first();
+        $github = Service::query()->where('provider', 'github')->where('user_id', 3)->first();
         if ($github) {
             $client->authenticate($github->token, null, \Github\Client::AUTH_URL_TOKEN);
         }
