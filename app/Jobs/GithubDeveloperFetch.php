@@ -91,6 +91,7 @@ class GithubDeveloperFetch implements ShouldQueue
                     'site_updated_at' => $user['updated_at'],
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
+                    'fetched_at' => Carbon::now(),
                 ]);
 
                 $user_repos = $client->user()->repositories($matches[1]);

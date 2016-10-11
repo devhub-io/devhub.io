@@ -11,9 +11,6 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Entities\Developer;
-use App\Entities\Repos;
-use App\Entities\ReposContributor;
 use Auth;
 use Cache;
 use DB;
@@ -24,13 +21,14 @@ use Config;
 use Localization;
 use Validator;
 use App\Support\Mailgun;
-use Carbon\Carbon;
 use Roumen\Feed\Feed;
-use App\Entities\ReposUrl;
 use App\Entities\Collection;
 use App\Entities\CollectionRepos;
 use App\Entities\Site;
 use App\Entities\Article;
+use App\Entities\Developer;
+use App\Entities\Repos;
+use App\Entities\ReposContributor;
 use App\Http\Controllers\Controller;
 use App\Repositories\CategoryRepository;
 use App\Repositories\ReposRepository;
@@ -417,7 +415,7 @@ class HomeController extends Controller
      */
     public function developer($login)
     {
-        $developer = Developer::query()->where('login', $login)->firstOrFail();
+        $developer = Developer::query()->where('login', $login)->where('status', 1)->firstOrFail();
 
         SEO::setTitle($developer->login . ' - Developer');
 

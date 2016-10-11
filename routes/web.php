@@ -147,6 +147,9 @@ Route::group(['domain' => env('WWW_DOMAIN'), 'prefix' => 'admin', 'namespace' =>
 
     # Developer
     Route::get('developer', 'DeveloperController@index');
+    Route::get('developer/{id}/history', 'DeveloperController@history');
+    Route::get('developer/enable', 'DeveloperController@enable');
+    Route::get('developer/{id}/change_enable', 'DeveloperController@change_enable');
 
     # Developer Url
     Route::get('developer_url', 'DeveloperUrlController@index');

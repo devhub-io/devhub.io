@@ -8,15 +8,14 @@
             </div>
 
             <div class="title_right">
-                <div class="col-md-8 col-sm-8 col-xs-12 form-group pull-right top_search">
+                <div class="col-md-7 col-sm-8 col-xs-12 form-group pull-right top_search">
                     <div>
                         <a href="?sort=view_number&keyword={{ $keyword }}" class="btn {{ $sort && $sort == 'view_number' ? 'btn-info' : 'btn-default' }}">浏览量↓</a>
-                        <a href="?sort=stargazers_count&keyword={{ $keyword }}" class="btn {{ $sort && $sort == 'stargazers_count' ? 'btn-info' : 'btn-default' }}">收藏量↓</a>
+                        <a href="?sort=followers&keyword={{ $keyword }}" class="btn {{ $sort && $sort == 'stargazers_count' ? 'btn-info' : 'btn-default' }}">Followers↓</a>
                         <a href="?sort=fetched_at&keyword={{ $keyword }}" class="btn {{ $sort && $sort == 'fetched_at' ? 'btn-info' : 'btn-default' }}">抓取时间↓</a>
                         <a href="?sort=analytics_at&keyword={{ $keyword }}" class="btn {{ $sort && $sort == 'analytics_at' ? 'btn-info' : 'btn-default' }}">分析时间↓</a>
-                        <a href="?empty=category_id&keyword={{ $keyword }}" class="btn {{ $empty && $empty == 'category_id' ? 'btn-info' : 'btn-default' }}">未设分类</a>
                         <a href="?empty=status&keyword={{ $keyword }}" class="btn {{ $empty && $empty == 'status' ? 'btn-info' : 'btn-default' }}">禁用</a>
-                        <a href="{{ url('admin/repos') }}" class="btn btn-warning">清除</a>
+                        <a href="{{ url('admin/developer') }}" class="btn btn-warning">清除</a>
                     </div>
                     <form action="" method="get">
                         <div class="input-group">
@@ -69,20 +68,17 @@
                                 <td><img src="{{ $item->avatar_url }}" alt="" width="100"></td>
                                 <td>
                                     <ul class="list-inline">
-                                        <li title="stargazers">
-                                            <i class="glyphicon glyphicon-star" ></i> {{ $item->stargazers_count }}
+                                        <li title="followers">
+                                            <i class="glyphicon glyphicon-duplicate"></i> {{ $item->followers }}
                                         </li>
-                                        <li title="forks">
-                                            <i class="glyphicon glyphicon-wrench"></i> {{ $item->forks_count }}
+                                        <li title="following">
+                                            <i class="glyphicon glyphicon-scale"></i> {{ $item->following }}
                                         </li>
-                                        <li title="watchers">
-                                            <i class="glyphicon glyphicon-duplicate"></i> {{ $item->watchers_count }}
+                                        <li title="public_repos">
+                                            <i class="glyphicon glyphicon-star" ></i> {{ $item->public_repos }}
                                         </li>
-                                        <li title="subscribers">
-                                            <i class="glyphicon glyphicon-scale"></i> {{ $item->subscribers_count }}
-                                        </li>
-                                        <li title="issues">
-                                            <i class="glyphicon glyphicon-adjust"></i> {{ $item->open_issues_count }}
+                                        <li title="public_gists">
+                                            <i class="glyphicon glyphicon-wrench"></i> {{ $item->public_gists }}
                                         </li>|
                                         <li title="Pageviews">
                                             <i class="glyphicon glyphicon-modal-window"></i> {{ $item->view_number }}
