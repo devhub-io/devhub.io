@@ -32,7 +32,9 @@ class DeveloperUrlController extends Controller
         $insert = [];
         foreach ($urls as $item) {
             if (trim($item)) {
-                $insert[trim($item)] = ['url' => trim($item), 'created_at' => Carbon::now()];
+                if (!DB::table('developer_url')->where('url', trim($item))->exists()) {
+                    $insert[trim($item)] = ['url' => trim($item), 'created_at' => Carbon::now()];
+                }
             }
         }
 
