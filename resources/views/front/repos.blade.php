@@ -94,7 +94,7 @@
                     <h3>Top Contributors</h3>
                     <div>
                         @foreach($repos->contributors as $contributor)
-                            <a href="{{ $contributor->html_url }}" target="_blank" rel="nofollow">
+                            <a href="{{ link_url($contributor->html_url) }}" target="_blank" rel="nofollow">
                                 <img src="{{ $contributor->avatar_url }}" alt="{{ $contributor->login }}" class="pull-left" width="60" height="60">
                             </a>
                         @endforeach

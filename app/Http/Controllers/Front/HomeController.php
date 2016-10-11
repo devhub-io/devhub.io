@@ -368,9 +368,9 @@ class HomeController extends Controller
                     $developer = DB::table('developer')->where('login', $matches[1])->where('status', 1)->first();
                     return redirect()->to(l_url('developer', [$developer->login]));
                 }
-            } else {
-                return redirect()->to($target);
             }
+
+            return redirect()->to($target);
         } else {
             return redirect('/');
         }
@@ -426,6 +426,12 @@ class HomeController extends Controller
     public function developer($login)
     {
         $developer = Developer::query()->where('login', $login)->where('status', 1)->firstOrFail();
+
+        // Pageviews
+        if ((Auth::id() && Auth::id() != 1) || !Auth::check()) {
+            $developer->view_number = $developer->view_number + 1;
+            $developer->save();
+        }
 
         SEO::setTitle($developer->login . ' - Developer');
 

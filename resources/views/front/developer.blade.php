@@ -26,7 +26,7 @@
                     @if($developer->blog)
                         <a target="_blank" href="{{ link_url($developer->blog) }}" rel="nofollow"><i class="fa fa-home fa-2x"></i> @lang('front.homepage') </a> &nbsp;&nbsp;
                     @endif
-                    <a target="_blank" href="{{ link_url($developer->html_url) }}" class="gitbtn" rel="nofollow"><i class="fa fa-github fa-2x"></i> Github </a> &nbsp;&nbsp;
+                    <a target="_blank" href="{{ $developer->html_url }}" class="gitbtn" rel="nofollow"><i class="fa fa-github fa-2x"></i> Github </a> &nbsp;&nbsp;
                 </div>
                 <div class="params hidden-xs">
                     <div style="margin-bottom: 10px;">
@@ -40,37 +40,41 @@
         </div>
         <div class="row">
             <article class="col-md-12">
-                <h2>Repository</h2>
-                <div class="row">
-                    @foreach($owner_repos as $item)
-                        <div class="col-md-3">
-                            <div class="thumbnail" style="height: 362px;">
-                                <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->image > 0 ? image_url($item->image, ['h' => 200]) : ($item->cover ? $item->cover : cdn_asset('img/200x200.png')) }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="lazyload" width="200"></a>
-                                <div class="caption">
-                                    <a href="{{ l_url('repos', [$item->slug]) }}"><h3>{{ $item->title }}</h3></a>
-                                    <span class="line">{{ $item->trends }}</span>
-                                    <p>{{ mb_substr($item->description, 0, 100) }}</p>
+                @if($owner_repos->count() > 0)
+                    <h2>Repository</h2>
+                    <div class="row">
+                        @foreach($owner_repos as $item)
+                            <div class="col-md-3">
+                                <div class="thumbnail" style="height: 362px;">
+                                    <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->image > 0 ? image_url($item->image, ['h' => 200]) : ($item->cover ? $item->cover : cdn_asset('img/200x200.png')) }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="lazyload" width="200"></a>
+                                    <div class="caption">
+                                        <a href="{{ l_url('repos', [$item->slug]) }}"><h4>{{ $item->title }}</h4></a>
+                                        <span class="line">{{ $item->trends }}</span>
+                                        <p>{{ mb_substr($item->description, 0, 100) }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
-                </div>
+                        @endforeach
+                    </div>
+                @endif
 
-                <h2>Contribute</h2>
-                <div class="row">
-                    @foreach($contribute_repos as $item)
-                        <div class="col-md-3">
-                            <div class="thumbnail" style="height: 362px;">
-                                <a href="{{ l_url('repos', [$item->repos->slug]) }}"><img src="{{ $item->repos->image > 0 ? image_url($item->repos->image, ['h' => 200]) : ($item->repos->cover ? $item->repos->cover : cdn_asset('img/200x200.png')) }}" alt="{{ $item->repos->title }}" title="{{ $item->repos->title }}" class="lazyload" width="200"></a>
-                                <div class="caption">
-                                    <a href="{{ l_url('repos', [$item->slug]) }}"><h3>{{ $item->repos->title }}</h3></a>
-                                    <span class="line">{{ $item->repos->trends }}</span>
-                                    <p>{{ mb_substr($item->repos->description, 0, 100) }}</p>
+                @if($contribute_repos->count() > 0)
+                    <h2>Contribute</h2>
+                    <div class="row">
+                        @foreach($contribute_repos as $item)
+                            <div class="col-md-3">
+                                <div class="thumbnail" style="height: 362px;">
+                                    <a href="{{ l_url('repos', [$item->repos->slug]) }}"><img src="{{ $item->repos->image > 0 ? image_url($item->repos->image, ['h' => 200]) : ($item->repos->cover ? $item->repos->cover : cdn_asset('img/200x200.png')) }}" alt="{{ $item->repos->title }}" title="{{ $item->repos->title }}" class="lazyload" width="200"></a>
+                                    <div class="caption">
+                                        <a href="{{ l_url('repos', [$item->slug]) }}"><h4>{{ $item->repos->title }}</h4></a>
+                                        <span class="line">{{ $item->repos->trends }}</span>
+                                        <p>{{ mb_substr($item->repos->description, 0, 100) }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
-                </div>
+                        @endforeach
+                    </div>
+                @endif
             </article>
         </div>
     </div>
