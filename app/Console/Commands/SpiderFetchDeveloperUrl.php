@@ -13,14 +13,14 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
-class SiteFetchDeveloperUrl extends Command
+class SpiderFetchDeveloperUrl extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'develophub:site:fetch-develophub-url';
+    protected $signature = 'develophub:spider:fetch-develophub-url';
 
     /**
      * The console command description.
