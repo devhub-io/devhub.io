@@ -54,7 +54,7 @@ class SiteGenerateSitemap extends Command
         // category
         $posts = DB::table('categories')->orderBy('created_at', 'desc')->get();
         foreach ($posts as $post) {
-            $sitemap->add(url('category', [$post->slug]), $post->updated_at, '0.9', 'daily');
+            $sitemap->add(url('category', [$post->slug]), $post->updated_at, '1.0', 'daily');
         }
 
         // collections
@@ -65,6 +65,10 @@ class SiteGenerateSitemap extends Command
 
         // sites
         $sitemap->add(url('sites'), '2016-07-01T00:00:00+00:00', '1.0', 'daily');
+
+        /*
+         * Repos
+         */
 
         // get all repos from db (or wherever you store them)
         $repos = DB::table('repos')->select(['id', 'slug', 'updated_at'])->where('status', 1)->orderBy('created_at', 'desc')->get();
@@ -77,9 +81,9 @@ class SiteGenerateSitemap extends Command
         foreach ($repos as $p) {
             if ($counter == 50000) {
                 // generate new sitemap file
-                $sitemap->store('xml', 'sitemap-' . $sitemapCounter);
+                $sitemap->store('xml', 'sitemap-repos-' . $sitemapCounter);
                 // add the file to the sitemaps array
-                $sitemap->addSitemap(secure_url('sitemap-' . $sitemapCounter . '.xml'));
+                $sitemap->addSitemap(secure_url('sitemap-repos-' . $sitemapCounter . '.xml'));
                 // reset items array (clear memory)
                 $sitemap->model->resetItems();
                 // reset the counter
@@ -97,9 +101,50 @@ class SiteGenerateSitemap extends Command
         // you need to check for unused items
         if (!empty($sitemap->model->getItems())) {
             // generate sitemap with last items
-            $sitemap->store('xml', 'sitemap-' . $sitemapCounter);
+            $sitemap->store('xml', 'sitemap-repos-' . $sitemapCounter);
             // add sitemap to sitemaps array
-            $sitemap->addSitemap(secure_url('sitemap-' . $sitemapCounter . '.xml'));
+            $sitemap->addSitemap(secure_url('sitemap-repos-' . $sitemapCounter . '.xml'));
+            // reset items array
+            $sitemap->model->resetItems();
+        }
+
+        /*
+         * Developer
+         */
+
+        $developer = DB::table('developer')->select(['id', 'login', 'updated_at'])->where('status', 1)->orderBy('created_at', 'desc')->get();
+
+        // counters
+        $counter = 0;
+        $sitemapCounter = 0;
+
+        // add every product to multiple sitemaps with one sitemapindex
+        foreach ($developer as $p) {
+            if ($counter == 50000) {
+                // generate new sitemap file
+                $sitemap->store('xml', 'sitemap-developer-' . $sitemapCounter);
+                // add the file to the sitemaps array
+                $sitemap->addSitemap(secure_url('sitemap-developer-' . $sitemapCounter . '.xml'));
+                // reset items array (clear memory)
+                $sitemap->model->resetItems();
+                // reset the counter
+                $counter = 0;
+                // count generated sitemap
+                $sitemapCounter++;
+            }
+
+            // add product to items array
+            $sitemap->add(url('developer', [$p->login]), $p->updated_at, '1.0', 'daily');
+            // count number of elements
+            $counter++;
+        }
+
+        // you need to check for unused items
+        if (!empty($sitemap->model->getItems())) {
+            // generate sitemap with last items
+            $sitemap->store('xml', 'sitemap-developer-' . $sitemapCounter);
+            // add sitemap to sitemaps array
+            $sitemap->addSitemap(secure_url('sitemap-developer-' . $sitemapCounter . '.xml'));
             // reset items array
             $sitemap->model->resetItems();
         }

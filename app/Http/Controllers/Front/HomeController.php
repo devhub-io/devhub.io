@@ -420,6 +420,7 @@ class HomeController extends Controller
     }
 
     /**
+     * @param $login
      * @return mixed
      */
     public function developer($login)
