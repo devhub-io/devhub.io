@@ -27,3 +27,11 @@ Breadcrumbs::register('repos', function ($breadcrumbs, $repos) {
     $breadcrumbs->parent('category', $repos->category);
     $breadcrumbs->push($repos->title, l_url('repos', $repos->slug));
 });
+
+// Home > [Developer]
+Breadcrumbs::register('developer', function ($breadcrumbs, $developer) {
+    $breadcrumbs->parent('home');
+    if (!empty($developer->login)) {
+        $breadcrumbs->push($developer->login, l_url('developer', $developer->login));
+    }
+});

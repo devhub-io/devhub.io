@@ -11,6 +11,9 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Entities\Developer;
+use App\Entities\Repos;
+use App\Entities\ReposContributor;
 use Auth;
 use Cache;
 use DB;
@@ -166,7 +169,7 @@ class HomeController extends Controller
         $markdown = $parsedown->text($repos->readme);
         $markdown = str_replace('<a', '<a rel="nofollow noreferrer" ', $markdown);
 
-        SEO::setTitle($repos->title);
+        SEO::setTitle($repos->title . ' - Repository');
         SEO::setDescription($repos->description);
 
         // Category
@@ -407,5 +410,26 @@ class HomeController extends Controller
         Auth::logout();
 
         return redirect('/');
+    }
+
+    /**
+     * @return mixed
+     */
+    public function developer($login)
+    {
+        $developer = Developer::query()->where('login', $login)->firstOrFail();
+
+        SEO::setTitle($developer->login . ' - Developer');
+
+        $owner_repos = Repos::query()->select(['id', 'slug', 'title', 'image', 'cover'])
+            ->where('owner', $developer->login)
+            ->where('status', 1)
+            ->orderBy('stargazers_count', 'desc')->get();
+
+        $contribute_repos = ReposContributor::with(['repos' => function ($query) {
+            $query->where('status', 1);
+        }])->where('login', $login)->get();
+
+        return view('front.developer', compact('developer', 'owner_repos', 'contribute_repos'));
     }
 }

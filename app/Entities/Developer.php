@@ -22,6 +22,8 @@ class Developer extends Model implements Transformable
     use TransformableTrait;
     use RevisionableTrait;
 
+    protected $table = 'developer';
+
     /**
      * @var array
      */

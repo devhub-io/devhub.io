@@ -31,6 +31,7 @@ Route::group(['domain' => env('WWW_DOMAIN'), 'namespace' => 'Front', 'prefix' =>
     Route::get('collection/{slug}', 'HomeController@collection');
     Route::get('search', 'HomeController@search');
     Route::get('sites', 'HomeController@sites');
+    Route::get('developer/{login}', 'HomeController@developer');
 
     # Sitemap
     Route::get('sitemap', function () {
@@ -143,6 +144,9 @@ Route::group(['domain' => env('WWW_DOMAIN'), 'prefix' => 'admin', 'namespace' =>
     # Queue
     Route::get('queue/status', 'QueueController@status');
     Route::get('failed_jobs/{id}/delete', 'QueueController@failed_jobs_delete');
+
+    # Developer
+    Route::get('developer', 'DeveloperController@index');
 
     # Developer Url
     Route::get('developer_url', 'DeveloperUrlController@index');

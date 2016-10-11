@@ -8,7 +8,7 @@ return [
         'defaults'       => [
             'title'        => "DevelopHub", // set false to total remove
             'description'  => 'Development Language Tools Hub', // set false to total remove
-            'separator'    => ' - ',
+            'separator'    => ' | ',
             'keywords'     => ['Develop', 'DevelopHub'],
             'canonical'    => false, // Set null for using Url::current(), set false to total remove
         ],
