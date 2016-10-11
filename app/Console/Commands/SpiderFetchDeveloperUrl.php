@@ -42,7 +42,7 @@ class SpiderFetchDeveloperUrl extends Command
      */
     public function handle()
     {
-        $languages = ['javascript', 'java', 'php', 'python', 'ruby', 'css', 'c++', 'c', 'c#', 'objective-c', 'shell', 'r', 'go', 'perl', 'viml', 'coffeescript', 'scala', 'haskell', 'clojure', 'lua'];
+        $languages = [ 'php', 'python', 'ruby', 'css', 'c++', 'c', 'c#', 'objective-c', 'shell', 'r', 'go', 'perl', 'viml', 'coffeescript', 'scala', 'haskell', 'clojure', 'lua'];
         foreach ($languages as $language) {
             $file = 'github-awards-' . $language . '.txt';
             @unlink(storage_path($file));

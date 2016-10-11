@@ -70,7 +70,7 @@
                                 <div class="thumbnail" style="height: 362px;">
                                     <a href="{{ l_url('repos', [$item->repos->slug]) }}"><img src="{{ $item->repos->image > 0 ? image_url($item->repos->image, ['h' => 200]) : ($item->repos->cover ? $item->repos->cover : cdn_asset('img/200x200.png')) }}" alt="{{ $item->repos->title }}" title="{{ $item->repos->title }}" class="lazyload" width="200"></a>
                                     <div class="caption">
-                                        <a href="{{ l_url('repos', [$item->slug]) }}"><h4>{{ $item->repos->title }}</h4></a>
+                                        <a href="{{ l_url('repos', [$item->repos->slug]) }}"><h4>{{ $item->repos->title }}</h4></a>
                                         <div style="margin-bottom: 10px;">
                                             <span title="star">
                                                 <i class="glyphicon glyphicon-star"></i> {{ $item->repos->stargazers_count }}
