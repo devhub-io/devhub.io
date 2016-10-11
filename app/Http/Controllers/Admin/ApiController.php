@@ -24,13 +24,11 @@ class ApiController extends Controller
         if($github) {
             $client->authenticate($github->token, null, \Github\Client::AUTH_URL_TOKEN);
         }
-        $rateLimits = $client->api('rate_limit')->getRateLimits();
+        $rate_limits = $client->api('rate_limit')->getRateLimits();
 
-        ob_start();
-        print_r($rateLimits);
-        $github = ob_get_contents();
-        ob_clean();
 
-        return view('admin.api.status', compact('github'));
+
+
+        return view('admin.api.status', compact('rate_limits'));
     }
 }
