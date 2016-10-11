@@ -13,21 +13,21 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
-class GithubFetchPageUrl extends Command
+class SpiderFetchDeveloperUrl extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'develophub:github:fetch-page-url';
+    protected $signature = 'develophub:spider:fetch-develophub-url';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Github Fetch Page url';
+    protected $description = 'Site Fetch Developer Url';
 
     /**
      * Create a new command instance.
@@ -42,31 +42,29 @@ class GithubFetchPageUrl extends Command
      */
     public function handle()
     {
-        @unlink(storage_path('repos.txt'));
+        $languages = ['javascript', 'java', 'php', 'python', 'ruby', 'css', 'c++', 'c', 'c#', 'objective-c', 'shell', 'r', 'go', 'perl', 'viml', 'coffeescript', 'scala', 'haskell', 'clojure', 'lua'];
+        foreach ($languages as $language) {
+            $file = 'github-awards-' . $language . '.txt';
+            @unlink(storage_path($file));
 
-        $alphabet = ['xo', 'execute', 'int', 'string', 'range'];
+            $url = 'http://github-awards.com/users?language=' . $language . '&type=world&utf8=%E2%9C%93&page=';
+            $regex = "/<td class=\"username\"><a href=\"(.*)\">(.*)<\/a><\/td>/";
 
-        foreach ($alphabet as $a) {
-            $keyword = $a;
-            $url = 'https://github.com/search?o=desc&q=' . $keyword . '&s=stars&type=Repositories&utf8=%E2%9C%93&p=';
-            $regex = "/<h3 class=\"repo-list-name\">\s+<a href=\"(.*)\">(.*)<\/a>/";
-
-            foreach (range(1, 100) as $page) {
+            foreach (range(1, 500) as $page) {
                 $html = @file_get_contents($url . $page);
                 preg_match_all($regex, $html, $matches);
 
                 $github_urls = [];
-                if (isset($matches[1])) {
-                    foreach ($matches[1] as $item) {
-                        $github_urls[] = 'https://github.com' . $item;
+                if (isset($matches[2])) {
+                    foreach ($matches[2] as $item) {
+                        $github_urls[] = 'https://github.com/' . $item;
                     }
                 }
                 $text = implode("\n", $github_urls);
-                $handle = fopen(storage_path('repos.txt'), 'a+');
+                $handle = fopen(storage_path($file), 'a+');
                 fwrite($handle, "\n" . $text);
 
-                $this->info("Keyword: $a, Page: $page");
-                sleep(10);
+                $this->info("Language: $language, Page: $page");
             }
         }
 

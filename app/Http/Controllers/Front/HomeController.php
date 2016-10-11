@@ -21,16 +21,18 @@ use Config;
 use Localization;
 use Validator;
 use App\Support\Mailgun;
-use Carbon\Carbon;
 use Roumen\Feed\Feed;
-use App\Entities\ReposUrl;
 use App\Entities\Collection;
 use App\Entities\CollectionRepos;
 use App\Entities\Site;
 use App\Entities\Article;
+use App\Entities\Developer;
+use App\Entities\Repos;
+use App\Entities\ReposContributor;
 use App\Http\Controllers\Controller;
 use App\Repositories\CategoryRepository;
 use App\Repositories\ReposRepository;
+use App\Jobs\GithubDeveloperFetch;
 use Illuminate\Http\Request;
 use League\Glide\Responses\LaravelResponseFactory;
 use League\Glide\ServerFactory;
@@ -166,7 +168,7 @@ class HomeController extends Controller
         $markdown = $parsedown->text($repos->readme);
         $markdown = str_replace('<a', '<a rel="nofollow noreferrer" ', $markdown);
 
-        SEO::setTitle($repos->title);
+        SEO::setTitle($repos->title . ' - Repository');
         SEO::setDescription($repos->description);
 
         // Category
@@ -252,7 +254,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @return mixed
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function sites()
     {
@@ -264,7 +266,8 @@ class HomeController extends Controller
     }
 
     /**
-     * @return mixed
+     * @param $slug
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function collection($slug)
     {
@@ -277,7 +280,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @return mixed
+     * @return \Illuminate\Support\Facades\View
      */
     public function feed()
     {
@@ -339,7 +342,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @return mixed
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function unsubscribe()
     {
@@ -354,12 +357,20 @@ class HomeController extends Controller
     }
 
     /**
-     * @return mixed
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function link()
     {
         $target = request()->get('target');
         if ($target) {
+            preg_match(GithubDeveloperFetch::URL_REGEX, $target, $matches);
+            if ($matches) {
+                if (DB::table('developer')->where('login', $matches[1])->where('status', 1)->exists()) {
+                    $developer = DB::table('developer')->where('login', $matches[1])->where('status', 1)->first();
+                    return redirect()->to(l_url('developer', [$developer->login]));
+                }
+            }
+
             return redirect()->to($target);
         } else {
             return redirect('/');
@@ -367,7 +378,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @return mixed
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function login()
     {
@@ -392,7 +403,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @return mixed
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function register()
     {
@@ -400,12 +411,40 @@ class HomeController extends Controller
     }
 
     /**
-     * @return mixed
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function logout()
     {
         Auth::logout();
 
         return redirect('/');
+    }
+
+    /**
+     * @param $login
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function developer($login)
+    {
+        $developer = Developer::query()->where('login', $login)->where('status', 1)->firstOrFail();
+
+        // Pageviews
+        if ((Auth::id() && Auth::id() != 1) || !Auth::check()) {
+            $developer->view_number = $developer->view_number + 1;
+            $developer->save();
+        }
+
+        SEO::setTitle($developer->login . ' - Developer');
+
+        $owner_repos = Repos::query()->select(['id', 'slug', 'title', 'image', 'cover', 'description', 'stargazers_count'])
+            ->where('owner', $developer->login)
+            ->where('status', 1)
+            ->orderBy('stargazers_count', 'desc')->get();
+
+        $contribute_repos = ReposContributor::with(['repos' => function ($query) {
+            $query->where('status', 1);
+        }])->where('login', $login)->get();
+
+        return view('front.developer', compact('developer', 'owner_repos', 'contribute_repos'));
     }
 }

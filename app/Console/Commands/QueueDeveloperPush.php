@@ -11,26 +11,26 @@
 
 namespace App\Console\Commands;
 
-use App\Entities\ReposUrl;
-use App\Jobs\GithubFetch;
+use App\Entities\DeveloperUrl;
+use App\Jobs\GithubDeveloperFetch;
 use DB;
 use Illuminate\Console\Command;
 
-class UrlPushQueue extends Command
+class QueueDeveloperPush extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'develophub:url:push-queue';
+    protected $signature = 'develophub:queue:developer-push';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Url Push Queue';
+    protected $description = 'Command description';
 
     /**
      * Create a new command instance.
@@ -42,15 +42,13 @@ class UrlPushQueue extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
     public function handle()
     {
-        $urls = ReposUrl::query()->select(['id', 'url'])->get();
+        $urls = DeveloperUrl::query()->select(['id', 'url'])->get();
         foreach ($urls as $item) {
-            if (!DB::table('repos')->select('id')->where('github', $item->url)->exists()) {
-                dispatch(new GithubFetch(1, $item->url));
+            if (!DB::table('developer')->where('html_url', $item->url)->exists()) {
+                dispatch(new GithubDeveloperFetch(2, $item->url));
                 $this->info($item->url);
             } else {
                 $this->info('pass');

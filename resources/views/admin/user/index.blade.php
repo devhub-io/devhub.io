@@ -51,9 +51,6 @@
                                         <a class="btn btn-info btn-xs edit-password" href="javascript:void(0);" data-id="{{ $item->id }}">修改密码</a>
                                         <a href="{{ url('collection', [$item->slug]) }}" target="_blank" class="btn btn-primary btn-xs">权限管理</a>
                                         <a class="btn btn-default btn-xs" href="javascript:void(0);">修改</a>
-                                        @if($item->id != 1)
-                                            <a class="btn btn-danger btn-xs" href="javascript:confirmDelete('{{ url("admin/user/{$item->id}/delete") }}')">删除</a>
-                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

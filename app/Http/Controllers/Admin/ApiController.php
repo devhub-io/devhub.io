@@ -13,24 +13,24 @@ namespace App\Http\Controllers\Admin;
 
 use App\Entities\Service;
 use App\Http\Controllers\Controller;
-use Auth;
 
 class ApiController extends Controller
 {
     public function status()
     {
         $client = new \Github\Client();
-        $github = Service::query()->where('provider', 'github')->where('user_id', Auth::id())->first();
-        if($github) {
+        $github = Service::query()->where('provider', 'github')->where('user_id', 1)->first();
+        if ($github) {
             $client->authenticate($github->token, null, \Github\Client::AUTH_URL_TOKEN);
         }
-        $rateLimits = $client->api('rate_limit')->getRateLimits();
+        $rate_limits = $client->api('rate_limit')->getRateLimits();
 
-        ob_start();
-        print_r($rateLimits);
-        $github = ob_get_contents();
-        ob_clean();
+        $github = Service::query()->where('provider', 'github')->where('user_id', 2)->first();
+        if ($github) {
+            $client->authenticate($github->token, null, \Github\Client::AUTH_URL_TOKEN);
+        }
+        $rate_limits2 = $client->api('rate_limit')->getRateLimits();
 
-        return view('admin.api.status', compact('github'));
+        return view('admin.api.status', compact('rate_limits', 'rate_limits2'));
     }
 }

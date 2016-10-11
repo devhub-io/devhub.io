@@ -60,6 +60,8 @@
                                     <li><a href="{{ url('admin/categories') }}">分类</a></li>
                                     <li><a href="{{ url('admin/repos') }}">资源</a></li>
                                     <li><a href="{{ url('admin/url') }}">链接</a></li>
+                                    <li><a href="{{ url('admin/developer') }}">开发者</a></li>
+                                    <li><a href="{{ url('admin/developer_url') }}">开发者链接</a></li>
                                     <li><a href="{{ url('admin/images') }}">图片</a></li>
                                     <li><a href="{{ url('admin/sites') }}">站点</a></li>
                                     <li><a href="{{ url('admin/collections') }}">集合</a></li>
