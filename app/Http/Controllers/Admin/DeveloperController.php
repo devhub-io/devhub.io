@@ -36,7 +36,7 @@ class DeveloperController extends Controller
             $builder->where("$empty", 0);
         }
 
-        $developer = $builder->orderBy('id', 'desc')->paginate(20);
+        $developer = $builder->orderBy('id', 'desc')->paginate(200);
 
         $ids = [];
         foreach ($developer as $item) {

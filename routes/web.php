@@ -31,6 +31,7 @@ Route::group(['domain' => env('WWW_DOMAIN'), 'namespace' => 'Front', 'prefix' =>
     Route::get('collection/{slug}', 'HomeController@collection');
     Route::get('search', 'HomeController@search');
     Route::get('sites', 'HomeController@sites');
+    Route::get('developers', 'HomeController@developers');
     Route::get('developer/{login}', 'HomeController@developer');
 
     # Sitemap

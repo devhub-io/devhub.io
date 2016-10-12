@@ -75,6 +75,9 @@ class HomeController extends Controller
         view()->share('repos_total', Cache::remember('front:repos_total', 60 * 24, function () {
             return DB::table('repos')->where('status', 1)->count();
         }));
+        view()->share('developers_total', Cache::remember('front:developers_total', 60 * 24, function () {
+            return DB::table('developer')->where('status', 1)->count();
+        }));
     }
 
     /**
@@ -418,6 +421,16 @@ class HomeController extends Controller
         Auth::logout();
 
         return redirect('/');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function developers()
+    {
+        $developers = Developer::query()->where('status', 1)->orderBy('followers', 'desc')->paginate(12);
+
+        return view('front.developers', compact('developers'));
     }
 
     /**
