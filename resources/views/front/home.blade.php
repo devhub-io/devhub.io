@@ -11,7 +11,7 @@
                         @foreach($recommend as $item)
                         <div class="single-product">
                             <div class="product-f-image">
-                                <img src="{{ $item->image > 0 ? image_url($item->image, ['w' => 210]) : ($item->cover ? $item->cover : cdn_asset('img/210x269.png')) }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="lazyload">
+                                <img src="{{ $item->cover ? $item->cover : cdn_asset('img/210x269.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="lazyload" width="210">
                                 <div class="product-hover">
                                     <a href="{{ l_url('repos', [$item->slug]) }}" class="view-details-link"><i class="fa fa-link"></i> @lang('front.see_details')</a>
                                 </div>
@@ -99,7 +99,7 @@
                     <a href="{{ l_url('list/popular') }}" class="wid-view-more">@lang('front.view_all')</a>
                     @foreach($hot as $item)
                     <div class="single-wid-product">
-                        <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->image > 0 ? image_url($item->image, ['w' => 100]) : ($item->cover ? $item->cover :cdn_asset('img/100x90.png')) }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="product-thumb lazyload"></a>
+                        <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->cover ? $item->cover :cdn_asset('img/100x90.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="product-thumb lazyload" width="100"></a>
                         <h2><a href="{{ l_url('repos', [$item->slug]) }}">{{ $item->title }}</a></h2>
                         <div class="product-wid-rating">
                             <i class="fa fa-star"></i> {{ $item->stargazers_count }}
@@ -117,7 +117,7 @@
                     <a href="{{ l_url('list/newest') }}" class="wid-view-more">@lang('front.view_all')</a>
                     @foreach($new as $item)
                         <div class="single-wid-product">
-                            <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->image > 0 ? image_url($item->image, ['w' => 100]) : ($item->cover ? $item->cover : cdn_asset('img/100x90.png')) }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="product-thumb lazyload"></a>
+                            <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->cover ? $item->cover : cdn_asset('img/100x90.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="product-thumb lazyload" width="100"></a>
                             <h2><a href="{{ l_url('repos', [$item->slug]) }}">{{ $item->title }}</a></h2>
                             <div class="product-wid-rating">
                                 <i class="fa fa-star"></i> {{ $item->stargazers_count }}
@@ -135,7 +135,7 @@
                     <a href="{{ l_url('list/trend') }}" class="wid-view-more">@lang('front.view_all')</a>
                     @foreach($trend as $item)
                         <div class="single-wid-product">
-                            <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->image > 0 ? image_url($item->image, ['w' => 100]) : ($item->cover ? $item->cover : cdn_asset('img/100x90.png')) }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="product-thumb lazyload"></a>
+                            <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->cover ? $item->cover : cdn_asset('img/100x90.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="product-thumb lazyload" width="100"></a>
                             <h2><a href="{{ l_url('repos', [$item->slug]) }}">{{ $item->title }}</a></h2>
                             <div class="product-wid-rating">
                                 <i class="fa fa-star"></i> {{ $item->stargazers_count }}

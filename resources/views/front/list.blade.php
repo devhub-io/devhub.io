@@ -40,7 +40,7 @@
                             @foreach($repos as $item)
                             <div class="col-sm-6 @if(isset($child_category)) col-md-4 @else col-md-3 @endif">
                                 <div class="thumbnail" style="height: 362px;">
-                                    <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->image > 0 ? image_url($item->image, ['h' => 200]) : ($item->cover ? $item->cover : cdn_asset('img/200x200.png')) }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="lazyload" width="200"></a>
+                                    <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->cover ? $item->cover : cdn_asset('img/200x200.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="lazyload" width="200"></a>
                                     <div class="caption">
                                         <a href="{{ l_url('repos', [$item->slug]) }}"><h4>{{ $item->title }}</h4></a>
                                         <div style="margin-bottom: 10px">

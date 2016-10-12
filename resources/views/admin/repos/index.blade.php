@@ -71,7 +71,7 @@
                                     <br>
                                     <small>分析于 {{ $item->analytics_at }}</small>
                                 </td>
-                                <td><img src="{{ $item->image > 0 ? image_url($item->image, ['w' => 100]) : $item->cover }}" alt="" width="100"></td>
+                                <td><img src="{{ $item->cover }}" alt="" width="100"></td>
                                 <td>{{ $item->category->title or '-' }}</td>
                                 <td>{{ $item->language }}</td>
                                 <td>{{ $item->slug }}</td>

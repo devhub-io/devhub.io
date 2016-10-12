@@ -114,7 +114,8 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function findBySlug($slug)
     {
-        return $this->model->with('tags', 'contributors', 'languages', 'badges')->where('status', true)->where('slug', $slug)->firstOrFail();
+        return $this->model->with('tags', 'contributors', 'languages', 'badges')
+            ->where('status', true)->where('slug', $slug)->firstOrFail();
     }
 
     /**
@@ -126,7 +127,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
     {
         $list = $this->model->where('status', true);
         if ($has_image) {
-            $list->where('image', '>', 0);
+            $list->where('cover', '<>', '');
         }
         return $list->orderBy('stargazers_count', 'DESC')->paginate($limit);
     }
@@ -140,7 +141,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
     {
         $list = $this->model->where('status', true);
         if ($has_image) {
-            $list->where('image', '>', 0);
+            $list->where('cover', '<>', '');
         }
         return $list->orderBy('repos_created_at', 'DESC')->paginate($limit);
     }
@@ -154,7 +155,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
     {
         $list = $this->model->where('status', true);
         if ($has_image) {
-            $list->where('image', '>', 0);
+            $list->where('cover', '<>', '');
         }
         return $list->orderBy('repos_updated_at', 'DESC')->paginate($limit);
     }
@@ -166,7 +167,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
     public function findRecommend($limit = 10)
     {
         return $this->model->where('status', true)
-            ->where('image', '>', 0)
+            ->where('cover', '<>', '')
             ->where('is_recommend', true)->orderBy('stargazers_count', 'DESC')->limit($limit)->get();
     }
 
@@ -218,8 +219,8 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function findWhereInPaginate($field, array $values, $columns = ['*'])
     {
-        return $this->model->select(\DB::raw('repos.*, IF(image > 0, 1, 0) as has_image'))->whereIn($field, $values)->where('status', true)
-            ->orderBy('has_image', 'DESC')->orderBy('repos_updated_at', 'DESC')->paginate(15);
+        return $this->model->whereIn($field, $values)->where('status', true)
+            ->orderBy('cover', 'DESC')->orderBy('repos_updated_at', 'DESC')->paginate(15);
     }
 
     /**
@@ -230,7 +231,8 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function relatedRepos($id, $title, $limit = 5)
     {
-        return $this->model->select(['id', 'slug', 'image', 'cover', 'title', 'description'])->where('title', 'like', "$title%")
+        return $this->model->select(['id', 'slug', 'cover', 'title', 'description'])
+            ->where('title', 'like', "$title%")
             ->where('id', '<>', $id)->where('title', '<>', $title)->where('status', 1)
             ->orderBy('stargazers_count', 'DESC')->limit($limit)->get();
     }

@@ -22,7 +22,7 @@
 
         <div class="row" style="margin: 50px 0 50px 0">
             <div class="col-md-3 col-sm-4 hidden-xs">
-                <img class="cover" src="{{ $repos->image > 0 ? image_url($repos->image, ['w' => 300]) : ($repos->cover ? $repos->cover : cdn_asset('img/300x300.png')) }}" alt="{{ $repos->title }}" title="{{ $repos->title }}">
+                <img class="cover" src="{{ $repos->cover ? $repos->cover : cdn_asset('img/300x300.png') }}" alt="{{ $repos->title }}" title="{{ $repos->title }}" width="300">
             </div>
             <div class="col-md-7 col-sm-8">
                 <div class="repo-title">
@@ -78,7 +78,7 @@
                     @foreach($related_repos as $item)
                         <div class="row" style="margin-bottom: 10px">
                             <div class="col-md-4">
-                                <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->image > 0 ? image_url($item->image, ['h' => 100]) : ($item->cover ? $item->cover : cdn_asset('img/200x200.png')) }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="lazyload" width="100"></a>
+                                <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->cover ? $item->cover : cdn_asset('img/200x200.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="lazyload" width="100"></a>
                             </div>
                             <div class="col-md-8">
                                 <h4><a href="{{ l_url('repos', [$item->slug]) }}">{{ $item->title }}</a></h4>
