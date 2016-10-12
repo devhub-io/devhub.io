@@ -48,6 +48,7 @@
                             <tr>
                                 <th style="width: 1%">#</th>
                                 <th style="width: 12%">名称</th>
+                                <th>类型</th>
                                 <th>图片</th>
                                 <th>统计</th>
                                 <th>状态</th>
@@ -65,6 +66,7 @@
                                     <br>
                                     <small>分析于 {{ $item->analytics_at }}</small>
                                 </td>
+                                <td>{{ $item->type }}</td>
                                 <td><img src="{{ $item->avatar_url }}" alt="" width="100"></td>
                                 <td>
                                     <ul class="list-inline">
