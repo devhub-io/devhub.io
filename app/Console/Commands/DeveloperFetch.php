@@ -37,7 +37,7 @@ class DeveloperFetch extends Command
      */
     public function handle()
     {
-        $urls = DeveloperUrl::query()->select(['id', 'url'])->get();
+        $urls = DeveloperUrl::query()->select(['id', 'url'])->orderBy('id', 'desc')->get();
         foreach ($urls as $item) {
             if (!DB::table('developer')->where('html_url', $item->url)->exists()) {
 
