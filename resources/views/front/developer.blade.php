@@ -16,10 +16,10 @@
             <div class="col-md-3 col-sm-4 hidden-xs">
                 <img class="cover" src="{{ $developer->avatar_url ? $developer->avatar_url : cdn_asset('img/300x300.png') }}" alt="{{ $developer->login }}" title="{{ $developer->login }}">
             </div>
-            <div class="col-md-7 col-sm-8">
+            <div class="col-md-9 col-sm-8">
                 <div class="repo-title">
                     <h1>
-                        {{ $developer->name }} <span>({{ $developer->login }})</span>
+                        @if($developer->type == 'Organization') <i class="fa fa-users" title="Organization"></i> @else <i class="fa fa-user" title="User"></i> @endif {{ $developer->name }} <span>({{ $developer->login }})</span>
                     </h1>
                 </div>
                 <div class="menu hidden-xs" style="margin-bottom: 10px;">

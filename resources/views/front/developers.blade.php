@@ -29,7 +29,7 @@
                                     <div class="thumbnail" style="height: 300px;">
                                         <a href="{{ l_url('developer', [$item->login]) }}"><img src="{{ $item->avatar_url ? $item->avatar_url : cdn_asset('img/200x200.png') }}" alt="{{ $item->login }}" title="{{ $item->login }}" class="lazyload" width="200"></a>
                                         <div class="caption">
-                                            <a href="{{ l_url('developer', [$item->login]) }}"><h4>{{ $item->login }}</h4></a>
+                                            <a href="{{ l_url('developer', [$item->login]) }}"><h4>@if($item->type == 'Organization') <i class="fa fa-users" title="Organization"></i> @else <i class="fa fa-user" title="User"></i> @endif {{ $item->login }}</h4></a>
                                             <div style="margin-bottom: 10px">
                                                 <span title="star">
                                                     <a aria-label="Follow @{{ $developer->login }} on GitHub" data-count-aria-label="# followers on GitHub" data-count-api="/users/{{ $item->login }}#followers" data-count-href="/{{ $item->login }}/followers" href="https://github.com/{{ $item->login }}" class="github-button">Follow</a>
