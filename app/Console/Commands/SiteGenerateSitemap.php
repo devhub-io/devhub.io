@@ -64,7 +64,11 @@ class SiteGenerateSitemap extends Command
         }
 
         // sites
-        $sitemap->add(url('sites'), '2016-07-01T00:00:00+00:00', '1.0', 'daily');
+        $sitemap->add(url('sites'), Carbon::now(), '1.0', 'daily');
+
+        // list
+        $sitemap->add(url('list/newest'), Carbon::now(), '1.0', 'daily');
+        $sitemap->add(url('developers'), Carbon::now(), '1.0', 'daily');
 
         /*
          * Repos
