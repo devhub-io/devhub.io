@@ -105,6 +105,7 @@ class HomeController extends Controller
     }
 
     /**
+     * @param $slug
      * @return \Illuminate\Http\Response
      */
     public function lists($slug)
@@ -133,6 +134,7 @@ class HomeController extends Controller
     }
 
     /**
+     * @param $type
      * @return \Illuminate\Http\Response
      */
     public function type_lists($type)
@@ -161,6 +163,7 @@ class HomeController extends Controller
     }
 
     /**
+     * @param $slug
      * @return \Illuminate\Http\Response
      */
     public function repos($slug)

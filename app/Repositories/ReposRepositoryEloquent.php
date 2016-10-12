@@ -125,7 +125,8 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function findHottest($limit = 5, $has_image = true)
     {
-        $list = $this->model->where('status', true);
+        $list = $this->model->where('status', true)
+            ->select(['id', 'title', 'slug', 'cover', 'trends', 'stargazers_count', 'description']);
         if ($has_image) {
             $list->where('cover', '<>', '');
         }
@@ -139,7 +140,8 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function findNewest($limit = 5, $has_image = true)
     {
-        $list = $this->model->where('status', true);
+        $list = $this->model->where('status', true)
+            ->select(['id', 'title', 'slug', 'cover', 'trends', 'stargazers_count', 'description']);
         if ($has_image) {
             $list->where('cover', '<>', '');
         }
@@ -153,7 +155,8 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function findTrend($limit = 5, $has_image = true)
     {
-        $list = $this->model->where('status', true);
+        $list = $this->model->where('status', true)
+            ->select(['id', 'title', 'slug', 'cover', 'trends', 'stargazers_count', 'description']);
         if ($has_image) {
             $list->where('cover', '<>', '');
         }
@@ -166,9 +169,9 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function findRecommend($limit = 10)
     {
-        return $this->model->where('status', true)
-            ->where('cover', '<>', '')
-            ->where('is_recommend', true)->orderBy('stargazers_count', 'DESC')->limit($limit)->get();
+        return $this->model->select(['id', 'title', 'cover', 'slug'])
+            ->where('status', true)->where('cover', '<>', '')->where('is_recommend', true)
+            ->orderBy('stargazers_count', 'DESC')->limit($limit)->get();
     }
 
     /**$limit
