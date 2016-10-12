@@ -11,6 +11,7 @@
 
 namespace App\Console\Commands;
 
+use App\Entities\Developer;
 use DB;
 use App\Entities\Repos;
 use Illuminate\Console\Command;
@@ -49,12 +50,13 @@ class ReposProcess extends Command
      */
     public function handle()
     {
-        // .php
-        $this->info('Process .php');
-        $repos = DB::table('repos')->where('title', 'like', '%.php')->where('status', 1)->select(['id'])->get();
+        // post
+        $this->info('Post');
+        $repos = Repos::query()->where('stargazers_count', '>=', 5)->where('status', 0)->select('id')->get();
         foreach ($repos as $item) {
-            DB::table('repos')->where('id', $item->id)->update(['status' => 0]);
-            $this->info('Repos: ' . $item->id);
+            $item->status = 1;
+            $item->save();
+            $this->info($item->id);
         }
 
         // category
@@ -83,7 +85,8 @@ class ReposProcess extends Command
         $this->info('Process star < 5');
         $repos = Repos::query()->where('stargazers_count', '<', 5)->where('status', 1)->select('id')->get();
         foreach ($repos as $item) {
-            DB::table('repos')->where('id', $item->id)->update(['status' => 0]);
+            $item->status = 0;
+            $item->save();
             $this->info($item->id);
         }
 
@@ -100,12 +103,21 @@ class ReposProcess extends Command
             }
         }
 
-        // post
-        $this->info('Post');
-        $repos = Repos::query()->where('stargazers_count', '>=', 5)->where('status', 0)->select('id')->get();
+        // .php
+        $this->info('Process .php');
+        $repos = DB::table('repos')->where('title', 'like', '%.php')->where('status', 1)->select(['id'])->get();
         foreach ($repos as $item) {
-            DB::table('repos')->where('id', $item->id)->update(['status' => 1]);
-            $this->info($item->id);
+            DB::table('repos')->where('id', $item->id)->update(['status' => 0]);
+            $this->info('Repos: ' . $item->id);
+        }
+
+        // developer
+        $this->info('Developer');
+        $developers = Developer::query()->where('followers', '>', 0)->where('status', 0)->select('id')->get();
+        foreach ($developers as $developer) {
+            $developer->status = 1;
+            $developer->save();
+            $this->info($developer->id);
         }
 
         $this->info('All Done!');
