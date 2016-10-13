@@ -141,15 +141,15 @@ class HomeController extends Controller
     {
         switch ($type) {
             case 'popular':
-                $repos = $this->reposRepository->findHottest(12, false);
+                $repos = $this->reposRepository->findHottestPaginate(12);
                 $t = 'popular';
                 break;
             case 'newest':
-                $repos = $this->reposRepository->findNewest(12, false);
+                $repos = $this->reposRepository->findNewestPaginate(12);
                 $t = 'latest';
                 break;
             case 'trend':
-                $repos = $this->reposRepository->findTrend(12, false);
+                $repos = $this->reposRepository->findTrendPaginate(12);
                 $t = 'trend';
                 break;
             default:

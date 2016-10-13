@@ -130,7 +130,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
         if ($has_image) {
             $list->where('cover', '<>', '');
         }
-        return $list->orderBy('stargazers_count', 'DESC')->paginate($limit);
+        return $list->orderBy('stargazers_count', 'DESC')->limit($limit)->get();
     }
 
     /**
@@ -145,7 +145,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
         if ($has_image) {
             $list->where('cover', '<>', '');
         }
-        return $list->orderBy('repos_created_at', 'DESC')->paginate($limit);
+        return $list->orderBy('repos_created_at', 'DESC')->limit($limit)->get();
     }
 
     /**
@@ -160,6 +160,39 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
         if ($has_image) {
             $list->where('cover', '<>', '');
         }
+        return $list->orderBy('repos_updated_at', 'DESC')->limit($limit)->get();
+    }
+
+    /**
+     * @param int $limit
+     * @return mixed
+     */
+    public function findHottestPaginate($limit = 5)
+    {
+        $list = $this->model->where('status', true)
+            ->select(['id', 'title', 'slug', 'cover', 'trends', 'stargazers_count', 'description']);
+        return $list->orderBy('stargazers_count', 'DESC')->paginate($limit);
+    }
+
+    /**
+     * @param int $limit
+     * @return mixed
+     */
+    public function findNewestPaginate($limit = 5)
+    {
+        $list = $this->model->where('status', true)
+            ->select(['id', 'title', 'slug', 'cover', 'trends', 'stargazers_count', 'description']);
+        return $list->orderBy('repos_created_at', 'DESC')->paginate($limit);
+    }
+
+    /**
+     * @param int $limit
+     * @return mixed
+     */
+    public function findTrendPaginate($limit = 5)
+    {
+        $list = $this->model->where('status', true)
+            ->select(['id', 'title', 'slug', 'cover', 'trends', 'stargazers_count', 'description']);
         return $list->orderBy('repos_updated_at', 'DESC')->paginate($limit);
     }
 

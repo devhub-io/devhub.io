@@ -64,6 +64,24 @@ interface ReposRepository extends RepositoryInterface
      * @param int $limit
      * @return mixed
      */
+    public function findHottestPaginate($limit = 5);
+
+    /**
+     * @param int $limit
+     * @return mixed
+     */
+    public function findNewestPaginate($limit = 5);
+
+    /**
+     * @param int $limit
+     * @return mixed
+     */
+    public function findTrendPaginate($limit = 5);
+
+    /**
+     * @param int $limit
+     * @return mixed
+     */
     public function findRecommend($limit = 10);
 
     /**
