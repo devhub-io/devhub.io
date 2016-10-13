@@ -13,14 +13,14 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
-class GithubFetchSearch extends Command
+class SpiderGithubFetchSearch extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'develophub:github:fetch-search';
+    protected $signature = 'develophub:spider:github-fetch-search';
 
     /**
      * The console command description.

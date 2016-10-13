@@ -13,21 +13,21 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
-class GithubFetchDeveloperUrl extends Command
+class SpiderGithubFetchPageUrl extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'developer:github:fetch-developer-url';
+    protected $signature = 'develophub:spider:github-fetch-page-url';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Github Fetch Developer Url';
+    protected $description = 'Github Fetch Page url';
 
     /**
      * Create a new command instance.
@@ -39,22 +39,19 @@ class GithubFetchDeveloperUrl extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
     public function handle()
     {
-        @unlink(storage_path('developer.txt'));
+        @unlink(storage_path('repos.txt'));
 
-        $alphabet = 'qwertyuiopasdfghjklzxcvbnm';
-        $alphabet = str_split($alphabet);
+        $alphabet = ['xo', 'execute', 'int', 'string', 'range'];
 
         foreach ($alphabet as $a) {
             $keyword = $a;
-            $url = 'https://github.com/search?o=desc&q=' . $keyword . '&s=followers&type=Users&utf8=%E2%9C%93&p=';
-            $regex = "/<div class=\"user-list-info\">\s+<a href=\"(.*)\">(.*)<\/a>/";
+            $url = 'https://github.com/search?o=desc&q=' . $keyword . '&s=stars&type=Repositories&utf8=%E2%9C%93&p=';
+            $regex = "/<h3 class=\"repo-list-name\">\s+<a href=\"(.*)\">(.*)<\/a>/";
 
-            foreach (range(1, 20) as $page) {
+            foreach (range(1, 100) as $page) {
                 $html = @file_get_contents($url . $page);
                 preg_match_all($regex, $html, $matches);
 
@@ -65,7 +62,7 @@ class GithubFetchDeveloperUrl extends Command
                     }
                 }
                 $text = implode("\n", $github_urls);
-                $handle = fopen(storage_path('developer.txt'), 'a+');
+                $handle = fopen(storage_path('repos.txt'), 'a+');
                 fwrite($handle, "\n" . $text);
 
                 $this->info("Keyword: $a, Page: $page");

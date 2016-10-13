@@ -30,10 +30,10 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\UserSyncActivatedTime::class,
-        Commands\GithubFetchPageUrl::class,
-        Commands\GithubFetchSearch::class,
+        Commands\SpiderGithubFetchPageUrl::class,
+        Commands\SpiderGithubFetchSearch::class,
         Commands\GithubAnalytics::class,
-        Commands\GithubFetchReadmeUrl::class,
+        Commands\SpiderGithubFetchReadmeUrl::class,
         Commands\GithubBadges::class,
         Commands\ReposUpdateTrend::class,
         Commands\ReposProcess::class,
@@ -44,10 +44,11 @@ class Kernel extends ConsoleKernel
         Commands\QueueDeveloperPush::class,
         Commands\SiteGenerateSitemap::class,
         Commands\PackagePushUrl::class,
-        Commands\GithubFetchDeveloperUrl::class,
+        Commands\SpiderGithubFetchDeveloperUrl::class,
         Commands\SpiderFetchDeveloperUrl::class,
         Commands\DeveloperAnalyticsLanguage::class,
         Commands\DeveloperFetch::class,
+        Commands\GithubUpdate::class,
     ];
 
     /**

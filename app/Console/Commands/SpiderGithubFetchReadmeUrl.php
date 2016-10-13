@@ -14,14 +14,14 @@ namespace App\Console\Commands;
 use DB;
 use Illuminate\Console\Command;
 
-class GithubFetchReadmeUrl extends Command
+class SpiderGithubFetchReadmeUrl extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'develophub:github:fetch-readme-url';
+    protected $signature = 'develophub:spider:github-fetch-readme-url';
 
     /**
      * The console command description.
