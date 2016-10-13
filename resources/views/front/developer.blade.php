@@ -66,21 +66,23 @@
                     <h2>Contribute</h2>
                     <div class="row">
                         @foreach($contribute_repos as $item)
-                            <div class="col-md-3">
-                                <div class="thumbnail" style="height: 362px;">
-                                    <a href="{{ l_url('repos', [$item->repos->slug]) }}"><img src="{{ $item->repos->cover ? $item->repos->cover : cdn_asset('img/200x200.png') }}" alt="{{ $item->repos->title }}" title="{{ $item->repos->title }}" class="lazyload" width="200"></a>
-                                    <div class="caption">
-                                        <a href="{{ l_url('repos', [$item->repos->slug]) }}"><h4>{{ $item->repos->title }}</h4></a>
-                                        <div style="margin-bottom: 10px;">
-                                            <span title="star">
-                                                <i class="glyphicon glyphicon-star"></i> {{ $item->repos->stargazers_count }}
-                                            </span>
-                                            <span class="line">{{ $item->repos->trends }}</span>
+                            @if($item->repos)
+                                <div class="col-md-3">
+                                    <div class="thumbnail" style="height: 362px;">
+                                        <a href="{{ l_url('repos', [$item->repos->slug]) }}"><img src="{{ $item->repos->cover ? $item->repos->cover : cdn_asset('img/200x200.png') }}" alt="{{ $item->repos->title }}" title="{{ $item->repos->title }}" class="lazyload" width="200"></a>
+                                        <div class="caption">
+                                            <a href="{{ l_url('repos', [$item->repos->slug]) }}"><h4>{{ $item->repos->title }}</h4></a>
+                                            <div style="margin-bottom: 10px;">
+                                                <span title="star">
+                                                    <i class="glyphicon glyphicon-star"></i> {{ $item->repos->stargazers_count }}
+                                                </span>
+                                                <span class="line">{{ $item->repos->trends }}</span>
+                                            </div>
+                                            <p>{{ mb_substr($item->repos->description, 0, 100) }}</p>
                                         </div>
-                                        <p>{{ mb_substr($item->repos->description, 0, 100) }}</p>
                                     </div>
                                 </div>
-                            </div>
+                            @endif
                         @endforeach
                     </div>
                 @endif

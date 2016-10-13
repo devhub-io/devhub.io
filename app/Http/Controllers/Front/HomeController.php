@@ -452,13 +452,13 @@ class HomeController extends Controller
 
         SEO::setTitle($developer->login . ' - Developer');
 
-        $owner_repos = Repos::query()->select(['id', 'slug', 'title', 'image', 'cover', 'description', 'stargazers_count'])
+        $owner_repos = Repos::query()->select(['id', 'slug', 'title', 'cover', 'description', 'stargazers_count', 'trends'])
             ->where('owner', $developer->login)
             ->where('status', 1)
             ->orderBy('stargazers_count', 'desc')->get();
 
         $contribute_repos = ReposContributor::with(['repos' => function ($query) {
-            $query->where('status', 1);
+            $query->where('status', 1)->select(['id', 'slug', 'title', 'cover', 'description', 'stargazers_count', 'trends']);
         }])->where('login', $login)->get();
 
         return view('front.developer', compact('developer', 'owner_repos', 'contribute_repos'));

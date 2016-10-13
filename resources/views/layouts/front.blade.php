@@ -128,7 +128,7 @@
                     <p>
                         Currently tracking
                         <a href="{{ l_url('list/newest') }}" style="color: white">{{ $repos_total or 0 }}</a> open source projects,
-                        <a href="{{ 'developers' }}" style="color: white">{{ $developers_total or 0 }}</a> developers
+                        <a href="{{ l_url('developers') }}" style="color: white">{{ $developers_total or 0 }}</a> developers
                     </p>
                     <div class="footer-social">
                         <a target="_blank" href="#"><i class="fa fa-facebook"></i></a>
