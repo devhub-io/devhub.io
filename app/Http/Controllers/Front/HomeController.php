@@ -463,4 +463,12 @@ class HomeController extends Controller
 
         return view('front.developer', compact('developer', 'owner_repos', 'contribute_repos'));
     }
+
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function sitemap()
+    {
+        return redirect()->to('sitemap.xml', 301);
+    }
 }
