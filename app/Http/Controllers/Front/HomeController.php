@@ -457,8 +457,9 @@ class HomeController extends Controller
             ->where('status', 1)
             ->orderBy('stargazers_count', 'desc')->get();
 
-        $contribute_repos = ReposContributor::with(['repos' => function ($query) {
-            $query->where('status', 1)->select(['id', 'slug', 'title', 'cover', 'description', 'stargazers_count', 'trends']);
+        $contribute_repos = ReposContributor::with(['repos' => function ($query) use ($login) {
+            $query->where('status', 1)->where('owner', '<>', $login)
+                ->select(['id', 'slug', 'title', 'cover', 'description', 'stargazers_count', 'trends']);
         }])->where('login', $login)->get();
 
         return view('front.developer', compact('developer', 'owner_repos', 'contribute_repos'));
