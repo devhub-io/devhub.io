@@ -174,7 +174,7 @@ class HomeController extends Controller
         $markdown = $parsedown->text($repos->readme);
         $markdown = str_replace('<a', '<a rel="nofollow noreferrer" ', $markdown);
 
-        SEO::setTitle($repos->title . ' - Repository');
+        SEO::setTitle("$repos->owner/$repos->repo $repos->description by @$repos->owner" . ' - Repository');
         SEO::setDescription($repos->description);
 
         // Category
@@ -450,7 +450,7 @@ class HomeController extends Controller
             $developer->save();
         }
 
-        SEO::setTitle($developer->login . ' - Developer');
+        SEO::setTitle("$developer->name ($developer->login)" . ' - Developer');
 
         $owner_repos = Repos::query()->select(['id', 'slug', 'title', 'cover', 'description', 'stargazers_count', 'trends'])
             ->where('owner', $developer->login)

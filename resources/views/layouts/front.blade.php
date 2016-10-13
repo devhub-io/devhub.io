@@ -159,6 +159,7 @@
                             <li><a href="{{ l_url('category', [$item->slug]) }}">@lang('category.'.$item->slug)</a></li>
                             @endforeach
                         @endif
+                        <li><a href="{{ l_url('developers') }}">Developers</a></li>
                     </ul>
                 </div>
             </div>

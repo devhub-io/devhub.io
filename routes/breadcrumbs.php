@@ -28,10 +28,16 @@ Breadcrumbs::register('repos', function ($breadcrumbs, $repos) {
     $breadcrumbs->push($repos->title, l_url('repos', $repos->slug));
 });
 
-// Home > [Developer]
-Breadcrumbs::register('developer', function ($breadcrumbs, $developer) {
+// Home > [Developers]
+Breadcrumbs::register('developers', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
+    $breadcrumbs->push('Developers', l_url('developers'));
+});
+
+// Home > [Developers] > [Developer]
+Breadcrumbs::register('developer', function ($breadcrumbs, $developer) {
+    $breadcrumbs->parent('developers');
     if (!empty($developer->login)) {
-        $breadcrumbs->push($developer->login, l_url('developer', $developer->login));
+        $breadcrumbs->push("$developer->name ($developer->login)", l_url('developer', $developer->login));
     }
 });
