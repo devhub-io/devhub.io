@@ -5,6 +5,7 @@
         <div class="page-title">
             <div class="title_left">
                 <h3>Developer</h3>
+                <h4>Total: {{ $developer->total() }}</h4>
             </div>
 
             <div class="title_right">
@@ -42,6 +43,7 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
+                        {{ $developer->appends(['keyword' => $keyword, 'sort' => $sort, 'empty' => $empty])->links() }}
                         <!-- start project list -->
                         <table class="table table-striped projects">
                             <thead>
@@ -71,16 +73,16 @@
                                 <td>
                                     <ul class="list-inline">
                                         <li title="followers">
-                                            <i class="glyphicon glyphicon-duplicate"></i> {{ $item->followers }}
+                                            <i class="fa fa-user"></i> {{ $item->followers }}
                                         </li>
                                         <li title="following">
-                                            <i class="glyphicon glyphicon-scale"></i> {{ $item->following }}
+                                            <i class="fa fa-users"></i> {{ $item->following }}
                                         </li>
                                         <li title="public_repos">
-                                            <i class="glyphicon glyphicon-star" ></i> {{ $item->public_repos }}
+                                            <i class="fa fa-sitemap" ></i> {{ $item->public_repos }}
                                         </li>
                                         <li title="public_gists">
-                                            <i class="glyphicon glyphicon-wrench"></i> {{ $item->public_gists }}
+                                            <i class="fa fa-file"></i> {{ $item->public_gists }}
                                         </li>|
                                         <li title="Pageviews">
                                             <i class="glyphicon glyphicon-modal-window"></i> {{ $item->view_number }}

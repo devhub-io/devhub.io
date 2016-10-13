@@ -77,7 +77,10 @@ class ReposController extends Controller
         }
         $ids = implode(',', $ids);
 
-        return view('admin.repos.index', compact('repos', 'keyword', 'sort', 'ids', 'empty'));
+        $no_cover_count = Repos::query()->where('cover', '')->count();
+        $no_analytics_count = Repos::query()->where('analytics_at', null)->count();
+
+        return view('admin.repos.index', compact('repos', 'keyword', 'sort', 'ids', 'empty', 'no_cover_count', 'no_analytics_count'));
     }
 
     /**

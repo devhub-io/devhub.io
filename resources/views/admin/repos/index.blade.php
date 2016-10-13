@@ -5,6 +5,7 @@
         <div class="page-title">
             <div class="title_left">
                 <h3>Repositories</h3>
+                <h4>Total: {{ $repos->total() }} No cover: {{ $no_cover_count }} ({{ round($no_cover_count / $repos->total() * 100) }}%) No analytics: {{ $no_analytics_count }} ({{ round($no_analytics_count / $repos->total() * 100) }}%)</h4>
             </div>
 
             <div class="title_right">
@@ -44,6 +45,7 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
+                        {{ $repos->appends(['keyword' => $keyword, 'sort' => $sort, 'empty' => $empty])->links() }}
                         <!-- start project list -->
                         <table class="table table-striped projects">
                             <thead>
