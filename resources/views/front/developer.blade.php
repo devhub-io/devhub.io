@@ -62,7 +62,7 @@
                     </div>
                 @endif
 
-                @if($contribute_repos->count() > 0 && $contribute_repos[0]->repos)
+                @if($contribute_repos->count() > 0)
                     <h2>Contribute</h2>
                     <div class="row">
                         @foreach($contribute_repos as $item)
