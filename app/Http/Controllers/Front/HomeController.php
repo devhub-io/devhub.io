@@ -462,7 +462,16 @@ class HomeController extends Controller
                 ->select(['id', 'slug', 'title', 'cover', 'description', 'stargazers_count', 'trends']);
         }])->where('login', $login)->get();
 
-        return view('front.developer', compact('developer', 'owner_repos', 'contribute_repos'));
+        $has_contribute = false;
+        if ($contribute_repos->count() > 0) {
+            foreach ($contribute_repos as $item) {
+                if ($item->repos) {
+                    $has_contribute = true;
+                }
+            }
+        }
+
+        return view('front.developer', compact('developer', 'owner_repos', 'contribute_repos', 'has_contribute'));
     }
 
     /**
