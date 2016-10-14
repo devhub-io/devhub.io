@@ -24,6 +24,7 @@ class DeveloperController extends Controller
         $keyword = request()->get('keyword', '');
         $sort = request()->get('sort', '');
         $empty = request()->get('empty', '');
+        $type = request()->get('type', '');
         $builder = Developer::query();
 
         if ($keyword) {
@@ -34,6 +35,9 @@ class DeveloperController extends Controller
         }
         if ($empty) {
             $builder->where("$empty", 0);
+        }
+        if ($type) {
+            $builder->where('type', $type);
         }
 
         $developer = $builder->orderBy('id', 'desc')->paginate(200);

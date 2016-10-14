@@ -11,10 +11,12 @@
             <div class="title_right">
                 <div class="col-md-7 col-sm-8 col-xs-12 form-group pull-right top_search">
                     <div>
-                        <a href="?sort=view_number&keyword={{ $keyword }}" class="btn {{ $sort && $sort == 'view_number' ? 'btn-info' : 'btn-default' }}">浏览量↓</a>
-                        <a href="?sort=followers&keyword={{ $keyword }}" class="btn {{ $sort && $sort == 'stargazers_count' ? 'btn-info' : 'btn-default' }}">Followers↓</a>
-                        <a href="?sort=fetched_at&keyword={{ $keyword }}" class="btn {{ $sort && $sort == 'fetched_at' ? 'btn-info' : 'btn-default' }}">抓取时间↓</a>
-                        <a href="?sort=analytics_at&keyword={{ $keyword }}" class="btn {{ $sort && $sort == 'analytics_at' ? 'btn-info' : 'btn-default' }}">分析时间↓</a>
+                        <a href="?sort=view_number&keyword={{ $keyword }}&type={{ $type }}" class="btn {{ $sort && $sort == 'view_number' ? 'btn-info' : 'btn-default' }}">浏览量↓</a>
+                        <a href="?sort=followers&keyword={{ $keyword }}" class="btn {{ $sort && $sort == 'followers' ? 'btn-info' : 'btn-default' }}">Followers↓</a>
+                        <a href="?sort=fetched_at&keyword={{ $keyword }}&type={{ $type }}" class="btn {{ $sort && $sort == 'fetched_at' ? 'btn-info' : 'btn-default' }}">抓取时间↓</a>
+                        <a href="?sort=analytics_at&keyword={{ $keyword }}&type={{ $type }}" class="btn {{ $sort && $sort == 'analytics_at' ? 'btn-info' : 'btn-default' }}">分析时间↓</a>
+                        <a href="?type=User&keyword={{ $keyword }}" class="btn {{ $type && $type == 'User' ? 'btn-info' : 'btn-default' }}">User</a>
+                        <a href="?type=Organization&keyword={{ $keyword }}" class="btn {{ $type && $type == 'Organization' ? 'btn-info' : 'btn-default' }}">Organization</a>
                         <a href="?empty=status&keyword={{ $keyword }}" class="btn {{ $empty && $empty == 'status' ? 'btn-info' : 'btn-default' }}">禁用</a>
                         <a href="{{ url('admin/developer') }}" class="btn btn-warning">清除</a>
                     </div>
@@ -106,7 +108,7 @@
                             </tbody>
                         </table>
                         <!-- end project list -->
-                        {{ $developer->appends(['keyword' => $keyword, 'sort' => $sort, 'empty' => $empty])->links() }}
+                        {{ $developer->appends(['keyword' => $keyword, 'sort' => $sort, 'empty' => $empty, 'type' => $type])->links() }}
                     </div>
                 </div>
             </div>
