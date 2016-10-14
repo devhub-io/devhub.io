@@ -29,9 +29,11 @@
                     <a target="_blank" href="{{ $developer->html_url }}" class="gitbtn" rel="nofollow"><i class="fa fa-github fa-2x"></i> Github </a> &nbsp;&nbsp;
                 </div>
                 <div class="params hidden-xs">
-                    <div style="margin-bottom: 10px;">
-                        <a aria-label="Follow @{{ $developer->login }} on GitHub" data-count-aria-label="# followers on GitHub" data-count-api="/users/{{ $developer->login }}#followers" data-count-href="/{{ $developer->login }}/followers" href="https://github.com/{{ $developer->login }}" class="github-button">Follow</a>
-                    </div>
+                    @if($developer->type == 'User')
+                        <div style="margin-bottom: 10px;">
+                            <a aria-label="Follow @{{ $developer->login }} on GitHub" data-count-aria-label="# followers on GitHub" data-count-api="/users/{{ $developer->login }}#followers" data-count-href="/{{ $developer->login }}/followers" href="https://github.com/{{ $developer->login }}" class="github-button">Follow</a>
+                        </div>
+                    @endif
                     <div title="@lang('front.last_updated')">
                         <i class="fa fa-clock-o"></i> <span>{{ $developer->site_updated_at }}</span>
                     </div>

@@ -31,9 +31,11 @@
                                         <div class="caption">
                                             <a href="{{ l_url('developer', [$item->login]) }}"><h4>@if($item->type == 'Organization') <i class="fa fa-users" title="Organization"></i> @else <i class="fa fa-user" title="User"></i> @endif {{ $item->name ? $item->name : $item->login }}</h4></a>
                                             <div style="margin-bottom: 10px">
-                                                <span title="star">
-                                                    <a aria-label="Follow @{{ $developer->login }} on GitHub" data-count-aria-label="# followers on GitHub" data-count-api="/users/{{ $item->login }}#followers" data-count-href="/{{ $item->login }}/followers" href="https://github.com/{{ $item->login }}" class="github-button">Follow</a>
-                                                </span>
+                                                @if($item->type == 'User')
+                                                    <span title="star">
+                                                        <a aria-label="Follow @{{ $developer->login }} on GitHub" data-count-aria-label="# followers on GitHub" data-count-api="/users/{{ $item->login }}#followers" data-count-href="/{{ $item->login }}/followers" href="https://github.com/{{ $item->login }}" class="github-button">Follow</a>
+                                                    </span>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
