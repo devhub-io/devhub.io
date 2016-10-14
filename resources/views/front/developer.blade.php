@@ -27,6 +27,9 @@
                         <a target="_blank" href="{{ link_url($developer->blog) }}" rel="nofollow"><i class="fa fa-home fa-2x"></i> @lang('front.homepage') </a> &nbsp;&nbsp;
                     @endif
                     <a target="_blank" href="{{ $developer->html_url }}" class="gitbtn" rel="nofollow"><i class="fa fa-github fa-2x"></i> Github </a> &nbsp;&nbsp;
+                    @if($developer->public_gists > 0)
+                        <a target="_blank" href="https://gist.github.com/{{ $developer->login }}" class="gitbtn" rel="nofollow"><i class="fa fa-github-square fa-2x"></i> Github Gist </a> &nbsp;&nbsp;
+                    @endif
                 </div>
                 <div class="params hidden-xs">
                     @if($developer->type == 'User')
