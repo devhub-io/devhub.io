@@ -49,7 +49,7 @@ class DeveloperController extends Controller
         $ids = implode(',', $ids);
 
 
-        return view('admin.developer.index', compact('developer', 'keyword', 'sort', 'empty', 'ids'));
+        return view('admin.developer.index', compact('developer', 'keyword', 'sort', 'empty', 'ids', 'type'));
     }
 
     /**
