@@ -75,7 +75,7 @@ class Kernel extends ConsoleKernel
 
         // Fetch
         $schedule->call(function () {
-            $repos = Repos::query()->select('id')->orderBy('fetched_at', 'asc')->limit(1000)->get();
+            $repos = Repos::query()->select('id')->orderBy('fetched_at', 'asc')->limit(500)->get();
             foreach ($repos as $item) {
                 dispatch(new GithubUpdate(1, $item->id));
             }
@@ -83,7 +83,7 @@ class Kernel extends ConsoleKernel
 
         // Analytics
         $schedule->call(function () {
-            $repos = Repos::query()->where('status', 1)->select('id')->orderBy('analytics_at', 'asc')->limit(1000)->get();
+            $repos = Repos::query()->where('status', 1)->select('id')->orderBy('analytics_at', 'asc')->limit(500)->get();
             foreach ($repos as $item) {
                 dispatch(new GithubAnalytics(3, $item->id));
             }
