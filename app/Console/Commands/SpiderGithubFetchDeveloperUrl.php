@@ -54,7 +54,7 @@ class SpiderGithubFetchDeveloperUrl extends Command
             $url = 'https://github.com/search?o=desc&q=' . $keyword . '&s=followers&type=Users&utf8=%E2%9C%93&p=';
             $regex = "/<div class=\"user-list-info\">\s+<a href=\"(.*)\">(.*)<\/a>/";
 
-            foreach (range(1, 20) as $page) {
+            foreach (range(1, 2) as $page) {
                 $html = @file_get_contents($url . $page);
                 preg_match_all($regex, $html, $matches);
 
