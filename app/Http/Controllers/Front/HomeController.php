@@ -431,6 +431,8 @@ class HomeController extends Controller
      */
     public function developers()
     {
+        SEO::setTitle('Developers');
+
         $developers = Developer::query()->where('status', 1)->orderBy('followers', 'desc')->paginate(12);
 
         return view('front.developers', compact('developers'));
