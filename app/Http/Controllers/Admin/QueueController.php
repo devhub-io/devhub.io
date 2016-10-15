@@ -22,10 +22,13 @@ class QueueController extends Controller
     {
         $failed_jobs = DB::table('failed_jobs')->orderBy('failed_at', 'desc')->paginate(10);
 
-        $queues_count = LaravelRedis::connection()->llen('queues:default');
-        $queues = LaravelRedis::connection()->lrange('queues:default', 0, 10);
+        $analytics_queues['count'] = LaravelRedis::connection()->llen('queues:github-analytics');
+        $analytics_queues['list'] = LaravelRedis::connection()->lrange('queues:github-analytics', 0, 10);
 
-        return view('admin.queue.status', compact('failed_jobs', 'queues_count', 'queues'));
+        $update_queues['count'] = LaravelRedis::connection()->llen('queues:github-update');
+        $update_queues['list'] = LaravelRedis::connection()->lrange('queues:github-update', 0, 10);
+
+        return view('admin.queue.status', compact('failed_jobs', 'analytics_queues', 'update_queues'));
     }
 
     public function failed_jobs_delete($id)

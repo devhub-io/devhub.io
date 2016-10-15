@@ -4,7 +4,7 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Queues: {{ $queues_count }}</h3>
+                <h3>Update Queues: {{ $update_queues['count'] }}</h3>
             </div>
         </div>
 
@@ -20,7 +20,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($queues as $item)
+                    @foreach($update_queues['list'] as $item)
                         <tr>
                             <td>{{ $item }}</td>
                         </tr>
@@ -29,6 +29,44 @@
                 </table>
             </div>
         </div>
+
+
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Analytics Queues: {{ $analytics_queues['count'] }}</h3>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-sm-10 col-xs-12">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Payload</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($analytics_queues['list'] as $item)
+                        <tr>
+                            <td>{{ $item }}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Failed jobs</h3>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
 
         <div class="row">
             <div class="col-md-8 col-sm-10 col-xs-12">

@@ -49,6 +49,7 @@ class Kernel extends ConsoleKernel
         Commands\DeveloperAnalyticsLanguage::class,
         Commands\DeveloperFetch::class,
         Commands\GithubUpdate::class,
+        Commands\GithubLicense::class,
     ];
 
     /**

@@ -49,7 +49,7 @@ class GithubAnalytics extends Command
      */
     public function handle()
     {
-        $all_repos = Repos::query()->select(['id', 'owner', 'repo'])->orderBy('analytics_at', 'asc')->orderBy('stargazers_count', 'desc')->get();
+        $all_repos = Repos::query()->select(['id', 'owner', 'repo'])->where('status', true)->orderBy('analytics_at', 'asc')->orderBy('stargazers_count', 'desc')->get();
         foreach ($all_repos as $repos) {
             try {
                 $job = new \App\Jobs\GithubAnalytics(3, $repos->id);
