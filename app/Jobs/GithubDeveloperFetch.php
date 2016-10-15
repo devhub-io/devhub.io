@@ -38,7 +38,7 @@ class GithubDeveloperFetch implements ShouldQueue
     /**
      * Regex
      */
-    const URL_REGEX = "/https?:\\/\\/github\\.com\\/([0-9a-zA-Z\\-\\.]*)/";
+    const URL_REGEX = "/^https?:\\/\\/github\\.com\\/([0-9a-zA-Z\\-\\.]*)$/";
 
     /**
      * Create a new job instance.

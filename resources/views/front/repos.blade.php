@@ -51,8 +51,13 @@
                         <a aria-label="Issue {{ $repos->owner }}/{{ $repos->repo }} on GitHub" data-count-aria-label="# issues on GitHub" data-count-api="/repos/{{ $repos->owner }}/{{ $repos->repo }}#open_issues_count" data-icon="octicon-issue-opened" href="https://github.com/{{ $repos->owner }}/{{ $repos->repo }}/issues" class="github-button">Issue</a>
                         <a aria-label="Download {{ $repos->owner }}/{{ $repos->repo }} on GitHub" data-icon="octicon-cloud-download" href="https://github.com/{{ $repos->owner }}/{{ $repos->repo }}/archive/master.zip" class="github-button">Download</a>
                     </div>
-                    <div title="@lang('front.last_updated')">
+                    <div style="margin-bottom: 10px;" title="@lang('front.last_updated')">
                         <i class="fa fa-clock-o"></i> <span>{{ $repos->repos_updated_at }}</span>
+                    </div>
+                    <div>
+                        @if($repos->license)
+                            <a href="https://spdx.org/licenses/{{ $repos->license->spdx_id }}.html" target="_blank" rel="nofollow" title="{{ $repos->license->name }}"><span class="label label-info">{{ $repos->license->spdx_id }}</span></a>
+                        @endif
                     </div>
                 </div>
             </div>
