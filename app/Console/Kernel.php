@@ -15,6 +15,7 @@ use App;
 use App\Entities\Repos;
 use App\Entities\User;
 use App\Jobs\GithubAnalytics;
+use App\Jobs\GithubLicense;
 use App\Jobs\GithubUpdate;
 use App\Notifications\Pushover;
 use Carbon\Carbon;
@@ -79,6 +80,9 @@ class Kernel extends ConsoleKernel
             $repos = Repos::query()->select('id')->orderBy('fetched_at', 'asc')->limit(1500)->get();
             foreach ($repos as $item) {
                 $job = (new GithubUpdate(1, $item->id))->onQueue('github-update');
+                dispatch($job);
+
+                $job = (new GithubLicense(1, $item->id))->onQueue('github-update');
                 dispatch($job);
             }
         })->hourly();
