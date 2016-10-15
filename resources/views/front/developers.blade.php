@@ -50,7 +50,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
-                                {{ $developers->links() }}
+                                {{ $developers->appends(['type' => $type])->links() }}
                             </div>
                         </div>
                     </div>
