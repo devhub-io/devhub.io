@@ -74,19 +74,21 @@ class Kernel extends ConsoleKernel
         // Sync user activated time
         $schedule->command('develophub:user:sync-activated-time')->everyTenMinutes();
 
-        // Fetch
+        // Github Update
         $schedule->call(function () {
-            $repos = Repos::query()->select('id')->orderBy('fetched_at', 'asc')->limit(500)->get();
+            $repos = Repos::query()->select('id')->orderBy('fetched_at', 'asc')->limit(1500)->get();
             foreach ($repos as $item) {
-                dispatch(new GithubUpdate(1, $item->id));
+                $job = (new GithubUpdate(1, $item->id))->onQueue('github-update');
+                dispatch($job);
             }
         })->hourly();
 
-        // Analytics
+        // Github Analytics
         $schedule->call(function () {
-            $repos = Repos::query()->where('status', 1)->select('id')->orderBy('analytics_at', 'asc')->limit(500)->get();
+            $repos = Repos::query()->where('status', 1)->select('id')->orderBy('analytics_at', 'asc')->limit(1000)->get();
             foreach ($repos as $item) {
-                dispatch(new GithubAnalytics(3, $item->id));
+                $job = (new GithubAnalytics(3, $item->id))->onQueue('github-analytics');
+                dispatch($job);
             }
         })->hourly();
 

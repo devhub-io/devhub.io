@@ -9,7 +9,7 @@
             </div>
 
             <div class="title_right">
-                <div class="col-md-9 col-sm-8 col-xs-12 form-group pull-right top_search">
+                <div class="col-md-10 col-sm-8 col-xs-12 form-group pull-right top_search">
                     <div>
                         <a href="?sort=view_number&keyword={{ $keyword }}&type={{ $type }}" class="btn {{ $sort && $sort == 'view_number' ? 'btn-info' : 'btn-default' }}">浏览量↓</a>
                         <a href="?sort=followers&keyword={{ $keyword }}&type={{ $type }}" class="btn {{ $sort && $sort == 'followers' ? 'btn-info' : 'btn-default' }}">Followers↓</a>
