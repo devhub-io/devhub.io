@@ -76,7 +76,7 @@ class HomeController extends Controller
             return DB::table('repos')->where('status', 1)->count();
         }));
         view()->share('developers_total', Cache::remember('front:developers_total', 60 * 24, function () {
-            return DB::table('developer')->where('status', 1)->count();
+            return DB::table('developer')->where('status', 1)->where('public_repos', '>', 0)->count();
         }));
     }
 
@@ -433,7 +433,7 @@ class HomeController extends Controller
     {
         SEO::setTitle('Developers');
 
-        $developers = Developer::query()->where('status', 1)->orderBy('followers', 'desc')->paginate(12);
+        $developers = Developer::query()->where('status', 1)->where('public_repos', '>', 0)->orderBy('followers', 'desc')->paginate(12);
 
         return view('front.developers', compact('developers'));
     }
