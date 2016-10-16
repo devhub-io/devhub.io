@@ -226,7 +226,7 @@ class HomeController extends Controller
             $languages['Other'] = $other;
         }
 
-        $color = ["#3498DB", "#9B59B6", "#26B99A", "#54ced4", "#E74C3C", "#454754", "#2f6672", "#EE799F", "#FF83FA",
+        $color = ["#3498DB", "#26B99A", "#54ced4", "#9B59B6", "#E74C3C", "#454754", "#2f6672", "#EE799F", "#FF83FA",
             "#9B30FF", "#4876FF", "#00E5EE", "#00EE76", "#FFC125", "#FF6347", "#BDC3C7"];
         JavaScript::put([
             'languages_labels' => array_keys($languages),
