@@ -15,7 +15,7 @@
                             @foreach($repos as $item)
                                 <div class="col-sm-4 col-md-3">
                                     <div class="thumbnail" style="height: 362px;">
-                                        <a href="{{ l_url('repos', [$item->repos->slug]) }}"><img src="{{ $item->repos->image > 0 ? image_url($item->repos->image, ['h' => 200]) : cdn_asset('img/200x200.png') }}" alt="{{ $item->repos->title }}" title="{{ $item->repos->title }}"></a>
+                                        <a href="{{ l_url('repos', [$item->repos->slug]) }}"><img src="{{ $item->repos->cover ? $item->repos->cover : cdn_asset('img/200x200.png') }}" alt="{{ $item->repos->title }}" title="{{ $item->repos->title }}" width="200"></a>
                                         <div class="caption">
                                             <a href="{{ l_url('repos', [$item->repos->slug]) }}"><h3>{{ $item->repos->title }}</h3></a>
                                             <span class="line">{{ $item->repos->trends }}</span>
