@@ -116,7 +116,7 @@ class SiteGenerateSitemap extends Command
          * Developer
          */
 
-        $developer = DB::table('developer')->select(['id', 'login', 'updated_at'])->where('status', 1)->orderBy('created_at', 'desc')->get();
+        $developer = DB::table('developer')->select(['id', 'login', 'updated_at'])->where('status', 1)->where('public_repos', '>', 0)->orderBy('created_at', 'desc')->get();
 
         // counters
         $counter = 0;
