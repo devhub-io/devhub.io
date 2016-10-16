@@ -88,7 +88,7 @@ class Kernel extends ConsoleKernel
                 $job = (new GithubUpdate(1, $item->id))->onQueue('github-update');
                 dispatch($job);
 
-                $job = (new GithubLicense(1, $item->id))->onQueue('github-update');
+                $job = (new GithubLicense(1, $item->id))->onQueue('github-license');
                 dispatch($job);
             }
         })->hourly();
