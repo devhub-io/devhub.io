@@ -83,7 +83,7 @@ class Kernel extends ConsoleKernel
 
         // Github Update
         $schedule->call(function () {
-            $repos = Repos::query()->select('id')->orderBy('fetched_at', 'asc')->limit(1500)->get();
+            $repos = Repos::query()->select('id')->orderBy('fetched_at', 'asc')->limit(1000)->get();
             foreach ($repos as $item) {
                 $job = (new GithubUpdate(1, $item->id))->onQueue('github-update');
                 dispatch($job);
