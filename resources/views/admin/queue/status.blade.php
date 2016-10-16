@@ -59,6 +59,33 @@
             </div>
         </div>
 
+        <div class="page-title">
+            <div class="title_left">
+                <h3>License Queues: {{ $license_queues['count'] }}</h3>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-8 col-sm-10 col-xs-12">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Payload</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($license_queues['list'] as $item)
+                        <tr>
+                            <td>{{ $item }}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
 
         <div class="page-title">
             <div class="title_left">

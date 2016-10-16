@@ -28,7 +28,10 @@ class QueueController extends Controller
         $update_queues['count'] = LaravelRedis::connection()->llen('queues:github-update');
         $update_queues['list'] = LaravelRedis::connection()->lrange('queues:github-update', 0, 10);
 
-        return view('admin.queue.status', compact('failed_jobs', 'analytics_queues', 'update_queues'));
+        $license_queues['count'] = LaravelRedis::connection()->llen('queues:github-license');
+        $license_queues['list'] = LaravelRedis::connection()->lrange('queues:github-license', 0, 10);
+
+        return view('admin.queue.status', compact('failed_jobs', 'analytics_queues', 'update_queues', 'license_queues'));
     }
 
     public function failed_jobs_delete($id)
