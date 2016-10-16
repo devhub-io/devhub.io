@@ -15,6 +15,7 @@ use Auth;
 use Cache;
 use DB;
 use Flash;
+use JavaScript;
 use SEO;
 use Badger;
 use Config;
@@ -213,8 +214,25 @@ class HomeController extends Controller
                     $languages[$item->language] = round($item->bytes / $total * 100, 2);
                 }
             }
-            $languages = array_slice($languages, 0, 5);
         }
+
+        $other = 0;
+        if (count($languages) > 4) {
+            $other_languages = array_slice($languages, 4, count($languages));
+            foreach ($other_languages as $key => $value) {
+                $other += $value;
+                unset($languages[$key]);
+            }
+            $languages['Other'] = $other;
+        }
+
+        $color = ["#3498DB", "#9B59B6", "#26B99A", "#54ced4", "#E74C3C", "#454754", "#2f6672", "#EE799F", "#FF83FA",
+            "#9B30FF", "#4876FF", "#00E5EE", "#00EE76", "#FFC125", "#FF6347", "#BDC3C7"];
+        JavaScript::put([
+            'languages_labels' => array_keys($languages),
+            'languages_values' => array_values($languages),
+            'languages_color' => array_slice($color, 0, count($languages)),
+        ]);
 
         // Related
         $related_repos = $this->reposRepository->relatedRepos($repos->id, $repos->title);

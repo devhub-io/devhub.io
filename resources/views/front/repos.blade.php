@@ -62,14 +62,8 @@
                 </div>
             </div>
             <div class="col-md-2">
-                <table class="table">
-                    @foreach($languages as $language => $num)
-                    <tr>
-                        <td>{{ $language }}</td>
-                        <td>{{ $num }}%</td>
-                    </tr>
-                    @endforeach
-                </table>
+                <canvas id="languages" height="160" width="160"></canvas>
+                <h5 style="text-align: center">Languages</h5>
             </div>
         </div>
         <div class="row">
@@ -124,4 +118,25 @@
 
 @section('scripts')
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
+    <script>
+        var options = {
+            legend: false,
+            responsive: false
+        };
+
+        new Chart(document.getElementById("languages"), {
+            type: 'doughnut',
+            tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+            data: {
+                labels: develophub.languages_labels,
+                datasets: [{
+                    data: develophub.languages_values,
+                    backgroundColor: develophub.languages_color,
+                    hoverBackgroundColor: develophub.languages_color
+                }]
+            },
+            options: options
+        });
+    </script>
 @endsection

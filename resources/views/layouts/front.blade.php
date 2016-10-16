@@ -242,6 +242,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="{{ cdn_asset(elixir('js/app.js')) }}"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/peity/3.2.0/jquery.peity.min.js"></script>
+@include('layouts.javascript_bind')
 @yield('scripts')
 <script>
     $("span.line").peity("line");

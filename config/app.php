@@ -190,6 +190,7 @@ return [
         NotificationChannels\Pushover\PushoverServiceProvider::class,
         HieuLe\Active\ActiveServiceProvider::class,
         Spatie\UrlSigner\Laravel\UrlSignerServiceProvider::class,
+        Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
 
         /*
          * Application Service Providers...
