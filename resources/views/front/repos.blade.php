@@ -62,8 +62,10 @@
                 </div>
             </div>
             <div class="col-md-2">
-                <canvas id="languages" height="160" width="160"></canvas>
-                <h5 style="text-align: center">Languages</h5>
+                @if($languages)
+                    <canvas id="languages" height="160" width="160"></canvas>
+                    <h5 style="text-align: center">Languages</h5>
+                @endif
             </div>
         </div>
         <div class="row">
