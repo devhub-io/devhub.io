@@ -463,6 +463,10 @@ class HomeController extends Controller
      */
     public function developer($login)
     {
+        if (!Developer::query()->where('login', $login)->where('status', 1)->exists()) {
+            return redirect()->to("https://github.com/$login");
+        }
+
         $developer = Developer::query()->where('login', $login)->where('status', 1)->firstOrFail();
 
         // Pageviews
