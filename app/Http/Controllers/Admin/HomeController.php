@@ -12,6 +12,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Analytics;
+use App\Entities\Developer;
 use App\Http\Controllers\Controller;
 use App\Repositories\CategoryRepository;
 use App\Repositories\ReposRepository;
@@ -44,6 +45,7 @@ class HomeController extends Controller
     public function index()
     {
         $repos_count = $this->reposRepository->count();
+        $developers_count = Developer::count();
 
         $topBrowsers = Analytics::fetchTopBrowsers(Period::days(31));
         $topBrowsers = $topBrowsers->take(10);
@@ -54,6 +56,6 @@ class HomeController extends Controller
         $topReferrers = Analytics::fetchTopReferrers(Period::days(31));
         $topReferrers = $topReferrers->take(10);
 
-        return view('admin.dashboard', compact('repos_count', 'topBrowsers', 'topReferrers', 'mostVisitedPages'));
+        return view('admin.dashboard', compact('repos_count', 'topBrowsers', 'topReferrers', 'mostVisitedPages', 'developers_count'));
     }
 }
