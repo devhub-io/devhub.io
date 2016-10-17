@@ -110,7 +110,77 @@ class GithubBadges extends Command
 
                     // codeclimate
                     if ($tree->path == '.codeclimate.yml') {
-                        $this->insert($item->id, 'codeclimate', 'code', "https://codeclimate.com/github/$item->owner/$item->repo");
+                        $this->insert($item->id, 'codeclimate', 'service', "https://codeclimate.com/github/$item->owner/$item->repo");
+                    }
+
+                    // reviewboard
+                    if ($tree->path == '.reviewboardrc') {
+                        $this->insert($item->id, 'reviewboard', 'service');
+                    }
+
+                    // coveralls
+                    if ($tree->path == '.coveralls.yml') {
+                        $this->insert($item->id, 'coveralls', 'service');
+                    }
+
+                    // editorconfig
+                    if ($tree->path == '.editorconfig') {
+                        $this->insert($item->id, 'editorconfig', 'code');
+                    }
+
+                    // gulp
+                    if ($tree->path == 'gulpfile.js') {
+                        $this->insert($item->id, 'gulp', 'code');
+                    }
+
+                    // grunt
+                    if ($tree->path == 'Gruntfile.js') {
+                        $this->insert($item->id, 'grunt', 'code');
+                    }
+
+                    // karma
+                    if ($tree->path == 'karma.conf.js') {
+                        $this->insert($item->id, 'karma', 'code');
+                    }
+
+                    // jscs
+                    if ($tree->path == '.jscsrc') {
+                        $this->insert($item->id, 'jscs', 'code');
+                    }
+
+                    // eslint
+                    if ($tree->path == '.eslintrc') {
+                        $this->insert($item->id, 'eslint', 'code');
+                    }
+
+                    // webpack
+                    if ($tree->path == 'webpack.config.js') {
+                        $this->insert($item->id, 'webpack', 'code');
+                    }
+
+                    // rubocop
+                    if ($tree->path == '.rubocop.yml') {
+                        $this->insert($item->id, 'rubocop', 'code');
+                    }
+
+                    // scss
+                    if ($tree->path == '.scss-lint.yml') {
+                        $this->insert($item->id, 'scss', 'code');
+                    }
+
+                    // rspec
+                    if ($tree->path == '.rspec') {
+                        $this->insert($item->id, 'rspec', 'code');
+                    }
+
+                    // python
+                    if ($tree->path == 'setup.py') {
+                        $this->insert($item->id, 'python', 'code');
+                    }
+
+                    // ruby
+                    if ($tree->path == 'Gemfile') {
+                        $this->insert($item->id, 'ruby', 'code');
                     }
                 }
             }
