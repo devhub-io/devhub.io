@@ -163,9 +163,9 @@ class GithubBadges extends Command
                         $this->insert($item->id, 'rubocop', 'code');
                     }
 
-                    // scss
+                    // sass
                     if ($tree->path == '.scss-lint.yml') {
-                        $this->insert($item->id, 'scss', 'code');
+                        $this->insert($item->id, 'sass', 'code');
                     }
 
                     // rspec
@@ -173,14 +173,19 @@ class GithubBadges extends Command
                         $this->insert($item->id, 'rspec', 'code');
                     }
 
+                    // flowtype
+                    if ($tree->path == '.flowconfig') {
+                        $this->insert($item->id, 'flowtype', 'code');
+                    }
+
                     // python
                     if ($tree->path == 'setup.py') {
-                        $this->insert($item->id, 'python', 'code');
+                        $this->insert($item->id, 'python', 'language');
                     }
 
                     // ruby
                     if ($tree->path == 'Gemfile') {
-                        $this->insert($item->id, 'ruby', 'code');
+                        $this->insert($item->id, 'ruby', 'language');
                     }
                 }
             }
