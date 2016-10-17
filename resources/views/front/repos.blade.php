@@ -42,7 +42,7 @@
                 </div>
                 <div class="menu hidden-xs" style="margin-bottom: 10px;">
                     @if($repos->homepage)
-                    <a target="_blank" href="{{ link_url($repos->homepage) }}" rel="nofollow"><i class="fa fa-home fa-2x"></i> @lang('front.homepage') </a> &nbsp;&nbsp;
+                    <a target="_blank" href="{{ link_url($repos->homepage) }}" rel="nofollow" title="{{ $repos->homepage }}"><i class="fa fa-home fa-2x"></i> @lang('front.homepage') </a> &nbsp;&nbsp;
                     @endif
                     @if($repos->github)
                     <a target="_blank" href="{{ link_url($repos->github) }}" class="gitbtn" rel="nofollow"><i class="fa fa-github fa-2x"></i> Github </a> &nbsp;&nbsp;

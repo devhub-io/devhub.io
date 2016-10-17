@@ -101,6 +101,11 @@ class GithubBadges extends Command
                         $this->insert($item->id, 'circleci', 'ci', "https://circleci.com/gh/$item->owner/$item->repo");
                     }
 
+                    // gitlab-ci
+                    if ($tree->path == '.gitlab-ci.yml') {
+                        $this->insert($item->id, 'gitlab-ci', 'ci');
+                    }
+
                     // =========== Service ===========
 
                     // codeclimate
