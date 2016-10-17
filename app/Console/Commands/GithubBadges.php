@@ -45,7 +45,7 @@ class GithubBadges extends Command
      */
     public function handle()
     {
-        $repos = DB::table('repos')->select(['id'])->where('analytics_at', '<>', null)->orderBy('analytics_at', 'desc')->get();
+        $repos = DB::table('repos')->select(['id', 'owner', 'repo'])->where('analytics_at', '<>', null)->orderBy('analytics_at', 'desc')->get();
         foreach ($repos as $item) {
             $trees = DB::table('repos_trees')->select(['repos_id', 'path', 'type'])->where('repos_id', $item->id)->get();
 
@@ -56,6 +56,9 @@ class GithubBadges extends Command
             DB::table('repos_badges')->where('repos_id', $item->id)->delete();
             foreach ($trees as $tree) {
                 if ($tree->type == 'blob') {
+
+                    // =========== Package Manager ===========
+
                     // Rubygems
                     if (stripos($tree->path, '.gemspec') !== false) {
                         $this->insert($item->id, 'Rubygems');
@@ -85,6 +88,25 @@ class GithubBadges extends Command
                     if ($tree->path == 'Package.swift') {
                         $this->insert($item->id, 'SwiftPM');
                     }
+
+                    // =========== CI ===========
+
+                    // travis-ci
+                    if ($tree->path == '.travis.yml') {
+                        $this->insert($item->id, 'travis-ci', "https://travis-ci.org/$item->owner/$item->repo");
+                    }
+
+                    // circleci
+                    if ($tree->path == 'circle.yml') {
+                        $this->insert($item->id, 'circleci', "https://circleci.com/gh/$item->owner/$item->repo");
+                    }
+
+                    // =========== Service ===========
+
+                    // codeclimate
+                    if ($tree->path == '.codeclimate.yml') {
+                        $this->insert($item->id, 'codeclimate', "https://codeclimate.com/github/$item->owner/$item->repo");
+                    }
                 }
             }
 
@@ -92,13 +114,13 @@ class GithubBadges extends Command
         }
     }
 
-    protected function insert($repos_id, $name)
+    protected function insert($repos_id, $name, $url = '')
     {
-        $ex = DB::table('repos_badges')->where('repos_id', $repos_id)->where('name', $name)->first();
-        if (!$ex) {
+        if (!DB::table('repos_badges')->where('repos_id', $repos_id)->where('name', $name)->exists()) {
             DB::table('repos_badges')->insert([
                 'repos_id' => $repos_id,
                 'name' => $name,
+                'url' => $url
             ]);
         }
     }
