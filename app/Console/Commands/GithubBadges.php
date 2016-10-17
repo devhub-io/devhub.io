@@ -61,51 +61,51 @@ class GithubBadges extends Command
 
                     // Rubygems
                     if (stripos($tree->path, '.gemspec') !== false) {
-                        $this->insert($item->id, 'Rubygems');
+                        $this->insert($item->id, 'Rubygems', 'package');
                     }
 
                     // CocoaPods
                     if (stripos($tree->path, '.podspec') !== false) {
-                        $this->insert($item->id, 'CocoaPods');
+                        $this->insert($item->id, 'CocoaPods', 'package');
                     }
 
                     // npm
                     if ($tree->path == 'package.json') {
-                        $this->insert($item->id, 'npm');
+                        $this->insert($item->id, 'npm', 'package');
                     }
 
                     // Bower
                     if ($tree->path == 'bower.json') {
-                        $this->insert($item->id, 'Bower');
+                        $this->insert($item->id, 'Bower', 'package');
                     }
 
                     // Packagist
                     if ($tree->path == 'composer.json') {
-                        $this->insert($item->id, 'Packagist');
+                        $this->insert($item->id, 'Packagist', 'package');
                     }
 
                     // SwiftPM
                     if ($tree->path == 'Package.swift') {
-                        $this->insert($item->id, 'SwiftPM');
+                        $this->insert($item->id, 'SwiftPM', 'package');
                     }
 
                     // =========== CI ===========
 
                     // travis-ci
                     if ($tree->path == '.travis.yml') {
-                        $this->insert($item->id, 'travis-ci', "https://travis-ci.org/$item->owner/$item->repo");
+                        $this->insert($item->id, 'travis-ci', 'ci', "https://travis-ci.org/$item->owner/$item->repo");
                     }
 
                     // circleci
                     if ($tree->path == 'circle.yml') {
-                        $this->insert($item->id, 'circleci', "https://circleci.com/gh/$item->owner/$item->repo");
+                        $this->insert($item->id, 'circleci', 'ci', "https://circleci.com/gh/$item->owner/$item->repo");
                     }
 
                     // =========== Service ===========
 
                     // codeclimate
                     if ($tree->path == '.codeclimate.yml') {
-                        $this->insert($item->id, 'codeclimate', "https://codeclimate.com/github/$item->owner/$item->repo");
+                        $this->insert($item->id, 'codeclimate', 'code', "https://codeclimate.com/github/$item->owner/$item->repo");
                     }
                 }
             }
@@ -114,13 +114,14 @@ class GithubBadges extends Command
         }
     }
 
-    protected function insert($repos_id, $name, $url = '')
+    protected function insert($repos_id, $name, $type = '', $url = '')
     {
         if (!DB::table('repos_badges')->where('repos_id', $repos_id)->where('name', $name)->exists()) {
             DB::table('repos_badges')->insert([
                 'repos_id' => $repos_id,
                 'name' => $name,
-                'url' => $url
+                'url' => $url,
+                'type' => $type,
             ]);
         }
     }

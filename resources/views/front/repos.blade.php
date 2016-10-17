@@ -29,7 +29,13 @@
                     <h1>
                         {{ $repos->title }} <span class="line" title="Trends">{{ $repos->trends }}</span>
                         @foreach($repos->badges as $badge)
-                            <img src="{{ badge_image_url($badge->name) }}" alt="{{ $badge->name }} package" title="{{ $badge->name }} package" width="20" height="20">
+                            @if($badge->url)
+                                <a href="{{ $badge->url }}" rel="nofollow" target="_blank" title="{{ $badge->name }} {{ $badge->type == 'package' ? 'package' : '' }}" style="text-decoration: none">
+                                    <img src="{{ badge_image_url($badge->name) }}" alt="{{ $badge->name }} {{ $badge->type == 'package' ? 'package' : '' }}" width="20" height="20">
+                                </a>
+                            @else
+                                <img src="{{ badge_image_url($badge->name) }}" alt="{{ $badge->name }} {{ $badge->type == 'package' ? 'package' : '' }}" title="{{ $badge->name }} {{ $badge->type == 'package' ? 'package' : '' }}" width="20" height="20">
+                            @endif
                         @endforeach
                     </h1>
                     <p>{{ $repos->description }}</p>
