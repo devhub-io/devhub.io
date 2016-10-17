@@ -52,6 +52,7 @@ class Kernel extends ConsoleKernel
         Commands\DeveloperFetch::class,
         Commands\GithubUpdate::class,
         Commands\GithubLicense::class,
+        Commands\SpiderReposContributorsFetchDeveloperUrl::class,
     ];
 
     /**
@@ -112,7 +113,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('develophub:github:badges')->daily();
 
         // Sitemap
-        $schedule->command('develophub:site:generate-sitemap')->daily();
+        // $schedule->command('develophub:site:generate-sitemap')->daily();
     }
 
     /**
