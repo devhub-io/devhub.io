@@ -75,7 +75,7 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="logo">
-                    <h1><a href="/"><span>Develop</span>Hub</a></h1>
+                    <h1><a href="/"><span>Dev</span>Hub</a></h1>
                 </div>
             </div>
 
@@ -123,7 +123,7 @@
         <div class="row">
             <div class="col-md-3 col-sm-6">
                 <div class="footer-about-us">
-                    <h2><span>DevelopHub</span></h2>
+                    <h2><span>DevHub</span></h2>
                     <p>@lang('front.about_develophub')</p>
                     <p>
                         Currently tracking
@@ -143,7 +143,7 @@
                     <ul>
                         <li><a href="#">@lang('front.about')</a></li>
                         <li><a href="#">@lang('front.contact_us')</a></li>
-                        <li><a href="//status.develophub.net/">@lang('front.status')</a></li>
+                        <li><a href="//status.devhub.io/">@lang('front.status')</a></li>
                         <li><a href="#">@lang('front.api')</a></li>
                         <li><a href="{{ l_url('feed') }}" target="_blank" title="RSS Link">Feed</a></li>
                     </ul>
@@ -185,7 +185,7 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="copyright">
-                    <p>&copy; 2016 DevelopHub. All Rights Reserved.</p>
+                    <p>&copy; 2016 DevHub.io. All Rights Reserved.</p>
                     <p style="font-size: 10px; color: #bdbdbd">Disclaimer: This project is not affiliated with the GitHub company in any way.
                         <br> GitHub® and the Octocat® logo are registered trademarks of GitHub, Inc., used with permission—https://github.com/logos</p>
                 </div>

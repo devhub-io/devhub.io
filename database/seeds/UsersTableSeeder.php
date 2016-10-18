@@ -14,55 +14,55 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'id' => 1,
             'name' => 'admin',
-            'email' => 'admin@develophub.net',
+            'email' => 'admin@devhub.io',
             'password' => bcrypt('secret'),
         ]);
         DB::table('users')->insert([
             'id' => 2,
             'name' => 'bot1',
-            'email' => 'bot1@develophub.net',
+            'email' => 'bot1@devhub.io',
             'password' => bcrypt('secret'),
         ]);
         DB::table('users')->insert([
             'id' => 3,
             'name' => 'bot2',
-            'email' => 'bot2@develophub.net',
+            'email' => 'bot2@devhub.io',
             'password' => bcrypt('secret'),
         ]);
         DB::table('users')->insert([
             'id' => 4,
             'name' => 'bot3',
-            'email' => 'bot3@develophub.net',
+            'email' => 'bot3@devhub.io',
             'password' => bcrypt('secret'),
         ]);
         DB::table('users')->insert([
             'id' => 5,
             'name' => 'bot4',
-            'email' => 'bot4@develophub.net',
+            'email' => 'bot4@devhub.io',
             'password' => bcrypt('secret'),
         ]);
         DB::table('users')->insert([
             'id' => 6,
             'name' => 'bot5',
-            'email' => 'bot5@develophub.net',
+            'email' => 'bot5@devhub.io',
             'password' => bcrypt('secret'),
         ]);
         DB::table('users')->insert([
             'id' => 7,
             'name' => 'bot6',
-            'email' => 'bot6@develophub.net',
+            'email' => 'bot6@devhub.io',
             'password' => bcrypt('secret'),
         ]);
         DB::table('users')->insert([
             'id' => 8,
             'name' => 'bot7',
-            'email' => 'bot7@develophub.net',
+            'email' => 'bot7@devhub.io',
             'password' => bcrypt('secret'),
         ]);
         DB::table('users')->insert([
             'id' => 9,
             'name' => 'bot8',
-            'email' => 'bot8@develophub.net',
+            'email' => 'bot8@devhub.io',
             'password' => bcrypt('secret'),
         ]);
     }

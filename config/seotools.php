@@ -6,10 +6,10 @@ return [
          * The default configurations to be used by the meta generator.
          */
         'defaults'       => [
-            'title'        => "DevelopHub", // set false to total remove
+            'title'        => "DevHub", // set false to total remove
             'description'  => 'Development Language Tools Hub', // set false to total remove
             'separator'    => ' | ',
-            'keywords'     => ['Develop', 'DevelopHub'],
+            'keywords'     => ['Development', 'DevHub', 'Repositories', 'Developer'],
             'canonical'    => false, // Set null for using Url::current(), set false to total remove
         ],
 
@@ -29,7 +29,7 @@ return [
          * The default configurations to be used by the opengraph generator.
          */
         'defaults' => [
-            'title'       => 'DevelopHub', // set false to total remove
+            'title'       => 'DevHub', // set false to total remove
             'description' => 'Development Language Tools Hub', // set false to total remove
             'url'         => false,
             'type'        => false,

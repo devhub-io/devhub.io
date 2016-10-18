@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => 'no-reply@develophub.net',
-        'name' => 'DevelopHub',
+        'address' => 'no-reply@devhub.io',
+        'name' => 'DevHub',
     ],
 
     /*

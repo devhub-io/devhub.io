@@ -31,7 +31,7 @@
         <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="/admin" class="site_title"><i class="fa fa-paw"></i> <span>DevelopHub</span></a>
+                    <a href="/admin" class="site_title"><i class="fa fa-paw"></i> <span>DevHub</span></a>
                 </div>
 
                 <div class="clearfix"></div>
@@ -226,7 +226,7 @@
         <!-- footer content -->
         <footer>
             <div class="pull-right">
-                <p>&copy; 2016 DevelopHub. All Rights Reserved.</p>
+                <p>&copy; 2016 DevHub.io. All Rights Reserved.</p>
             </div>
             <div class="clearfix"></div>
         </footer>

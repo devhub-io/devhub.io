@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a href="{{ url('admin') }}" class="navbar-brand">
-                <i class="fa fa-fw fa-sitemap"></i> DevelopHub
+                <i class="fa fa-fw fa-sitemap"></i> DevHub
             </a>
         </div>
         <ul class="nav navbar-nav">

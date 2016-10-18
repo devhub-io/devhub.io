@@ -1,8 +1,8 @@
 {
-    "name": "sysatom/develophub",
-    "description": "develophub.net",
+    "name": "sysatom/devhub",
+    "description": "devhub.io",
     "keywords": [
-        "develophub"
+        "devhub"
     ],
     "license": "Private",
     "type": "project",

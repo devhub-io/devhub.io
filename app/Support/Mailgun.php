@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of develophub.net.
+ * This file is part of devhub.io.
  *
- * (c) DevelopHub <master@develophub.net>
+ * (c) DevelopHub <master@devhub.io>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -29,7 +29,7 @@ class Mailgun
     /**
      * @var string
      */
-    const WEEKLY_MAIL_LIST = 'weekly@develophub.net';
+    const WEEKLY_MAIL_LIST = 'weekly@devhub.io';
 
     public function __construct()
     {
