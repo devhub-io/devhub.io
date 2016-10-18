@@ -67,7 +67,7 @@ class GithubLicense implements ShouldQueue
                 'repos_id' => $repos->id,
                 'key' => $data['license']['key'],
                 'name' => $data['license']['name'],
-                'spdx_id' => $data['license']['spdx_id'],
+                'spdx_id' => $data['license']['spdx_id'] ?: '',
                 'featured' => (boolean)$data['license']['featured'],
             ]);
         } catch (Exception $e) {
