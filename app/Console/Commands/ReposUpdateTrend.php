@@ -46,7 +46,7 @@ class ReposUpdateTrend extends Command
     public function handle()
     {
         $now = Carbon::now();
-        $repos = Repos::select(['id', 'stargazers_count', 'forks_count', 'subscribers_count', 'trends'])->get();
+        $repos = Repos::select(['id', 'stargazers_count', 'forks_count', 'subscribers_count', 'trends'])->orderBy('fetched_at', 'desc')->get();
         foreach ($repos as $item) {
             $today_trend = ReposTrend::where('repos_id', $item->id)->where('date', $now->toDateString())->first();
             if ($today_trend) {
