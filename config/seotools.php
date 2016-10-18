@@ -7,9 +7,9 @@ return [
          */
         'defaults'       => [
             'title'        => "DevHub", // set false to total remove
-            'description'  => 'Development Language Tools Hub', // set false to total remove
+            'description'  => 'Development Tools Repositories Developers Hub', // set false to total remove
             'separator'    => ' | ',
-            'keywords'     => ['Development', 'DevHub', 'Repositories', 'Developer'],
+            'keywords'     => ['Development', 'DevHub', 'Repositories', 'Developers', 'Tools', 'Libraries', 'server', 'app', 'reading'],
             'canonical'    => false, // Set null for using Url::current(), set false to total remove
         ],
 
@@ -30,7 +30,7 @@ return [
          */
         'defaults' => [
             'title'       => 'DevHub', // set false to total remove
-            'description' => 'Development Language Tools Hub', // set false to total remove
+            'description' => 'Development Tools Repositories Developers Hub', // set false to total remove
             'url'         => false,
             'type'        => false,
             'site_name'   => false,

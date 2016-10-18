@@ -15,12 +15,13 @@ use Auth;
 use Cache;
 use DB;
 use Flash;
-use JavaScript;
 use SEO;
 use Badger;
 use Config;
 use Localization;
+use SEOMeta;
 use Validator;
+use JavaScript;
 use App\Support\Mailgun;
 use Roumen\Feed\Feed;
 use App\Entities\Collection;
@@ -101,6 +102,8 @@ class HomeController extends Controller
         $collections = Cache::remember('front:index:collections', 3 * 24 * 60, function () {
             return Collection::where('is_enable', 1)->orderBy('sort')->get();
         });
+
+        SEOMeta::setTitle('DevHub - Development Tools Repositories Developers Hub', false);
 
         return view('front.home', compact('hot', 'new', 'trend', 'recommend', 'collections', 'hot_url', 'new_url'));
     }
