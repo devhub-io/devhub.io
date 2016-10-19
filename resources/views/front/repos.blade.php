@@ -30,7 +30,7 @@
                         {{ $repos->title }} <span class="line" title="Trends">{{ $repos->trends }}</span>
                         @foreach($analytics_badges as $badge)
                             @if($badge->url)
-                                <a href="{{ $badge->url }}" rel="nofollow" target="_blank" title="{{ $badge->name }}" style="text-decoration: none">
+                                <a href="{{ link_url($badge->url) }}" rel="nofollow" target="_blank" title="{{ $badge->name }}" style="text-decoration: none">
                                     <img src="{{ badge_image_url($badge->name) }}" alt="{{ $badge->name }}" width="20" height="20">
                                 </a>
                             @else
