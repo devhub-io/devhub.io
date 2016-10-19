@@ -24,7 +24,7 @@
                 </div>
                 <div class="menu hidden-xs" style="margin-bottom: 10px;">
                     @if($developer->blog)
-                        <a target="_blank" href="{{ link_url($developer->blog) }}" rel="nofollow"><i class="fa fa-home fa-2x"></i> @lang('front.homepage') </a> &nbsp;&nbsp;
+                        <a target="_blank" href="{{ link_url($developer->blog) }}" rel="nofollow" title="{{ $developer->blog }}"><i class="fa fa-home fa-2x"></i> @lang('front.homepage') </a> &nbsp;&nbsp;
                     @endif
                     <a target="_blank" href="{{ $developer->html_url }}" class="gitbtn" rel="nofollow"><i class="fa fa-github fa-2x"></i> Github </a> &nbsp;&nbsp;
                     @if($developer->public_gists > 0)
