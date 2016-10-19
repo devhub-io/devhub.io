@@ -240,7 +240,19 @@ class HomeController extends Controller
         // Related
         $related_repos = $this->reposRepository->relatedRepos($repos->id, $repos->title);
 
-        return view('front.repos', compact('repos', 'markdown', 'tag', 'languages', 'related_repos'));
+        // Badges
+        $analytics_badges = [];
+        $gitter_badge = null;
+        foreach ($repos->badges as $badge) {
+            if ($badge->type == 'analytics') {
+                $analytics_badges[] = $badge;
+            }
+            if ($badge->type == 'service' && $badge->name == 'gitter') {
+                $gitter_badge = $badge;
+            }
+        }
+
+        return view('front.repos', compact('repos', 'markdown', 'tag', 'languages', 'related_repos', 'analytics_badges', 'gitter_badge'));
     }
 
     /**

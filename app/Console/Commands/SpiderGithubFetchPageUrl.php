@@ -20,7 +20,7 @@ class SpiderGithubFetchPageUrl extends Command
      *
      * @var string
      */
-    protected $signature = 'develophub:spider:github-fetch-page-url';
+    protected $signature = 'devhub:spider:github-fetch-page-url';
 
     /**
      * The console command description.

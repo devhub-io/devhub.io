@@ -25,7 +25,7 @@ class PackagePushUrl extends Command
      *
      * @var string
      */
-    protected $signature = 'develophub:package:push-url {type}';
+    protected $signature = 'devhub:package:push-url {type}';
 
     /**
      * The console command description.

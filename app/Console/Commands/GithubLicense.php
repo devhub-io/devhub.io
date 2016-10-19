@@ -12,7 +12,7 @@ class GithubLicense extends Command
      *
      * @var string
      */
-    protected $signature = 'develophub:github:license';
+    protected $signature = 'devhub:github:license';
 
     /**
      * The console command description.

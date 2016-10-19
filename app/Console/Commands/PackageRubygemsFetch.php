@@ -23,7 +23,7 @@ class PackageRubygemsFetch extends Command
      *
      * @var string
      */
-    protected $signature = 'develophub:package:rubygems-fetch';
+    protected $signature = 'devhub:package:rubygems-fetch';
 
     /**
      * The console command description.

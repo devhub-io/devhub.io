@@ -15,7 +15,7 @@ class DeveloperFetch extends Command
      *
      * @var string
      */
-    protected $signature = 'develophub:developer:fetch';
+    protected $signature = 'devhub:developer:fetch';
 
     /**
      * The console command description.

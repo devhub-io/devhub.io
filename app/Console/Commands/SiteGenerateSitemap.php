@@ -24,7 +24,7 @@ class SiteGenerateSitemap extends Command
      *
      * @var string
      */
-    protected $signature = 'develophub:site:generate-sitemap';
+    protected $signature = 'devhub:site:generate-sitemap';
 
     /**
      * The console command description.

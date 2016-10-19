@@ -13,7 +13,7 @@ class SpiderReposContributorsFetchDeveloperUrl extends Command
      *
      * @var string
      */
-    protected $signature = 'develophub:spider:repos-contributors-fetch-developer-url';
+    protected $signature = 'devhub:spider:repos-contributors-fetch-developer-url';
 
     /**
      * The console command description.

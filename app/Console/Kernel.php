@@ -53,6 +53,7 @@ class Kernel extends ConsoleKernel
         Commands\GithubUpdate::class,
         Commands\GithubLicense::class,
         Commands\SpiderReposContributorsFetchDeveloperUrl::class,
+        Commands\SpiderGitterFetchRooms::class,
     ];
 
     /**
@@ -80,7 +81,7 @@ class Kernel extends ConsoleKernel
             });
 
         // Sync user activated time
-        $schedule->command('develophub:user:sync-activated-time')->everyTenMinutes();
+        $schedule->command('devhub:user:sync-activated-time')->everyTenMinutes();
 
         // Github Update
         $schedule->call(function () {
@@ -104,16 +105,16 @@ class Kernel extends ConsoleKernel
         })->hourly();
 
         // Trend
-        // $schedule->command('develophub:repos:update-trend')->mondays();
+        // $schedule->command('devhub:repos:update-trend')->mondays();
 
         // Process
-        $schedule->command('develophub:repos:process')->daily();
+        $schedule->command('devhub:repos:process')->daily();
 
         // Badges
-        $schedule->command('develophub:github:badges')->daily();
+        $schedule->command('devhub:github:badges')->daily();
 
         // Sitemap
-        // $schedule->command('develophub:site:generate-sitemap')->daily();
+        // $schedule->command('devhub:site:generate-sitemap')->daily();
     }
 
     /**

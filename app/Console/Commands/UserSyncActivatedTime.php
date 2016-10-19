@@ -22,7 +22,7 @@ class UserSyncActivatedTime extends Command
      *
      * @var string
      */
-    protected $signature = 'develophub:user:sync-activated-time';
+    protected $signature = 'devhub:user:sync-activated-time';
 
     /**
      * The console command description.

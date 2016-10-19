@@ -28,7 +28,7 @@
                 <div class="repo-title">
                     <h1>
                         {{ $repos->title }} <span class="line" title="Trends">{{ $repos->trends }}</span>
-                        @foreach($repos->badges as $badge)
+                        @foreach($analytics_badges as $badge)
                             @if($badge->url)
                                 <a href="{{ $badge->url }}" rel="nofollow" target="_blank" title="{{ $badge->name }}" style="text-decoration: none">
                                     <img src="{{ badge_image_url($badge->name) }}" alt="{{ $badge->name }}" width="20" height="20">
@@ -47,7 +47,10 @@
                     @if($repos->github)
                     <a target="_blank" href="{{ link_url($repos->github) }}" class="gitbtn" rel="nofollow"><i class="fa fa-github fa-2x"></i> Github </a> &nbsp;&nbsp;
                     @endif
-                    <a target="_blank" href="{{ link_url(stackoverflow_tagged_url($tag)) }}" class="gitbtn" rel="nofollow"><i class="fa fa-stack-overflow fa-2x"></i> Questions </a>
+                    <a target="_blank" href="{{ link_url(stackoverflow_tagged_url($tag)) }}" class="gitbtn" rel="nofollow"><i class="fa fa-stack-overflow fa-2x"></i> Questions </a> &nbsp;&nbsp;
+                    @if($gitter_badge)
+                    <a target="_blank" href="{{ link_url($gitter_badge->url) }}" class="gitbtn" rel="nofollow"><i class="fa fa-comments-o fa-2x"></i> Gitter </a> &nbsp;&nbsp;
+                    @endif
                 </div>
                 <div class="params hidden-xs">
                     <div style="margin-bottom: 10px;">

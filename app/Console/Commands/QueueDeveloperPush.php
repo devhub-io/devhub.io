@@ -23,7 +23,7 @@ class QueueDeveloperPush extends Command
      *
      * @var string
      */
-    protected $signature = 'develophub:queue:developer-push';
+    protected $signature = 'devhub:queue:developer-push';
 
     /**
      * The console command description.

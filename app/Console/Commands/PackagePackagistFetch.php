@@ -23,7 +23,7 @@ class PackagePackagistFetch extends Command
      *
      * @var string
      */
-    protected $signature = 'develophub:package:packagist-fetch';
+    protected $signature = 'devhub:package:packagist-fetch';
 
     /**
      * The console command description.

@@ -23,7 +23,7 @@ class ReposProcess extends Command
      *
      * @var string
      */
-    protected $signature = 'develophub:repos:process';
+    protected $signature = 'devhub:repos:process';
 
     /**
      * The console command description.

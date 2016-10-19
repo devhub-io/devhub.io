@@ -20,7 +20,7 @@ class SpiderGithubFetchSearch extends Command
      *
      * @var string
      */
-    protected $signature = 'develophub:spider:github-fetch-search';
+    protected $signature = 'devhub:spider:github-fetch-search';
 
     /**
      * The console command description.

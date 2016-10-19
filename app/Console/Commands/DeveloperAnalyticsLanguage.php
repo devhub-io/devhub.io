@@ -12,7 +12,7 @@ class DeveloperAnalyticsLanguage extends Command
      *
      * @var string
      */
-    protected $signature = 'develophub:developer:analytics-language';
+    protected $signature = 'devhub:developer:analytics-language';
 
     /**
      * The console command description.

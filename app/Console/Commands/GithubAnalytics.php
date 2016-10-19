@@ -27,7 +27,7 @@ class GithubAnalytics extends Command
      *
      * @var string
      */
-    protected $signature = 'develophub:github:analytics';
+    protected $signature = 'devhub:github:analytics';
 
     /**
      * The console command description.

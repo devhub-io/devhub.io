@@ -21,7 +21,7 @@ class SpiderGithubFetchReadmeUrl extends Command
      *
      * @var string
      */
-    protected $signature = 'develophub:spider:github-fetch-readme-url';
+    protected $signature = 'devhub:spider:github-fetch-readme-url';
 
     /**
      * The console command description.

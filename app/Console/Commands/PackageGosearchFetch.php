@@ -23,7 +23,7 @@ class PackageGosearchFetch extends Command
      *
      * @var string
      */
-    protected $signature = 'develophub:package:gosearch-fetch';
+    protected $signature = 'devhub:package:gosearch-fetch';
 
     /**
      * The console command description.

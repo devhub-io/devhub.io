@@ -21,7 +21,7 @@ class GithubBadges extends Command
      *
      * @var string
      */
-    protected $signature = 'develophub:github:badges';
+    protected $signature = 'devhub:github:badges';
 
     /**
      * The console command description.
@@ -61,131 +61,131 @@ class GithubBadges extends Command
 
                     // Rubygems
                     if (stripos($tree->path, '.gemspec') !== false) {
-                        $this->insert($item->id, 'Rubygems', 'package');
+                        $this->insert($item->id, 'Rubygems', 'analytics');
                     }
 
                     // CocoaPods
                     if (stripos($tree->path, '.podspec') !== false) {
-                        $this->insert($item->id, 'CocoaPods', 'package');
+                        $this->insert($item->id, 'CocoaPods', 'analytics');
                     }
 
                     // npm
                     if ($tree->path == 'package.json') {
-                        $this->insert($item->id, 'npm', 'package');
+                        $this->insert($item->id, 'npm', 'analytics');
                     }
 
                     // Bower
                     if ($tree->path == 'bower.json') {
-                        $this->insert($item->id, 'Bower', 'package');
+                        $this->insert($item->id, 'Bower', 'analytics');
                     }
 
                     // Packagist
                     if ($tree->path == 'composer.json') {
-                        $this->insert($item->id, 'Packagist', 'package');
+                        $this->insert($item->id, 'Packagist', 'analytics');
                     }
 
                     // SwiftPM
                     if ($tree->path == 'Package.swift') {
-                        $this->insert($item->id, 'SwiftPM', 'package');
+                        $this->insert($item->id, 'SwiftPM', 'analytics');
                     }
 
                     // =========== CI ===========
 
                     // travis-ci
                     if ($tree->path == '.travis.yml') {
-                        $this->insert($item->id, 'travis-ci', 'ci', "https://travis-ci.org/$item->owner/$item->repo");
+                        $this->insert($item->id, 'travis-ci', 'analytics', "https://travis-ci.org/$item->owner/$item->repo");
                     }
 
                     // circleci
                     if ($tree->path == 'circle.yml') {
-                        $this->insert($item->id, 'circleci', 'ci', "https://circleci.com/gh/$item->owner/$item->repo");
+                        $this->insert($item->id, 'circleci', 'analytics', "https://circleci.com/gh/$item->owner/$item->repo");
                     }
 
                     // gitlab-ci
                     if ($tree->path == '.gitlab-ci.yml') {
-                        $this->insert($item->id, 'gitlab-ci', 'ci');
+                        $this->insert($item->id, 'gitlab-ci', 'analytics');
                     }
 
                     // =========== Service ===========
 
                     // codeclimate
                     if ($tree->path == '.codeclimate.yml') {
-                        $this->insert($item->id, 'codeclimate', 'service', "https://codeclimate.com/github/$item->owner/$item->repo");
+                        $this->insert($item->id, 'codeclimate', 'analytics', "https://codeclimate.com/github/$item->owner/$item->repo");
                     }
 
                     // reviewboard
                     if ($tree->path == '.reviewboardrc') {
-                        $this->insert($item->id, 'reviewboard', 'service');
+                        $this->insert($item->id, 'reviewboard', 'analytics');
                     }
 
                     // coveralls
                     if ($tree->path == '.coveralls.yml') {
-                        $this->insert($item->id, 'coveralls', 'service');
+                        $this->insert($item->id, 'coveralls', 'analytics');
                     }
 
                     // editorconfig
                     if ($tree->path == '.editorconfig') {
-                        $this->insert($item->id, 'editorconfig', 'code');
+                        $this->insert($item->id, 'editorconfig', 'analytics');
                     }
 
                     // gulp
                     if ($tree->path == 'gulpfile.js') {
-                        $this->insert($item->id, 'gulp', 'code');
+                        $this->insert($item->id, 'gulp', 'analytics');
                     }
 
                     // grunt
                     if ($tree->path == 'Gruntfile.js') {
-                        $this->insert($item->id, 'grunt', 'code');
+                        $this->insert($item->id, 'grunt', 'analytics');
                     }
 
                     // karma
                     if ($tree->path == 'karma.conf.js') {
-                        $this->insert($item->id, 'karma', 'code');
+                        $this->insert($item->id, 'karma', 'analytics');
                     }
 
                     // jscs
                     if ($tree->path == '.jscsrc') {
-                        $this->insert($item->id, 'jscs', 'code');
+                        $this->insert($item->id, 'jscs', 'analytics');
                     }
 
                     // eslint
                     if ($tree->path == '.eslintrc') {
-                        $this->insert($item->id, 'eslint', 'code');
+                        $this->insert($item->id, 'eslint', 'analytics');
                     }
 
                     // webpack
                     if ($tree->path == 'webpack.config.js') {
-                        $this->insert($item->id, 'webpack', 'code');
+                        $this->insert($item->id, 'webpack', 'analytics');
                     }
 
                     // rubocop
                     if ($tree->path == '.rubocop.yml') {
-                        $this->insert($item->id, 'rubocop', 'code');
+                        $this->insert($item->id, 'rubocop', 'analytics');
                     }
 
                     // sass
                     if ($tree->path == '.scss-lint.yml') {
-                        $this->insert($item->id, 'sass', 'code');
+                        $this->insert($item->id, 'sass', 'analytics');
                     }
 
                     // rspec
                     if ($tree->path == '.rspec') {
-                        $this->insert($item->id, 'rspec', 'code');
+                        $this->insert($item->id, 'rspec', 'analytics');
                     }
 
                     // flowtype
                     if ($tree->path == '.flowconfig') {
-                        $this->insert($item->id, 'flowtype', 'code');
+                        $this->insert($item->id, 'flowtype', 'analytics');
                     }
 
                     // python
                     if ($tree->path == 'setup.py') {
-                        $this->insert($item->id, 'python', 'language');
+                        $this->insert($item->id, 'python', 'analytics');
                     }
 
                     // ruby
                     if ($tree->path == 'Gemfile') {
-                        $this->insert($item->id, 'ruby', 'language');
+                        $this->insert($item->id, 'ruby', 'analytics');
                     }
                 }
             }

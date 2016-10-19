@@ -23,7 +23,7 @@ class ReposUpdateTrend extends Command
      *
      * @var string
      */
-    protected $signature = 'develophub:repos:update-trend';
+    protected $signature = 'devhub:repos:update-trend';
 
     /**
      * The console command description.
