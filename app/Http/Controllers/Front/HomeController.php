@@ -467,7 +467,10 @@ class HomeController extends Controller
         SEO::setTitle('Developers');
 
         $type = request()->get('type', 'User');
-        $developers = Developer::query()->where('status', 1)->where('public_repos', '>', 0)->where('type', $type)->orderBy('followers', 'desc')->paginate(12);
+        $developers = Developer::query()->where('status', 1)->where('public_repos', '>', 0)->where('type', $type)
+            ->orderBy('rating', 'desc')
+            ->orderBy('followers', 'desc')
+            ->paginate(12);
 
         return view('front.developers', compact('developers', 'type'));
     }

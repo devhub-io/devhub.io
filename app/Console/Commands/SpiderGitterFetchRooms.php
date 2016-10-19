@@ -63,5 +63,6 @@ class SpiderGitterFetchRooms extends Command
             }
             sleep(1);
         }
+        $this->info('All done!');
     }
 }

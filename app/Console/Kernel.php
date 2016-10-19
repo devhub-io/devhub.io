@@ -54,6 +54,7 @@ class Kernel extends ConsoleKernel
         Commands\GithubLicense::class,
         Commands\SpiderReposContributorsFetchDeveloperUrl::class,
         Commands\SpiderGitterFetchRooms::class,
+        Commands\DeveloperRating::class,
     ];
 
     /**
