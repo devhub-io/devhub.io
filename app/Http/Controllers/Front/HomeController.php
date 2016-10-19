@@ -30,6 +30,7 @@ use App\Entities\Site;
 use App\Entities\Article;
 use App\Entities\Developer;
 use App\Entities\Repos;
+use App\Entities\ReposVote;
 use App\Entities\ReposContributor;
 use App\Http\Controllers\Controller;
 use App\Repositories\CategoryRepository;
@@ -523,5 +524,29 @@ class HomeController extends Controller
     public function sitemap()
     {
         return redirect()->to('sitemap.xml', 301);
+    }
+
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function review()
+    {
+        if (!DB::table('repos_vote')
+            ->where('repos_id', request()->get('repos_id', 0))
+            ->where('ip', request()->ip())->where('user_agent', request()->server('HTTP_USER_AGENT'))->exists()
+        ) {
+            ReposVote::create([
+                'repos_id' => request()->get('repos_id', 0),
+                'reliable' => request()->get('reliable', 0),
+                'recommendation' => request()->get('recommendation', 0),
+                'documentation' => request()->get('documentation', 0),
+                'ip' => request()->ip(),
+                'user_agent' => request()->server('HTTP_USER_AGENT'),
+            ]);
+        }
+
+        Flash::success('Thanks so much! ');
+
+        return redirect()->back();
     }
 }

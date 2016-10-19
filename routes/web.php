@@ -33,6 +33,7 @@ Route::group(['namespace' => 'Front', 'prefix' => Localization::setLocale(), 'mi
     Route::get('sites', 'HomeController@sites');
     Route::get('developers', 'HomeController@developers');
     Route::get('developer/{login}', 'HomeController@developer');
+    Route::post('repos/review', 'HomeController@review');
 
     # Sitemap
     Route::get('sitemap', 'HomeController@sitemap');
@@ -158,6 +159,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admi
     # socialite
     Route::get('github/redirect', 'SocialiteController@redirectToProviderGithub');
     Route::get('github/callback', 'SocialiteController@handleProviderCallbackGithub');
+
+    # Vote
+    Route::get('vote', 'VoteController@index');
 });
 
 # Static

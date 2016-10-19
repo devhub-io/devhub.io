@@ -62,11 +62,14 @@
                     </div>
                     <div style="margin-bottom: 10px;" title="@lang('front.last_updated')">
                         <i class="fa fa-clock-o"></i> <span>{{ $repos->repos_updated_at }}</span>
+                        @if($repos->license)
+                            <a href="https://spdx.org/licenses/{{ $repos->license->spdx_id }}.html" target="_blank" rel="nofollow" title="{{ $repos->license->name }}" style="color: #333; text-decoration: none;"><i class="fa fa-copyright"></i> <span>{{ $repos->license->spdx_id }}</span></a>
+                        @endif
                     </div>
                     <div>
-                        @if($repos->license)
-                            <a href="https://spdx.org/licenses/{{ $repos->license->spdx_id }}.html" target="_blank" rel="nofollow" title="{{ $repos->license->name }}"><span class="label label-info">{{ $repos->license->spdx_id }}</span></a>
-                        @endif
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#reviewModal">
+                            I use {{ $repos->title }}
+                        </button>
                     </div>
                 </div>
             </div>
@@ -125,6 +128,60 @@
             </div>
         </div>
     </div>
+
+    <div aria-hidden="true" aria-labelledby="reviewModalLabel" role="dialog" tabindex="-1" id="reviewModal" class="modal fade in">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <h4 id="mcqReviewModalLabel" class="modal-title">Would you tell us more about {{ $repos->title }}?</h4>
+                </div>
+                <form style="padding:10px;" action="{{ l_url('repos/review') }}" method="POST" role="form" id="review-form" class="form-horizontal bv-form" novalidate="novalidate">
+                    {{ csrf_field() }}
+                    <input type="hidden" value="{{ $repos->id }}" name="repos_id">
+                    <div style="padding-top:0;" class="modal-body">
+                        <div class="form-group mcq_input">
+                            <h4>Is the project reliable?</h4>
+                            <div class="input-group">
+                                <div class="radio">
+                                    <label><input type="radio" value="1" name="reliable">Yes, realiable</label>&nbsp;&nbsp;&nbsp;
+                                    <label><input type="radio" value="0" name="reliable">Somewhat realiable</label>&nbsp;&nbsp;&nbsp;
+                                    <label><input type="radio" value="-1" name="reliable">Not realiable</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group mcq_input has-feedback">
+                            <h4>Would you recommend this project?</h4>
+                            <div class="input-group">
+                                <div class="radio">
+                                    <label><input type="radio" class="definitely_recommend" value="1" name="recommendation">Yes, definitely</label>&nbsp;&nbsp;&nbsp;
+                                    <label><input type="radio" class="no_recommend" value="0" name="recommendation">Not sure</label>&nbsp;&nbsp;&nbsp;
+                                    <label><input type="radio" class="no_recommend" value="-1" name="recommendation">Nope</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group mcq_input">
+                            <h4>Is the documentation helpful?</h4>
+                            <div class="input-group">
+                                <div class="radio">
+                                    <label><input type="radio" value="1" name="documentation">Yes, helpful</label>&nbsp;&nbsp;&nbsp;
+                                    <label><input type="radio" value="0" name="documentation">Somewhat helpful</label>&nbsp;&nbsp;&nbsp;
+                                    <label><input type="radio" value="-1" name="documentation">Not that helpful</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+                            <button class="btn btn-primary" type="submit" name="button">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('scripts')
@@ -149,5 +206,21 @@
             },
             options: options
         });
+
+        $('#review-form').submit(function () {
+            if ($('#review-form input[name=reliable]:checked').val() === undefined) {
+                return false;
+            }
+            if ($('#review-form input[name=recommendation]:checked').val() === undefined) {
+                return false;
+            }
+            if ($('#review-form input[name=documentation]:checked').val() === undefined) {
+                return false;
+            }
+            return true;
+        });
+        @if(session()->has('flash_notification.message'))
+            alert('{{ session('flash_notification.message') }}');
+        @endif
     </script>
 @endsection
