@@ -11,7 +11,9 @@
 
 namespace App\Providers;
 
+use App\Support\SphinxEngine;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Scout\EngineManager;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,7 +24,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // Sphinx
+        resolve(EngineManager::class)->extend('sphinx', function () {
+            return new SphinxEngine;
+        });
     }
 
     /**

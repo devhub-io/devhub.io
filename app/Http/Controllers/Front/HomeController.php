@@ -265,7 +265,7 @@ class HomeController extends Controller
         $keyword = $request->get('keyword');
         $repos = $this->reposRepository->search($keyword);
 
-        SEO::setTitle($keyword);
+        SEO::setTitle($keyword .' - Search');
 
         return view('front.search', compact('repos', 'keyword'));
     }
