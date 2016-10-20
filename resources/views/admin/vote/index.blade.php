@@ -34,7 +34,7 @@
                             <tbody>
                             @foreach($vote as $item)
                                 <tr>
-                                    <th scope="row">{{ $item->repos->title }}</th>
+                                    <th scope="row"><a href="{{ url('repos', [$item->repos->slug]) }}">{{ $item->repos->title }}</a></th>
                                     <td>
                                         <ul class="list-inline">
                                             <li title="reliable">
