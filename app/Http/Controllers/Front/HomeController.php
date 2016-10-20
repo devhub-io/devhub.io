@@ -549,4 +549,12 @@ class HomeController extends Controller
 
         return redirect()->back();
     }
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function auto_complete()
+    {
+        return response()->json([]);
+    }
 }

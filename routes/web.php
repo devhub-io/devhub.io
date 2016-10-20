@@ -34,6 +34,7 @@ Route::group(['namespace' => 'Front', 'prefix' => Localization::setLocale(), 'mi
     Route::get('developers', 'HomeController@developers');
     Route::get('developer/{login}', 'HomeController@developer');
     Route::post('repos/review', 'HomeController@review');
+    Route::get('search/auto_complete', 'HomeController@auto_complete');
 
     # Sitemap
     Route::get('sitemap', 'HomeController@sitemap');
