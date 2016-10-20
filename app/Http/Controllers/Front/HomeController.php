@@ -336,7 +336,7 @@ class HomeController extends Controller
         // check if there is cached feed and build new only if is not
         if (!$feed->isCached()) {
             // creating rss feed with our most recent 20 posts
-            $posts = DB::table('repos')->where('status', true)->orderBy('created_at', 'desc')->take(100)->get();
+            $posts = DB::table('repos')->where('status', true)->orderBy('id', 'desc')->take(100)->get();
 
             // set your feed's title, description, link, pubdate and language
             $feed->title = Config::get('seotools.meta.defaults.title');
