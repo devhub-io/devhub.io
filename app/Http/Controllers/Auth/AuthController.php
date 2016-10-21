@@ -11,6 +11,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Log;
 use Auth;
 use Carbon\Carbon;
 use Flash;
@@ -78,12 +79,16 @@ class AuthController extends Controller
             $valid = \Google2FA::verifyKey(Auth::user()->google2fa_secret_key, $code);
 
             if ($valid) {
-                if ($userId == 1) {
-                    $geo = geoip(real_ip());
-                    $geo_ip = $geo ? real_ip() . ' (' . $geo->country . ' / ' . $geo->city . ' / ' . $geo->state_name . ')' : real_ip();
-                    $datetime = Carbon::now();
-                    $content = "IP: $geo_ip, Datetime: $datetime";
-                    User::find(1)->notify(new Pushover('[用户] 登录成功', $content));
+                try {
+                    if ($userId == 1) {
+                        $geo = geoip(real_ip());
+                        $geo_ip = $geo ? real_ip() . ' (' . $geo->country . ' / ' . $geo->city . ' / ' . $geo->state_name . ')' : real_ip();
+                        $datetime = Carbon::now()->toW3cString();
+                        $content = "IP: $geo_ip, Datetime: $datetime";
+                        User::find(1)->notify(new Pushover('[用户] 登录成功', $content));
+                    }
+                } catch (Exception $e) {
+                    Log::error($e);
                 }
 
                 return redirect('admin');
