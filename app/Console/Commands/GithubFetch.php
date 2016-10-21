@@ -1,0 +1,54 @@
+<?php
+
+namespace App\Console\Commands;
+
+use DB;
+use App\Entities\ReposUrl;
+use App\Repositories\ReposRepositoryEloquent;
+use Illuminate\Console\Command;
+
+class GithubFetch extends Command
+{
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'devhub:github:fetch';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Github Fetch';
+
+    /**
+     * Create a new command instance.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
+     * Execute the console command.
+     */
+    public function handle()
+    {
+        $urls = ReposUrl::query()->select(['id', 'url'])->orderBy('id', 'asc')->get();
+        foreach ($urls as $item) {
+            if (!DB::table('repos')->where('github', $item->url)->exists()) {
+
+                $job = new \App\Jobs\GithubFetch(3, $item->url);
+                $job->handle(new ReposRepositoryEloquent(app()));
+
+                $this->info($item->url);
+            } else {
+                $this->info('pass');
+            }
+            $item->delete();
+        }
+        $this->info('All done!');
+    }
+}
