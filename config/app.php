@@ -191,6 +191,7 @@ return [
         HieuLe\Active\ActiveServiceProvider::class,
         Spatie\UrlSigner\Laravel\UrlSignerServiceProvider::class,
         Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
+        Torann\GeoIP\GeoIPServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -267,6 +268,7 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Active' => HieuLe\Active\Facades\Active::class,
         'UrlSigner' => Spatie\UrlSigner\Laravel\UrlSignerFacade::class,
+        'GeoIP' => Torann\GeoIP\Facades\GeoIP::class,
 
     ],
 
