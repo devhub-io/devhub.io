@@ -533,14 +533,14 @@ class HomeController extends Controller
     {
         if (!DB::table('repos_vote')
             ->where('repos_id', request()->get('repos_id', 0))
-            ->where('ip', request()->ip())->where('user_agent', request()->server('HTTP_USER_AGENT'))->exists()
+            ->where('ip', real_ip())->where('user_agent', request()->server('HTTP_USER_AGENT'))->exists()
         ) {
             ReposVote::create([
                 'repos_id' => request()->get('repos_id', 0),
                 'reliable' => request()->get('reliable', 0),
                 'recommendation' => request()->get('recommendation', 0),
                 'documentation' => request()->get('documentation', 0),
-                'ip' => request()->ip(),
+                'ip' => real_ip(),
                 'user_agent' => request()->server('HTTP_USER_AGENT'),
             ]);
         }
