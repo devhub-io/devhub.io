@@ -61,7 +61,7 @@
                         <a aria-label="Download {{ $repos->owner }}/{{ $repos->repo }} on GitHub" data-icon="octicon-cloud-download" href="https://github.com/{{ $repos->owner }}/{{ $repos->repo }}/archive/master.zip" class="github-button">Download</a>
                     </div>
                     <div style="margin-bottom: 10px;" title="@lang('front.last_updated')">
-                        <i class="fa fa-clock-o"></i> <span>{{ $repos->repos_updated_at }}</span>
+                        <i class="fa fa-clock-o"></i> <span>{{ Carbon\Carbon::now()->diffForHumans(Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $repos->repos_updated_at)) }}</span>
                         @if($repos->license)
                             <a href="https://spdx.org/licenses/{{ $repos->license->spdx_id }}.html" target="_blank" rel="nofollow" title="{{ $repos->license->name }}" style="color: #333; text-decoration: none;"><i class="fa fa-copyright"></i> <span>{{ $repos->license->spdx_id }}</span></a>
                         @endif
