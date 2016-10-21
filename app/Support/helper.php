@@ -122,6 +122,7 @@ if (!function_exists('real_ip')) {
     function real_ip()
     {
         $ips = request()->header('cf-connecting-ip');
+        dd($ips);
         if (isset($ips[0])) {
             return $ips[0];
         } else {
