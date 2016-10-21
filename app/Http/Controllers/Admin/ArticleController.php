@@ -21,7 +21,7 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        dd(request()->header());
+        dd(real_ip());
 
         $keyword = request()->get('keyword');
         $articles = Article::query()->orderBy('id', 'desc')->paginate(20);

@@ -112,3 +112,20 @@ if (!function_exists('badge_image_url')) {
         return cdn_asset('img/badges/' . strtolower($name) . '.png');
     }
 }
+
+if (!function_exists('real_ip')) {
+    /**
+     * real visitor ip
+     *
+     * @return string
+     */
+    function real_ip()
+    {
+        $ips = request()->header('cf-connecting-ip');
+        if (isset($ips[0])) {
+            return $ips[0];
+        } else {
+            return request()->ip();
+        }
+    }
+}
