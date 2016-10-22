@@ -32,7 +32,7 @@ Route::group(['namespace' => 'Front', 'prefix' => Localization::setLocale(), 'mi
     Route::get('search', 'HomeController@search');
     Route::get('sites', 'HomeController@sites');
     Route::get('developers', 'HomeController@developers');
-    Route::get('developer/{login}', 'HomeController@developer');
+    Route::get('developer/{login}', 'HomeController@developer')->name('developer');
     Route::post('repos/review', 'HomeController@review');
     Route::get('search/auto_complete', 'HomeController@auto_complete');
 

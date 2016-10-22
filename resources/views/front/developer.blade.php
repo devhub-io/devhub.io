@@ -38,13 +38,29 @@
                         </div>
                     @endif
                     <div title="@lang('front.last_updated')">
-                        <i class="fa fa-clock-o"></i> <span>{{ $developer->site_updated_at }}</span>
+                        <i class="fa fa-clock-o"></i> <span>{{ Carbon\Carbon::now()->diffForHumans(Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $developer->site_updated_at)) }}</span>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
             <article class="col-md-12">
+                <h2>About {{ $developer->name ? $developer->name : $developer->login }}</h2>
+                <p>
+                    Summing up all of {{ $developer->name ? $developer->name : $developer->login }}'s repositories they have {{ $owner_repos->count() }} own repositories @if($contribute_count > 0) and {{ $contribute_count }} contribute repositories @endif.
+                </p>
+                @if($developer->type == 'User')
+                <p>
+                    {{ $developer->name ? $developer->name : $developer->login }} follows {{ $developer->followers }} other users and is followed by {{ $developer->following }} users.
+                </p>
+                @endif
+                <p>
+                    Data for {{ $developer->name ? $developer->name : $developer->login }} was last updated {{ Carbon\Carbon::now()->diffForHumans(Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $developer->site_updated_at)) }}.
+                </p>
+            </article>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
                 @if($owner_repos->count() > 0)
                     <h2>Repository</h2>
                     <div class="row">
@@ -91,7 +107,7 @@
                         @endforeach
                     </div>
                 @endif
-            </article>
+            </div>
         </div>
     </div>
 @endsection

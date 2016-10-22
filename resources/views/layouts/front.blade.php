@@ -103,12 +103,13 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="{{ active_class(if_uri('/')) }}"><a href="/">@lang('front.home')</a></li>
+                    <li class="{{ active_class(if_uri('/')) }}"><a href="{{ l_url('/') }}">@lang('front.home')</a></li>
                     @if(isset($one_column))
                         @foreach($one_column as $item)
                             <li class="{{ active_class($item->slug == $current_category_slug) }}"><a href="{{ l_url('category', [$item->slug]) }}">@lang('category.'.$item->slug)</a></li>
                         @endforeach
                     @endif
+                    <li class="{{ active_class(if_uri('developers') || if_route('developer')) }}"><a href="{{ l_url('developers') }}">Developers</a></li>
                 </ul>
             </div>
         </div>

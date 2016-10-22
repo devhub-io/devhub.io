@@ -507,15 +507,17 @@ class HomeController extends Controller
         }])->where('login', $login)->get();
 
         $has_contribute = false;
+        $contribute_count = 0;
         if ($contribute_repos->count() > 0) {
             foreach ($contribute_repos as $item) {
                 if ($item->repos) {
                     $has_contribute = true;
+                    $contribute_count++;
                 }
             }
         }
 
-        return view('front.developer', compact('developer', 'owner_repos', 'contribute_repos', 'has_contribute'));
+        return view('front.developer', compact('developer', 'owner_repos', 'contribute_repos', 'has_contribute', 'contribute_count'));
     }
 
     /**
