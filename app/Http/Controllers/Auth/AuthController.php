@@ -89,7 +89,7 @@ class AuthController extends Controller
                         User::find(1)->notify(new Pushover('[用户] 登录成功', $content));
                     }
                 } catch (Exception $e) {
-                    Log::error($e);
+                    // Log::error($e);
                 }
 
                 return redirect('admin');
