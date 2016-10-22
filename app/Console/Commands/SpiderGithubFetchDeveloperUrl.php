@@ -46,12 +46,10 @@ class SpiderGithubFetchDeveloperUrl extends Command
     {
         @unlink(storage_path('developer.txt'));
 
-        $alphabet = 'a';
-        $alphabet = str_split($alphabet);
-
-        foreach ($alphabet as $a) {
-            $keyword = $a;
-            $url = 'https://github.com/search?q=followers%3A%3E100&ref=searchresults&type=Users&utf8=%E2%9C%93&p=';
+        $followers = 727;
+        while ($followers > 10) {
+            $followers -= 100;
+            $url = "https://github.com/search?q=followers%3A10..727&ref=searchresults&type=Users&utf8=%E2%9C%93&p=";
             $regex = "/<div class=\"user-list-info\">\s+<a href=\"(.*)\">(.*)<\/a>/";
 
             foreach (range(1, 100) as $page) {
@@ -68,7 +66,7 @@ class SpiderGithubFetchDeveloperUrl extends Command
                 $handle = fopen(storage_path('developer.txt'), 'a+');
                 fwrite($handle, "\n" . $text);
 
-                $this->info("Keyword: $a, Page: $page");
+                $this->info("Followers: $followers, Page: $page");
                 sleep(10);
             }
         }

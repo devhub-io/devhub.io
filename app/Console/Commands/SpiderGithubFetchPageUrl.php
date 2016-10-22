@@ -44,11 +44,10 @@ class SpiderGithubFetchPageUrl extends Command
     {
         @unlink(storage_path('repos.txt'));
 
-        $alphabet = ['a'];
-
-        foreach ($alphabet as $a) {
-            $keyword = $a;
-            $url = 'https://github.com/search?q=stars%3A100..1355&ref=searchresults&type=Repositories&utf8=%E2%9C%93&p=';
+        $stars = 1355;
+        while ($stars > 100) {
+            $stars -= 100;
+            $url = "https://github.com/search?q=stars%3A100..$stars&ref=searchresults&type=Repositories&utf8=%E2%9C%93&p=";
             $regex = "/<h3 class=\"repo-list-name\">\s+<a href=\"(.*)\">(.*)<\/a>/";
 
             foreach (range(1, 100) as $page) {
@@ -65,7 +64,7 @@ class SpiderGithubFetchPageUrl extends Command
                 $handle = fopen(storage_path('repos.txt'), 'a+');
                 fwrite($handle, "\n" . $text);
 
-                $this->info("Keyword: $a, Page: $page");
+                $this->info("Stars: $stars, Page: $page");
                 sleep(10);
             }
         }
