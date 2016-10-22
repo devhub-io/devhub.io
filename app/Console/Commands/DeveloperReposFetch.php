@@ -36,7 +36,7 @@ class DeveloperReposFetch extends Command
      */
     public function handle()
     {
-        $developers = Developer::query()->select(['id', 'html_url'])->orderBy('followers', 'desc')->limit(1000)->get();
+        $developers = Developer::query()->select(['id', 'html_url'])->orderBy('rating', 'desc')->limit(1000)->get();
         foreach ($developers as $item) {
             $job = new GithubDeveloperReposFetch(1, $item->html_url);
             $job->handle(new ReposRepositoryEloquent(app()));
