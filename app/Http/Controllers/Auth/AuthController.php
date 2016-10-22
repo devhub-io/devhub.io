@@ -11,6 +11,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Exception;
 use Log;
 use Auth;
 use Carbon\Carbon;
