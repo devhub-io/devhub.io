@@ -44,7 +44,7 @@ class GithubUpdate extends Command
      */
     public function handle()
     {
-        $all_repos = Repos::query()->where('status', true)->select(['id'])->orderBy('fetched_at', 'asc')->get();
+        $all_repos = Repos::query()->where('status', true)->select(['id'])->orderBy('id', 'asc')->get();
         foreach ($all_repos as $repos) {
             try {
                 $job = new \App\Jobs\GithubUpdate(1, $repos->id);
