@@ -56,7 +56,7 @@
                                 <th>图片</th>
                                 <th>统计</th>
                                 <th>状态</th>
-                                <th style="width: 10%">操作</th>
+                                <th style="width: 12%">操作</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -101,7 +101,7 @@
                                 <td>
                                     <a href="{{ url('developer', [$item->login]) }}" target="_blank" class="btn btn-primary btn-xs"><i class="fa fa-home"></i></a>
                                     <a href="{{ url("admin/developer/$item->id/history") }}" class="btn btn-info btn-xs" target="_blank" title="修改历史"><i class="fa fa-history"></i></a>
-                                    <a href="{{ $item->html_url }}" target="_blank" class="btn btn-info"><i class="fa fa-github"></i></a>
+                                    <a href="{{ $item->html_url }}" target="_blank" class="btn btn-info btn-xs"><i class="fa fa-github"></i></a>
                                     <a href="{{ url("admin/developer/$item->id/fetch") }}" class="btn btn-warning btn-xs" title="抓取"><i class="fa fa-feed"></i>  </a>
                                 </td>
                             </tr>
