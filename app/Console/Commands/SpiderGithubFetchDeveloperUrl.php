@@ -46,12 +46,12 @@ class SpiderGithubFetchDeveloperUrl extends Command
     {
         @unlink(storage_path('developer.txt'));
 
-        $alphabet = 'qwertyuiopasdfghjklzxcvbnm';
+        $alphabet = 'a';
         $alphabet = str_split($alphabet);
 
         foreach ($alphabet as $a) {
             $keyword = $a;
-            $url = 'https://github.com/search?o=desc&q=' . $keyword . '&s=followers&type=Users&utf8=%E2%9C%93&p=';
+            $url = 'https://github.com/search?q=followers%3A%3E100&ref=searchresults&type=Users&utf8=%E2%9C%93&p=';
             $regex = "/<div class=\"user-list-info\">\s+<a href=\"(.*)\">(.*)<\/a>/";
 
             foreach (range(1, 2) as $page) {

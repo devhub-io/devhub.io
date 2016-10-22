@@ -48,7 +48,7 @@ class SpiderGithubFetchPageUrl extends Command
 
         foreach ($alphabet as $a) {
             $keyword = $a;
-            $url = 'https://github.com/search?q=stars%3A%3E1000&ref=searchresults&type=Repositories&utf8=%E2%9C%93&p=';
+            $url = 'https://github.com/search?q=stars%3A100..1575&ref=searchresults&type=Repositories&utf8=%E2%9C%93&p=';
             $regex = "/<h3 class=\"repo-list-name\">\s+<a href=\"(.*)\">(.*)<\/a>/";
 
             foreach (range(1, 100) as $page) {
