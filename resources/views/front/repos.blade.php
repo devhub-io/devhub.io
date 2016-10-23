@@ -51,7 +51,9 @@
                     @if($gitter_badge)
                     <a target="_blank" href="{{ link_url($gitter_badge->url) }}" class="gitbtn" rel="nofollow"><i class="fa fa-comments-o fa-2x"></i> Gitter </a> &nbsp;&nbsp;
                     @endif
+                    @if($developer_exists)
                     <a href="{{ l_url('developer', [$repos->owner]) }}"><i class="fa fa-user fa-2x"></i> Developer</a> &nbsp;&nbsp;
+                    @endif
                 </div>
                 <div class="params hidden-xs">
                     <div style="margin-bottom: 10px;">
@@ -108,7 +110,7 @@
                     <h3>Top Contributors</h3>
                     <div>
                         @foreach($repos->contributors as $contributor)
-                            <a href="{{ l_url('developer', [$contributor->login]) }}" target="_blank">
+                            <a href="{{ l_url('developer', [$contributor->login]) }}" target="_blank" rel="nofollow">
                                 <img src="{{ $contributor->avatar_url }}" alt="{{ $contributor->login }}" title="{{ $contributor->login }}" class="pull-left" width="60" height="60">
                             </a>
                         @endforeach

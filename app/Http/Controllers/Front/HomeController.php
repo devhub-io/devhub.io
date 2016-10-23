@@ -253,7 +253,10 @@ class HomeController extends Controller
             }
         }
 
-        return view('front.repos', compact('repos', 'markdown', 'tag', 'languages', 'related_repos', 'analytics_badges', 'gitter_badge'));
+        // Developer
+        $developer_exists = DB::table('developer')->where('status', 1)->where('login', $repos->owner)->exists();
+
+        return view('front.repos', compact('repos', 'markdown', 'tag', 'languages', 'related_repos', 'analytics_badges', 'gitter_badge', 'developer_exists'));
     }
 
     /**
@@ -482,10 +485,6 @@ class HomeController extends Controller
      */
     public function developer($login)
     {
-        if (!Developer::query()->where('login', $login)->where('status', 1)->exists()) {
-            return redirect()->to("https://github.com/$login");
-        }
-
         $developer = Developer::query()->where('login', $login)->where('status', 1)->firstOrFail();
 
         // Pageviews
