@@ -48,7 +48,7 @@ class Kernel extends ConsoleKernel
         Commands\PackagePushUrl::class,
         Commands\SpiderGithubFetchDeveloperUrl::class,
         Commands\SpiderFetchDeveloperUrl::class,
-        Commands\DeveloperAnalyticsLanguage::class,
+        Commands\DeveloperLanguage::class,
         Commands\DeveloperFetch::class,
         Commands\GithubUpdate::class,
         Commands\GithubLicense::class,

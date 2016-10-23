@@ -14,14 +14,14 @@ namespace App\Console\Commands;
 use DB;
 use Illuminate\Console\Command;
 
-class DeveloperAnalyticsLanguage extends Command
+class DeveloperLanguage extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'devhub:developer:analytics-language';
+    protected $signature = 'devhub:developer:language';
 
     /**
      * The console command description.
