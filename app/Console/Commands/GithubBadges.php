@@ -53,7 +53,7 @@ class GithubBadges extends Command
                 continue;
             }
 
-            DB::table('repos_badges')->where('repos_id', $item->id)->delete();
+            DB::table('repos_badges')->where('repos_id', $item->id)->where('type', 'analytics')->delete();
             foreach ($trees as $tree) {
                 if ($tree->type == 'blob') {
 
