@@ -57,6 +57,7 @@ class Kernel extends ConsoleKernel
         Commands\DeveloperRating::class,
         Commands\GithubFetch::class,
         Commands\DeveloperReposFetch::class,
+        Commands\ReposDeveloperFetch::class,
     ];
 
     /**
