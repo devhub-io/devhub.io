@@ -51,6 +51,7 @@
                     @if($gitter_badge)
                     <a target="_blank" href="{{ link_url($gitter_badge->url) }}" class="gitbtn" rel="nofollow"><i class="fa fa-comments-o fa-2x"></i> Gitter </a> &nbsp;&nbsp;
                     @endif
+                    <a href="{{ l_url('developer', [$repos->owner]) }}"><i class="fa fa-user fa-2x"></i> Developer</a> &nbsp;&nbsp;
                 </div>
                 <div class="params hidden-xs">
                     <div style="margin-bottom: 10px;">
