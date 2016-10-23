@@ -113,21 +113,9 @@ class ReposProcess extends Command
 
         // developer
         $this->info('Developer');
-        $developers = Developer::query()->where('followers', '>', 0)->where('type', 'User')->where('status', 0)->select('id')->get();
+        $developers = Developer::query()->where('status', 0)->select('id')->get();
         foreach ($developers as $developer) {
             $developer->status = 1;
-            $developer->save();
-            $this->info($developer->id);
-        }
-        $developers = Developer::query()->where('type', 'Organization')->where('status', 0)->select('id')->get();
-        foreach ($developers as $developer) {
-            $developer->status = 1;
-            $developer->save();
-            $this->info($developer->id);
-        }
-        $developers = Developer::query()->where('followers', 0)->where('type', 'User')->where('status', 1)->select('id')->get();
-        foreach ($developers as $developer) {
-            $developer->status = 0;
             $developer->save();
             $this->info($developer->id);
         }
