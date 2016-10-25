@@ -1,11 +1,12 @@
 <?php
 
-/**
- * This file is part of Entrust,
- * a role & permission management solution for Laravel.
+/*
+ * This file is part of devhub.io.
  *
- * @license MIT
- * @package Zizaco\Entrust
+ * (c) DevelopHub <master@devhub.io>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 return [
