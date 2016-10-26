@@ -21,7 +21,7 @@
         <h1 style="text-align: center">Developers</h1>
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12" style="margin-bottom: 15px;">
                     <div class="btn-group pull-right">
                         <a type="button" class="btn {{ $type == 'User' ? 'btn-info' : 'btn-default' }}" href="{{ l_url('developers') }}">User</a>
                         <a type="button" class="btn {{ $type == 'Organization' ? 'btn-info' : 'btn-default' }}" href="{{ l_url('developers?type=Organization') }}">Organization</a>
