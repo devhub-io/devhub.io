@@ -76,7 +76,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 hidden-xs">
                 @if($languages)
                     <canvas id="languages" height="160" width="160"></canvas>
                     <h5 style="text-align: center">Languages</h5>
