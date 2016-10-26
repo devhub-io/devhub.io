@@ -40,7 +40,7 @@
                     </h1>
                     <p>{{ $repos->description }}</p>
                 </div>
-                <div class="menu hidden-xs" style="margin-bottom: 10px;">
+                <div class="menu" style="margin-bottom: 10px;">
                     @if($repos->homepage)
                     <a target="_blank" href="{{ link_url($repos->homepage) }}" rel="nofollow" title="{{ $repos->homepage }}"><i class="fa fa-home fa-2x"></i> @lang('front.homepage') </a> &nbsp;&nbsp;
                     @endif
@@ -55,7 +55,7 @@
                     <a href="{{ l_url('developer', [$repos->owner]) }}"><i class="fa fa-user fa-2x"></i> Developer</a> &nbsp;&nbsp;
                     @endif
                 </div>
-                <div class="params hidden-xs">
+                <div class="params">
                     <div style="margin-bottom: 10px;">
                         <a aria-label="Star {{ $repos->owner }}/{{ $repos->repo }} on GitHub" data-count-aria-label="# stargazers on GitHub" data-count-api="/repos/{{ $repos->owner }}/{{ $repos->repo }}#stargazers_count" data-count-href="/{{ $repos->owner }}/{{ $repos->repo }}/stargazers" data-icon="octicon-star" href="https://github.com/{{ $repos->owner }}/{{ $repos->repo }}" class="github-button">Star</a>
                         <a aria-label="Fork {{ $repos->owner }}/{{ $repos->repo }} on GitHub" data-count-aria-label="# forks on GitHub" data-count-api="/repos/{{ $repos->owner }}/{{ $repos->repo }}#forks_count" data-count-href="/{{ $repos->owner }}/{{ $repos->repo }}/network" data-icon="octicon-repo-forked" href="https://github.com/{{ $repos->owner }}/{{ $repos->repo }}/fork" class="github-button">Fork</a>

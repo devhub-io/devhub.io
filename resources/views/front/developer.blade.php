@@ -13,7 +13,7 @@
         {!! Breadcrumbs::render('developer', $developer) !!}
 
         <div class="row" style="margin: 50px 0 50px 0">
-            <div class="col-md-3 col-sm-4 hidden-xs">
+            <div class="col-md-3 col-sm-4">
                 <img class="cover" src="{{ $developer->avatar_url ? $developer->avatar_url : cdn_asset('img/300x300.png') }}" alt="{{ $developer->login }}" title="{{ $developer->login }}">
             </div>
             <div class="col-md-9 col-sm-8">
@@ -22,7 +22,7 @@
                         @if($developer->type == 'Organization') <i class="fa fa-users" title="Organization"></i> @else <i class="fa fa-user" title="User"></i> @endif {{ $developer->name }} <span>({{ $developer->login }})</span>
                     </h1>
                 </div>
-                <div class="menu hidden-xs" style="margin-bottom: 10px;">
+                <div class="menu" style="margin-bottom: 10px;">
                     @if($developer->blog)
                         <a target="_blank" href="{{ link_url($developer->blog) }}" rel="nofollow" title="{{ $developer->blog }}"><i class="fa fa-home fa-2x"></i> @lang('front.homepage') </a> &nbsp;&nbsp;
                     @endif
@@ -31,7 +31,7 @@
                         <a target="_blank" href="https://gist.github.com/{{ $developer->login }}" class="gitbtn" rel="nofollow"><i class="fa fa-github-square fa-2x"></i> Github Gist </a> &nbsp;&nbsp;
                     @endif
                 </div>
-                <div class="params hidden-xs">
+                <div class="params">
                     @if($developer->type == 'User')
                         <div style="margin-bottom: 10px;">
                             <a aria-label="Follow @{{ $developer->login }} on GitHub" data-count-aria-label="# followers on GitHub" data-count-api="/users/{{ $developer->login }}#followers" data-count-href="/{{ $developer->login }}/followers" href="https://github.com/{{ $developer->login }}" class="github-button">Follow</a>
