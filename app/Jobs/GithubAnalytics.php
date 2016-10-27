@@ -88,25 +88,26 @@ class GithubAnalytics implements ShouldQueue
 
             // Contributors
             $contributors = $client->repo()->contributors($repos->owner, $repos->repo);
-            foreach ($contributors as $contributor) {
-                $ex_contributor = ReposContributor::query()->where('repos_id', $repos->id)->where('login', $contributor['login'])->first();
-                if ($ex_contributor) {
-                    ReposContributor::query()->where('repos_id', $repos->id)->where('login', $contributor['login'])->update([
-                        'type' => $contributor['type'],
-                        'site_admin' => (bool)$contributor['site_admin'],
-                        'avatar_url' => $contributor['avatar_url'],
-                        'contributions' => $contributor['contributions'],
-                    ]);
-                } else {
-                    ReposContributor::insert([
-                        'repos_id' => $repos->id,
-                        'login' => $contributor['login'],
-                        'avatar_url' => $contributor['avatar_url'],
-                        'html_url' => $contributor['html_url'],
-                        'type' => $contributor['type'],
-                        'site_admin' => (bool)$contributor['site_admin'],
-                        'contributions' => $contributor['contributions'],
-                    ]);
+            if (is_array($contributors)) {
+                foreach ($contributors as $contributor) {
+                    if (ReposContributor::query()->where('repos_id', $repos->id)->where('login', $contributor['login'])->exists()) {
+                        ReposContributor::query()->where('repos_id', $repos->id)->where('login', $contributor['login'])->update([
+                            'type' => $contributor['type'],
+                            'site_admin' => (bool)$contributor['site_admin'],
+                            'avatar_url' => $contributor['avatar_url'],
+                            'contributions' => $contributor['contributions'],
+                        ]);
+                    } else {
+                        ReposContributor::insert([
+                            'repos_id' => $repos->id,
+                            'login' => $contributor['login'],
+                            'avatar_url' => $contributor['avatar_url'],
+                            'html_url' => $contributor['html_url'],
+                            'type' => $contributor['type'],
+                            'site_admin' => (bool)$contributor['site_admin'],
+                            'contributions' => $contributor['contributions'],
+                        ]);
+                    }
                 }
             }
 
