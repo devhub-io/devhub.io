@@ -12,18 +12,18 @@
 namespace App\Console\Commands;
 
 use App\Entities\Repos;
-use App\Entities\ReposTrend;
+use App\Entities\ReposTrend as ReposTrendModel;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 
-class ReposUpdateTrend extends Command
+class ReposTrend extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'devhub:repos:update-trend';
+    protected $signature = 'devhub:repos:trend {page} {perPage}';
 
     /**
      * The console command description.
@@ -45,15 +45,17 @@ class ReposUpdateTrend extends Command
      */
     public function handle()
     {
+        $page = $this->argument('page');
+        $perPage = $this->argument('perPage');
         $now = Carbon::now();
-        $repos = Repos::select(['id', 'stargazers_count', 'forks_count', 'subscribers_count', 'trends'])->orderBy('fetched_at', 'desc')->get();
+        $repos = Repos::select(['id', 'stargazers_count', 'forks_count', 'subscribers_count', 'trends'])->orderBy('stargazers_count', 'desc')->forPage($page, $perPage)->get();
         foreach ($repos as $item) {
-            $today_trend = ReposTrend::where('repos_id', $item->id)->where('date', $now->toDateString())->first();
+            $today_trend = ReposTrendModel::where('repos_id', $item->id)->where('date', $now->toDateString())->first();
             if ($today_trend) {
                 $today_trend->overall = $item->overall();
                 $today_trend->save();
             } else {
-                $today_trend = ReposTrend::create([
+                $today_trend = ReposTrendModel::create([
                     'repos_id' => $item->id,
                     'date' => $now->toDateString(),
                     'overall' => $item->overall(),
@@ -61,7 +63,7 @@ class ReposUpdateTrend extends Command
                 ]);
             }
 
-            $prev_trend = ReposTrend::where('repos_id', $item->id)->where('id', '<', $today_trend->id)->orderBy('id', 'desc')->first();
+            $prev_trend = ReposTrendModel::where('repos_id', $item->id)->where('id', '<', $today_trend->id)->orderBy('id', 'desc')->first();
             if ($prev_trend) {
                 $diffDay = $now->diffInDays(Carbon::parse($prev_trend->date));
                 if ($diffDay > 0) {
@@ -77,7 +79,7 @@ class ReposUpdateTrend extends Command
             $today_trend->save();
 
             // trends
-            $repos_trends = ReposTrend::where('repos_id', $item->id)->orderBy('date')->limit(8)->get();
+            $repos_trends = ReposTrendModel::where('repos_id', $item->id)->orderBy('date')->limit(8)->get();
             if ($repos_trends) {
                 $trends = [];
                 foreach ($repos_trends as $_item) {

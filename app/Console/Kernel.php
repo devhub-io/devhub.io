@@ -37,7 +37,7 @@ class Kernel extends ConsoleKernel
         Commands\GithubAnalytics::class,
         Commands\SpiderGithubFetchReadmeUrl::class,
         Commands\GithubBadges::class,
-        Commands\ReposUpdateTrend::class,
+        Commands\ReposTrend::class,
         Commands\ReposProcess::class,
         Commands\PackagePackagistFetch::class,
         Commands\PackageGosearchFetch::class,
@@ -110,7 +110,7 @@ class Kernel extends ConsoleKernel
         })->hourly();
 
         // Trend
-        // $schedule->command('devhub:repos:update-trend')->mondays();
+        // $schedule->command('devhub:repos:trend')->mondays();
 
         // Process
         $schedule->command('devhub:repos:process')->daily();
