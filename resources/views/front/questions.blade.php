@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-md-7 col-sm-8">
                 <div class="repo-title">
-                    <h1>{{ $repos->title }} <span class="line" title="Trends">{{ $repos->trends }}</span></h1>
+                    <h1>{{ $repos->title }}</h1>
                     <p>{{ $repos->description }}</p>
                 </div>
             </div>
