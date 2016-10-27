@@ -55,6 +55,7 @@
                                 <th>类型</th>
                                 <th>图片</th>
                                 <th>统计</th>
+                                <th>分数</th>
                                 <th>状态</th>
                                 <th style="width: 12%">操作</th>
                             </tr>
@@ -91,6 +92,7 @@
                                         </li>
                                     </ul>
                                 </td>
+                                <td>{{ $item->rating }}</td>
                                 <td>
                                     @if($item->status == 1)
                                     <a href="{{ url("admin/developer/{$item->id}/change_enable") }}" class="btn btn-success btn-xs" title="点击禁用">启用</a>
