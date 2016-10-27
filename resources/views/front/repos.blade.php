@@ -47,7 +47,9 @@
                     @if($repos->github)
                     <a target="_blank" href="{{ link_url($repos->github) }}" class="gitbtn" rel="nofollow"><i class="fa fa-github fa-2x"></i> Github </a> &nbsp;&nbsp;
                     @endif
+                    @if($repos->have_questions)
                     <a target="_blank" href="{{ link_url(stackoverflow_tagged_url($tag)) }}" class="gitbtn" rel="nofollow"><i class="fa fa-stack-overflow fa-2x"></i> Questions </a> &nbsp;&nbsp;
+                    @endif
                     @if($gitter_badge)
                     <a target="_blank" href="{{ link_url($gitter_badge->url) }}" class="gitbtn" rel="nofollow"><i class="fa fa-comments-o fa-2x"></i> Gitter </a> &nbsp;&nbsp;
                     @endif

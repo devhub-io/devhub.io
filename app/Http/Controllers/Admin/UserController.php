@@ -40,8 +40,9 @@ class UserController extends Controller
         }
 
         $github = Service::query()->where('provider', 'github')->where('user_id', Auth::id())->first();
+        $stackexchange = Service::query()->where('provider', 'stackexchange')->where('user_id', Auth::id())->first();
 
-        return view('admin.user.profile', compact('url', 'github'));
+        return view('admin.user.profile', compact('url', 'github', 'stackexchange'));
     }
 
     /**

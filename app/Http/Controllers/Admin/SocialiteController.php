@@ -12,6 +12,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Auth;
+use Config;
 use Socialite;
 use Response;
 use App\Entities\Service;
@@ -39,8 +40,7 @@ class SocialiteController extends Controller
         $github = Socialite::driver('github')->user();
 
         if ($github) {
-            $service = Service::query()->where('provider', 'github')->where('user_id', Auth::id())->first();
-            if (!$service) {
+            if (!Service::query()->where('provider', 'github')->where('user_id', Auth::id())->exists()) {
                 Service::create([
                     'user_id' => Auth::id(),
                     'name' => 'Github',
@@ -48,6 +48,42 @@ class SocialiteController extends Controller
                     'token' => $github->token,
                     'expires_at' => $github->expiresIn ? $github->expiresIn : null,
                     'options' => $github->user ? serialize($github->user) : '',
+                ]);
+            }
+        }
+
+        return redirect('admin/user/profile');
+    }
+
+    private function stackexchangeConfig()
+    {
+        $clientId = Config::get('services.stackexchange.client_id');
+        $clientSecret = Config::get('services.stackexchange.client_secret');
+        $redirectUrl = Config::get('services.stackexchange.redirect');
+        $additionalProviderConfig = ['site' => Config::get('services.stackexchange.site')];
+        return new \SocialiteProviders\Manager\Config($clientId, $clientSecret, $redirectUrl, $additionalProviderConfig);
+    }
+
+    public function redirectToProviderStackexchange()
+    {
+        $config = $this->stackexchangeConfig();
+        return Socialite::with('stackexchange')->setConfig($config)->redirect();
+    }
+
+    public function handleProviderCallbackStackexchange()
+    {
+        $config = $this->stackexchangeConfig();
+        $stackexchange = Socialite::driver('stackexchange')->setConfig($config)->user();
+
+        if ($stackexchange) {
+            if (!Service::query()->where('provider', 'stackexchange')->where('user_id', Auth::id())->exists()) {
+                Service::create([
+                    'user_id' => Auth::id(),
+                    'name' => 'StackExchange',
+                    'provider' => 'stackexchange',
+                    'token' => $stackexchange->token,
+                    'expires_at' => $stackexchange->expiresIn ? $stackexchange->expiresIn : null,
+                    'options' => $stackexchange->user ? serialize($stackexchange->user) : '',
                 ]);
             }
         }

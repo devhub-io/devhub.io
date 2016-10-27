@@ -160,6 +160,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admi
     # socialite
     Route::get('github/redirect', 'SocialiteController@redirectToProviderGithub');
     Route::get('github/callback', 'SocialiteController@handleProviderCallbackGithub');
+    Route::get('stackexchange/redirect', 'SocialiteController@redirectToProviderStackexchange');
+    Route::get('stackexchange/callback', 'SocialiteController@handleProviderCallbackStackexchange');
 
     # Vote
     Route::get('vote', 'VoteController@index');

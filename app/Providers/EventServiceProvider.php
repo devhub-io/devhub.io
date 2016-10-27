@@ -25,6 +25,9 @@ class EventServiceProvider extends ServiceProvider
         'Illuminate\Notifications\Events\NotificationSent' => [
             'App\Listeners\LogNotification',
         ],
+        \SocialiteProviders\Manager\SocialiteWasCalled::class => [
+            'SocialiteProviders\StackExchange\StackExchangeExtendSocialite@handle',
+        ],
     ];
 
     /**

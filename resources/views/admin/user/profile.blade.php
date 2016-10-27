@@ -41,6 +41,12 @@
                 @else
                     Github 已授权
                 @endif
+
+                @if(!$stackexchange)
+                    <a href="{{ url('admin/stackexchange/redirect') }}">StackExchange 授权</a>
+                @else
+                    StackExchange 已授权
+                @endif
             </div>
         </div>
     </div>

@@ -73,4 +73,12 @@ return [
         'redirect' => env('BITBUCKET_REDIRECT'),
     ],
 
+    'stackexchange' => [
+        'client_id' => env('STACKEXCHANGE_ID'),
+        'client_secret' => env('STACKEXCHANGE_SECRET'),
+        'redirect' => env('STACKEXCHANGE_REDIRECT_URI'),
+        'key' => env('STACKEXCHANGE_KEY'),
+        'site' => env('STACKEXCHANGE_SITE'),
+    ],
+
 ];
