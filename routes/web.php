@@ -27,14 +27,17 @@ Route::group(['namespace' => 'Front', 'prefix' => Localization::setLocale(), 'mi
 
     Route::get('/', 'HomeController@index');
     Route::get('category/{slug}', 'HomeController@lists');
-    Route::get('repos/{slug}', 'HomeController@repos');
     Route::get('collection/{slug}', 'HomeController@collection');
     Route::get('search', 'HomeController@search');
     Route::get('sites', 'HomeController@sites');
     Route::get('developers', 'HomeController@developers');
     Route::get('developer/{login}', 'HomeController@developer')->name('developer');
-    Route::post('repos/review', 'HomeController@review');
     Route::get('search/auto_complete', 'HomeController@auto_complete');
+
+    # Repos
+    Route::get('repos/{slug}', 'HomeController@repos');
+    Route::get('repos/{slug}/questions', 'HomeController@questions');
+    Route::post('repos/review', 'HomeController@review');
 
     # Sitemap
     Route::get('sitemap', 'HomeController@sitemap');

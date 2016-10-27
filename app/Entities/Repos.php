@@ -91,6 +91,14 @@ class Repos extends Model implements Transformable
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function questions()
+    {
+        return $this->hasMany('App\Entities\ReposQuestion');
+    }
+
+    /**
      * @return integer
      */
     public function overall()

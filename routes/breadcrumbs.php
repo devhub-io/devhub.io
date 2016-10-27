@@ -34,6 +34,12 @@ Breadcrumbs::register('repos', function ($breadcrumbs, $repos) {
     $breadcrumbs->push($repos->title, l_url('repos', $repos->slug));
 });
 
+// Home > [repositories] > [Category] > [Repos] > [Questions]
+Breadcrumbs::register('questions', function ($breadcrumbs, $repos) {
+    $breadcrumbs->parent('repos', $repos);
+    $breadcrumbs->push('Questions', l_url("repos/$repos->slug/questions"));
+});
+
 // Home > [Developers]
 Breadcrumbs::register('developers', function ($breadcrumbs) {
     $breadcrumbs->parent('home');

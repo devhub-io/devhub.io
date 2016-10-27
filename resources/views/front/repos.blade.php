@@ -45,13 +45,13 @@
                     <a target="_blank" href="{{ link_url($repos->homepage) }}" rel="nofollow" title="{{ $repos->homepage }}"><i class="fa fa-home fa-2x"></i> @lang('front.homepage') </a> &nbsp;&nbsp;
                     @endif
                     @if($repos->github)
-                    <a target="_blank" href="{{ link_url($repos->github) }}" class="gitbtn" rel="nofollow"><i class="fa fa-github fa-2x"></i> Github </a> &nbsp;&nbsp;
+                    <a target="_blank" href="{{ link_url($repos->github) }}" rel="nofollow"><i class="fa fa-github fa-2x"></i> Github </a> &nbsp;&nbsp;
                     @endif
                     @if($repos->have_questions)
-                    <a target="_blank" href="{{ link_url(stackoverflow_tagged_url($tag)) }}" class="gitbtn" rel="nofollow"><i class="fa fa-stack-overflow fa-2x"></i> Questions </a> &nbsp;&nbsp;
+                    <a target="_blank" href="{{ l_url("repos/$repos->slug/questions") }}"><i class="fa fa-stack-overflow fa-2x"></i> Questions </a> &nbsp;&nbsp;
                     @endif
                     @if($gitter_badge)
-                    <a target="_blank" href="{{ link_url($gitter_badge->url) }}" class="gitbtn" rel="nofollow"><i class="fa fa-comments-o fa-2x"></i> Gitter </a> &nbsp;&nbsp;
+                    <a target="_blank" href="{{ link_url($gitter_badge->url) }}" rel="nofollow"><i class="fa fa-comments-o fa-2x"></i> Gitter </a> &nbsp;&nbsp;
                     @endif
                     @if($developer_exists)
                     <a href="{{ l_url('developer', [$repos->owner]) }}"><i class="fa fa-user fa-2x"></i> Developer</a> &nbsp;&nbsp;

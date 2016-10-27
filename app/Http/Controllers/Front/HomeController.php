@@ -203,9 +203,6 @@ class HomeController extends Controller
             $repos->save();
         }
 
-        // Tag
-        $tag = $repos->repo;
-
         // Languages
         $languages = [];
         if ($repos->languages) {
@@ -256,7 +253,21 @@ class HomeController extends Controller
         // Developer
         $developer_exists = DB::table('developer')->where('status', 1)->where('login', $repos->owner)->exists();
 
-        return view('front.repos', compact('repos', 'markdown', 'tag', 'languages', 'related_repos', 'analytics_badges', 'gitter_badge', 'developer_exists'));
+        return view('front.repos', compact('repos', 'markdown', 'languages', 'related_repos', 'analytics_badges', 'gitter_badge', 'developer_exists'));
+    }
+
+    /**
+     * @param $slug
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function questions($slug)
+    {
+        $repos = $this->reposRepository->findBySlug($slug);
+
+        SEO::setTitle("$repos->owner/$repos->repo" . ' - Questions');
+        SEO::setDescription($repos->description);
+
+        return view('front.questions', compact('repos'));
     }
 
     /**
