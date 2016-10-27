@@ -11,24 +11,24 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Entities\ReposVote;
 use App\Http\Controllers\Controller;
+use DB;
 
-class VoteController extends Controller
+class ClickController extends Controller
 {
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        $vote = ReposVote::query()->with('repos')->orderBy('created_at', 'desc')->paginate(10);
+        $clicks = DB::table('link_click')->orderBy('id', 'desc')->paginate(10);
 
         $geo_ip = [];
-        foreach ($vote as $item) {
+        foreach ($clicks as $item) {
             $geo = geoip($item->ip);
             $geo_ip[$item->ip] = $geo ? $geo->country . ' / ' . $geo->city . ' / ' . $geo->state_name : '';
         }
 
-        return view('admin.vote.index', compact('vote', 'geo_ip'));
+        return view('admin.click.index', compact('clicks', 'geo_ip'));
     }
 }

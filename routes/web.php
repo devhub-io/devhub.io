@@ -168,6 +168,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admi
 
     # Vote
     Route::get('vote', 'VoteController@index');
+
+    # Click
+    Route::get('click', 'ClickController@index');
 });
 
 # Static

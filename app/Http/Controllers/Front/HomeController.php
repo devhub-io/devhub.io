@@ -13,6 +13,7 @@ namespace App\Http\Controllers\Front;
 
 use Auth;
 use Cache;
+use Carbon\Carbon;
 use DB;
 use Flash;
 use SEO;
@@ -35,7 +36,6 @@ use App\Entities\ReposContributor;
 use App\Http\Controllers\Controller;
 use App\Repositories\CategoryRepository;
 use App\Repositories\ReposRepository;
-use App\Jobs\GithubDeveloperFetch;
 use Illuminate\Http\Request;
 use League\Glide\Responses\LaravelResponseFactory;
 use League\Glide\ServerFactory;
@@ -279,7 +279,7 @@ class HomeController extends Controller
         $keyword = $request->get('keyword');
         $repos = $this->reposRepository->search($keyword);
 
-        SEO::setTitle($keyword .' - Search');
+        SEO::setTitle($keyword . ' - Search');
 
         return view('front.search', compact('repos', 'keyword'));
     }
@@ -417,13 +417,13 @@ class HomeController extends Controller
     {
         $target = request()->get('target');
         if ($target) {
-            preg_match(GithubDeveloperFetch::URL_REGEX, $target, $matches);
-            if ($matches) {
-                if (DB::table('developer')->where('login', $matches[1])->where('status', 1)->exists()) {
-                    $developer = DB::table('developer')->where('login', $matches[1])->where('status', 1)->first();
-                    return redirect()->to(l_url('developer', [$developer->login]));
-                }
-            }
+            DB::table('link_click')->insert([
+                'target' => $target,
+                'referer' => request()->server('HTTP_REFERER'),
+                'ip' => real_ip(),
+                'user_agent' => request()->server('HTTP_USER_AGENT'),
+                'clicked_at' => Carbon::now(),
+            ]);
 
             return redirect()->to($target);
         } else {

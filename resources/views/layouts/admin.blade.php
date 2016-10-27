@@ -66,6 +66,7 @@
                                     <li><a href="{{ url('admin/sites') }}">站点</a></li>
                                     <li><a href="{{ url('admin/collections') }}">集合</a></li>
                                     <li><a href="{{ url('admin/vote') }}">投票</a></li>
+                                    <li><a href="{{ url('admin/click') }}">点击</a></li>
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-archive"></i> Article <span class="fa fa-chevron-down"></span></a>
