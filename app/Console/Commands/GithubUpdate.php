@@ -22,7 +22,7 @@ class GithubUpdate extends Command
      *
      * @var string
      */
-    protected $signature = 'devhub:github:update';
+    protected $signature = 'devhub:github:update {page} {perPage}';
 
     /**
      * The console command description.
@@ -44,13 +44,15 @@ class GithubUpdate extends Command
      */
     public function handle()
     {
-        $all_repos = Repos::query()->where('status', true)->select(['id'])->orderBy('id', 'asc')->get();
-        foreach ($all_repos as $repos) {
+        $page = $this->argument('page');
+        $perPage = $this->argument('perPage');
+        $repos = Repos::query()->where('status', true)->select(['id'])->orderBy('id', 'asc')->forPage($page, $perPage)->get();
+        foreach ($repos as $item) {
             try {
-                $job = new \App\Jobs\GithubUpdate(1, $repos->id);
+                $job = new \App\Jobs\GithubUpdate(2, $item->id);
                 $job->handle(new ReposRepositoryEloquent(app()));
 
-                $this->info($repos->id);
+                $this->info($item->id);
             } catch (\Exception $e) {
                 $this->error($e->getMessage());
             }
