@@ -34,7 +34,7 @@
                 <div class="params">
                     @if($developer->type == 'User')
                         <div style="margin-bottom: 10px;">
-                            <a aria-label="Follow @{{ $developer->login }} on GitHub" data-count-aria-label="# followers on GitHub" data-count-api="/users/{{ $developer->login }}#followers" data-count-href="/{{ $developer->login }}/followers" href="{{ link_url("https://github.com/$developer->login") }}" class="github-button" target="_blank" rel="nofollow">Follow</a>
+                            <a aria-label="Follow @{{ $developer->login }} on GitHub" data-count-aria-label="# followers on GitHub" data-count-api="/users/{{ $developer->login }}#followers" data-count-href="/{{ $developer->login }}/followers" href="https://github.com/{{ $developer->login }}" class="github-button">Follow</a>
                         </div>
                     @endif
                     <div title="@lang('front.last_updated')">
