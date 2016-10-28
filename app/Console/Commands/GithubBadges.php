@@ -194,7 +194,7 @@ class GithubBadges extends Command
                     }
 
                     // ruby
-                    if ($tree->path == 'Gemfile') {
+                    if ($tree->path == 'Gemfile' || $tree->path == 'Podfile') {
                         $this->insert($item->id, 'ruby', 'analytics');
                     }
 
@@ -207,6 +207,17 @@ class GithubBadges extends Command
                     if ($tree->path == '.gush.yml') {
                         $this->insert($item->id, 'gush', 'analytics');
                     }
+
+                    // Vagrant
+                    if ($tree->path == 'Vagrantfile') {
+                        $this->insert($item->id, 'vagrant', 'analytics');
+                    }
+
+                    // Docker
+                    if ($tree->path == 'Dockerfile') {
+                        $this->insert($item->id, 'docker', 'analytics');
+                    }
+
                 }
             }
 
