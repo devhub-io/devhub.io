@@ -41,7 +41,7 @@
                                             <div style="margin-bottom: 10px">
                                                 @if($item->type == 'User')
                                                     <span title="star">
-                                                        <a aria-label="Follow @{{ $developer->login }} on GitHub" data-count-aria-label="# followers on GitHub" data-count-api="/users/{{ $item->login }}#followers" data-count-href="/{{ $item->login }}/followers" href="https://github.com/{{ $item->login }}" class="github-button">Follow</a>
+                                                        <a aria-label="Follow @{{ $developer->login }} on GitHub" data-count-aria-label="# followers on GitHub" data-count-api="/users/{{ $item->login }}#followers" data-count-href="/{{ $item->login }}/followers" href="{{ link_url("https://github.com/$item->login") }}" class="github-button" target="_blank" rel="nofollow">Follow</a>
                                                     </span>
                                                 @endif
                                             </div>

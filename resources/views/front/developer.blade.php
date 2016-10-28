@@ -28,13 +28,13 @@
                     @endif
                     <a target="_blank" href="{{ $developer->html_url }}" class="gitbtn" rel="nofollow"><i class="fa fa-github fa-2x"></i> Github </a> &nbsp;&nbsp;
                     @if($developer->public_gists > 0)
-                        <a target="_blank" href="https://gist.github.com/{{ $developer->login }}" class="gitbtn" rel="nofollow"><i class="fa fa-github-square fa-2x"></i> Github Gist </a> &nbsp;&nbsp;
+                        <a target="_blank" href="{{ link_url("https://gist.github.com/$developer->login") }}" class="gitbtn" rel="nofollow"><i class="fa fa-github-square fa-2x"></i> Github Gist </a> &nbsp;&nbsp;
                     @endif
                 </div>
                 <div class="params">
                     @if($developer->type == 'User')
                         <div style="margin-bottom: 10px;">
-                            <a aria-label="Follow @{{ $developer->login }} on GitHub" data-count-aria-label="# followers on GitHub" data-count-api="/users/{{ $developer->login }}#followers" data-count-href="/{{ $developer->login }}/followers" href="https://github.com/{{ $developer->login }}" class="github-button">Follow</a>
+                            <a aria-label="Follow @{{ $developer->login }} on GitHub" data-count-aria-label="# followers on GitHub" data-count-api="/users/{{ $developer->login }}#followers" data-count-href="/{{ $developer->login }}/followers" href="{{ link_url("https://github.com/$developer->login") }}" class="github-button" target="_blank" rel="nofollow">Follow</a>
                         </div>
                     @endif
                     <div title="@lang('front.last_updated')">
