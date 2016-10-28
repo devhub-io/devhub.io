@@ -106,6 +106,16 @@ class GithubBadges extends Command
                         $this->insert($item->id, 'gitlab-ci', 'analytics');
                     }
 
+                    // scrutinizer
+                    if ($tree->path == '.scrutinizer.yml') {
+                        $this->insert($item->id, 'scrutinizer', 'analytics');
+                    }
+
+                    // styleci
+                    if ($tree->path == '.styleci.yml') {
+                        $this->insert($item->id, 'styleci', 'analytics');
+                    }
+
                     // =========== Service ===========
 
                     // codeclimate
@@ -186,6 +196,16 @@ class GithubBadges extends Command
                     // ruby
                     if ($tree->path == 'Gemfile') {
                         $this->insert($item->id, 'ruby', 'analytics');
+                    }
+
+                    // phpunit
+                    if ($tree->path == 'phpunit.xml.dist' || $tree->path == 'phpunit.xml') {
+                        $this->insert($item->id, 'phpunit', 'analytics');
+                    }
+
+                    // gush
+                    if ($tree->path == '.gush.yml') {
+                        $this->insert($item->id, 'gush', 'analytics');
                     }
                 }
             }
