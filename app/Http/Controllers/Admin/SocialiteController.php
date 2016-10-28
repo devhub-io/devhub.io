@@ -60,7 +60,7 @@ class SocialiteController extends Controller
         $clientId = Config::get('services.stackexchange.client_id');
         $clientSecret = Config::get('services.stackexchange.client_secret');
         $redirectUrl = Config::get('services.stackexchange.redirect');
-        $additionalProviderConfig = ['site' => Config::get('services.stackexchange.site')];
+        $additionalProviderConfig = ['site' => Config::get('services.stackexchange.site'), 'scopes' => 'no_expiry'];
         return new \SocialiteProviders\Manager\Config($clientId, $clientSecret, $redirectUrl, $additionalProviderConfig);
     }
 
