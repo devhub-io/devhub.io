@@ -27,7 +27,7 @@ class GithubAnalytics extends Command
      *
      * @var string
      */
-    protected $signature = 'devhub:github:analytics {page} {perPage}';
+    protected $signature = 'devhub:github:analytics {userId} {page} {perPage}';
 
     /**
      * The console command description.
@@ -49,13 +49,14 @@ class GithubAnalytics extends Command
      */
     public function handle()
     {
+        $userId= $this->argument('userId');
         $page = $this->argument('page');
         $perPage = $this->argument('perPage');
         $repos = Repos::query()->select(['id', 'owner', 'repo'])->where('status', true)->orderBy('analytics_at', 'asc')
             ->orderBy('stargazers_count', 'desc')->forPage($page, $perPage)->get();
         foreach ($repos as $item) {
             try {
-                $job = new \App\Jobs\GithubAnalytics(3, $item->id);
+                $job = new \App\Jobs\GithubAnalytics($userId, $item->id);
                 $job->handle();
 
                 $this->info($item->id);

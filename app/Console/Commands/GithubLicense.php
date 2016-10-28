@@ -21,7 +21,7 @@ class GithubLicense extends Command
      *
      * @var string
      */
-    protected $signature = 'devhub:github:license {page} {perPage}';
+    protected $signature = 'devhub:github:license {userId} {page} {perPage}';
 
     /**
      * The console command description.
@@ -43,12 +43,13 @@ class GithubLicense extends Command
      */
     public function handle()
     {
+        $userId= $this->argument('userId');
         $page = $this->argument('page');
         $perPage = $this->argument('perPage');
         $repos = Repos::query()->select(['id', 'owner', 'repo'])->where('status', true)->orderBy('stargazers_count', 'desc')->forPage($page, $perPage)->get();
         foreach ($repos as $item) {
             try {
-                $job = new \App\Jobs\GithubLicense(2, $item->id);
+                $job = new \App\Jobs\GithubLicense($userId, $item->id);
                 $job->handle();
 
                 $this->info($item->id);
