@@ -59,6 +59,7 @@ class Kernel extends ConsoleKernel
         Commands\DeveloperReposFetch::class,
         Commands\ReposDeveloperFetch::class,
         Commands\ReposQuestionFetch::class,
+        Commands\ReposContributorsDeveloperFetch::class,
     ];
 
     /**
