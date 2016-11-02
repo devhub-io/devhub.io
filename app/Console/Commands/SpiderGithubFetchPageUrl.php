@@ -44,7 +44,7 @@ class SpiderGithubFetchPageUrl extends Command
     {
         @unlink(storage_path('repos.txt'));
 
-        $stars = 5000;
+        $stars = 2800;
         while ($stars > 100) {
             $stars -= 100;
             $url = "https://github.com/search?q=stars%3A100..$stars&ref=searchresults&type=Repositories&utf8=%E2%9C%93&p=";

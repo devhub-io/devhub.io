@@ -23,7 +23,7 @@ class GithubFetch extends Command
      *
      * @var string
      */
-    protected $signature = 'devhub:github:fetch';
+    protected $signature = 'devhub:github:fetch {userId}';
 
     /**
      * The console command description.
@@ -45,11 +45,12 @@ class GithubFetch extends Command
      */
     public function handle()
     {
+        $userId = $this->argument('userId');
         $urls = ReposUrl::query()->select(['id', 'url'])->orderBy('id', 'asc')->get();
         foreach ($urls as $item) {
             if (!DB::table('repos')->where('github', $item->url)->exists()) {
 
-                $job = new \App\Jobs\GithubFetch(3, $item->url);
+                $job = new \App\Jobs\GithubFetch($userId, $item->url);
                 $job->handle(new ReposRepositoryEloquent(app()));
 
                 $this->info($item->url);
