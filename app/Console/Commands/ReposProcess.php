@@ -52,7 +52,7 @@ class ReposProcess extends Command
     {
         // post
         $this->info('Post');
-        $repos = Repos::query()->where('stargazers_count', '>', 1)->where('status', 0)->select('id')->get();
+        $repos = Repos::query()->where('status', 0)->select('id')->get();
         foreach ($repos as $item) {
             $item->status = 1;
             $item->save();
@@ -79,15 +79,6 @@ class ReposProcess extends Command
             } else {
                 $this->info($item->id);
             }
-        }
-
-        // star <= 1
-        $this->info('Process star <= 1');
-        $repos = Repos::query()->where('stargazers_count', '<=', 1)->where('status', 1)->select('id')->get();
-        foreach ($repos as $item) {
-            $item->status = 0;
-            $item->save();
-            $this->info($item->id);
         }
 
         // owner repo
