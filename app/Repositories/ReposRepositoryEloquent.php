@@ -271,6 +271,6 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
         return $this->model->select(['id', 'slug', 'cover', 'title', 'description'])
             ->where('title', 'like', "$title%")
             ->where('id', '<>', $id)->where('title', '<>', $title)->where('status', 1)
-            ->orderBy('stargazers_count', 'DESC')->limit($limit)->get();
+            ->limit($limit)->get();
     }
 }
