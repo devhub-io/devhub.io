@@ -16,17 +16,19 @@
         <!-- Array Of Links -->
         @if (is_array($element))
             @foreach ($element as $page => $url)
-                @if ($page == $paginator->currentPage())
-                    <li class="active"><span>{{ $page }}</span></li>
-                @else
-                    <li><a href="{{ $url }}">{{ $page }}</a></li>
+                @if($page <= 1000)
+                    @if ($page == $paginator->currentPage())
+                        <li class="active"><span>{{ $page }}</span></li>
+                    @else
+                        <li><a href="{{ $url }}">{{ $page }}</a></li>
+                    @endif
                 @endif
             @endforeach
         @endif
     @endforeach
 
     <!-- Next Page Link -->
-    @if ($paginator->hasMorePages())
+    @if ($paginator->hasMorePages() && $paginator->currentPage() <= 1000)
         <li><a href="{{ $paginator->nextPageUrl() }}" rel="next">&raquo;</a></li>
     @else
         <li class="disabled"><span>&raquo;</span></li>

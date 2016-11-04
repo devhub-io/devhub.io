@@ -115,6 +115,10 @@ class HomeController extends Controller
      */
     public function lists($slug)
     {
+        if(request()->get('page') > 1000) {
+            return app()->abort(404);
+        }
+
         $category = $this->categoryRepository->findBySlug($slug);
         if ($category->parent_id == 0) {
             $child_category = $this->categoryRepository->findWhere(['parent_id' => $category->id]);
@@ -144,6 +148,10 @@ class HomeController extends Controller
      */
     public function type_lists($type)
     {
+        if(request()->get('page') > 1000) {
+            return app()->abort(404);
+        }
+
         switch ($type) {
             case 'popular':
                 $repos = $this->reposRepository->findHottestPaginate(12);
@@ -481,13 +489,17 @@ class HomeController extends Controller
      */
     public function developers()
     {
-        SEO::setTitle('Developers');
+        if(request()->get('page') > 1000) {
+            return app()->abort(404);
+        }
 
         $type = request()->get('type', 'User');
         $developers = Developer::query()->where('status', 1)->where('public_repos', '>', 0)->where('type', $type)
             ->orderBy('rating', 'desc')
             ->orderBy('followers', 'desc')
             ->paginate(12);
+
+        SEO::setTitle('Developers');
 
         return view('front.developers', compact('developers', 'type'));
     }
