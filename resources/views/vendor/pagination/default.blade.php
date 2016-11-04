@@ -28,7 +28,7 @@
     @endforeach
 
     <!-- Next Page Link -->
-    @if ($paginator->hasMorePages() && $paginator->currentPage() <= 1000)
+    @if ($paginator->hasMorePages() && $paginator->currentPage() < 1000)
         <li><a href="{{ $paginator->nextPageUrl() }}" rel="next">&raquo;</a></li>
     @else
         <li class="disabled"><span>&raquo;</span></li>
