@@ -96,7 +96,7 @@ class ReposProcess extends Command
 
         // .php
         $this->info('Process .php');
-        $repos = DB::table('repos')->where('title', 'like', '%.php')->where('status', 1)->select(['id'])->get();
+        $repos = DB::table('repos')->where('slug', 'like', '%.php')->where('status', 1)->select(['id'])->get();
         foreach ($repos as $item) {
             DB::table('repos')->where('id', $item->id)->update(['status' => 0]);
             $this->info('Repos: ' . $item->id);
