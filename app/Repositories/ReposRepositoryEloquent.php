@@ -12,6 +12,7 @@
 namespace App\Repositories;
 
 use Carbon\Carbon;
+use Config;
 use Illuminate\Support\Str;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
@@ -267,9 +268,25 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function relatedRepos($id, $title, $limit = 5)
     {
+        require app_path() . '/Support/SphinxClient.php';
+        $client = new \SphinxClient();
+        $client->SetServer(Config::get('scout.sphinx.host', 'localhost'), Config::get('scout.sphinx.port', '9312'));
+        $client->SetLimits(0, $limit + 20);
+        $res = $client->Query($title, 'repos');
+
+        $matches_id = [];
+        if (isset($res['matches'])) {
+            foreach ($res['matches'] as $id => $item) {
+                $matches_id[] = $id;
+            }
+        }
+
         return $this->model->select(['id', 'slug', 'cover', 'title', 'description'])
-            ->where('title', 'like', "$title%")
-            ->where('id', '<>', $id)->where('title', '<>', $title)->where('status', 1)
+            ->whereIn('id', $matches_id ?: [-1])
+            ->where('id', '<>', $id)
+            ->where('title', '<>', $title)
+            ->where('status', 1)
+            ->orderBy('stargazers_count', 'desc')
             ->limit($limit)->get();
     }
 }
