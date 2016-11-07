@@ -268,7 +268,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function relatedRepos($id, $title, $limit = 5)
     {
-        require app_path() . '/Support/SphinxClient.php';
+        require_once app_path() . '/Support/SphinxClient.php';
         $client = new \SphinxClient();
         $client->SetServer(Config::get('scout.sphinx.host', 'localhost'), Config::get('scout.sphinx.port', '9312'));
         $client->SetLimits(0, $limit + 20);

@@ -29,7 +29,7 @@ class SphinxEngine extends Engine
      */
     public function __construct($hosts = [], array $options = [])
     {
-        require __DIR__ . '/SphinxClient.php';
+        require_once __DIR__ . '/SphinxClient.php';
         $this->client = new \SphinxClient();
         $this->client->SetServer(Config::get('scout.sphinx.host', 'localhost'), Config::get('scout.sphinx.port', '9312'));
     }
