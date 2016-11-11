@@ -72,20 +72,20 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // Backup
-        $date = Carbon::now()->toW3cString();
-        $environment = App::environment();
-        $files = File::files(storage_path("app/$environment"));
-        if (count($files) >= 3) {
-            $first_file = head($files);
-            @unlink($first_file);
-        }
-        $schedule->command(
-            "db:backup --database=mysql --destination=local --destinationPath=/{$environment}/DevelopHub_{$environment}_{$date} --compression=gzip"
-        )
-            ->twiceDaily(13, 21)
-            ->after(function () use ($date) {
-                User::find(1)->notify(new Pushover('[数据库] 备份成功', $date));
-            });
+//        $date = Carbon::now()->toW3cString();
+//        $environment = App::environment();
+//        $files = File::files(storage_path("app/$environment"));
+//        if (count($files) >= 3) {
+//            $first_file = head($files);
+//            @unlink($first_file);
+//        }
+//        $schedule->command(
+//            "db:backup --database=mysql --destination=local --destinationPath=/{$environment}/DevelopHub_{$environment}_{$date} --compression=gzip"
+//        )
+//            ->twiceDaily(13, 21)
+//            ->after(function () use ($date) {
+//                User::find(1)->notify(new Pushover('[数据库] 备份成功', $date));
+//            });
 
         // Sync user activated time
         $schedule->command('devhub:user:sync-activated-time')->everyTenMinutes();
