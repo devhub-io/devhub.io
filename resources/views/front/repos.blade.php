@@ -73,7 +73,7 @@
                     </div>
                     <div>
                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#reviewModal">
-                            I use {{ $repos->title }}
+                            I use {{ $repos->owner }}/{{ $repos->repo }}
                         </button>
                     </div>
                 </div>
