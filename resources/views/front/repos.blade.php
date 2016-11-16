@@ -139,7 +139,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                    <h4 id="mcqReviewModalLabel" class="modal-title">Would you tell us more about {{ $repos->title }}?</h4>
+                    <h4 id="mcqReviewModalLabel" class="modal-title">Would you tell us more about {{ $repos->owner }}/{{ $repos->repo }}?</h4>
                 </div>
                 <form style="padding:10px;" action="{{ l_url('repos/review') }}" method="POST" role="form" id="review-form" class="form-horizontal bv-form" novalidate="novalidate">
                     {{ csrf_field() }}
