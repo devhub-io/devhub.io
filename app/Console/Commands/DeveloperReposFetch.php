@@ -14,7 +14,7 @@ class DeveloperReposFetch extends Command
      *
      * @var string
      */
-    protected $signature = 'devhub:developer:repos-fetch {page} {perPage}';
+    protected $signature = 'devhub:developer:repos-fetch {userId} {type} {page} {perPage}';
 
     /**
      * The console command description.
@@ -36,11 +36,14 @@ class DeveloperReposFetch extends Command
      */
     public function handle()
     {
+        $userId = $this->argument('userId');
+        $type = $this->argument('type');
+        $type = strtolower($type) == 'u' ? 'User' : 'Organization';
         $page = $this->argument('page');
         $perPage = $this->argument('perPage');
-        $developers = Developer::query()->select(['id', 'html_url'])->orderBy('rating', 'desc')->forPage($page, $perPage)->get();
+        $developers = Developer::query()->select(['id', 'html_url'])->where('type', $type)->orderBy('rating', 'desc')->forPage($page, $perPage)->get();
         foreach ($developers as $item) {
-            $job = new GithubDeveloperReposFetch(1, $item->html_url);
+            $job = new GithubDeveloperReposFetch($userId, $item->html_url);
             $job->handle(new ReposRepositoryEloquent(app()));
 
             $this->info($item->html_url);
