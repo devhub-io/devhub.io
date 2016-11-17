@@ -22,6 +22,9 @@ class QueueController extends Controller
     {
         $failed_jobs = DB::table('failed_jobs')->orderBy('failed_at', 'desc')->paginate(10);
 
+        $fetch_queues['count'] = LaravelRedis::connection()->llen('queues:github-fetch');
+        $fetch_queues['list'] = LaravelRedis::connection()->lrange('queues:github-fetch', 0, 10);
+
         $analytics_queues['count'] = LaravelRedis::connection()->llen('queues:github-analytics');
         $analytics_queues['list'] = LaravelRedis::connection()->lrange('queues:github-analytics', 0, 10);
 
@@ -31,7 +34,7 @@ class QueueController extends Controller
         $license_queues['count'] = LaravelRedis::connection()->llen('queues:github-license');
         $license_queues['list'] = LaravelRedis::connection()->lrange('queues:github-license', 0, 10);
 
-        return view('admin.queue.status', compact('failed_jobs', 'analytics_queues', 'update_queues', 'license_queues'));
+        return view('admin.queue.status', compact('failed_jobs', 'analytics_queues', 'update_queues', 'license_queues', 'fetch_queues'));
     }
 
     public function failed_jobs_delete($id)
