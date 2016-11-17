@@ -21,7 +21,7 @@ class SpiderGithubFetchReadmeUrl extends Command
      *
      * @var string
      */
-    protected $signature = 'devhub:spider:github-fetch-readme-url';
+    protected $signature = 'devhub:spider:github-fetch-readme-url {page} {perPage}';
 
     /**
      * The console command description.
@@ -48,7 +48,9 @@ class SpiderGithubFetchReadmeUrl extends Command
      */
     public function handle()
     {
-        $repos = DB::table('repos')->where('title', 'like', '%awesome%')->select(['id', 'readme'])->get();
+        $page = $this->argument('page');
+        $perPage = $this->argument('perPage');
+        $repos = DB::table('repos')->where('title', 'like', 'awesome%')->select(['id', 'readme'])->forPage($page, $perPage)->get();
         foreach ($repos as $item) {
             preg_match_all(self::URL_REGEX, $item->readme, $match);
 
