@@ -103,7 +103,8 @@ class UrlController extends Controller
         $urls = ReposUrl::query()->limit(3000)->get();
 
         foreach ($urls as $item) {
-            dispatch(new GithubFetch(1, $item->url));
+            $job = (new GithubFetch(2, $item->url))->onQueue('github-fetch');
+            dispatch($job);
             $item->delete();
         }
 
