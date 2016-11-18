@@ -50,7 +50,7 @@ class SpiderGithubFetchReadmeUrl extends Command
     {
         $page = $this->argument('page');
         $perPage = $this->argument('perPage');
-        $repos = DB::table('repos')->where('title', 'like', 'awesome%')->select(['id', 'readme'])->forPage($page, $perPage)->get();
+        $repos = DB::table('repos')->select(['id', 'readme'])->forPage($page, $perPage)->get();
         foreach ($repos as $item) {
             preg_match_all(self::URL_REGEX, $item->readme, $match);
 
