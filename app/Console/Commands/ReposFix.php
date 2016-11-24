@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use DB;
+use Exception;
 use Illuminate\Console\Command;
 
 class ReposFix extends Command
@@ -38,8 +39,12 @@ class ReposFix extends Command
         $repos = DB::table('repos')->where('slug', 'like', '%.php')->select(['id', 'slug'])->get();
         foreach ($repos as $item) {
             $slug = str_replace('.php', '_php', $item->slug);
-            DB::table('repos')->where('id', $item->id)->update(['slug' => $slug]);
-            $this->info('Repos: ' . $item->id);
+            try {
+                DB::table('repos')->where('id', $item->id)->update(['slug' => $slug]);
+                $this->info('Repos: ' . $item->id);
+            } catch (Exception $e) {
+                $this->error($e->getMessage());
+            }
         }
     }
 }
