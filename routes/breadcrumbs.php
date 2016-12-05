@@ -53,3 +53,9 @@ Breadcrumbs::register('developer', function ($breadcrumbs, $developer) {
         $breadcrumbs->push("$developer->name ($developer->login)", l_url('developer', $developer->login));
     }
 });
+
+// Home > [News]
+Breadcrumbs::register('news', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('News', l_url('news'));
+});

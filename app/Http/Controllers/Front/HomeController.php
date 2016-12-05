@@ -11,6 +11,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Entities\ReposNews;
 use Auth;
 use Cache;
 use Carbon\Carbon;
@@ -582,5 +583,15 @@ class HomeController extends Controller
     public function auto_complete()
     {
         return response()->json([]);
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function news()
+    {
+        $news = ReposNews::query()->with('repos')->where('post_date', date('Y-m-d'))->get();
+
+        return view('front.news', compact('news'));
     }
 }

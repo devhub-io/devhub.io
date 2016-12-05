@@ -61,6 +61,7 @@ class Kernel extends ConsoleKernel
         Commands\ReposQuestionFetch::class,
         Commands\ReposContributorsDeveloperFetch::class,
         Commands\ReposFix::class,
+        Commands\NewsSync::class,
     ];
 
     /**
@@ -122,6 +123,9 @@ class Kernel extends ConsoleKernel
 
         // Sitemap
         // $schedule->command('devhub:site:generate-sitemap')->daily();
+
+        // News
+        $schedule->command('devhub:news:sync')->cron('* */3 * * * *');
     }
 
     /**
