@@ -5,23 +5,36 @@
         <div class="page-title">
             <div class="title_left">
                 <h3>Repositories</h3>
-                <h4>Total: {{ $repos->total() }} No cover: {{ $no_cover_count }} ({{ round($no_cover_count / $repos->total() * 100) }}%) No analytics: {{ $no_analytics_count }} ({{ round($no_analytics_count / $repos->total() * 100) }}%)</h4>
+                <h4>Total: {{ $repos->total() }}
+                    @if($repos->total() > 0)
+                        No cover: {{ $no_cover_count }} ({{ round($no_cover_count / $repos->total() * 100) }}%) No analytics: {{ $no_analytics_count }} ({{ round($no_analytics_count / $repos->total() * 100) }}%)
+                    @endif
+                </h4>
             </div>
 
             <div class="title_right">
-                <div class="col-md-8 col-sm-8 col-xs-12 form-group pull-right top_search">
+                <div class="col-md-9 col-sm-9 col-xs-12 form-group pull-right top_search">
                     <div>
                         <a href="?sort=view_number&keyword={{ $keyword }}" class="btn {{ $sort && $sort == 'view_number' ? 'btn-info' : 'btn-default' }}">浏览量↓</a>
                         <a href="?sort=stargazers_count&keyword={{ $keyword }}" class="btn {{ $sort && $sort == 'stargazers_count' ? 'btn-info' : 'btn-default' }}">收藏量↓</a>
                         <a href="?sort=fetched_at&keyword={{ $keyword }}" class="btn {{ $sort && $sort == 'fetched_at' ? 'btn-info' : 'btn-default' }}">抓取时间↓</a>
                         <a href="?sort=analytics_at&keyword={{ $keyword }}" class="btn {{ $sort && $sort == 'analytics_at' ? 'btn-info' : 'btn-default' }}">分析时间↓</a>
                         <a href="?empty=category_id&keyword={{ $keyword }}" class="btn {{ $empty && $empty == 'category_id' ? 'btn-info' : 'btn-default' }}">未设分类</a>
+                        <a href="?empty=document_url&keyword={{ $keyword }}" class="btn {{ $empty && $empty == 'document_url' ? 'btn-info' : 'btn-default' }}">文档</a>
                         <a href="?empty=status&keyword={{ $keyword }}" class="btn {{ $empty && $empty == 'status' ? 'btn-info' : 'btn-default' }}">禁用</a>
                         <a href="{{ url('admin/repos') }}" class="btn btn-warning">清除</a>
                     </div>
                     <form action="" method="get">
                         <div class="input-group">
-                            <input class="form-control" placeholder="Search for..." type="text" name="keyword" value="{{ $keyword }}">
+                            <input class="form-control" placeholder="Keyword" type="text" name="keyword" value="{{ $keyword }}">
+                            <span class="input-group-btn">
+                              <button class="btn btn-default" type="submit">Go!</button>
+                            </span>
+                        </div>
+                    </form>
+                    <form action="" method="get">
+                        <div class="input-group">
+                            <input class="form-control" placeholder="Slug" type="text" name="slug" value="{{ $slug or '' }}">
                             <span class="input-group-btn">
                               <button class="btn btn-default" type="submit">Go!</button>
                             </span>
@@ -70,8 +83,14 @@
                                     <b>{{ $item->title }}</b>
                                     <br>
                                     <small>抓取于 {{ $item->fetched_at }}</small>
-                                    <br>
-                                    <small>分析于 {{ $item->analytics_at }}</small>
+                                    @if($item->analytics_at)
+                                        <br>
+                                        <small>分析于 {{ $item->analytics_at }}</small>
+                                    @endif
+                                    @if($item->document_url)
+                                        <br>
+                                        <i class="fa fa-book"></i>
+                                    @endif
                                 </td>
                                 <td><img src="{{ $item->cover }}" alt="" width="100"></td>
                                 <td>{{ $item->category->title or '-' }}</td>

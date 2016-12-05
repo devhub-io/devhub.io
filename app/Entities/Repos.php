@@ -31,7 +31,7 @@ class Repos extends Model implements Transformable
         'title', 'slug', 'description', 'language', 'homepage', 'github', 'stargazers_count', 'watchers_count',
         'open_issues_count', 'forks_count', 'subscribers_count', 'repos_created_at', 'repos_updated_at', 'fetched_at',
         'readme', 'image', 'category_id', 'user_id', 'issue_response', 'is_recommend', 'view_number', 'owner', 'repo',
-        'cover', 'have_questions'
+        'cover', 'have_questions', 'document_url'
     ];
 
     /**

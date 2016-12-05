@@ -56,6 +56,9 @@
                     @if($developer_exists)
                     <a href="{{ l_url('developer', [$repos->owner]) }}"><i class="fa fa-user fa-2x"></i> Developer</a> &nbsp;&nbsp;
                     @endif
+                    @if($repos->document_url)
+                    <a href="{{ link_url($repos->document_url) }}" rel="nofollow" target="_blank"><i class="fa fa-book fa-2x"></i> Documentation</a> &nbsp;&nbsp;
+                    @endif
                 </div>
                 <div class="params">
                     <div style="margin-bottom: 10px;">

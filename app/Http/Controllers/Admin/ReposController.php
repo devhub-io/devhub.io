@@ -59,13 +59,23 @@ class ReposController extends Controller
     public function index()
     {
         $keyword = request()->get('keyword', '');
+        $slug = request()->get('slug', '');
         $sort = request()->get('sort', '');
         $empty = request()->get('empty', '');
         $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
         $where = [];
         if ($empty) {
             $where = function ($query) use ($empty) {
-                $query->where("$empty", 0);
+                if($empty == 'document_url'){
+                    $query->where("document_url", '<>', '');
+                } else {
+                    $query->where("$empty", 0);
+                }
+            };
+        }
+        if($slug){
+            $where = function ($query) use ($slug) {
+                $query->where("slug", $slug);
             };
         }
 
@@ -80,7 +90,7 @@ class ReposController extends Controller
         $no_cover_count = Repos::query()->where('cover', '')->where('status', 1)->count();
         $no_analytics_count = Repos::query()->where('analytics_at', null)->where('status', 1)->count();
 
-        return view('admin.repos.index', compact('repos', 'keyword', 'sort', 'ids', 'empty', 'no_cover_count', 'no_analytics_count'));
+        return view('admin.repos.index', compact('repos', 'keyword', 'sort', 'ids', 'empty', 'no_cover_count', 'no_analytics_count', 'slug'));
     }
 
     /**
