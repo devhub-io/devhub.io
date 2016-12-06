@@ -116,7 +116,7 @@ class HomeController extends Controller
      */
     public function lists($slug)
     {
-        if(request()->get('page') > 1000) {
+        if (request()->get('page') > 1000) {
             return app()->abort(404);
         }
 
@@ -149,7 +149,7 @@ class HomeController extends Controller
      */
     public function type_lists($type)
     {
-        if(request()->get('page') > 1000) {
+        if (request()->get('page') > 1000) {
             return app()->abort(404);
         }
 
@@ -503,7 +503,7 @@ class HomeController extends Controller
      */
     public function developers()
     {
-        if(request()->get('page') > 1000) {
+        if (request()->get('page') > 1000) {
             return app()->abort(404);
         }
 
@@ -610,7 +610,11 @@ class HomeController extends Controller
         $next = ReposNews::query()->select('post_date')->where('post_date', '>', $current_date)->orderBy('post_date')->first();
         $prev = ReposNews::query()->select('post_date')->where('post_date', '<', $current_date)->orderBy('post_date', 'desc')->first();
 
-        SEO::setTitle('News daily ' . $current_date);
+        if ($date) {
+            SEO::setTitle('News');
+        } else {
+            SEO::setTitle('News daily ' . $current_date);
+        }
 
         return view('front.news', compact('news', 'next', 'prev', 'current_date'));
     }
