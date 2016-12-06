@@ -59,6 +59,9 @@
                     @if($repos->document_url)
                     <a href="{{ link_url($repos->document_url) }}" rel="nofollow" target="_blank"><i class="fa fa-book fa-2x"></i> Documentation</a> &nbsp;&nbsp;
                     @endif
+                    @if($news_exists)
+                    <a target="_blank" href="{{ l_url("repos/$repos->slug/news") }}"><i class="fa fa-newspaper-o fa-2x"></i> News </a> &nbsp;&nbsp;
+                    @endif
                 </div>
                 <div class="params">
                     <div style="margin-bottom: 10px;">

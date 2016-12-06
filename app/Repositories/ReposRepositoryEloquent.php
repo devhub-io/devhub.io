@@ -115,7 +115,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function findBySlug($slug)
     {
-        return $this->model->with('tags', 'contributors', 'languages', 'badges', 'questions')
+        return $this->model->with('tags', 'contributors', 'languages', 'badges', 'questions', 'news')
             ->where('status', true)->where('slug', $slug)->firstOrFail();
     }
 

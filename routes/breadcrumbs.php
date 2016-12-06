@@ -35,9 +35,15 @@ Breadcrumbs::register('repos', function ($breadcrumbs, $repos) {
 });
 
 // Home > [repositories] > [Category] > [Repos] > [Questions]
-Breadcrumbs::register('questions', function ($breadcrumbs, $repos) {
+Breadcrumbs::register('repos_questions', function ($breadcrumbs, $repos) {
     $breadcrumbs->parent('repos', $repos);
     $breadcrumbs->push('Questions', l_url("repos/$repos->slug/questions"));
+});
+
+// Home > [repositories] > [Category] > [Repos] > [News]
+Breadcrumbs::register('repos_news', function ($breadcrumbs, $repos) {
+    $breadcrumbs->parent('repos', $repos);
+    $breadcrumbs->push('News', l_url("repos/$repos->slug/news"));
 });
 
 // Home > [Developers]

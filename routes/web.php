@@ -36,7 +36,8 @@ Route::group(['namespace' => 'Front', 'prefix' => Localization::setLocale(), 'mi
 
     # Repos
     Route::get('repos/{slug}', 'HomeController@repos');
-    Route::get('repos/{slug}/questions', 'HomeController@questions');
+    Route::get('repos/{slug}/questions', 'HomeController@repos_questions');
+    Route::get('repos/{slug}/news', 'HomeController@repos_news');
     Route::post('repos/review', 'HomeController@review');
 
     # Sitemap

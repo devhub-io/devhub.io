@@ -99,6 +99,14 @@ class Repos extends Model implements Transformable
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function news()
+    {
+        return $this->hasMany('App\Entities\ReposNews');
+    }
+
+    /**
      * @return integer
      */
     public function overall()

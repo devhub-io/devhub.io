@@ -262,21 +262,34 @@ class HomeController extends Controller
         // Developer
         $developer_exists = DB::table('developer')->where('status', 1)->where('login', $repos->owner)->exists();
 
-        return view('front.repos', compact('repos', 'markdown', 'languages', 'related_repos', 'analytics_badges', 'gitter_badge', 'developer_exists'));
+        // News
+        $news_exists = ReposNews::query()->select('id')->where('repos_id', $repos->id)->exists();
+
+        return view('front.repos', compact('repos', 'markdown', 'languages', 'related_repos', 'analytics_badges', 'gitter_badge', 'developer_exists', 'news_exists'));
     }
 
     /**
      * @param $slug
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function questions($slug)
+    public function repos_questions($slug)
     {
         $repos = $this->reposRepository->findBySlug($slug);
 
         SEO::setTitle("$repos->owner/$repos->repo" . ' - Questions');
         SEO::setDescription($repos->description);
 
-        return view('front.questions', compact('repos'));
+        return view('front.repos_questions', compact('repos'));
+    }
+
+    public function repos_news($slug)
+    {
+        $repos = $this->reposRepository->findBySlug($slug);
+
+        SEO::setTitle("$repos->owner/$repos->repo" . ' - News');
+        SEO::setDescription($repos->description);
+
+        return view('front.repos_news', compact('repos'));
     }
 
     /**
