@@ -30,15 +30,17 @@
                             <a href="{{ link_url('https://news.ycombinator.com/item?id='.$item->item_id) }}" rel="nofollow" target="_blank" style="text-decoration: none;">
                                 <h2><span class="label label-default">{{ $item->score }}</span> {{ $item->title }}</h2>
                             </a>
-                            <a style="font-size: 16px;" href="{{ l_url('repos', [$item->repos->slug]) }}" target="_blank" style="text-decoration: none;">
-                                <i class="fa fa-github"></i>
-                                {{ $item->repos->owner }}/{{ $item->repos->repo }}  &nbsp;&nbsp;
+                            @if($item->repos)
+                                <a style="font-size: 16px;" href="{{ l_url('repos', [$item->repos->slug]) }}" target="_blank" style="text-decoration: none;">
+                                    <i class="fa fa-github"></i>
+                                    {{ $item->repos->owner }}/{{ $item->repos->repo }}  &nbsp;&nbsp;
 
-                                <span title="Stargazers count">
-                                    <i class="glyphicon glyphicon-star"></i> {{ $item->repos->stargazers_count }} &nbsp;&nbsp;
-                                </span>
-                            </a>
-                            <p>{{ $item->repos->description }}</p>
+                                    <span title="Stargazers count">
+                                        <i class="glyphicon glyphicon-star"></i> {{ $item->repos->stargazers_count }} &nbsp;&nbsp;
+                                    </span>
+                                </a>
+                                <p>{{ $item->repos->description }}</p>
+                            @endif
                         </div>
                     </div>
                 </div>
