@@ -610,6 +610,8 @@ class HomeController extends Controller
         $next = ReposNews::query()->select('post_date')->where('post_date', '>', $current_date)->orderBy('post_date')->first();
         $prev = ReposNews::query()->select('post_date')->where('post_date', '<', $current_date)->orderBy('post_date', 'desc')->first();
 
+        SEO::setTitle('News daily ' . $current_date);
+
         return view('front.news', compact('news', 'next', 'prev', 'current_date'));
     }
 }
