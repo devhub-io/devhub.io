@@ -69,25 +69,30 @@ class NewsSync extends Command
                         preg_match(\App\Jobs\GithubFetch::URL_REGEX, $item_data['url'], $matches);
                         if ($matches) {
                             if ($repos_news = ReposNews::query()->where('url', $item_data['url'])->where('item_id', $item_data['id'])->first()) {
+                                if ($repos = Repos::where('slug', $matches[1] . '-' . $matches[2])->select('id')->first()) {
+                                    $repos_news->repos_id = $repos->id;
+                                }
                                 $repos_news->score = $item_data['score'];
                                 $repos_news->save();
                                 continue;
-                            }
-
-                            if ($repos = Repos::where('slug', $matches[1] . '-' . $matches[2])->select('id')->first()) {
+                            } else {
+                                if ($repos = Repos::where('slug', $matches[1] . '-' . $matches[2])->select('id')->first()) {
+                                    $repos_id = $repos->id;
+                                } else {
+                                    $repos_id = 0;
+                                    if (!ReposUrl::query()->where('url', $item_data['url'])->exists()) {
+                                        ReposUrl::insert(['url' => $item_data['url'], 'created_at' => Carbon::now()]);
+                                    }
+                                }
                                 ReposNews::create([
                                     'url' => $item_data['url'],
                                     'time' => $item_data['time'],
-                                    'repos_id' => $repos->id,
+                                    'repos_id' => $repos_id,
                                     'title' => $item_data['title'],
                                     'score' => $item_data['score'],
                                     'item_id' => $item_data['id'],
                                     'post_date' => date('Y-m-d', $item_data['time']),
                                 ]);
-                            } else {
-                                if (!ReposUrl::query()->where('url', $item_data['url'])->exists()) {
-                                    ReposUrl::insert(['url' => $item_data['url'], 'created_at' => Carbon::now()]);
-                                }
                             }
 
                             $this->info('===> ' . $item_data['url']);
