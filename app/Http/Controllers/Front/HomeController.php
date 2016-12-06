@@ -611,9 +611,9 @@ class HomeController extends Controller
         $prev = ReposNews::query()->select('post_date')->where('post_date', '<', $current_date)->orderBy('post_date', 'desc')->first();
 
         if ($date) {
-            SEO::setTitle('News');
-        } else {
             SEO::setTitle('News daily ' . $current_date);
+        } else {
+            SEO::setTitle('News');
         }
 
         return view('front.news', compact('news', 'next', 'prev', 'current_date'));
