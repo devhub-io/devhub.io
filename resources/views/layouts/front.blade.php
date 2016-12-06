@@ -162,6 +162,7 @@
                             @endforeach
                         @endif
                         <li><a href="{{ l_url('developers') }}">Developers</a></li>
+                        <li><a href="{{ l_url('news') }}">News</a></li>
                     </ul>
                 </div>
             </div>
