@@ -59,3 +59,9 @@ Breadcrumbs::register('news', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('News', l_url('news'));
 });
+
+// Home > [News] > [Date]
+Breadcrumbs::register('news_date', function ($breadcrumbs, $date) {
+    $breadcrumbs->parent('news');
+    $breadcrumbs->push($date);
+});

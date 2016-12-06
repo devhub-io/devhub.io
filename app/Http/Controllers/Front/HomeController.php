@@ -586,12 +586,17 @@ class HomeController extends Controller
     }
 
     /**
+     * @param string $date
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function news()
+    public function news($date = '')
     {
-        $news = ReposNews::query()->with('repos')->where('post_date', date('Y-m-d'))->get();
+        $current_date = $date ? $date : date('Y-m-d');
+        $news = ReposNews::query()->with('repos')->where('post_date', $current_date)->orderBy('score', 'desc')->get();
 
-        return view('front.news', compact('news'));
+        $next = ReposNews::query()->select('post_date')->where('post_date', '>', $current_date)->orderBy('post_date')->first();
+        $prev = ReposNews::query()->select('post_date')->where('post_date', '<', $current_date)->orderBy('post_date', 'desc')->first();
+
+        return view('front.news', compact('news', 'next', 'prev', 'current_date'));
     }
 }
