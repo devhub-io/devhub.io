@@ -123,24 +123,28 @@ class HomeController extends Controller
         $category = $this->categoryRepository->findBySlug($slug);
         if ($category->parent_id == 0) {
             $child_category = $this->categoryRepository->findWhere(['parent_id' => $category->id]);
-            $child_id = [];
+            $child_id = -1;
             foreach ($child_category as $item) {
-                $child_id[] = $item->id;
+                $child_id = $item->id;
+                break;
             }
-            $repos = $this->reposRepository->findWhereInPaginate('category_id', $child_id ?: [-1]);
+            $_child_category = $this->categoryRepository->find($child_id);
+            $select_slug = $_child_category ? $_child_category->slug : '';
+            $repos = $this->reposRepository->findWhereInPaginate('category_id', [$child_id]);
 
             view()->share('current_category_slug', $slug);
         } else {
             $child_category = $this->categoryRepository->findWhere(['parent_id' => $category->parent_id]);
             $repos = $this->reposRepository->findWhereInPaginate('category_id', [$category->id]);
-
             $parent_category = $this->categoryRepository->find($category->parent_id);
+            $select_slug = $slug;
+
             view()->share('current_category_slug', $parent_category->slug);
         }
 
         SEO::setTitle(trans("category.{$category->slug}"));
 
-        return view('front.list', compact('repos', 'child_category', 'slug'));
+        return view('front.list', compact('repos', 'child_category', 'slug', 'select_slug'));
     }
 
     /**

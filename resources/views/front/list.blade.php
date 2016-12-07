@@ -27,7 +27,7 @@
                         <h2 class="sidebar-title">@lang('front.child_category')</h2>
                         <ul>
                             @foreach($child_category as $item)
-                            <li class="{{ active_class($item->slug == $slug) }}"><a href="{{ l_url('category', [$item->slug]) }}">@lang('category.'.$item->slug)</a></li>
+                            <li class="{{ active_class($item->slug == $select_slug) }}"><a href="{{ l_url('category', [$item->slug]) }}">@lang('category.'.$item->slug)</a></li>
                             @endforeach
                         </ul>
                     </div>

@@ -70,4 +70,10 @@ return [
     'android' => 'Android',
     'ui' => 'UI',
 
+    'tcl' => 'Tcl',
+    'emacs-lisp' => 'Emacs Lisp',
+    'nginx' => 'Nginx',
+    'apacheconf' => 'ApacheConf',
+    'tex' => 'Tex',
+
 ];
