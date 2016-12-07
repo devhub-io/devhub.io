@@ -70,6 +70,13 @@ class SiteGenerateSitemap extends Command
         $sitemap->add(url('list/newest'), Carbon::now(), '1.0', 'daily');
         $sitemap->add(url('developers'), Carbon::now(), '1.0', 'daily');
 
+        // news
+        $sitemap->add(url('news'), Carbon::now(), '1.0', 'daily');
+        $news = App\Entities\ReposNews::query()->select('post_date')->groupBy('post_date')->get();
+        foreach ($news as $item) {
+            $sitemap->add(url('news/daily', [$item->post_date]), Carbon::now(), '1.0', 'daily');
+        }
+
         /*
          * Repos
          */
