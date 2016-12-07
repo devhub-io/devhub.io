@@ -125,7 +125,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('devhub:site:generate-sitemap')->daily();
 
         // News
-        $schedule->command('devhub:news:sync')->cron('* */3 * * *');
+        $schedule->command('devhub:news:sync')->hourly();
     }
 
     /**

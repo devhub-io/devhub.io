@@ -59,6 +59,7 @@ class NewsSync extends Command
 
             foreach ($items as $id) {
                 try {
+                    sleep(1);
                     $item_res = $client->get("/v0/item/" . $id . ".json");
                     $item_data = json_decode($item_res->getBody(), true);
 
