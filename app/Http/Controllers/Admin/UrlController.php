@@ -73,7 +73,7 @@ class UrlController extends Controller
     public function fetch($id)
     {
         $url = ReposUrl::find($id);
-        dispatch(new GithubFetch(1, $url->url));
+        dispatch(new GithubFetch(\Config::get('user.github-fetch'), $url->url));
 
         return redirect('admin/url');
     }
@@ -103,7 +103,7 @@ class UrlController extends Controller
         $urls = ReposUrl::query()->limit(3000)->get();
 
         foreach ($urls as $item) {
-            $job = (new GithubFetch(2, $item->url))->onQueue('github-fetch');
+            $job = (new GithubFetch(\Config::get('user.github-fetch'), $item->url))->onQueue('github-fetch');
             dispatch($job);
             $item->delete();
         }

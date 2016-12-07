@@ -48,7 +48,7 @@ class QueueUrlPush extends Command
         $urls = ReposUrl::query()->select(['id', 'url'])->get();
         foreach ($urls as $item) {
             if (!DB::table('repos')->select('id')->where('github', $item->url)->exists()) {
-                dispatch(new GithubFetch(1, $item->url));
+                dispatch(new GithubFetch(\Config::get('user.github-fetch'), $item->url));
                 $this->info($item->url);
             } else {
                 $this->info('pass');

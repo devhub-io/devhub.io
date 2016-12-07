@@ -48,7 +48,7 @@ class QueueDeveloperPush extends Command
         $urls = DeveloperUrl::query()->select(['id', 'url'])->get();
         foreach ($urls as $item) {
             if (!DB::table('developer')->where('html_url', $item->url)->exists()) {
-                dispatch(new GithubDeveloperFetch(2, $item->url));
+                dispatch(new GithubDeveloperFetch(\Config::get('user.developer-fetch'), $item->url));
                 $this->info($item->url);
             } else {
                 $this->info('pass');
