@@ -89,7 +89,7 @@ class NewsSync extends Command
                                     'url' => $item_data['url'],
                                     'time' => $item_data['time'],
                                     'repos_id' => $repos_id,
-                                    'title' => $item_data['title'],
+                                    'title' => str_replace('Show HN: ', '', $item_data['title']),
                                     'score' => $item_data['score'],
                                     'item_id' => $item_data['id'],
                                     'post_date' => date('Y-m-d', $item_data['time']),

@@ -211,5 +211,7 @@ class SiteGenerateSitemap extends Command
 
         // generate new sitemapindex that will contain all generated sitemaps above
         $sitemap->store('sitemapindex', 'sitemap');
+
+        $this->info('All done!');
     }
 }
