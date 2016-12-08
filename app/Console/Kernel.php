@@ -63,6 +63,7 @@ class Kernel extends ConsoleKernel
         Commands\ReposFix::class,
         Commands\NewsSync::class,
         Commands\NewsGithubFetch::class,
+        Commands\GithubDocument::class,
     ];
 
     /**
