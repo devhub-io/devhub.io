@@ -81,8 +81,9 @@ class NewsSync extends Command
                                     $repos_id = $repos->id;
                                 } else {
                                     $repos_id = 0;
-                                    if (!ReposUrl::query()->where('url', $item_data['url'])->exists()) {
-                                        ReposUrl::insert(['url' => $item_data['url'], 'created_at' => Carbon::now()]);
+                                    $github_url = "https://github.com/$matches[1]/$matches[2]";
+                                    if (!ReposUrl::query()->where('url', $github_url)->exists()) {
+                                        ReposUrl::insert(['url' => $github_url, 'created_at' => Carbon::now()]);
                                     }
                                 }
                                 ReposNews::create([

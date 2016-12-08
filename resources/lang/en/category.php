@@ -74,6 +74,6 @@ return [
     'emacs-lisp' => 'Emacs Lisp',
     'nginx' => 'Nginx',
     'apacheconf' => 'ApacheConf',
-    'tex' => 'Tex',
+    'tex' => 'TeX',
 
 ];
