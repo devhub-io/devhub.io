@@ -52,7 +52,9 @@ class GithubAnalytics extends Command
         $userId= $this->argument('userId');
         $page = $this->argument('page');
         $perPage = $this->argument('perPage');
-        $repos = Repos::query()->select(['id', 'owner', 'repo'])->where('status', true)->orderBy('analytics_at', 'asc')
+        $repos = Repos::query()->select(['id', 'owner', 'repo'])
+            ->where('status', true)
+            ->where('analytics_at', '<>', null)
             ->orderBy('stargazers_count', 'desc')->forPage($page, $perPage)->get();
         foreach ($repos as $item) {
             try {
