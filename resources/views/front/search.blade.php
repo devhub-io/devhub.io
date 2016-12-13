@@ -24,7 +24,7 @@
                                         </a>
                                         <div class="caption">
                                             <a href="{{ l_url('repos', [$item->slug]) }}"><h3>{{ $item->owner }}/{{ $item->repo }}</h3></a>
-                                            <span class="line">{{ $item->trends }}</span>&nbsp;&nbsp;<span title="Stargazers count"><i class="fa fa-star"></i>{{ $item->stargazers_count }}</span>
+                                            <span class="line">{{ $item->trends }}</span>&nbsp;&nbsp;<span title="Stargazers count"><i class="fa fa-star"></i> {{ $item->stargazers_count }}</span>
                                             <p>{{ mb_substr($item->description, 0, 35) }}</p>
                                         </div>
                                     </div>
