@@ -20,10 +20,11 @@
                                 <div class="col-sm-6 col-md-4">
                                     <div class="thumbnail" style="height: 450px;">
                                         <a href="{{ l_url('repos', [$item->slug]) }}">
-                                            <img src="{{ $item->cover ? $item->cover : cdn_asset('img/300x300.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="lazyload" width="300"></a>
+                                            <img src="{{ $item->cover ? $item->cover : cdn_asset('img/300x300.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="lazyload" width="300">
+                                        </a>
                                         <div class="caption">
-                                            <a href="{{ l_url('repos', [$item->slug]) }}"><h3>{{ $item->title }}</h3></a>
-                                            <span class="line">{{ $item->trends }}</span>
+                                            <a href="{{ l_url('repos', [$item->slug]) }}"><h3>{{ $item->owner }}/{{ $item->repo }}</h3></a>
+                                            <span class="line">{{ $item->trends }}</span>&nbsp;&nbsp;<span title="Stargazers count"><i class="fa fa-star"></i>{{ $item->stargazers_count }}</span>
                                             <p>{{ mb_substr($item->description, 0, 35) }}</p>
                                         </div>
                                     </div>
