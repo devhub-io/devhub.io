@@ -190,7 +190,7 @@ class HomeController extends Controller
 
         $parsedown = new \Parsedown();
         $markdown = $parsedown->text($repos->readme);
-        $markdown = str_replace('<a', '<a rel="nofollow noreferrer" ', $markdown);
+        $markdown = str_replace('<a', '<a rel="nofollow noreferrer" target="_blank" ', $markdown);
 
         SEO::setTitle("$repos->owner/$repos->repo $repos->description by @$repos->owner" . ' - Repository');
         SEO::setDescription($repos->description);
