@@ -11,7 +11,6 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Entities\ReposNews;
 use Auth;
 use Cache;
 use Carbon\Carbon;
@@ -26,6 +25,7 @@ use Validator;
 use JavaScript;
 use App\Support\Mailgun;
 use Roumen\Feed\Feed;
+use App\Entities\ReposNews;
 use App\Entities\Collection;
 use App\Entities\CollectionRepos;
 use App\Entities\Site;
@@ -37,7 +37,6 @@ use App\Entities\ReposContributor;
 use App\Http\Controllers\Controller;
 use App\Repositories\CategoryRepository;
 use App\Repositories\ReposRepository;
-use Illuminate\Http\Request;
 use League\Glide\Responses\LaravelResponseFactory;
 use League\Glide\ServerFactory;
 use League\Glide\Signatures\SignatureException;
@@ -286,23 +285,27 @@ class HomeController extends Controller
         return view('front.repos_questions', compact('repos'));
     }
 
+    /**
+     * @param $slug
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function repos_news($slug)
     {
         $repos = $this->reposRepository->findBySlug($slug);
+        $news = DB::table('repos_news')->where('repos_id', $repos->id)->orderBy('post_date', 'desc')->get();
 
         SEO::setTitle("$repos->owner/$repos->repo" . ' - News');
         SEO::setDescription($repos->description);
 
-        return view('front.repos_news', compact('repos'));
+        return view('front.repos_news', compact('repos', 'news'));
     }
 
     /**
-     * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function search(Request $request)
+    public function search()
     {
-        $keyword = $request->get('keyword');
+        $keyword = request()->get('keyword');
         $repos = $this->reposRepository->search($keyword);
 
         SEO::setTitle($keyword . ' - Search');

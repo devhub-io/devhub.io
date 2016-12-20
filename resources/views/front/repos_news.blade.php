@@ -25,10 +25,10 @@
 
         <div class="row">
             <div class="col-md-12">
-                @if($repos->news->count() > 0)
+                @if($news->count() > 0)
                     <h2>Related News</h2>
                     <div class="row">
-                        @foreach($repos->news as $item)
+                        @foreach($news as $item)
                             <div class="col-md-12">
                                 <div style="height: 90px;">
                                     <div class="caption">
