@@ -20,7 +20,7 @@
                                 <div class="col-sm-6 col-md-4">
                                     <div class="thumbnail" style="height: 450px;">
                                         <a href="{{ l_url('repos', [$item->slug]) }}">
-                                            <img src="{{ $item->cover ? $item->cover : cdn_asset('img/300x300.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="lazyload" width="300">
+                                            <img src="{{ $item->cover ? $item->cover . '&s=300' : cdn_asset('img/300x300.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="lazyload" width="300">
                                         </a>
                                         <div class="caption">
                                             <a href="{{ l_url('repos', [$item->slug]) }}"><h3>{{ $item->owner }}/{{ $item->repo }}</h3></a>

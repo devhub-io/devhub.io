@@ -92,7 +92,7 @@
                                         <i class="fa fa-book"></i>
                                     @endif
                                 </td>
-                                <td><img src="{{ $item->cover }}" alt="" width="100"></td>
+                                <td><img src="{{ $item->cover . '&s=100' }}" alt="" width="100"></td>
                                 <td>{{ $item->category->title or '-' }}</td>
                                 <td>{{ $item->language }}</td>
                                 <td>{{ $item->slug }}</td>

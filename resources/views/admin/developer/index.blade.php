@@ -72,7 +72,7 @@
                                     <small>分析于 {{ $item->analytics_at }}</small>
                                 </td>
                                 <td>{{ $item->type }}</td>
-                                <td><img src="{{ $item->avatar_url }}" alt="" width="100"></td>
+                                <td><img src="{{ $item->avatar_url . '&s=100' }}" alt="" width="100"></td>
                                 <td>
                                     <ul class="list-inline">
                                         <li title="followers">
