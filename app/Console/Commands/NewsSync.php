@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Entities\Repos;
 use App\Entities\ReposNews;
 use App\Entities\ReposUrl;
+use App\Repositories\Constant;
 use Carbon\Carbon;
 use Exception;
 use GuzzleHttp\Client;
@@ -67,7 +68,7 @@ class NewsSync extends Command
                         if (!isset($item_data['url'])) {
                             continue;
                         }
-                        preg_match(\App\Jobs\GithubFetch::URL_REGEX, $item_data['url'], $matches);
+                        preg_match(Constant::REPOS_URL_REGEX, $item_data['url'], $matches);
                         if ($matches) {
                             if ($repos_news = ReposNews::query()->where('url', $item_data['url'])->where('item_id', $item_data['id'])->first()) {
                                 if ($repos = Repos::where('slug', $matches[1] . '-' . $matches[2])->select('id')->first()) {

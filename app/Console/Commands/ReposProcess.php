@@ -11,8 +11,9 @@
 
 namespace App\Console\Commands;
 
-use App\Entities\Developer;
+use App\Repositories\Constant;
 use DB;
+use App\Entities\Developer;
 use App\Entities\Repos;
 use Illuminate\Console\Command;
 
@@ -33,11 +34,6 @@ class ReposProcess extends Command
     protected $description = 'Repos Process';
 
     /**
-     * Regex
-     */
-    const URL_REGEX = "/https?:\\/\\/github\\.com\\/([0-9a-zA-Z\\-\\.]*)\\/([0-9a-zA-Z\\-\\.]*)/";
-
-    /**
      * Create a new command instance.
      */
     public function __construct()
@@ -52,9 +48,9 @@ class ReposProcess extends Command
     {
         // post
         $this->info('Post');
-        $repos = Repos::query()->where('status', 0)->select('id')->get();
+        $repos = Repos::query()->where('status', Constant::DISABLE)->select('id')->get();
         foreach ($repos as $item) {
-            $item->status = 1;
+            $item->status = Constant::ENABLE;
             $item->save();
             $this->info($item->id);
         }
@@ -85,7 +81,7 @@ class ReposProcess extends Command
         $this->info('Process owner repo');
         $repos = Repos::query()->where('owner', '')->select(['id', 'owner', 'repo', 'github'])->get();
         foreach ($repos as $item) {
-            preg_match(self::URL_REGEX, $item->github, $matches);
+            preg_match(Constant::REPOS_URL_REGEX, $item->github, $matches);
             if ($matches) {
                 $item->owner = $matches[1];
                 $item->repo = $matches[2];
@@ -96,17 +92,17 @@ class ReposProcess extends Command
 
         // .php
         $this->info('Process .php');
-        $repos = DB::table('repos')->where('slug', 'like', '%.php')->where('status', 1)->select(['id'])->get();
+        $repos = DB::table('repos')->where('slug', 'like', '%.php')->where('status', Constant::ENABLE)->select(['id'])->get();
         foreach ($repos as $item) {
-            DB::table('repos')->where('id', $item->id)->update(['status' => 0]);
+            DB::table('repos')->where('id', $item->id)->update(['status' => Constant::DISABLE]);
             $this->info('Repos: ' . $item->id);
         }
 
         // developer
         $this->info('Developer');
-        $developers = Developer::query()->where('status', 0)->select('id')->get();
+        $developers = Developer::query()->where('status', Constant::DISABLE)->select('id')->get();
         foreach ($developers as $developer) {
-            $developer->status = 1;
+            $developer->status = Constant::ENABLE;
             $developer->save();
             $this->info($developer->id);
         }

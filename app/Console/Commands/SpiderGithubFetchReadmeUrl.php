@@ -11,6 +11,7 @@
 
 namespace App\Console\Commands;
 
+use App\Repositories\Constant;
 use DB;
 use Illuminate\Console\Command;
 
@@ -31,11 +32,6 @@ class SpiderGithubFetchReadmeUrl extends Command
     protected $description = 'Github Fetch Readme Url';
 
     /**
-     * Regex
-     */
-    const URL_REGEX = "/https?:\\/\\/github\\.com\\/[0-9a-zA-Z\\-\\.]*\\/[0-9a-zA-Z\\-\\.]*/";
-
-    /**
      * Create a new command instance.
      */
     public function __construct()
@@ -52,7 +48,7 @@ class SpiderGithubFetchReadmeUrl extends Command
         $perPage = $this->argument('perPage');
         $repos = DB::table('repos')->select(['id', 'readme'])->forPage($page, $perPage)->get();
         foreach ($repos as $item) {
-            preg_match_all(self::URL_REGEX, $item->readme, $match);
+            preg_match_all(Constant::README_URL_REGEX, $item->readme, $match);
 
             if (isset($match[0])) {
                 foreach ($match[0] as $url) {

@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Entities\Repos;
 use App\Entities\ReposUrl;
+use App\Repositories\Constant;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Console\Command;
@@ -47,7 +48,7 @@ class NewsGithubFetch extends Command
                 ]);
             }
 
-            preg_match(\App\Jobs\GithubFetch::URL_REGEX, $item->url, $matches);
+            preg_match(Constant::REPOS_URL_REGEX, $item->url, $matches);
             if ($matches) {
                 $github_url = "https://github.com/$matches[1]/$matches[2]";
                 if (Repos::where('slug', $matches[1] . '-' . $matches[2])->exists()) {

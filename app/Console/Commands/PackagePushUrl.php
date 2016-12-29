@@ -12,6 +12,7 @@
 namespace App\Console\Commands;
 
 use App\Jobs\GithubFetch;
+use App\Repositories\Constant;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Console\Command;
@@ -59,7 +60,7 @@ class PackagePushUrl extends Command
                     $packages = DB::table('packages')->select(['id', 'repository', 'json'])->where('provider', $type)->forPage($p, self::PER_PAGE)->get();
 
                     foreach ($packages as $package) {
-                        preg_match(GithubFetch::URL_REGEX, $package->repository, $matches);
+                        preg_match(Constant::REPOS_URL_REGEX, $package->repository, $matches);
                         if (empty($matches)) {
                             $this->info('Other : ' . $package->id . ' ' . $package->repository);
                             continue;
@@ -95,7 +96,7 @@ class PackagePushUrl extends Command
                     $packages = DB::table('packages')->select(['id', 'repository', 'json'])->where('provider', $type)->forPage($p, self::PER_PAGE)->get();
 
                     foreach ($packages as $package) {
-                        preg_match(GithubFetch::URL_REGEX, $package->repository, $matches);
+                        preg_match(Constant::REPOS_URL_REGEX, $package->repository, $matches);
                         if (empty($matches)) {
                             $this->info('Other : ' . $package->id . ' ' . $package->repository);
                             continue;

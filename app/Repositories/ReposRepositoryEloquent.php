@@ -116,7 +116,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
     public function findBySlug($slug)
     {
         return $this->model->with('tags', 'contributors', 'languages', 'badges', 'questions', 'news')
-            ->where('status', true)->where('slug', $slug)->firstOrFail();
+            ->where('status', self::ENABLE)->where('slug', $slug)->firstOrFail();
     }
 
     /**
@@ -126,7 +126,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function findHottest($limit = 5, $has_image = true)
     {
-        $list = $this->model->where('status', true)
+        $list = $this->model->where('status', self::ENABLE)
             ->select(['id', 'title', 'slug', 'cover', 'trends', 'stargazers_count', 'description']);
         if ($has_image) {
             $list->where('cover', '<>', '');
@@ -141,7 +141,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function findNewest($limit = 5, $has_image = true)
     {
-        $list = $this->model->where('status', true)
+        $list = $this->model->where('status', self::ENABLE)
             ->select(['id', 'title', 'slug', 'cover', 'trends', 'stargazers_count', 'description']);
         if ($has_image) {
             $list->where('cover', '<>', '');
@@ -156,7 +156,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function findTrend($limit = 5, $has_image = true)
     {
-        $list = $this->model->where('status', true)
+        $list = $this->model->where('status', Constant::ENABLE)
             ->select(['id', 'title', 'slug', 'cover', 'trends', 'stargazers_count', 'description']);
         if ($has_image) {
             $list->where('cover', '<>', '');
@@ -170,7 +170,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function findHottestPaginate($limit = 5)
     {
-        $list = $this->model->where('status', true)
+        $list = $this->model->where('status', Constant::ENABLE)
             ->select(['id', 'title', 'slug', 'cover', 'trends', 'stargazers_count', 'description']);
         return $list->orderBy('stargazers_count', 'DESC')->paginate($limit);
     }
@@ -181,7 +181,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function findNewestPaginate($limit = 5)
     {
-        $list = $this->model->where('status', true)
+        $list = $this->model->where('status', Constant::ENABLE)
             ->select(['id', 'title', 'slug', 'cover', 'trends', 'stargazers_count', 'description']);
         return $list->orderBy('repos_created_at', 'DESC')->paginate($limit);
     }
@@ -192,7 +192,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function findTrendPaginate($limit = 5)
     {
-        $list = $this->model->where('status', true)
+        $list = $this->model->where('status', Constant::ENABLE)
             ->select(['id', 'title', 'slug', 'cover', 'trends', 'stargazers_count', 'description']);
         return $list->orderBy('repos_updated_at', 'DESC')->paginate($limit);
     }
@@ -204,7 +204,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
     public function findRecommend($limit = 10)
     {
         return $this->model->select(['id', 'title', 'cover', 'slug'])
-            ->where('status', true)->where('cover', '<>', '')->where('is_recommend', true)
+            ->where('status', Constant::ENABLE)->where('cover', '<>', '')->where('is_recommend', true)
             ->orderBy('stargazers_count', 'DESC')->limit($limit)->get();
     }
 
@@ -257,7 +257,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
     public function findWhereInPaginate($field, array $values, $columns = ['*'])
     {
         return $this->model->select(['id', 'slug', 'cover', 'title', 'description', 'trends', 'stargazers_count'])
-            ->whereIn($field, $values)->where('status', true)->paginate(15);
+            ->whereIn($field, $values)->where('status', Constant::ENABLE)->paginate(15);
     }
 
     /**

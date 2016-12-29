@@ -12,6 +12,7 @@
 namespace App\Jobs;
 
 use App\Entities\Service;
+use App\Repositories\Constant;
 use App\Repositories\ReposRepositoryEloquent;
 use DB;
 use Illuminate\Bus\Queueable;
@@ -35,11 +36,6 @@ class GithubDeveloperReposFetch implements ShouldQueue
     protected $url;
 
     /**
-     * Regex
-     */
-    const URL_REGEX = "/^https?:\\/\\/github\\.com\\/([0-9a-zA-Z\\-\\.]*)$/";
-
-    /**
      * Create a new job instance.
      *
      * @param $user_id
@@ -57,7 +53,7 @@ class GithubDeveloperReposFetch implements ShouldQueue
      */
     public function handle(ReposRepositoryEloquent $repositoryEloquent)
     {
-        preg_match(self::URL_REGEX, $this->url, $matches);
+        preg_match(Constant::DEVELOPER_URL_REGEX, $this->url, $matches);
         if ($matches) {
             try {
                 $client = new \Github\Client();
