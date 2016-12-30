@@ -116,7 +116,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
     public function findBySlug($slug)
     {
         return $this->model->with('tags', 'contributors', 'languages', 'badges', 'questions', 'news')
-            ->where('status', self::ENABLE)->where('slug', $slug)->firstOrFail();
+            ->where('status', Constant::ENABLE)->where('slug', $slug)->firstOrFail();
     }
 
     /**
@@ -126,7 +126,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function findHottest($limit = 5, $has_image = true)
     {
-        $list = $this->model->where('status', self::ENABLE)
+        $list = $this->model->where('status', Constant::ENABLE)
             ->select(['id', 'title', 'slug', 'cover', 'trends', 'stargazers_count', 'description']);
         if ($has_image) {
             $list->where('cover', '<>', '');
@@ -141,7 +141,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      */
     public function findNewest($limit = 5, $has_image = true)
     {
-        $list = $this->model->where('status', self::ENABLE)
+        $list = $this->model->where('status', Constant::ENABLE)
             ->select(['id', 'title', 'slug', 'cover', 'trends', 'stargazers_count', 'description']);
         if ($has_image) {
             $list->where('cover', '<>', '');
