@@ -6,6 +6,7 @@ Homestead.json
 .env
 .idea
 /storage/*.txt
+/storage/*.json
 
 # IDE
 .phpstorm.meta.php

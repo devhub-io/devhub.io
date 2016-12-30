@@ -64,6 +64,7 @@ class Kernel extends ConsoleKernel
         Commands\NewsSync::class,
         Commands\NewsGithubFetch::class,
         Commands\GithubDocument::class,
+        Commands\PackageImport::class,
     ];
 
     /**
