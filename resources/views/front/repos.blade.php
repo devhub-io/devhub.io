@@ -102,7 +102,7 @@
                     @foreach($related_repos as $item)
                         <div class="row" style="margin-bottom: 10px">
                             <div class="col-md-4">
-                                <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->cover ? $item->cover : cdn_asset('img/200x200.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="lazyload" width="100"></a>
+                                <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->cover ? $item->cover . '&s=100' : cdn_asset('img/200x200.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="lazyload" width="100"></a>
                             </div>
                             <div class="col-md-8">
                                 <h4><a href="{{ l_url('repos', [$item->slug]) }}">{{ $item->title }}</a></h4>
@@ -119,7 +119,7 @@
                     <div>
                         @foreach($repos->contributors as $contributor)
                             <a href="{{ l_url('developer', [$contributor->login]) }}" target="_blank" rel="nofollow">
-                                <img src="{{ $contributor->avatar_url }}" alt="{{ $contributor->login }}" title="{{ $contributor->login }}" class="pull-left" width="60" height="60">
+                                <img src="{{ $contributor->avatar_url . '&s=60' }}" alt="{{ $contributor->login }}" title="{{ $contributor->login }}" class="pull-left" width="60" height="60">
                             </a>
                         @endforeach
                     </div>
