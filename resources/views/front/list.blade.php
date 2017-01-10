@@ -36,18 +36,6 @@
 
                 <div class="@if(isset($child_category)) col-md-9 @else col-md-12 @endif">
                     <div class="product-content-right">
-                        @if(isset($child_category))
-                            <div class="row">
-                                <div class="col-md-12" style="margin-bottom: 15px;">
-                                    <div class="btn-group pull-right">
-                                        <a type="button" class="btn {{ $sort == 'star' ? 'btn-info' : 'btn-default' }}" href="{{ l_url("category/$slug?sort=star") }}">Star</a>
-                                        <a type="button" class="btn {{ $sort == 'update' ? 'btn-info' : 'btn-default' }}" href="{{ l_url("category/$slug?sort=update") }}">Update</a>
-                                        <a type="button" class="btn {{ $sort == 'trend' ? 'btn-info' : 'btn-default' }}" href="{{ l_url("category/$slug?sort=trend") }}">Trend</a>
-                                    </div>
-                                    <span class="pull-right" style="line-height: 20px; height: 20px; text-align: center; margin-top: 10px; margin-right: 5px; font-size: 16px;">Sort:</span>
-                                </div>
-                            </div>
-                        @endif
                         <div class="row">
                             @foreach($repos as $item)
                             <div class="col-sm-6 @if(isset($child_category)) col-md-4 @else col-md-3 @endif">
@@ -68,15 +56,9 @@
                             @endforeach
                         </div>
                         <div class="row">
-                            @if(isset($child_category))
-                                <div class="col-sm-12">
-                                    {{ $repos->appends(['sort' => $sort])->links() }}
-                                </div>
-                            @else
-                                <div class="col-sm-12">
-                                    {{ $repos->links() }}
-                                </div>
-                            @endif
+                            <div class="col-sm-12">
+                                {{ $repos->links() }}
+                            </div>
                         </div>
                     </div>
                 </div>
