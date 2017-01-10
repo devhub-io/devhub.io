@@ -87,13 +87,14 @@ interface ReposRepository extends RepositoryInterface
     /**
      * Find data by multiple values in one field
      *
-     * @param       $field
+     * @param $field
      * @param array $values
      * @param array $columns
      *
+     * @param string $sort
      * @return mixed
      */
-    public function findWhereInPaginate($field, array $values, $columns = ['*']);
+    public function findWhereInPaginate($field, array $values, $columns = ['*'], $sort = '');
 
     /**$limit
      * @return int

@@ -248,16 +248,27 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
     /**
      * Find data by multiple values in one field
      *
-     * @param       $field
+     * @param $field
      * @param array $values
      * @param array $columns
      *
+     * @param array $sort
      * @return mixed
      */
-    public function findWhereInPaginate($field, array $values, $columns = ['*'])
+    public function findWhereInPaginate($field, array $values, $columns = ['*'], $sort = [])
     {
-        return $this->model->select(['id', 'slug', 'cover', 'title', 'description', 'trends', 'stargazers_count'])
-            ->whereIn($field, $values)->where('status', Constant::ENABLE)->paginate(15);
+        $builder = $this->model
+            ->select(['id', 'slug', 'cover', 'title', 'description', 'trends', 'stargazers_count'])
+            ->whereIn($field, $values)
+            ->where('status', Constant::ENABLE);
+
+        if ($sort) {
+            foreach ($sort as $k => $v) {
+                $builder->orderBy($k, $v);
+            }
+        }
+
+        return $builder->paginate(15);
     }
 
     /**

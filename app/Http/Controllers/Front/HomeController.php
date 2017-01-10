@@ -119,6 +119,15 @@ class HomeController extends Controller
             return app()->abort(404);
         }
 
+        $sort = strtolower(request()->get('sort', 'star'));
+        $sortFiled = [];
+        if ($sort == 'star') {
+            $sortFiled['stargazers_count'] = 'desc';
+        } elseif ($sort == 'update') {
+            $sortFiled['repos_created_at'] = 'desc';
+        } elseif ($sort == 'trend') {
+            $sortFiled['repos_updated_at'] = 'desc';
+        }
         $category = $this->categoryRepository->findBySlug($slug);
         if ($category->parent_id == 0) {
             $child_category = $this->categoryRepository->findWhere(['parent_id' => $category->id]);
@@ -129,12 +138,12 @@ class HomeController extends Controller
             }
             $_child_category = $this->categoryRepository->find($child_id);
             $select_slug = $_child_category ? $_child_category->slug : '';
-            $repos = $this->reposRepository->findWhereInPaginate('category_id', [$child_id]);
+            $repos = $this->reposRepository->findWhereInPaginate('category_id', [$child_id], ['*'], $sortFiled);
 
             view()->share('current_category_slug', $slug);
         } else {
             $child_category = $this->categoryRepository->findWhere(['parent_id' => $category->parent_id]);
-            $repos = $this->reposRepository->findWhereInPaginate('category_id', [$category->id]);
+            $repos = $this->reposRepository->findWhereInPaginate('category_id', [$category->id], ['*'], $sortFiled);
             $parent_category = $this->categoryRepository->find($category->parent_id);
             $select_slug = $slug;
 
@@ -143,7 +152,7 @@ class HomeController extends Controller
 
         SEO::setTitle(trans("category.{$category->slug}"));
 
-        return view('front.list', compact('repos', 'child_category', 'slug', 'select_slug'));
+        return view('front.list', compact('repos', 'child_category', 'slug', 'select_slug', 'sort'));
     }
 
     /**
