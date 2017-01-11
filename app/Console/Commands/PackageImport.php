@@ -40,7 +40,7 @@ class PackageImport extends Command
     {
         $provider = $this->argument('provider');
 
-        if (!in_array($provider, ['atom', 'sublime'])) {
+        if (!in_array($provider, ['atom', 'sublime', 'chocolatey', 'dub', 'elm', 'hackage', 'haxe', 'opam', 'pypi'])) {
             $this->error('Error name');
             return;
         }
@@ -53,18 +53,19 @@ class PackageImport extends Command
             $data = json_decode($json, true);
 
             foreach ($data as $item) {
-                if (!DB::table('packages')->where('provider', $provider)->where('name', $item['name'])->exists()) {
+                if (!DB::table('packages')->where('provider', $provider)->where('package_url', $item['url'])->exists()) {
                     DB::table('packages')->insert([
                         'provider' => $provider,
                         'name' => $item['name'],
                         'repository' => '',
+                        'package_url' => $item['url'],
                         'json' => json_encode($item),
                         'fetched_at' => Carbon::now(),
                     ]);
 
-                    $this->info("Insert {$item['name']}");
+                    $this->info("Insert {$item['url']}");
                 } else {
-                    $this->info("Pass {$item['name']}");
+                    $this->info("Pass {$item['url']}");
                 }
             }
         } catch (Exception $e) {
