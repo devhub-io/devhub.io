@@ -27,6 +27,7 @@ class PackageInfo extends AbstractWidget
         return view("widgets.packages.{$this->config['package']->provider}", [
             'config' => $this->config,
             'package' => $this->config['package'],
+            'json' => json_decode($this->config['package']->json, true),
         ]);
     }
 }
