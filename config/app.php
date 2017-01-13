@@ -200,6 +200,7 @@ return [
         Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
         Torann\GeoIP\GeoIPServiceProvider::class,
         SocialiteProviders\Manager\ServiceProvider::class,
+        Arrilot\Widgets\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -275,6 +276,8 @@ return [
         'Active' => HieuLe\Active\Facades\Active::class,
         'UrlSigner' => Spatie\UrlSigner\Laravel\UrlSignerFacade::class,
         'GeoIP' => Torann\GeoIP\Facades\GeoIP::class,
+        'Widget' => Arrilot\Widgets\Facade::class,
+        'AsyncWidget' => Arrilot\Widgets\AsyncFacade::class,
 
     ],
 

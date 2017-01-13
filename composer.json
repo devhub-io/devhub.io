@@ -46,7 +46,8 @@
         "spatie/laravel-url-signer": "^1.1",
         "laracasts/utilities": "^2.1",
         "torann/geoip": "^1.0",
-        "socialiteproviders/stackexchange": "^2.0"
+        "socialiteproviders/stackexchange": "^2.0",
+        "arrilot/laravel-widgets": "^3.6"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

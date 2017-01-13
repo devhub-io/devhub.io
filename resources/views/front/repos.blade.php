@@ -93,6 +93,8 @@
         </div>
         <div class="row">
             <article class="col-md-8 markdown-body">
+                @widget('PackageInfo')
+
                 {!! $markdown !!}
             </article>
 

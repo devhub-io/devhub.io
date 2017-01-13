@@ -61,6 +61,8 @@ class PackageImport extends Command
                         'package_url' => $item['url'],
                         'json' => json_encode($item),
                         'fetched_at' => Carbon::now(),
+                        'created_at' => Carbon::now(),
+                        'updated_at' => Carbon::now(),
                     ]);
 
                     $this->info("Insert {$item['url']}");
