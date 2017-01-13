@@ -11,11 +11,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Flash;
-use Auth;
 use App\Entities\Service;
 use App\Entities\User;
 use App\Http\Controllers\Controller;
+use Auth;
+use Flash;
 use PragmaRX\Google2FA\Google2FA;
 
 class UserController extends Controller

@@ -11,13 +11,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Jobs\GithubPageFetchUrl;
-use App\Jobs\GithubFetch;
 use App\Entities\ReposUrl;
 use App\Http\Controllers\Controller;
+use App\Jobs\GithubFetch;
+use App\Jobs\GithubPageFetchUrl;
 use App\Repositories\ReposRepository;
 use Carbon\Carbon;
-use Auth;
 use DB;
 
 class UrlController extends Controller

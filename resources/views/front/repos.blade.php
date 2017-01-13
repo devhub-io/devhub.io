@@ -93,7 +93,9 @@
         </div>
         <div class="row">
             <article class="col-md-8 markdown-body">
-                @widget('PackageInfo')
+                @foreach($packages as $package)
+                    @widget('PackageInfo', ['package' => $package])
+                @endforeach
 
                 {!! $markdown !!}
             </article>

@@ -12,12 +12,6 @@
 namespace App\Console\Commands;
 
 use App\Entities\Repos;
-use App\Entities\ReposContributor;
-use App\Entities\ReposLanguage;
-use App\Entities\ReposTag;
-use App\Entities\ReposTree;
-use App\Entities\Service;
-use Carbon\Carbon;
 use Illuminate\Console\Command;
 
 class GithubAnalytics extends Command

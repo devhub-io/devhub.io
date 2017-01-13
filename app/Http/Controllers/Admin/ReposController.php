@@ -11,19 +11,18 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Auth;
-use Response;
-use SEOMeta;
 use App\Entities\Image;
 use App\Entities\Repos;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ReposUpdateRequest;
 use App\Jobs\GithubUpdate;
 use App\Repositories\CategoryRepository;
-use Prettus\Validator\Contracts\ValidatorInterface;
-use Prettus\Validator\Exceptions\ValidatorException;
-use App\Http\Requests\ReposUpdateRequest;
 use App\Repositories\ReposRepository;
 use App\Validators\ReposValidator;
+use Prettus\Validator\Contracts\ValidatorInterface;
+use Prettus\Validator\Exceptions\ValidatorException;
+use Response;
+use SEOMeta;
 
 class ReposController extends Controller
 {

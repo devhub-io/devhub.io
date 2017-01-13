@@ -11,10 +11,10 @@
 
 namespace App\Console\Commands;
 
-use App\Repositories\Constant;
-use DB;
 use App\Entities\Developer;
 use App\Entities\Repos;
+use App\Repositories\Constant;
+use DB;
 use Illuminate\Console\Command;
 
 class ReposProcess extends Command

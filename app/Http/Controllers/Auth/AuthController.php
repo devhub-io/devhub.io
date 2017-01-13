@@ -11,16 +11,15 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Exception;
-use Log;
+use App\Entities\User;
+use App\Http\Controllers\Controller;
+use App\Notifications\Pushover;
 use Auth;
 use Carbon\Carbon;
+use Exception;
 use Flash;
 use Session;
 use Validator;
-use App\Entities\User;
-use App\Notifications\Pushover;
-use App\Http\Controllers\Controller;
 
 class AuthController extends Controller
 {

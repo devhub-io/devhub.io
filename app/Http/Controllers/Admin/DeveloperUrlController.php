@@ -11,8 +11,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Jobs\GithubDeveloperFetch;
 use App\Http\Controllers\Controller;
+use App\Jobs\GithubDeveloperFetch;
 use Carbon\Carbon;
 use DB;
 

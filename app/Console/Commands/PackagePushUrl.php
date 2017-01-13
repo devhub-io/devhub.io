@@ -11,7 +11,6 @@
 
 namespace App\Console\Commands;
 
-use App\Jobs\GithubFetch;
 use App\Repositories\Constant;
 use Carbon\Carbon;
 use DB;

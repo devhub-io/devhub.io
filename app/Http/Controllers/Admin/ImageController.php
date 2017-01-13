@@ -11,11 +11,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Entities\Image;
+use App\Http\Controllers\Controller;
 use Cache;
 use File;
 use Flash;
-use App\Entities\Image;
-use App\Http\Controllers\Controller;
 
 class ImageController extends Controller
 {

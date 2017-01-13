@@ -11,13 +11,13 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Entities\Service;
+use App\Entities\User;
+use App\Http\Controllers\Controller;
 use Auth;
+use Illuminate\Support\Str;
 use Response;
 use Socialite;
-use App\Entities\User;
-use App\Entities\Service;
-use Illuminate\Support\Str;
-use App\Http\Controllers\Controller;
 
 class SocialiteController extends Controller
 {

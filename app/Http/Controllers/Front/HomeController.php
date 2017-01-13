@@ -11,36 +11,37 @@
 
 namespace App\Http\Controllers\Front;
 
-use Auth;
-use Cache;
-use Carbon\Carbon;
-use DB;
-use Flash;
-use SEO;
-use Badger;
-use Config;
-use Localization;
-use SEOMeta;
-use Validator;
-use JavaScript;
-use App\Support\Mailgun;
-use Roumen\Feed\Feed;
-use App\Entities\ReposNews;
+use App\Entities\Article;
 use App\Entities\Collection;
 use App\Entities\CollectionRepos;
-use App\Entities\Site;
-use App\Entities\Article;
 use App\Entities\Developer;
+use App\Entities\Package;
 use App\Entities\Repos;
-use App\Entities\ReposVote;
 use App\Entities\ReposContributor;
+use App\Entities\ReposNews;
+use App\Entities\ReposVote;
+use App\Entities\Site;
 use App\Http\Controllers\Controller;
 use App\Repositories\CategoryRepository;
 use App\Repositories\ReposRepository;
+use App\Support\Mailgun;
+use Auth;
+use Badger;
+use Cache;
+use Carbon\Carbon;
+use Config;
+use DB;
+use Flash;
+use JavaScript;
 use League\Glide\Responses\LaravelResponseFactory;
 use League\Glide\ServerFactory;
 use League\Glide\Signatures\SignatureException;
 use League\Glide\Signatures\SignatureFactory;
+use Localization;
+use Roumen\Feed\Feed;
+use SEO;
+use SEOMeta;
+use Validator;
 
 class HomeController extends Controller
 {
@@ -268,7 +269,11 @@ class HomeController extends Controller
         // News
         $news_exists = ReposNews::query()->select('id')->where('repos_id', $repos->id)->exists();
 
-        return view('front.repos', compact('repos', 'markdown', 'languages', 'related_repos', 'analytics_badges', 'gitter_badge', 'developer_exists', 'news_exists'));
+        // Package
+        $packages = Package::query()->where('repos_id', $repos->id)->get();
+
+        return view('front.repos', compact('repos', 'markdown', 'languages', 'related_repos', 'analytics_badges',
+            'gitter_badge', 'developer_exists', 'news_exists', 'packages'));
     }
 
     /**

@@ -11,10 +11,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use DB;
-use Redirect;
 use App\Http\Controllers\Controller;
+use DB;
 use LaravelRedis;
+use Redirect;
 
 class QueueController extends Controller
 {

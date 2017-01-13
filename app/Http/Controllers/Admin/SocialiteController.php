@@ -11,12 +11,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Auth;
-use Config;
-use Socialite;
-use Response;
 use App\Entities\Service;
 use App\Http\Controllers\Controller;
+use Auth;
+use Config;
+use Response;
+use Socialite;
 
 class SocialiteController extends Controller
 {

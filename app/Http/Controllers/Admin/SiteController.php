@@ -11,10 +11,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use File;
 use App\Entities\Category;
 use App\Entities\Site;
 use App\Http\Controllers\Controller;
+use File;
 
 class SiteController extends Controller
 {

@@ -11,11 +11,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use File;
-use App\Entities\CollectionRepos;
 use App\Entities\Collection;
+use App\Entities\CollectionRepos;
 use App\Entities\Repos;
 use App\Http\Controllers\Controller;
+use File;
 use Intervention\Image\ImageManagerStatic as Image;
 
 class CollectionController extends Controller

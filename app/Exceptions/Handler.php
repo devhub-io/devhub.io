@@ -11,11 +11,11 @@
 
 namespace App\Exceptions;
 
-use Rollbar;
 use Config;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Rollbar;
 
 class Handler extends ExceptionHandler
 {

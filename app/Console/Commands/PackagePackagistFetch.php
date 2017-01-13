@@ -12,8 +12,8 @@
 namespace App\Console\Commands;
 
 use Cache;
-use DB;
 use Carbon\Carbon;
+use DB;
 use Illuminate\Console\Command;
 
 class PackagePackagistFetch extends Command

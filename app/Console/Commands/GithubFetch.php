@@ -11,9 +11,9 @@
 
 namespace App\Console\Commands;
 
-use DB;
 use App\Entities\ReposUrl;
 use App\Repositories\ReposRepositoryEloquent;
+use DB;
 use Illuminate\Console\Command;
 
 class GithubFetch extends Command
