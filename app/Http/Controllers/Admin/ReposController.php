@@ -47,6 +47,16 @@ class ReposController extends Controller
         $this->repository = $repository;
         $this->validator = $validator;
         $this->categoryRepository = $categoryRepository;
+
+        // Github status
+        view()->share('github_status', \Cache::remember('github:status', 1, function () {
+            $github_status = file_get_contents('https://status.github.com/api/status.json');
+            return json_decode($github_status, true);
+        }));
+        view()->share('github_status_messages', \Cache::remember('github:status:messages', 5, function () {
+            $github_status_messages = file_get_contents('https://status.github.com/api/messages.json');
+            return json_decode($github_status_messages, true);
+        }));
     }
 
 

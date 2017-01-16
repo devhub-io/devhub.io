@@ -140,70 +140,34 @@
                             </ul>
                         </li>
 
-                        <li role="presentation" class="dropdown">
-                            <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                                <i class="fa fa-envelope-o"></i>
-                                {{--<span class="badge bg-green">6</span>--}}
-                            </a>
-                            <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                                <li>
-                                    <a>
-                                        <span class="image"><img src="/components/gentelella/production/images/img.jpg" alt="Profile Image" /></span>
-                                        <span>
-                                          <span>John Smith</span>
-                                          <span class="time">3 mins ago</span>
-                                        </span>
-                                        <span class="message">
-                                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a>
-                                        <span class="image"><img src="/components/gentelella/production/images/img.jpg" alt="Profile Image" /></span>
-                                        <span>
-                                          <span>John Smith</span>
-                                          <span class="time">3 mins ago</span>
-                                        </span>
-                                        <span class="message">
-                                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a>
-                                        <span class="image"><img src="/components/gentelella/production/images/img.jpg" alt="Profile Image" /></span>
-                                        <span>
-                                          <span>John Smith</span>
-                                          <span class="time">3 mins ago</span>
-                                        </span>
-                                        <span class="message">
-                                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a>
-                                        <span class="image"><img src="/components/gentelella/production/images/img.jpg" alt="Profile Image" /></span>
-                                        <span>
-                                          <span>John Smith</span>
-                                          <span class="time">3 mins ago</span>
-                                        </span>
-                                        <span class="message">
-                                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <div class="text-center">
+                        @if(isset($github_status))
+                            <li role="presentation" class="dropdown">
+                                <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                                    @if($github_status['status'] == 'good')
+                                        <span class="bg-green"><i class="fa fa-github"></i></span>
+                                    @elseif($github_status['status'] == 'minor')
+                                        <span class="bg-orange"><i class="fa fa-github"></i></span>
+                                    @else
+                                        <span class="bg-red"><i class="fa fa-github"></i></span>
+                                    @endif
+                                </a>
+                                <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                                    @foreach($github_status_messages as $item)
+                                    <li>
                                         <a>
-                                            <strong>See All Alerts</strong>
-                                            <i class="fa fa-angle-right"></i>
+                                            <span>
+                                              <span>{{ $item['status'] }}</span>
+                                              <span class="time">{{ $item['created_on'] }}</span>
+                                            </span>
+                                            <span class="message">
+                                              {{ $item['body'] }}
+                                            </span>
                                         </a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                        @endif
 
                         <li>
                             <a href="{{ url('/') }}" target="_blank">
