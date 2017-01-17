@@ -392,7 +392,7 @@ class HomeController extends Controller
             $feed->logo = '';
             $feed->link = l_url('feed');
             $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
-            $feed->pubdate = $posts[0]->created_at;
+            $feed->pubdate = isset($posts[0]) ? $posts[0]->created_at : '';
             $feed->lang = Localization::getCurrentLocaleRegional();
             $feed->setShortening(true); // true or false
             $feed->setTextLimit(100); // maximum length of description text
