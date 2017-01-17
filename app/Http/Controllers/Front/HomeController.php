@@ -454,7 +454,7 @@ class HomeController extends Controller
             if ((Auth::id() && Auth::id() != 1) || !Auth::check()) {
                 DB::table('link_click')->insert([
                     'target' => $target,
-                    'referer' => request()->server('HTTP_REFERER'),
+                    'referer' => request()->server('HTTP_REFERER') ?: '',
                     'ip' => real_ip(),
                     'user_agent' => request()->server('HTTP_USER_AGENT'),
                     'clicked_at' => Carbon::now(),
