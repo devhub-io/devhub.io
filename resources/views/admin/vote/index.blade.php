@@ -48,7 +48,7 @@
                                             </li>
                                         </ul>
                                     </td>
-                                    <td>{{ $geo_ip[$item->ip] ? $item->ip . ' (' . $geo_ip[$item->ip] .')' : $item->ip }}</td>
+                                    <td>{{ isset($geo_ip[$item->ip]) ? $item->ip . ' (' . $geo_ip[$item->ip] .')' : $item->ip }}</td>
                                     <td>{{ $item->user_agent }}</td>
                                     <td>{{ $item->created_at }}</td>
                                 </tr>

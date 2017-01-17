@@ -38,7 +38,7 @@
                                     <th scope="row">{{ $item->id }}</th>
                                     <td><a href="{{ $item->target }}" target="_blank">{{ $item->target }}</a></td>
                                     <td><a href="{{ $item->referer }}" target="_blank">{{ $item->referer }}</a></td>
-                                    <td>{{ $geo_ip[$item->ip] ? $item->ip . ' (' . $geo_ip[$item->ip] .')' : $item->ip }}</td>
+                                    <td>{{ isset($geo_ip[$item->ip]) ? $item->ip . ' (' . $geo_ip[$item->ip] .')' : $item->ip }}</td>
                                     <td>{{ $item->user_agent }}</td>
                                     <td>{{ $item->clicked_at }}</td>
                                 </tr>

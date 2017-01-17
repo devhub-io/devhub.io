@@ -5,6 +5,7 @@
         <div class="page-title">
             <div class="title_left">
                 <h3>{{ $repository->title }} - Revision History</h3>
+                <a href="{{ url('admin/repos/truncate_revisions') }}">TRUNCATE TABLE `revisions`</a>
             </div>
         </div>
 

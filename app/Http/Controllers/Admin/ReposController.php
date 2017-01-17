@@ -19,6 +19,7 @@ use App\Jobs\GithubUpdate;
 use App\Repositories\CategoryRepository;
 use App\Repositories\ReposRepository;
 use App\Validators\ReposValidator;
+use DB;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
 use Response;
@@ -75,14 +76,14 @@ class ReposController extends Controller
         $where = [];
         if ($empty) {
             $where = function ($query) use ($empty) {
-                if($empty == 'document_url'){
+                if ($empty == 'document_url') {
                     $query->where("document_url", '<>', '');
                 } else {
                     $query->where("$empty", 0);
                 }
             };
         }
-        if($slug){
+        if ($slug) {
             $where = function ($query) use ($slug) {
                 $query->where("slug", $slug);
             };
@@ -224,6 +225,17 @@ class ReposController extends Controller
         Repos::query()->whereIn('id', $ids ?: [-1])->update([
             'status' => true,
         ]);
+
+        return redirect()->back();
+    }
+
+    /**
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function truncate_revisions()
+    {
+        DB::table('revisions')->truncate();
 
         return redirect()->back();
     }

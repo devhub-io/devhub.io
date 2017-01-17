@@ -24,10 +24,10 @@ class ClickController extends Controller
         $clicks = DB::table('link_click')->orderBy('id', 'desc')->paginate(10);
 
         $geo_ip = [];
-        foreach ($clicks as $item) {
-            $geo = geoip($item->ip);
-            $geo_ip[$item->ip] = $geo ? $geo->country . ' / ' . $geo->city . ' / ' . $geo->state_name : '';
-        }
+        //foreach ($clicks as $item) {
+        //    $geo = geoip($item->ip);
+        //    $geo_ip[$item->ip] = $geo ? $geo->country . ' / ' . $geo->city . ' / ' . $geo->state_name : '';
+        //}
 
         return view('admin.click.index', compact('clicks', 'geo_ip'));
     }

@@ -86,6 +86,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admi
     Route::get('repos/{id}/fetch', 'ReposController@fetch');
     Route::get('repos/reindex', 'ReposController@reindex');
     Route::get('repos/enable', 'ReposController@enable');
+    Route::get('repos/truncate_revisions', 'ReposController@truncate_revisions');
 
     # categories
     Route::resource('categories', 'CategoriesController');
