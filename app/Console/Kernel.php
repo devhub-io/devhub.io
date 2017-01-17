@@ -108,16 +108,16 @@ class Kernel extends ConsoleKernel
 //        })->hourly();
 
         // Github Analytics
-        $schedule->call(function () {
-            $repos = Repos::query()->select('id')
-                ->where('status', true)
-                ->where('analytics_at', null)
-                ->orderBy('stargazers_count', 'desc')->limit(600)->get();
-            foreach ($repos as $item) {
-                $job = (new GithubAnalytics(2, $item->id))->onQueue('github-analytics');
-                dispatch($job);
-            }
-        })->hourly();
+//        $schedule->call(function () {
+//            $repos = Repos::query()->select('id')
+//                ->where('status', true)
+//                ->where('analytics_at', null)
+//                ->orderBy('stargazers_count', 'desc')->limit(600)->get();
+//            foreach ($repos as $item) {
+//                $job = (new GithubAnalytics(2, $item->id))->onQueue('github-analytics');
+//                dispatch($job);
+//            }
+//        })->hourly();
 
         // Trend
         // $schedule->command('devhub:repos:trend')->mondays();
