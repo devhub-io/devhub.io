@@ -14,7 +14,7 @@ class UpdateReposDocumentUrl extends Migration
     public function up()
     {
         Schema::table('repos', function (Blueprint $table) {
-            $table->string('document_url');
+            $table->string('document_url')->default('');
         });
     }
 

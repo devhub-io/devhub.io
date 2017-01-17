@@ -15,7 +15,7 @@ class UpdatePackagesRepos extends Migration
     {
         Schema::table('packages', function (Blueprint $table) {
             $table->integer('repos_id')->default(0)->index();
-            $table->string('package_url')->index();
+            $table->string('package_url')->default(0)->index();
         });
     }
 

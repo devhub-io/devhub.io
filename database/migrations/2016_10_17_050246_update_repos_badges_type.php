@@ -14,7 +14,7 @@ class UpdateReposBadgesType extends Migration
     public function up()
     {
         Schema::table('repos_badges', function (Blueprint $table) {
-            $table->string('type', 15);
+            $table->string('type', 15)->default('');
         });
     }
 

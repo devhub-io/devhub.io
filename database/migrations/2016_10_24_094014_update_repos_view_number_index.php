@@ -14,7 +14,7 @@ class UpdateReposViewNumberIndex extends Migration
     public function up()
     {
         Schema::table('repos', function (Blueprint $table) {
-            $table->index('view_number');
+            $table->index('view_number')->default(0);
         });
     }
 

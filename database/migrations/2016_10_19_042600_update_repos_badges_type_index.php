@@ -14,7 +14,7 @@ class UpdateReposBadgesTypeIndex extends Migration
     public function up()
     {
         Schema::table('repos_badges', function (Blueprint $table) {
-            $table->index('type');
+            $table->index('type')->default(0);
         });
     }
 

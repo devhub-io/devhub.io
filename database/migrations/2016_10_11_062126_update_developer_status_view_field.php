@@ -14,8 +14,8 @@ class UpdateDeveloperStatusViewField extends Migration
     public function up()
     {
         Schema::table('developer', function (Blueprint $table) {
-            $table->integer('view_number');
-            $table->boolean('status');
+            $table->integer('view_number')->default(0);
+            $table->boolean('status')->default(false);
         });
     }
 

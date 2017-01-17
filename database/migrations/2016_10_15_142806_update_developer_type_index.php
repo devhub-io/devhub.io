@@ -14,7 +14,7 @@ class UpdateDeveloperTypeIndex extends Migration
     public function up()
     {
         Schema::table('developer', function (Blueprint $table) {
-            $table->index('type');
+            $table->index('type')->default(0);
         });
     }
 

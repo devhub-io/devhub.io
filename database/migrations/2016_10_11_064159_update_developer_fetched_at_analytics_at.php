@@ -14,8 +14,8 @@ class UpdateDeveloperFetchedAtAnalyticsAt extends Migration
     public function up()
     {
         Schema::table('developer', function (Blueprint $table) {
-            $table->timestamp('fetched_at')->nullable;
-            $table->timestamp('analytics_at')->nullable;
+            $table->timestamp('fetched_at')->default('');
+            $table->timestamp('analytics_at')->default('');
         });
     }
 

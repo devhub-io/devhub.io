@@ -24,7 +24,7 @@ class CreateArticlesTable extends Migration
             $table->integer('up_number')->default(0);
             $table->integer('down_number')->default(0);
             $table->boolean('is_enable')->default(true);
-            $table->timestamp('fetched_at')->nullable();
+            $table->timestamp('fetched_at')->default('');
             $table->string('source', 20);
             $table->timestamps();
         });

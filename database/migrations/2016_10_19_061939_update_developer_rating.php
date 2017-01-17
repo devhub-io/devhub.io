@@ -14,7 +14,7 @@ class UpdateDeveloperRating extends Migration
     public function up()
     {
         Schema::table('developer', function (Blueprint $table) {
-            $table->float('rating')->index();
+            $table->float('rating')->default(0)->index();
         });
     }
 

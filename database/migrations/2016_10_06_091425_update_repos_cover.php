@@ -14,7 +14,7 @@ class UpdateReposCover extends Migration
     public function up()
     {
         Schema::table('repos', function (Blueprint $table) {
-            $table->string('cover');
+            $table->string('cover')->default('');
         });
     }
 
