@@ -129,8 +129,8 @@
                     <p>@lang('front.about_develophub')</p>
                     <p>
                         Currently tracking
-                        <a href="{{ l_url('list/newest') }}" style="color: white">{{ number_format($repos_total) }}</a> open source projects,
-                        <a href="{{ l_url('developers') }}" style="color: white">{{ number_format($developers_total) }}</a> developers
+                        <a href="{{ l_url('list/newest') }}" style="color: white">{{ isset($repos_total) ? number_format($repos_total) : 0 }}</a> open source projects,
+                        <a href="{{ l_url('developers') }}" style="color: white">{{ isset($developers_total) ? number_format($developers_total) : 0 }}</a> developers
                     </p>
                     <div class="footer-social">
                         <a target="_blank" href="https://www.facebook.com/devhubdotio"><i class="fa fa-facebook"></i></a>
