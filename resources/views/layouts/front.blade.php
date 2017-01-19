@@ -135,6 +135,7 @@
                     <div class="footer-social">
                         <a target="_blank" href="#"><i class="fa fa-facebook"></i></a>
                         <a target="_blank" href="https://twitter.com/HubDevelop"><i class="fa fa-twitter"></i></a>
+                        <a href="mailto:devhub.io@gmail.com"><i class="fa fa-envelope"></i></a>
                     </div>
                 </div>
             </div>
