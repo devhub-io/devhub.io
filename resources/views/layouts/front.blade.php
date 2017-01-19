@@ -129,11 +129,11 @@
                     <p>@lang('front.about_develophub')</p>
                     <p>
                         Currently tracking
-                        <a href="{{ l_url('list/newest') }}" style="color: white">{{ $repos_total or 0 }}</a> open source projects,
-                        <a href="{{ l_url('developers') }}" style="color: white">{{ $developers_total or 0 }}</a> developers
+                        <a href="{{ l_url('list/newest') }}" style="color: white">{{ number_format($repos_total) }}</a> open source projects,
+                        <a href="{{ l_url('developers') }}" style="color: white">{{ number_format($developers_total) }}</a> developers
                     </p>
                     <div class="footer-social">
-                        <a target="_blank" href="#"><i class="fa fa-facebook"></i></a>
+                        <a target="_blank" href="https://www.facebook.com/devhubdotio"><i class="fa fa-facebook"></i></a>
                         <a target="_blank" href="https://twitter.com/HubDevelop"><i class="fa fa-twitter"></i></a>
                         <a href="mailto:devhub.io@gmail.com"><i class="fa fa-envelope"></i></a>
                     </div>
