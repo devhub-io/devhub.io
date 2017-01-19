@@ -201,6 +201,8 @@ return [
         Torann\GeoIP\GeoIPServiceProvider::class,
         SocialiteProviders\Manager\ServiceProvider::class,
         Arrilot\Widgets\ServiceProvider::class,
+        Dingo\Api\Provider\LaravelServiceProvider::class,
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -278,6 +280,10 @@ return [
         'GeoIP' => Torann\GeoIP\Facades\GeoIP::class,
         'Widget' => Arrilot\Widgets\Facade::class,
         'AsyncWidget' => Arrilot\Widgets\AsyncFacade::class,
+        'Api' => Dingo\Api\Facade\API::class,
+        'ApiRoute' => Dingo\Api\Facade\Route::class,
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class
 
     ],
 

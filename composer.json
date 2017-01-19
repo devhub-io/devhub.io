@@ -47,7 +47,9 @@
         "laracasts/utilities": "^2.1",
         "torann/geoip": "^1.0",
         "socialiteproviders/stackexchange": "^2.0",
-        "arrilot/laravel-widgets": "^3.6"
+        "arrilot/laravel-widgets": "^3.6",
+        "dingo/api": "1.0.*@dev",
+        "tymon/jwt-auth": "^0.5.9"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
