@@ -100,11 +100,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admi
     Route::get('fetch_all_url', 'UrlController@fetch_all_url');
     Route::post('fetch_page_url', 'UrlController@fetch_page_url');
 
-    # Images
-    Route::get('images', 'ImageController@index');
-    Route::post('images', 'ImageController@store');
-    Route::get('images/{id}/delete', 'ImageController@delete');
-
     # Sites
     Route::get('sites', 'SiteController@index');
     Route::post('sites', 'SiteController@store');
@@ -181,7 +176,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admi
 
 # Static
 Route::group(['domain' => env('STATIC_DOMAIN')], function () {
-    Route::get('image/{slug}', 'Front\HomeController@image');
+    //
 });
 
 # Auth

@@ -33,10 +33,6 @@ use Config;
 use DB;
 use Flash;
 use JavaScript;
-use League\Glide\Responses\LaravelResponseFactory;
-use League\Glide\ServerFactory;
-use League\Glide\Signatures\SignatureException;
-use League\Glide\Signatures\SignatureFactory;
 use Localization;
 use Roumen\Feed\Feed;
 use SEO;
@@ -316,29 +312,6 @@ class HomeController extends Controller
         SEO::setTitle($keyword . ' - Search');
 
         return view('front.search', compact('repos', 'keyword'));
-    }
-
-    /**
-     * @param $slug
-     * @return \Illuminate\Http\Response|mixed
-     */
-    public function image($slug)
-    {
-        try {
-            SignatureFactory::create(env('GLIDE_KEY'))->validateRequest('/image/' . $slug, request()->all());
-        } catch (SignatureException $e) {
-            return \Response::make('Signature is not valid.', 403);
-        }
-
-        $server = ServerFactory::create([
-            'source' => base_path() . '/public',
-            'cache' => base_path() . '/storage/framework/cache',
-            'response' => (new LaravelResponseFactory())
-        ]);
-        $image = \Cache::get("goods:image:$slug");
-
-        return $server->getImageResponse($image->url, request()->all());
-
     }
 
     /**
