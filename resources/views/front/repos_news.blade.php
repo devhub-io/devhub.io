@@ -10,7 +10,7 @@
 
 @section('contents')
     <div class="container">
-        {!! Breadcrumbs::render('repos_news', $repos) !!}
+        @include('widgets.breadcrumbs.repos_news', ['repos' => $repos])
 
         <div class="row">
             <div class="col-md-7 col-sm-8">

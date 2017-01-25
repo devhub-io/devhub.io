@@ -18,7 +18,7 @@
 
 @section('contents')
     <div class="container">
-        {!! Breadcrumbs::render('repos', $repos) !!}
+        @include('widgets.breadcrumbs.repos', ['repos' => $repos])
 
         <div class="row" style="margin: 50px 0 50px 0">
             <div class="col-md-3 col-sm-4 hidden-xs">
