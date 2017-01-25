@@ -180,7 +180,6 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         Roumen\Sitemap\SitemapServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
-        Mews\Purifier\PurifierServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         BackupManager\Laravel\Laravel5ServiceProvider::class,
@@ -258,7 +257,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        'Purifier' => Mews\Purifier\Facades\Purifier::class,
         'Flash' => Laracasts\Flash\Flash::class,
         'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
         'SEOMeta' => Artesaos\SEOTools\Facades\SEOMeta::class,
