@@ -76,4 +76,16 @@ return [
     'apacheconf' => 'ApacheConf',
     'tex' => 'TeX',
 
+    'elm' => 'Elm',
+    'visual-basic' => 'Visual Basic',
+    'jupyter-notebook' => 'Jupyter Notebook',
+    'kicad' => 'KiCad',
+    'puppet' => 'Puppet',
+    'matlab' => 'Matlab',
+    'racket' => 'Racket',
+    'plsql' => 'PLSQL',
+    'xslt' => 'XSLT',
+    'raml' => 'RAML',
+    'eagle' => 'Eagle',
+
 ];
