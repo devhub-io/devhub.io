@@ -200,7 +200,6 @@ return [
         Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
         Torann\GeoIP\GeoIPServiceProvider::class,
         SocialiteProviders\Manager\ServiceProvider::class,
-        Arrilot\Widgets\ServiceProvider::class,
         Dingo\Api\Provider\LaravelServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
 
@@ -278,8 +277,6 @@ return [
         'Active' => HieuLe\Active\Facades\Active::class,
         'UrlSigner' => Spatie\UrlSigner\Laravel\UrlSignerFacade::class,
         'GeoIP' => Torann\GeoIP\Facades\GeoIP::class,
-        'Widget' => Arrilot\Widgets\Facade::class,
-        'AsyncWidget' => Arrilot\Widgets\AsyncFacade::class,
         'Api' => Dingo\Api\Facade\API::class,
         'ApiRoute' => Dingo\Api\Facade\Route::class,
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,

@@ -94,7 +94,7 @@
         <div class="row">
             <article class="col-md-8 markdown-body">
                 @foreach($packages as $package)
-                    @widget('PackageInfo', ['package' => $package])
+                    @include('widgets.packages.' . $package->provider, ['package' => $package])
                 @endforeach
 
                 {!! $markdown !!}
