@@ -197,8 +197,6 @@ return [
         Spatie\UrlSigner\Laravel\UrlSignerServiceProvider::class,
         Torann\GeoIP\GeoIPServiceProvider::class,
         SocialiteProviders\Manager\ServiceProvider::class,
-        Dingo\Api\Provider\LaravelServiceProvider::class,
-        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -272,10 +270,6 @@ return [
         'Active' => HieuLe\Active\Facades\Active::class,
         'UrlSigner' => Spatie\UrlSigner\Laravel\UrlSignerFacade::class,
         'GeoIP' => Torann\GeoIP\Facades\GeoIP::class,
-        'Api' => Dingo\Api\Facade\API::class,
-        'ApiRoute' => Dingo\Api\Facade\Route::class,
-        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
-        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class
 
     ],
 
