@@ -18,7 +18,7 @@
 
 @section('contents')
     <div class="container">
-        {!! Breadcrumbs::render('repos', $repos) !!}
+        @include('widgets.breadcrumbs.repos', ['repos' => $repos])
 
         <div class="row" style="margin: 50px 0 50px 0">
             <div class="col-md-3 col-sm-4 hidden-xs">
@@ -94,7 +94,7 @@
         <div class="row">
             <article class="col-md-8 markdown-body">
                 @foreach($packages as $package)
-                    @widget('PackageInfo', ['package' => $package])
+                    @include('widgets.packages.' . $package->provider, ['package' => $package])
                 @endforeach
 
                 {!! $markdown !!}
@@ -207,6 +207,7 @@
             legend: false,
             responsive: false
         };
+        window.develophub = JSON.parse('{!! $javascript_bind !!}');
 
         new Chart(document.getElementById("languages"), {
             type: 'doughnut',

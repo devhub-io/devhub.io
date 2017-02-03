@@ -180,7 +180,6 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         Roumen\Sitemap\SitemapServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
-        Mews\Purifier\PurifierServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         BackupManager\Laravel\Laravel5ServiceProvider::class,
@@ -190,17 +189,14 @@ return [
         Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
         PragmaRX\Google2FA\Vendor\Laravel\ServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
-        DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
         AltThree\Badger\BadgerServiceProvider::class,
         Roumen\Feed\FeedServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
         NotificationChannels\Pushover\PushoverServiceProvider::class,
         HieuLe\Active\ActiveServiceProvider::class,
         Spatie\UrlSigner\Laravel\UrlSignerServiceProvider::class,
-        Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
         Torann\GeoIP\GeoIPServiceProvider::class,
         SocialiteProviders\Manager\ServiceProvider::class,
-        Arrilot\Widgets\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -258,7 +254,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        'Purifier' => Mews\Purifier\Facades\Purifier::class,
         'Flash' => Laracasts\Flash\Flash::class,
         'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
         'SEOMeta' => Artesaos\SEOTools\Facades\SEOMeta::class,
@@ -268,7 +263,6 @@ return [
         'Localization' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
         'Google2FA' => PragmaRX\Google2FA\Vendor\Laravel\Facade::class,
         'Entrust' => Zizaco\Entrust\EntrustFacade::class,
-        'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
         'Badger' => AltThree\Badger\Facades\Badger::class,
         'Feed' => Roumen\Feed\Feed::class,
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
@@ -276,8 +270,6 @@ return [
         'Active' => HieuLe\Active\Facades\Active::class,
         'UrlSigner' => Spatie\UrlSigner\Laravel\UrlSignerFacade::class,
         'GeoIP' => Torann\GeoIP\Facades\GeoIP::class,
-        'Widget' => Arrilot\Widgets\Facade::class,
-        'AsyncWidget' => Arrilot\Widgets\AsyncFacade::class,
 
     ],
 

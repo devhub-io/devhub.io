@@ -16,6 +16,7 @@ use App\Entities\Developer;
 use App\Http\Controllers\Controller;
 use App\Repositories\CategoryRepository;
 use App\Repositories\ReposRepository;
+use GuzzleHttp\Client;
 use Spatie\Analytics\Period;
 
 class HomeController extends Controller
@@ -44,9 +45,11 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // Databases
         $repos_count = $this->reposRepository->count();
         $developers_count = Developer::count();
 
+        // Google Analytics
         $topBrowsers = Analytics::fetchTopBrowsers(Period::days(31));
         $topBrowsers = $topBrowsers->take(10);
 
@@ -56,6 +59,23 @@ class HomeController extends Controller
         $topReferrers = Analytics::fetchTopReferrers(Period::days(31));
         $topReferrers = $topReferrers->take(10);
 
-        return view('admin.dashboard', compact('repos_count', 'topBrowsers', 'topReferrers', 'mostVisitedPages', 'developers_count'));
+        // CloudFlare
+        $client = new Client(['base_uri' => 'https://api.cloudflare.com/client/v4/']);
+        $zone_id = env('CLOUDFLARE_ZONE_ID');
+        $response = $client->request('GET', "zones/$zone_id/analytics/dashboard", [
+            'headers' => [
+                'X-Auth-Email' => env('CLOUDFLARE_AUTH_EMAIL'),
+                'X-Auth-Key' => env('CLOUDFLARE_KEY'),
+                'Content-Type' => 'application/json'
+            ],
+            'query' => [
+                'since' => '-43200'
+            ]
+        ]);
+        $cf = json_decode($response->getBody()->getContents(), true);
+        $cf = $cf ? $cf['result'] : [];
+
+
+        return view('admin.dashboard', compact('repos_count', 'topBrowsers', 'topReferrers', 'mostVisitedPages', 'developers_count', 'cf'));
     }
 }

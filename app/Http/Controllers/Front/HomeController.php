@@ -32,11 +32,6 @@ use Carbon\Carbon;
 use Config;
 use DB;
 use Flash;
-use JavaScript;
-use League\Glide\Responses\LaravelResponseFactory;
-use League\Glide\ServerFactory;
-use League\Glide\Signatures\SignatureException;
-use League\Glide\Signatures\SignatureFactory;
 use Localization;
 use Roumen\Feed\Feed;
 use SEO;
@@ -242,11 +237,12 @@ class HomeController extends Controller
 
         $color = ["#3498DB", "#26B99A", "#54ced4", "#9B59B6", "#E74C3C", "#454754", "#2f6672", "#EE799F", "#FF83FA",
             "#9B30FF", "#4876FF", "#00E5EE", "#00EE76", "#FFC125", "#FF6347", "#BDC3C7"];
-        JavaScript::put([
+        $javascript_bind = [
             'languages_labels' => array_keys($languages),
             'languages_values' => array_values($languages),
             'languages_color' => array_slice($color, 0, count($languages)),
-        ]);
+        ];
+        $javascript_bind = json_encode($javascript_bind, JSON_HEX_TAG);
 
         // Related
         $related_repos = $this->reposRepository->relatedRepos($repos->id, $repos->title);
@@ -273,7 +269,7 @@ class HomeController extends Controller
         $packages = Package::query()->where('repos_id', $repos->id)->get();
 
         return view('front.repos', compact('repos', 'markdown', 'languages', 'related_repos', 'analytics_badges',
-            'gitter_badge', 'developer_exists', 'news_exists', 'packages'));
+            'gitter_badge', 'developer_exists', 'news_exists', 'packages', 'javascript_bind'));
     }
 
     /**
@@ -316,29 +312,6 @@ class HomeController extends Controller
         SEO::setTitle($keyword . ' - Search');
 
         return view('front.search', compact('repos', 'keyword'));
-    }
-
-    /**
-     * @param $slug
-     * @return \Illuminate\Http\Response|mixed
-     */
-    public function image($slug)
-    {
-        try {
-            SignatureFactory::create(env('GLIDE_KEY'))->validateRequest('/image/' . $slug, request()->all());
-        } catch (SignatureException $e) {
-            return \Response::make('Signature is not valid.', 403);
-        }
-
-        $server = ServerFactory::create([
-            'source' => base_path() . '/public',
-            'cache' => base_path() . '/storage/framework/cache',
-            'response' => (new LaravelResponseFactory())
-        ]);
-        $image = \Cache::get("goods:image:$slug");
-
-        return $server->getImageResponse($image->url, request()->all());
-
     }
 
     /**

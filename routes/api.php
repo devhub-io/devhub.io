@@ -1,6 +1,13 @@
 <?php
 
-use Illuminate\Http\Request;
+/*
+ * This file is part of devhub.io.
+ *
+ * (c) DevelopHub <master@devhub.io>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +19,3 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-// Route::get('/user', function (Request $request) {
-//     return $request->user();
-// })->middleware('auth:api');

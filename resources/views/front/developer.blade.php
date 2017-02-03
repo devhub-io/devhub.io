@@ -10,7 +10,7 @@
 
 @section('contents')
     <div class="container">
-        {!! Breadcrumbs::render('developer', $developer) !!}
+        @include('widgets.breadcrumbs.developer', ['developer' => $developer])
 
         <div class="row" style="margin: 50px 0 50px 0">
             <div class="col-md-3 col-sm-4">

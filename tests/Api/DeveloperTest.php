@@ -9,8 +9,7 @@
  * file that was distributed with this source code.
  */
 
-return [
+class DeveloperTest extends TestCase
+{
 
-	'view' => 'breadcrumbs::bootstrap3',
-
-];
+}

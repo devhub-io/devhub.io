@@ -46,7 +46,7 @@
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->repos->title }}</td>
                                     <td>{{ $item->repos->slug }}</td>
-                                    <td><img src="{{ image_url($item->repos->image, ['w' => 100]) }}" alt=""></td>
+                                    <td><img src="{{ $item->repos->cover . '&s=100' }}" alt=""></td>
                                     <td>{{ $item->sort }}</td>
                                     <td>{{ $item->updated_at }}</td>
                                     <td>

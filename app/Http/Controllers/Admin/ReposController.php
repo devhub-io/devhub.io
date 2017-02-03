@@ -11,7 +11,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Entities\Image;
 use App\Entities\Repos;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ReposUpdateRequest;
@@ -114,11 +113,10 @@ class ReposController extends Controller
     {
         $repository = $this->repository->find($id);
         $categories = $this->categoryRepository->all();
-        $images = Image::latest('id')->paginate(10);
 
         SEOMeta::setTitle($repository->title);
 
-        return view('admin.repos.edit', compact('repository', 'categories', 'images'));
+        return view('admin.repos.edit', compact('repository', 'categories'));
     }
 
 
