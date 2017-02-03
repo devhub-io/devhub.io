@@ -32,7 +32,6 @@ use Carbon\Carbon;
 use Config;
 use DB;
 use Flash;
-use JavaScript;
 use Localization;
 use Roumen\Feed\Feed;
 use SEO;
