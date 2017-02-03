@@ -207,6 +207,7 @@
             legend: false,
             responsive: false
         };
+        window.develophub = JSON.parse('{!! $javascript_bind !!}');
 
         new Chart(document.getElementById("languages"), {
             type: 'doughnut',

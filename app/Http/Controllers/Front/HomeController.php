@@ -238,11 +238,12 @@ class HomeController extends Controller
 
         $color = ["#3498DB", "#26B99A", "#54ced4", "#9B59B6", "#E74C3C", "#454754", "#2f6672", "#EE799F", "#FF83FA",
             "#9B30FF", "#4876FF", "#00E5EE", "#00EE76", "#FFC125", "#FF6347", "#BDC3C7"];
-        JavaScript::put([
+        $javascript_bind = [
             'languages_labels' => array_keys($languages),
             'languages_values' => array_values($languages),
             'languages_color' => array_slice($color, 0, count($languages)),
-        ]);
+        ];
+        $javascript_bind = json_encode($javascript_bind, JSON_HEX_TAG);
 
         // Related
         $related_repos = $this->reposRepository->relatedRepos($repos->id, $repos->title);
@@ -269,7 +270,7 @@ class HomeController extends Controller
         $packages = Package::query()->where('repos_id', $repos->id)->get();
 
         return view('front.repos', compact('repos', 'markdown', 'languages', 'related_repos', 'analytics_badges',
-            'gitter_badge', 'developer_exists', 'news_exists', 'packages'));
+            'gitter_badge', 'developer_exists', 'news_exists', 'packages', 'javascript_bind'));
     }
 
     /**

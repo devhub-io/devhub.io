@@ -195,7 +195,6 @@ return [
         NotificationChannels\Pushover\PushoverServiceProvider::class,
         HieuLe\Active\ActiveServiceProvider::class,
         Spatie\UrlSigner\Laravel\UrlSignerServiceProvider::class,
-        Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
         Torann\GeoIP\GeoIPServiceProvider::class,
         SocialiteProviders\Manager\ServiceProvider::class,
         Dingo\Api\Provider\LaravelServiceProvider::class,
