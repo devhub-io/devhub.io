@@ -51,7 +51,7 @@
                 </p>
                 @if($developer->type == 'User')
                 <p>
-                    {{ $developer->name ? $developer->name : $developer->login }} follows {{ $developer->followers }} other users and is followed by {{ $developer->following }} users.
+                    {{ $developer->name ? $developer->name : $developer->login }} follows {{ $developer->following }} other users and is followed by {{ $developer->followers }} users.
                 </p>
                 @endif
                 <p>
