@@ -19,7 +19,7 @@ class CreatePackagesTable extends Migration
             $table->string('name', 100)->index();
             $table->string('repository');
             $table->text('json');
-            $table->timestamp('fetched_at')->default('0000-00-00 00:00:00');
+            $table->timestamp('fetched_at')->default('1970-01-01 08:00:00');
             $table->timestamps();
         });
     }

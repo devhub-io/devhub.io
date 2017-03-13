@@ -13,7 +13,7 @@ class UpdateUserLastActivatedAt extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->timestamp('last_activated_at')->default('0000-00-00 00:00:00');
+            $table->timestamp('last_activated_at')->default('1970-01-01 08:00:00');
         });
     }
 

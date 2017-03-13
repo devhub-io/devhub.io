@@ -14,7 +14,7 @@ class UpdateReposAnalyticsAt extends Migration
     public function up()
     {
         Schema::table('repos', function (Blueprint $table) {
-            $table->timestamp('analytics_at')->default('0000-00-00 00:00:00');
+            $table->timestamp('analytics_at')->default('1970-01-01 08:00:00');
         });
     }
 
