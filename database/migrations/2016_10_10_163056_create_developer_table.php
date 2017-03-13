@@ -30,8 +30,8 @@ class CreateDeveloperTable extends Migration
             $table->smallInteger('public_gists');
             $table->integer('followers');
             $table->integer('following');
-            $table->timestamp('site_created_at')->nullable();
-            $table->timestamp('site_updated_at')->nullable();
+            $table->timestamp('site_created_at')->default('0000-00-00 00:00:00');
+            $table->timestamp('site_updated_at')->default('0000-00-00 00:00:00');
             $table->timestamps();
         });
     }

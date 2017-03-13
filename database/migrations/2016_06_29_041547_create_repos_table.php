@@ -30,9 +30,9 @@ class CreateReposTable extends Migration
             $table->integer('subscribers_count');
             $table->integer('issue_response');
             $table->tinyInteger('status')->index()->default(0);
-            $table->timestamp('repos_created_at');
-            $table->timestamp('repos_updated_at');
-            $table->timestamp('fetched_at');
+            $table->timestamp('repos_created_at')->default('0000-00-00 00:00:00');
+            $table->timestamp('repos_updated_at')->default('0000-00-00 00:00:00');
+            $table->timestamp('fetched_at')->default('0000-00-00 00:00:00');
             $table->timestamps();
         });
     }
