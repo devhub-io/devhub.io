@@ -609,8 +609,10 @@ class HomeController extends Controller
 
     public function topics()
     {
-        $topics = DB::table('repos_topics')->groupBy('topic')->select(DB::raw('topic, count(*) as number'))
-            ->orderBy('number', 'desc')->limit(400)->get();
+        $topics = Cache::remember('front:topics', 24 * 60, function () {
+            return DB::table('repos_topics')->groupBy('topic')->select(DB::raw('topic, count(*) as number'))
+                ->orderBy('number', 'desc')->limit(400)->get();
+        });
 
         return view('front.topics', compact('topics'));
     }
@@ -624,7 +626,7 @@ class HomeController extends Controller
 
         $repos = $this->reposRepository->topicInPaginate($topic, 12);
 
-        $title = 'Topic: '.$topic;
+        $title = 'Topic: ' . $topic;
         SEO::setTitle($title);
 
         return view('front.list', compact('repos', 'title'));
