@@ -66,6 +66,7 @@ class Kernel extends ConsoleKernel
         Commands\Github\GithubDocument::class,
         Commands\Package\PackageImport::class,
         Commands\Package\PackageProcess::class,
+        Commands\Spider\SpiderGithubFetchTopic::class,
     ];
 
     /**
