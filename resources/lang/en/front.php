@@ -26,7 +26,7 @@ return [
     'latest' => 'Top new',
     'trend' => 'Trend',
     'view_all' => 'View All',
-    'topic' => 'Topic',
+    'topic' => 'Topics',
     'see_details' => 'See details',
 
     'child_category' => 'Category',

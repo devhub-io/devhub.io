@@ -268,8 +268,11 @@ class HomeController extends Controller
         // Package
         $packages = Package::query()->where('repos_id', $repos->id)->get();
 
+        // Topics
+        $topics = DB::table('repos_topics')->where('repos_id', $repos->id)->get();
+
         return view('front.repos', compact('repos', 'markdown', 'languages', 'related_repos', 'analytics_badges',
-            'gitter_badge', 'developer_exists', 'news_exists', 'packages', 'javascript_bind'));
+            'gitter_badge', 'developer_exists', 'news_exists', 'packages', 'javascript_bind', 'topics'));
     }
 
     /**
@@ -602,5 +605,28 @@ class HomeController extends Controller
         }
 
         return view('front.news', compact('news', 'next', 'prev', 'current_date'));
+    }
+
+    public function topics()
+    {
+        $topics = DB::table('repos_topics')->groupBy('topic')->select(DB::raw('topic, count(*) as number'))
+            ->orderBy('number', 'desc')->limit(400)->get();
+
+        return view('front.topics', compact('topics'));
+    }
+
+    public function topic($topic)
+    {
+
+        if (request()->get('page') > 1000) {
+            return app()->abort(404);
+        }
+
+        $repos = $this->reposRepository->topicInPaginate($topic, 12);
+
+        $title = $topic;
+        SEO::setTitle($title);
+
+        return view('front.list', compact('repos', 'title'));
     }
 }

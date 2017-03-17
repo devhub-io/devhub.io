@@ -124,4 +124,11 @@ interface ReposRepository extends RepositoryInterface
      * @return mixed
      */
     public function relatedRepos($id, $title, $limit = 5);
+
+    /**
+     * @param $topic
+     * @param int $limit
+     * @return
+     */
+    public function topicInPaginate($topic, $limit = 10);
 }

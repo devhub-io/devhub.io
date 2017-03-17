@@ -77,6 +77,13 @@
                             <a href="{{ link_url("https://spdx.org/licenses/{$repos->license->spdx_id}.html") }}" target="_blank" rel="nofollow" title="{{ $repos->license->name }}" style="color: #333; text-decoration: none;"><i class="fa fa-copyright"></i> <span>{{ $repos->license->spdx_id }}</span></a>
                         @endif
                     </div>
+                    @if($topics->count() > 0)
+                        <div style="margin-bottom: 10px;">
+                            @foreach($topics as $item)
+                                <a class="label label-primary" style="display: inline-block;" href="{{ l_url('topic', [$item->topic]) }}">{{$item->topic}}</a>
+                            @endforeach
+                        </div>
+                    @endif
                     <div>
                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#reviewModal">
                             I use {{ $repos->owner }}/{{ $repos->repo }}

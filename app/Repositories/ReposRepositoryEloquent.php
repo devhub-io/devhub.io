@@ -13,6 +13,7 @@ namespace App\Repositories;
 
 use Carbon\Carbon;
 use Config;
+use DB;
 use Illuminate\Support\Str;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
@@ -299,5 +300,12 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
             ->where('status', 1)
             ->orderBy('stargazers_count', 'desc')
             ->limit($limit)->get();
+    }
+
+    public function topicInPaginate($topic, $limit = 10)
+    {
+        return DB::table('repos_topics')->where('repos_topics.topic', $topic)->join('repos', 'repos_topics.repos_id', '=', 'repos.id')
+            ->where('repos.status', Constant::ENABLE)
+            ->orderBy('repos.stargazers_count', 'DESC')->paginate($limit);
     }
 }
