@@ -110,6 +110,7 @@
                         @endforeach
                     @endif
                     <li class="{{ active_class(if_uri('developers') || if_route('developer')) }}"><a href="{{ l_url('developers') }}">Developers</a></li>
+                    <li class="{{ active_class(if_uri('topics') || if_route('topics')) }}"><a href="{{ l_url('topics') }}">Topics</a></li>
                     <li class="{{ active_class(if_uri('news') || if_route('news')) }}"><a href="{{ l_url('news') }}">News</a></li>
                 </ul>
             </div>
@@ -163,6 +164,7 @@
                             @endforeach
                         @endif
                         <li><a href="{{ l_url('developers') }}">Developers</a></li>
+                        <li><a href="{{ l_url('topics') }}">Topics</a></li>
                         <li><a href="{{ l_url('news') }}">News</a></li>
                     </ul>
                 </div>

@@ -19,7 +19,7 @@ class CreateLinkClick extends Migration
             $table->string('referer')->index();
             $table->string('ip', 50);
             $table->string('user_agent');
-            $table->timestamp('clicked_at')->index();
+            $table->timestamp('clicked_at')->default('1970-01-01 08:00:00')->index();
         });
     }
 

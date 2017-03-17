@@ -21,9 +21,9 @@ class CreateReposQuestions extends Migration
             $table->integer('answer_count');
             $table->integer('score');
             $table->integer('question_id')->index();
-            $table->timestamp('creation_date')->nullable();
-            $table->timestamp('last_edit_date')->nullable();
-            $table->timestamp('last_activity_date')->nullable();
+            $table->timestamp('creation_date')->default('1970-01-01 08:00:00');
+            $table->timestamp('last_edit_date')->default('1970-01-01 08:00:00');
+            $table->timestamp('last_activity_date')->default('1970-01-01 08:00:00');
         });
     }
 

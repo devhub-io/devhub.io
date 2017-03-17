@@ -72,6 +72,10 @@ Route::group(['namespace' => 'Front', 'prefix' => Localization::setLocale(), 'mi
     # News
     Route::get('news', 'HomeController@news');
     Route::get('news/daily/{date}', 'HomeController@news');
+
+    # Topics
+    Route::get('topics', 'HomeController@topics');
+    Route::get('topic/{topic}', 'HomeController@topic');
 });
 
 # Admin
