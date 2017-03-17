@@ -8,7 +8,7 @@
                     <h2 style="margin-top: 50px;margin-bottom: 50px;">Topics</h2>
                     <div class="row">
                         @foreach($topics as $item)
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <div class="thumbnail" style="height: 50px;">
                                     <div class="caption">
                                         <a href="{{ l_url('topic', [$item->topic]) }}"><h4>{{ $item->topic }} ({{ $item->number }})</h4></a>

@@ -611,7 +611,7 @@ class HomeController extends Controller
     {
         $topics = Cache::remember('front:topics', 24 * 60, function () {
             return DB::table('repos_topics')->groupBy('topic')->select(DB::raw('topic, count(*) as number'))
-                ->orderBy('number', 'desc')->limit(600)->get();
+                ->orderBy('number', 'desc')->limit(400)->get();
         });
 
         return view('front.topics', compact('topics'));
