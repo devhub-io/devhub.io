@@ -45,11 +45,9 @@ class SpiderGithubFetchTopic extends Command
         $handle = fopen(storage_path('topics-' . date('Y-m-d') . '.txt'), 'a+');
 
         // Keywords
-
         $keywords_text = file_get_contents(storage_path('topics-keywords.txt'));
         $keywords = explode("\n", $keywords_text);
         $keywords = array_filter($keywords);
-
 
         foreach ($keywords as $keyword) {
             $url = "https://github.com/search?o=desc&q=topic%3A$keyword&s=stars&type=Repositories&p=";
@@ -130,7 +128,7 @@ class SpiderGithubFetchTopic extends Command
             }
 
             $this->info("Keyword: $keyword Done! ======");
-       }
+        }
 
         $this->info('All Done');
     }

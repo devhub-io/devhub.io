@@ -47,10 +47,12 @@ class TopicsFetchKeywords extends Command
         $text = file_get_contents(storage_path($path));
         $json_txt_arr = explode("\n", $text);
         $json_txt_arr = array_filter($json_txt_arr);
-        $topics =[];
+        $topics = [];
         foreach ($json_txt_arr as $item) {
             $repos = json_decode($item, true);
-            $topics = array_merge($topics, $repos['topics']);
+            if (isset($repos['topics']) && is_array($repos['topics'])) {
+                $topics = array_merge($topics, $repos['topics']);
+            }
         }
         $topics = array_filter(array_unique($topics));
 
