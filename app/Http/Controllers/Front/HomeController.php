@@ -624,7 +624,7 @@ class HomeController extends Controller
 
         $repos = $this->reposRepository->topicInPaginate($topic, 12);
 
-        $title = $topic;
+        $title = 'Topic: '.$topic;
         SEO::setTitle($title);
 
         return view('front.list', compact('repos', 'title'));
