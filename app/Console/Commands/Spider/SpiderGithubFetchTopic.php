@@ -123,7 +123,7 @@ class SpiderGithubFetchTopic extends Command
                     }
                 }
 
-                $this->info("Keyword: $keyword - Page: $page");
+                $this->info("Keyword: $keyword - Page: $page/$total_page");
                 sleep(10);
             }
 
