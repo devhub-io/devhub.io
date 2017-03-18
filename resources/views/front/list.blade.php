@@ -18,8 +18,13 @@
 
 @section('contents')
     <div class="single-product-area">
-        @if(isset($title)) <h1 style="text-align: center">{{ $title }}</h1> @endif
         <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    @if(isset($title)) <h1 style="text-align: center">{{ $title }}</h1> @endif
+                    @if(isset($explain)) <p style="margin-bottom: 25px;">{{ $explain }}</p> @endif
+                </div>
+            </div>
             <div class="row">
                 @if(isset($child_category))
                 <div class="col-md-3">

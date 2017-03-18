@@ -176,6 +176,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admi
 
     # Click
     Route::get('click', 'ClickController@index');
+
+    # Sites
+    Route::get('topics', 'TopicController@index');
+    Route::post('topics', 'TopicController@store');
+    Route::get('topics/{topic}/delete', 'TopicController@delete');
+    Route::get('topic', 'TopicController@show');
 });
 
 # Static

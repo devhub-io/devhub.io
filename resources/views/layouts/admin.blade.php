@@ -66,6 +66,7 @@
                                     <li><a href="{{ url('admin/collections') }}">集合</a></li>
                                     <li><a href="{{ url('admin/vote') }}">投票</a></li>
                                     <li><a href="{{ url('admin/click') }}">点击</a></li>
+                                    <li><a href="{{ url('admin/topics') }}">主题</a></li>
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-archive"></i> Article <span class="fa fa-chevron-down"></span></a>
@@ -180,7 +181,7 @@
         <!-- /top navigation -->
 
         <!-- page content -->
-        <div class="right_col" role="main">
+        <div class="right_col" role="main" id="app">
             <div style="margin: 65px 10px 10px 10px;">
                 @include('flash::message')
             </div>
@@ -191,7 +192,7 @@
         <!-- footer content -->
         <footer>
             <div class="pull-right">
-                <p>&copy; 2016 DevHub.io. All Rights Reserved.</p>
+                <p>&copy; 2016-2017 DevHub.io. All Rights Reserved.</p>
             </div>
             <div class="clearfix"></div>
         </footer>

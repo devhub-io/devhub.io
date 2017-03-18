@@ -614,21 +614,25 @@ class HomeController extends Controller
                 ->orderBy('number', 'desc')->limit(400)->get();
         });
 
+        SEO::setTitle('Topics');
+
         return view('front.topics', compact('topics'));
     }
 
     public function topic($topic)
     {
-
         if (request()->get('page') > 1000) {
             return app()->abort(404);
         }
 
         $repos = $this->reposRepository->topicInPaginate($topic, 12);
+        $topic_explain = DB::table('topic_explain')->where('topic', $topic)->first();
+        $explain = $topic_explain ? $topic_explain->explain : null;
 
         $title = 'Topic: ' . $topic;
         SEO::setTitle($title);
+        SEO::setDescription($explain);
 
-        return view('front.list', compact('repos', 'title'));
+        return view('front.list', compact('repos', 'title', 'explain'));
     }
 }

@@ -78,6 +78,6 @@ class SiteController extends Controller
     {
         $site = Site::find(request()->get('id'));
 
-        return \Response::json($site);
+        return response()->json($site);
     }
 }
