@@ -40,7 +40,6 @@ use Validator;
 
 class HomeController extends Controller
 {
-
     /**
      * @var CategoryRepository
      */
@@ -611,7 +610,7 @@ class HomeController extends Controller
     {
         $topics = Cache::remember('front:topics', 24 * 60, function () {
             return DB::table('repos_topics')->groupBy('topic')->select(DB::raw('topic, count(*) as number'))
-                ->orderBy('number', 'desc')->limit(400)->get();
+                ->orderBy('number', 'desc')->limit(1000)->get();
         });
 
         SEO::setTitle('Topics');
