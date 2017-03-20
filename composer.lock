@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "571e766024c51ef7b7af34d469f95de4",
+    "content-hash": "4c7df8c81045a58dbbd9a3b2c3056969",
     "packages": [
         {
             "name": "alt-three/badger",
@@ -1851,6 +1851,47 @@
             ],
             "abandoned": "league/uri",
             "time": "2015-07-15T08:24:12+00:00"
+        },
+        {
+            "name": "lubusin/laravel-decomposer",
+            "version": "v1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lubusIN/laravel-decomposer.git",
+                "reference": "f5e1409c8ce5816ef5172f2ecc29f61e96553835"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lubusIN/laravel-decomposer/zipball/f5e1409c8ce5816ef5172f2ecc29f61e96553835",
+                "reference": "f5e1409c8ce5816ef5172f2ecc29f61e96553835",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^5.0",
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "illuminate/http": "^5.0",
+                "illuminate/routing": "^5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Lubusin\\Decomposer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Harish Toshniwal",
+                    "email": "harish@lubus.in"
+                }
+            ],
+            "description": "A Laravel package to decompose and list your installed packages and their dependencies",
+            "time": "2017-03-19T09:13:04+00:00"
         },
         {
             "name": "mailgun/mailgun-php",

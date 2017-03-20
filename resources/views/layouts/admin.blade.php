@@ -88,6 +88,7 @@
                                     <li><a href="{{ url('log-viewer') }}">Log</a></li>
                                     <li><a href="{{ url('admin/api/status') }}">API</a></li>
                                     <li><a href="{{ url('admin/queue/status') }}">Queue</a></li>
+                                    <li><a href="{{ url('admin/decompose') }}" target="_blank">Decompose</a></li>
                                 </ul>
                             </li>
                         </ul>

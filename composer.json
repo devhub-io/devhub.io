@@ -39,7 +39,8 @@
         "hieu-le/active": "^3.3",
         "spatie/laravel-url-signer": "^1.1",
         "torann/geoip": "^1.0",
-        "socialiteproviders/stackexchange": "^2.0"
+        "socialiteproviders/stackexchange": "^2.0",
+        "lubusin/laravel-decomposer": "^1.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
