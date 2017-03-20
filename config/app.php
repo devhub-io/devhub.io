@@ -197,6 +197,7 @@ return [
         Spatie\UrlSigner\Laravel\UrlSignerServiceProvider::class,
         Torann\GeoIP\GeoIPServiceProvider::class,
         SocialiteProviders\Manager\ServiceProvider::class,
+        Lubusin\Decomposer\DecomposerServiceProvider::class,
 
         /*
          * Application Service Providers...
