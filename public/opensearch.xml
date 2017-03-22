@@ -3,7 +3,7 @@
     <InputEncoding>utf-8</InputEncoding>
     <ShortName>DevHub</ShortName>
     <Description>DevHub Search</Description>
-    <Url type="text/html" template="https://devhub.io/search/?keyword={searchTerms}"/>
-    <Image height="64" width="64" type="image/png">https://devhub.io/websearch.png</Image>
-    <Image height="16" width="16" type="image/vnd.microsoft.icon">https://devhub.io/websearch.ico</Image>
+    <Url type="text/html" template="https://devhub.io/search?keyword={searchTerms}"/>
+    <Image height="72" width="72" type="image/png">https://devhub.io/apple-touch-icon-72x72.png</Image>
+    <Image height="57" width="57" type="image/vnd.microsoft.icon">https://devhub.io/apple-touch-icon-57x57.png</Image>
 </OpenSearchDescription>
