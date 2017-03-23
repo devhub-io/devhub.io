@@ -74,7 +74,7 @@ class SpiderGithubFetchTopic extends Command
 
             foreach (range(1, $total_page) as $page) {
                 $html = @file_get_contents($url . $page);
-                $li = explode('<li class="col-12 d-block width-full py-4 border-bottom public source">', $html);
+                $li = explode('<div class="repo-list-item d-flex flex-justify-start py-4 public source">', $html);
                 foreach ($li as $item) {
                     $repos_re = '/<a href="(.*)" class="v-align-middle">(.*)<\/a>/';
                     preg_match($repos_re, $item, $repos_matches);
@@ -90,14 +90,14 @@ class SpiderGithubFetchTopic extends Command
                             $topics[] = isset($tm_item[1]) ? trim($tm_item[1]) : '';
                         }
 
-                        $desc_re = '/<p class="col-9 text-gray pr-4 py-1 mb-2">([\w\W\s\n]*?)<\/p>/';
+                        $desc_re = '/<p class="col-9 text-gray pb-1">([\w\W\s\n]*?)<\/p>/';
                         preg_match($desc_re, $item, $desc_matches);
                         $desc = isset($desc_matches[1]) ? $desc_matches[1] : '';
                         $desc = trim(strip_tags($desc));
 
-                        $lang_re = '/<span class="mr-3">(.*)<\/span>/';
+                        $lang_re = '/<div class="d-table-cell col-2 text-gray pt-2">([\w\W\s\n]*?)<\/div>/';
                         preg_match($lang_re, $item, $lang_matches);
-                        $lang = isset($lang_matches[1]) ? trim($lang_matches[1]) : '';
+                        $lang = isset($lang_matches[1]) ? trim(strip_tags($lang_matches[1])) : '';
 
                         $stargazers_re = '/<a class="muted-link tooltipped tooltipped-s mr-3" href=".*" aria-label="Stargazers">[\w\W\s\n]*?<\/svg>([\w\W\s\n]*?)<\/a>/';
                         preg_match($stargazers_re, $item, $stargazers_matches);
