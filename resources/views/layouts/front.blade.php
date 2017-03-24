@@ -325,12 +325,6 @@
         }
     }
 </script>
-<script>
-    (function(h,e,a,t,m,p) {
-        m=e.createElement(a);m.async=!0;m.src=t;
-        p=e.getElementsByTagName(a)[0];p.parentNode.insertBefore(m,p);
-    })(window,document,'script','https://u.heatmap.it/log.js');
-</script>
 <script type="text/javascript">
     window.doorbellOptions = {
         appKey: 'akmfqdy1fBgL1corAEydarDdZdwk4P55B94bk8vMbIvnXUTD7mxxYsXKrHeY96fG'
