@@ -22,7 +22,10 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>CloudFlare <small>Last 31 days</small></h2>
+                    <h2>
+                        <a href="https://www.cloudflare.com/a/analytics/devhub.io/unique_visitors" target="_blank"><i class="fa fa-link"></i></a>
+                        CloudFlare <small>Last 31 days</small>
+                    </h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
@@ -47,7 +50,7 @@
 
                             <table class="countries_list">
                                 <tbody>
-                                @foreach($cf['totals']['requests']['http_status'] as $code => $item)
+                                @foreach($http_status as $code => $item)
                                     <tr>
                                         <td>{{ $code }}</td>
                                         <td class="fs15 fw700 text-right">{{ number_format($item) }}</td>
@@ -61,7 +64,7 @@
 
                             <table class="countries_list">
                                 <tbody>
-                                @foreach($cf['totals']['pageviews']['search_engine'] as $engine => $item)
+                                @foreach($pageviews as $engine => $item)
                                     <tr>
                                         <td>{{ $engine }}</td>
                                         <td class="fs15 fw700 text-right">{{ number_format($item) }}</td>
@@ -79,7 +82,10 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Google Analytics <small>Last 31 days</small></h2>
+                    <h2>
+                        <a href="https://analytics.google.com/analytics/web/#report/defaultid/a35989028w128044318p131763022/%3F_u.dateOption%3Dlast30days/" target="_blank"><i class="fa fa-link"></i></a>
+                        Google Analytics <small>Last 31 days</small>
+                    </h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
