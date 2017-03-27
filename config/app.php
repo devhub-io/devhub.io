@@ -198,6 +198,7 @@ return [
         Torann\GeoIP\GeoIPServiceProvider::class,
         SocialiteProviders\Manager\ServiceProvider::class,
         Lubusin\Decomposer\DecomposerServiceProvider::class,
+        Dingo\Api\Provider\LaravelServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -271,6 +272,8 @@ return [
         'Active' => HieuLe\Active\Facades\Active::class,
         'UrlSigner' => Spatie\UrlSigner\Laravel\UrlSignerFacade::class,
         'GeoIP' => Torann\GeoIP\Facades\GeoIP::class,
+        'API' => Dingo\Api\Facade\API::class,
+        'APIRoute' => Dingo\Api\Facade\Route::class,
 
     ],
 

@@ -21,7 +21,7 @@
 */
 
 # Front
-Route::group(['namespace' => 'Front', 'prefix' => Localization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect']], function () {
+Route::group(['namespace' => 'Front', 'prefix' => Localization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect'], 'domain' => env('WWW_DOMAIN')], function () {
 
     App::setLocale(Localization::getCurrentLocaleRegional());
 
@@ -79,7 +79,7 @@ Route::group(['namespace' => 'Front', 'prefix' => Localization::setLocale(), 'mi
 });
 
 # Admin
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin', 'domain' => env('WWW_DOMAIN')], function () {
     Route::get('/', 'HomeController@index');
 
     # Repos

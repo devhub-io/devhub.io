@@ -40,7 +40,9 @@
         "spatie/laravel-url-signer": "^1.1",
         "torann/geoip": "^1.0",
         "socialiteproviders/stackexchange": "^2.0",
-        "lubusin/laravel-decomposer": "^1.1"
+        "lubusin/laravel-decomposer": "^1.1",
+        "overtrue/wechat": "^3.2",
+        "dingo/api": "1.0.x@dev"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
