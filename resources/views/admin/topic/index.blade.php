@@ -39,6 +39,7 @@
                                     <td>{{ $item->explain }}</td>
                                     <td>{{ $item->updated_at }}</td>
                                     <td>
+                                        <a class="btn btn-primary btn-xs" href="{{ l_url('topic', [$item->topic]) }}" target="_blank">浏览</a>
                                         <a class="btn btn-info btn-xs" href="javascript:void(0);" v-on:click="editTopic('{{ $item->topic }}')">修改</a>
                                         <a class="btn btn-danger btn-xs" href="javascript:confirmDelete('{{ url("admin/topics/{$item->topic}/delete") }}')">删除</a>
                                     </td>

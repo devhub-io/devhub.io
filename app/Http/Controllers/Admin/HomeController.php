@@ -75,7 +75,12 @@ class HomeController extends Controller
         $cf = json_decode($response->getBody()->getContents(), true);
         $cf = $cf ? $cf['result'] : [];
 
+        $http_status = $cf['totals']['requests']['http_status'];
+        arsort($http_status);
 
-        return view('admin.dashboard', compact('repos_count', 'topBrowsers', 'topReferrers', 'mostVisitedPages', 'developers_count', 'cf'));
+        $pageviews = $cf['totals']['pageviews']['search_engine'];
+        arsort($pageviews);
+
+        return view('admin.dashboard', compact('repos_count', 'topBrowsers', 'topReferrers', 'mostVisitedPages', 'developers_count', 'http_status', 'pageviews', 'cf'));
     }
 }
