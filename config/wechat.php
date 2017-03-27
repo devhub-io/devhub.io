@@ -16,7 +16,7 @@ return [
     'secret' => env('WECHAT_SECRET'),
     'token' => env('WECHAT_TOKEN'),
 
-    'aes_key' => env('WECHAT_AES_KEY'),
+    //'aes_key' => env('WECHAT_AES_KEY'),
 
     'log' => [
         'level' => 'debug',
