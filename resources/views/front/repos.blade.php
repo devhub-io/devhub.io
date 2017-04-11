@@ -15,21 +15,48 @@
         }
 
         #carbonads {
-            border: 1px dashed #e6e6e6;
             display: block;
-            font-size: 13px;
-            line-height: 1.5;
-            margin-bottom: 1em;
             overflow: hidden;
+            margin: 0 auto;
             padding: 1em;
+            max-width: 500px;
+            border: 1px dashed #e6e6e6;
+            font-size: 16px;
+            line-height: 1.5;;
         }
 
-        #carbonads img {
+        #carbonads a:hover {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        #carbonads span {
+            position: relative;
+            display: block;
+            overflow: hidden;
+        }
+
+        .carbon-img {
+            float: left;
             margin-right: 1em;
         }
 
-        #carbonads .carbon-poweredby {
-            margin-left: 1em;
+        .carbon-img img { display: block; }
+
+        .carbon-text {
+            display: block;
+            float: left;
+            max-width: calc(100% - 130px - 1em);
+            text-align: left;
+        }
+
+        .carbon-poweredby {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            display: block;
+            text-transform: uppercase;
+            font-size: 10px;
         }
     </style>
 @endsection

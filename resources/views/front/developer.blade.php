@@ -7,21 +7,48 @@
         }
 
         #carbonads {
-            border: 1px dashed #e6e6e6;
             display: block;
-            font-size: 13px;
-            line-height: 1.5;
-            margin-bottom: 1em;
             overflow: hidden;
+            margin: 0 auto;
             padding: 1em;
+            max-width: 500px;
+            border: 1px dashed #e6e6e6;
+            font-size: 16px;
+            line-height: 1.5;;
         }
 
-        #carbonads img {
+        #carbonads a:hover {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        #carbonads span {
+            position: relative;
+            display: block;
+            overflow: hidden;
+        }
+
+        .carbon-img {
+            float: left;
             margin-right: 1em;
         }
 
-        #carbonads .carbon-poweredby {
-            margin-left: 1em;
+        .carbon-img img { display: block; }
+
+        .carbon-text {
+            display: block;
+            float: left;
+            max-width: calc(100% - 130px - 1em);
+            text-align: left;
+        }
+
+        .carbon-poweredby {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            display: block;
+            text-transform: uppercase;
+            font-size: 10px;
         }
     </style>
 @endsection
@@ -63,8 +90,8 @@
         </div>
         <div class="row">
             <article class="col-md-12">
-                <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=devhubio" id="_carbonads_js"></script>
-                
+
+
                 <h2>About {{ $developer->name ? $developer->name : $developer->login }}</h2>
                 <p>
                     Summing up all of {{ $developer->name ? $developer->name : $developer->login }}'s repositories they have {{ $owner_repos->count() }} own repositories @if($contribute_count > 0) and {{ $contribute_count }} contribute repositories @endif.
