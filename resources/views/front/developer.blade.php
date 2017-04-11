@@ -90,7 +90,7 @@
         </div>
         <div class="row">
             <article class="col-md-12">
-
+                <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=devhubio" id="_carbonads_js"></script>
 
                 <h2>About {{ $developer->name ? $developer->name : $developer->login }}</h2>
                 <p>
