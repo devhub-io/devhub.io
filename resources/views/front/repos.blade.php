@@ -13,6 +13,16 @@
         .breadcrumb {
             margin-top: 25px;
         }
+
+        #carbonads {
+            border: 1px dashed #e6e6e6;
+            display: block;
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 1em;
+            overflow: hidden;
+            padding: 1em;
+        }
     </style>
 @endsection
 
