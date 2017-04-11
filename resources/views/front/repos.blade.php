@@ -100,6 +100,8 @@
         </div>
         <div class="row">
             <article class="col-md-8 markdown-body">
+                <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=devhubio" id="_carbonads_js"></script>
+
                 @foreach($packages as $package)
                     @include('widgets.packages.' . $package->provider, ['package' => $package])
                 @endforeach
