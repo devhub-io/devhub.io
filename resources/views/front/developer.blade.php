@@ -5,6 +5,24 @@
         .breadcrumb {
             margin-top: 25px;
         }
+
+        #carbonads {
+            border: 1px dashed #e6e6e6;
+            display: block;
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 1em;
+            overflow: hidden;
+            padding: 1em;
+        }
+
+        #carbonads img {
+            margin-right: 1em;
+        }
+
+        #carbonads .carbon-poweredby {
+            margin-left: 1em;
+        }
     </style>
 @endsection
 
@@ -45,6 +63,8 @@
         </div>
         <div class="row">
             <article class="col-md-12">
+                <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=devhubio" id="_carbonads_js"></script>
+                
                 <h2>About {{ $developer->name ? $developer->name : $developer->login }}</h2>
                 <p>
                     Summing up all of {{ $developer->name ? $developer->name : $developer->login }}'s repositories they have {{ $owner_repos->count() }} own repositories @if($contribute_count > 0) and {{ $contribute_count }} contribute repositories @endif.
