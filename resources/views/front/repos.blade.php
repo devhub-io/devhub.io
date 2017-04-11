@@ -23,6 +23,14 @@
             overflow: hidden;
             padding: 1em;
         }
+
+        #carbonads img {
+            margin-right: 1em;
+        }
+
+        #carbonads .carbon-poweredby {
+            margin-left: 1em;
+        }
     </style>
 @endsection
 
