@@ -187,6 +187,11 @@ class SitePushUrl extends Command
         );
         curl_setopt_array($ch, $options);
         $result = curl_exec($ch);
+        $data = json_decode($result, true);
+        if (isset($data['remain']) && $data['remain'] <= 0) {
+            $this->error('remain zero');
+            exit;
+        }
         return $result;
     }
 }
