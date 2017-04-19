@@ -94,7 +94,7 @@ class SitePushUrl extends Command
 
             // add every product to multiple sitemaps with one sitemapindex
             foreach ($repos as $p) {
-                if ($counter == 50000) {
+                if ($counter == 2000) {
                     $this->info($this->pushUrl($urls));
                     $urls = [];
                     // reset the counter
@@ -124,7 +124,7 @@ class SitePushUrl extends Command
 
         // add every product to multiple sitemaps with one sitemapindex
         foreach ($developer as $p) {
-            if ($counter == 50000) {
+            if ($counter == 2000) {
                 $this->pushUrl($urls);
                 $urls = [];
                 // reset the counter
@@ -152,7 +152,7 @@ class SitePushUrl extends Command
 
         // add every product to multiple sitemaps with one sitemapindex
         foreach ($repos as $p) {
-            if ($counter == 50000) {
+            if ($counter == 2000) {
                 $this->pushUrl($urls);
                 $urls = [];
                 // reset the counter
