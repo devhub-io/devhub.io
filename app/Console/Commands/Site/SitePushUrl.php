@@ -77,7 +77,7 @@ class SitePushUrl extends Command
         /*
          * Repos
          */
-
+        $urls = [];
         $total_repos = DB::table('repos')->where('status', 1)->count();
 
         $perPage = 300000;
@@ -114,7 +114,7 @@ class SitePushUrl extends Command
         /*
          * Developer
          */
-
+        $urls = [];
         $developer = DB::table('developer')->select(['id', 'login', 'updated_at'])->where('status', 1)
             ->where('public_repos', '>', 0)->orderBy('created_at', 'desc')->get();
 
@@ -142,7 +142,7 @@ class SitePushUrl extends Command
         /*
          * Questions
          */
-
+        $urls = [];
         $repos = DB::table('repos')->select(['id', 'slug', 'updated_at'])->where('status', 1)
             ->where('have_questions', 1)->get();
 
