@@ -69,6 +69,7 @@ class Kernel extends ConsoleKernel
         Commands\Spider\SpiderGithubFetchTopic::class,
         Commands\Topics\TopicsFetchKeywords::class,
         Commands\Topics\TopicsImport::class,
+        Commands\Site\SitePushUrl::class,
     ];
 
     /**
