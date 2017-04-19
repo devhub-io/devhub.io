@@ -177,7 +177,7 @@
                     <div>
                         @foreach($repos->contributors as $contributor)
                             <a href="{{ l_url('developer', [$contributor->login]) }}" target="_blank" rel="nofollow">
-                                <img src="{{ $contributor->avatar_url . '&s=60' }}" alt="{{ $contributor->login }}" title="{{ $contributor->login }}" class="pull-left" width="60" height="60">
+                                <img src="{{ $contributor->avatar_url . '&s=60' }}" alt="{{ $contributor->login }}" title="{{ $contributor->login }}" class="pull-left" width="60" height="60" style="width:60px;height:60px;" />
                             </a>
                         @endforeach
                     </div>
