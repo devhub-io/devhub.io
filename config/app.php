@@ -199,6 +199,7 @@ return [
         SocialiteProviders\Manager\ServiceProvider::class,
         Lubusin\Decomposer\DecomposerServiceProvider::class,
         Dingo\Api\Provider\LaravelServiceProvider::class,
+        Appstract\Opcache\OpcacheServiceProvider::class,
 
         /*
          * Application Service Providers...

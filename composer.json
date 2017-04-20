@@ -42,7 +42,8 @@
         "socialiteproviders/stackexchange": "^2.0",
         "lubusin/laravel-decomposer": "^1.1",
         "overtrue/wechat": "^3.2",
-        "dingo/api": "1.0.x@dev"
+        "dingo/api": "1.0.x@dev",
+        "appstract/laravel-opcache": "^1.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

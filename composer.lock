@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "97798807e303dfaba0deb72e65f9a124",
+    "content-hash": "103cfab265a0e3a61374af8d143135cb",
     "packages": [
         {
             "name": "alt-three/badger",
@@ -67,6 +67,110 @@
                 "svg"
             ],
             "time": "2017-01-01T12:36:28+00:00"
+        },
+        {
+            "name": "appstract/laravel-opcache",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/appstract/laravel-opcache.git",
+                "reference": "f33edee259fca19c0faf27964ccbb46ee9acd766"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/appstract/laravel-opcache/zipball/f33edee259fca19c0faf27964ccbb46ee9acd766",
+                "reference": "f33edee259fca19c0faf27964ccbb46ee9acd766",
+                "shasum": ""
+            },
+            "require": {
+                "appstract/lush-http": "^0.1",
+                "illuminate/console": ">=5.1",
+                "illuminate/routing": ">=5.1",
+                "illuminate/support": ">=5.1",
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.3",
+                "phpunit/phpunit": "5.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Appstract\\Opcache\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Olav van Schie",
+                    "email": "hello@appstract.team",
+                    "homepage": "https://appstract.team",
+                    "role": "Developer"
+                }
+            ],
+            "description": "OPcache helper for Laravel.",
+            "homepage": "https://github.com/appstract/laravel-opcache",
+            "keywords": [
+                "Opcache",
+                "appstract",
+                "laravel",
+                "php"
+            ],
+            "time": "2017-04-09T21:48:09+00:00"
+        },
+        {
+            "name": "appstract/lush-http",
+            "version": "0.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/appstract/lush-http.git",
+                "reference": "2e92568d842d9b0978220ab4bf39b6acf11142d4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/appstract/lush-http/zipball/2e92568d842d9b0978220ab4bf39b6acf11142d4",
+                "reference": "2e92568d842d9b0978220ab4bf39b6acf11142d4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "5.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Appstract\\LushHttp\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Olav van Schie",
+                    "email": "hello@appstract.team",
+                    "homepage": "https://appstract.team",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Lush, a lightweight Http Client.",
+            "homepage": "https://github.com/appstract/lush-http",
+            "keywords": [
+                "appstract",
+                "client",
+                "curl",
+                "http",
+                "lush",
+                "lush-http",
+                "php"
+            ],
+            "time": "2017-04-06T08:58:51+00:00"
         },
         {
             "name": "arcanedev/log-viewer",
@@ -1991,6 +2095,7 @@
                 }
             ],
             "description": "Flysystem adapter for Dropbox",
+            "abandoned": "spatie/flysystem-dropbox",
             "time": "2016-04-25T18:51:39+00:00"
         },
         {
