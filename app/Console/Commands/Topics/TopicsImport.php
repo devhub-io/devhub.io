@@ -57,12 +57,21 @@ class TopicsImport extends Command
             if ($matches) {
                 $this->info($matches[1] . '-' . $matches[2]);
                 if ($repo = Repos::where('slug', $matches[1] . '-' . $matches[2])->select('id')->first()) {
+                    // Topics
                     DB::table('repos_topics')->where('repos_id', $repo->id)->delete();
                     $topics = [];
                     foreach ($repos['topics'] as $topic) {
                         $topics[] = ['repos_id' => $repo->id, 'topic' => $topic];
                     }
                     DB::table('repos_topics')->insert($topics);
+
+                    // Update
+                    if ($repo->repos_updated_at < $repos['updated']) {
+                        $repo->stargazers_count = $repos['stargazers'];
+                        $repo->forks_count = $repos['forks'];
+                        $repo->repos_updated_at = $repos['updated'];
+                        $repo->save();
+                    }
 
                     $this->info('Insert ' . $repos['url']);
                 } else {
