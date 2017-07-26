@@ -52,14 +52,14 @@
 
         <div id="slide_out_menu">
             <a href="#" class="menu-close"><i class="fa fa-times"></i></a>
-            <div class="logo"><img src="images/logo-white.png" alt=""></div>
+            <div class="logo" style="color: #ffffff">DevHub.io</div>
             <ul>
                 <li><a href="{{ l_url('/developers') }}">Developers</a></li>
                 <li><a href="{{ l_url('/topics') }}">Topics</a></li>
                 <li><a href="{{ l_url('/news') }}">News</a></li>
                 <li><a href="#">My account</a></li>
                 <li><a href="{{ l_url('/sites') }}">Sites</a></li>
-                <li><a href="#" class="btn btn-blue">Search...</a></li>
+                <li><a href="{{ l_url('search') }}" class="btn btn-blue">Search...</a></li>
             </ul>
 
             <div class="slide_out_menu_footer">
@@ -68,12 +68,9 @@
                     <p>Developed by <a href="http://ruibogasdesign.net/">Rui Bogas</a>
                 </div>
                 <ul class="socials">
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
-                    <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="https://twitter.com/HubDevelop" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://www.facebook.com/devhubdotio" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="mailto:devhub.io@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
                 </ul>
             </div>
         </div>
@@ -93,7 +90,7 @@
                 <ul class="right">
                     <li><a href="#" class="help">My account</a></li>
                     <li><a href="{{ l_url('/sites') }}">Sites</a></li>
-                    <li><a href="#" class="btn btn-blue">Search...</a></li>
+                    <li><a href="{{ l_url('/search') }}" class="btn btn-blue">Search...</a></li>
                 </ul>
             </div>
         </div>
@@ -112,29 +109,29 @@
                     <a href="{{ l_url('list/newest') }}">{{ isset($repos_total) ? number_format($repos_total) : 0 }}</a> open source projects,
                     <a href="{{ l_url('developers') }}">{{ isset($developers_total) ? number_format($developers_total) : 0 }}</a> developers</p>
                 <ul class="socials">
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="https://twitter.com/HubDevelop" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://www.facebook.com/devhubdotio" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="mailto:devhub.io@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
                 </ul>
             </div>
             <div class="col-md-2 col-md-offset-4 col-sm-4 col-xs-6 footer-links">
                 <ul>
-                    <li><p class="title">WEBSITE</p></li>
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">Contact us</a></li>
-                    <li><a href="#">Status</a></li>
-                    <li><a href="#">API</a></li>
-                    <li><a href="#">Feed</a></li>
+                    <li><p class="title">@lang('front.website')</p></li>
+                    <li><a href="#">@lang('front.about')</a></li>
+                    <li><a href="#">@lang('front.contact_us')</a></li>
+                    <li><a href="//status.devhub.io/">@lang('front.status')</a></li>
+                    <li><a href="#">@lang('front.api')</a></li>
+                    <li><a href="{{ l_url('feed') }}">Feed</a></li>
                 </ul>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 footer-links">
                 <ul>
                     <li><p class="title">GATEGORY</p></li>
-                    <li><a href="#">Language</a></li>
-                    <li><a href="#">Frontend</a></li>
-                    <li><a href="#">Server</a></li>
-                    <li><a href="#">Design</a></li>
-                    <li><a href="#">App</a></li>
-                    <li><a href="#">Reading</a></li>
+                    @if(isset($one_column))
+                        @foreach($one_column as $item)
+                            <li><a href="{{ l_url('category', [$item->slug]) }}">@lang('category.'.$item->slug)</a></li>
+                        @endforeach
+                    @endif
                 </ul>
             </div>
         </div>

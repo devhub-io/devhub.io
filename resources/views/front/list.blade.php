@@ -30,10 +30,10 @@
                 @if(isset($child_category))
                 <div class="col-md-3">
                     <div class="single-sidebar">
-                        <h2 class="sidebar-title">@lang('front.child_category')</h2>
+                        <h2 class="sidebar-title" style="font-size: 28px">@lang('front.child_category')</h2>
                         <ul>
                             @foreach($child_category as $item)
-                            <li class="{{ active_class($item->slug == $select_slug) }}"><a href="{{ l_url('category', [$item->slug]) }}">@lang('category.'.$item->slug)</a></li>
+                            <li class="{{ active_class($item->slug == $select_slug) }}"><a href="{{ l_url('category', [$item->slug]) }}" style="font-size: 19px;">@lang('category.'.$item->slug)</a></li>
                             @endforeach
                         </ul>
                     </div>
@@ -45,7 +45,7 @@
                         <div class="row">
                             @foreach($repos as $item)
                             <div class="col-sm-6 @if(isset($child_category)) col-md-4 @else col-md-3 @endif">
-                                <div class="thumbnail" style="height: 362px;">
+                                <div class="thumbnail" style="height: 390px;">
                                     <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->cover ? $item->cover . '&s=200' : cdn_asset('img/200x200.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="lazyload" width="200"></a>
                                     <div class="caption">
                                         <a href="{{ l_url('repos', [$item->slug]) }}"><h4>{{ $item->title }}</h4></a>

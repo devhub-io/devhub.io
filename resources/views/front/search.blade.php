@@ -19,9 +19,9 @@
                         <div class="row">
                             @foreach($repos as $item)
                                 <div class="col-sm-6 col-md-4">
-                                    <div class="thumbnail" style="height: 450px;">
+                                    <div class="thumbnail" style="height: 400px;">
                                         <a href="{{ l_url('repos', [$item->slug]) }}">
-                                            <img src="{{ $item->cover ? $item->cover . '&s=300' : cdn_asset('img/300x300.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="lazyload" width="300">
+                                            <img src="{{ $item->cover ? $item->cover . '&s=200' : cdn_asset('img/300x300.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="lazyload" width="200">
                                         </a>
                                         <div class="caption">
                                             <a href="{{ l_url('repos', [$item->slug]) }}"><h3>{{ $item->owner }}/{{ $item->repo }}</h3></a>

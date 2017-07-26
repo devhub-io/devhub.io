@@ -68,11 +68,11 @@
 
         <div class="row" style="margin: 50px 0 50px 0">
             <div class="col-md-3 col-sm-4 hidden-xs">
-                <img class="cover" src="{{ $repos->cover ? $repos->cover : cdn_asset('img/300x300.png') }}" alt="{{ $repos->title }}" title="{{ $repos->title }}" width="300">
+                <img class="cover" src="{{ $repos->cover ? $repos->cover : cdn_asset('img/300x300.png') }}" alt="{{ $repos->title }}" title="{{ $repos->title }}" width="250">
             </div>
-            <div class="col-md-7 col-sm-8">
+            <div class="col-md-9 col-sm-8">
                 <div class="repo-title">
-                    <h1>
+                    <h1 style="font-size: 36px; margin-bottom: 20px;">
                         {{ $repos->title }} <span class="line" title="Trends">{{ $repos->trends }}</span>
                         @foreach($analytics_badges as $badge)
                             @if($badge->url)
@@ -136,12 +136,6 @@
                         </button>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-2 hidden-xs">
-                @if($languages)
-                    <canvas id="languages" height="160" width="160"></canvas>
-                    <h5 style="text-align: center">Languages</h5>
-                @endif
             </div>
         </div>
         <div class="row">
@@ -257,28 +251,7 @@
 
 @section('scripts')
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
     <script>
-        var options = {
-            legend: false,
-            responsive: false
-        };
-        window.develophub = JSON.parse('{!! $javascript_bind !!}');
-
-        new Chart(document.getElementById("languages"), {
-            type: 'doughnut',
-            tooltipFillColor: "rgba(51, 51, 51, 0.55)",
-            data: {
-                labels: develophub.languages_labels,
-                datasets: [{
-                    data: develophub.languages_values,
-                    backgroundColor: develophub.languages_color,
-                    hoverBackgroundColor: develophub.languages_color
-                }]
-            },
-            options: options
-        });
-
         $('#review-form').submit(function () {
             if ($('#review-form input[name=reliable]:checked').val() === undefined) {
                 return false;
