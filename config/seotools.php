@@ -15,10 +15,10 @@ return [
          * The default configurations to be used by the meta generator.
          */
         'defaults'       => [
-            'title'        => "DevHub", // set false to total remove
+            'title'        => "DevHub.io", // set false to total remove
             'description'  => 'Development Tools Repositories Developers Hub', // set false to total remove
             'separator'    => ' | ',
-            'keywords'     => ['Development', 'DevHub', 'Repositories', 'Developers', 'Tools', 'Libraries', 'server', 'app', 'reading'],
+            'keywords'     => ['Development', 'DevHub.io', 'Repositories', 'Developers', 'Tools', 'Libraries', 'server', 'app', 'reading'],
             'canonical'    => false, // Set null for using Url::current(), set false to total remove
         ],
 

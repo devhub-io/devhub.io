@@ -99,7 +99,7 @@ class HomeController extends Controller
             return Collection::where('is_enable', 1)->limit(3)->orderBy('sort')->get();
         });
 
-        SEOMeta::setTitle('DevHub - Development Tools Repositories Developers Hub', false);
+        SEOMeta::setTitle('DevHub.io - Development Tools Repositories Developers Hub', false);
 
         return view('front.home', compact('hot', 'new', 'trend', 'recommend', 'collections', 'hot_url', 'new_url'));
     }
