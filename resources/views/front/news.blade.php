@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-md-12 col-sm-12">
                 <div class="repo-title">
-                    <h1>What's hot on Github on {{ $current_date }}</h1>
+                    <h1 style="font-size: 36px; margin-bottom: 0px;">What's hot on Github on {{ $current_date }}</h1>
                 </div>
             </div>
         </div>
@@ -26,10 +26,10 @@
         <div class="row">
             @foreach($news as $item)
                 <div class="col-md-12">
-                    <div style="min-height: 120px;">
+                    <div>
                         <div class="caption">
                             <a href="{{ link_url('https://news.ycombinator.com/item?id='.$item->item_id) }}" rel="nofollow" target="_blank" style="text-decoration: none;">
-                                <h2><span class="label label-default">{{ $item->score }}</span> {{ $item->title }}</h2>
+                                <h2 style="font-size: 26px; margin-bottom: 15px;"><span class="label label-default">{{ $item->score }}</span> {{ $item->title }}</h2>
                             </a>
                             @if($item->repos)
                                 <a style="font-size: 16px;" href="{{ l_url('repos', [$item->repos->slug]) }}" target="_blank" style="text-decoration: none;">
