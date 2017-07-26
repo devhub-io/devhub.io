@@ -82,7 +82,7 @@
                 <form action="">
                     <div class="form-group">
                         <input type="email" placeholder="Email here">
-                        <a href="#" class="btn btn-green">Subscribe</a>
+                        <a href="javascript:alert('Coming soon.')" class="btn btn-green">Subscribe</a>
                     </div>
                 </form>
                 <p class="promise">We promise to never spam you.</p>
