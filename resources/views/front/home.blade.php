@@ -1,153 +1,93 @@
 @extends('layouts.front')
 
 @section('contents')
-<div class="product-widget-area" style="padding-bottom: 50px;">
+<section id="topics">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <div class="latest-product">
-                    <div class="section-title"></div>
-                    <div class="product-carousel">
-                        @foreach($recommend as $item)
-                        <div class="single-product">
-                            <div class="product-f-image">
-                                <img src="{{ $item->cover ? $item->cover . '&s=210' : cdn_asset('img/210x269.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="lazyload">
-                                <div class="product-hover">
-                                    <a href="{{ l_url('repos', [$item->slug]) }}" class="view-details-link"><i class="fa fa-link"></i> @lang('front.see_details')</a>
-                                </div>
-                            </div>
-                            <h2><a href="{{ l_url('repos', [$item->slug]) }}">{{ $item->title }}</a></h2>
-                            <div class="product-carousel-price">
-                                <div></div>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> <!-- End main content area -->
+            <h1 class="wow fadeInUp text-center">@lang('front.topic')</h1>
 
-<div class=" maincontent-area">
-    <div class="zigzag-bottom"></div>
-    <div class="container">
-        <div class="row">
-            @if($hot_url->count())
-            <div class="col-md-6">
-                <div class="single-product-widget">
-                    <h2 class="product-wid-title">@lang('front.popular')</h2>
-                    <a href="" class="wid-view-more">@lang('front.view_all')</a>
-                    @foreach($hot_url as $item)
-                        <div class="single-wid-product" style="margin-bottom: 0;">
-                            <h2 style="height: 20px;"><a href="{{ link_url($item->url) }}" rel="nofollow" target="_blank" style="color: #1abc9c;" title="{{ $item->description }}">{{ \Illuminate\Support\Str::substr($item->title, 0, 50) }}</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i> {{ $item->up_number }}  <span style="color: #565656">{{ $item->fetched_at }}</span>
-                            </div>
-                        </div>
-                    @endforeach
+            <div class="row top-50" data-wow-delay=".3s" data-effect="mfp-zoom-in">
+                @foreach($collections as $item)
+                <div class="col-md-4 center">
+                    <a href="{{ l_url('collection', [$item->slug]) }}">
+                        <img src="{{ $item->image ? cdn_asset($item->image) : cdn_asset('img/270x270.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" width="270" height="270" class="lazyload">
+                    </a>
                 </div>
+                @endforeach
             </div>
-            @endif
-            @if($new_url->count())
-            <div class="col-md-6">
-                <div class="single-product-widget">
-                    <h2 class="product-wid-title">@lang('front.latest')</h2>
-                    <a href="#" class="wid-view-more">@lang('front.view_all')</a>
-                    @foreach($new_url as $item)
-                        <div class="single-wid-product" style="margin-bottom: 0;">
-                            <h2 style="height: 20px;"><a href="{{ link_url($item->url) }}" rel="nofollow" target="_blank" style="color: #1abc9c;" title="{{ $item->description }}">{{ \Illuminate\Support\Str::substr($item->title, 0, 50) }}</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i> {{ $item->up_number }} <span style="color: #565656">{{ $item->fetched_at }}</span>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-            @endif
         </div>
     </div>
-</div> <!-- End product widget area -->
+</section>
 
-<div class="brands-area">
-    <div class="zigzag-bottom"></div>
+<section id="guess">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <div class="brand-wrapper">
-                    <h2 class="section-title">@lang('front.topic')</h2>
-                    <div class="brand-list">
-                        @foreach($collections as $item)
-                            <a href="{{ l_url('collection', [$item->slug]) }}">
-                                <img src="{{ $item->image ? cdn_asset($item->image) : cdn_asset('img/270x270.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" width="270" height="270" class="lazyload">
-                            </a>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> <!-- End brands area -->
+            <h1 class="wow fadeInUp text-center">Guess you like it</h1>
 
-<div class="product-widget-area">
-    <div class="zigzag-bottom"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="single-product-widget">
-                    <h2 class="product-wid-title">@lang('front.popular')</h2>
-                    <a href="{{ l_url('list/popular') }}" class="wid-view-more">@lang('front.view_all')</a>
-                    @foreach($hot as $item)
-                    <div class="single-wid-product">
-                        <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->cover ? $item->cover . '&s=100' :cdn_asset('img/100x90.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="product-thumb lazyload"></a>
-                        <h2><a href="{{ l_url('repos', [$item->slug]) }}">{{ $item->title }}</a></h2>
-                        <div class="product-wid-rating">
-                            <i class="fa fa-star"></i> {{ $item->stargazers_count }}
-                        </div>
-                        <div title="Trends">
-                            <span class="line">{{ $item->trends }}</span>
-                        </div>
-                    </div>
-                    @endforeach
+            <div class="row top-50" data-wow-delay=".3s" data-effect="mfp-zoom-in">
+                @foreach($recommend as $item)
+                <div class="col-md-2 center guess-item">
+                    <a href="{{ l_url('repos', [$item->slug]) }}">
+                        <img src="{{ $item->cover ? $item->cover . '&s=200' : cdn_asset('img/210x269.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" width="200" class="lazyload">
+                        <p>{{ $item->title }}</p>
+                    </a>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="single-product-widget">
-                    <h2 class="product-wid-title">@lang('front.latest')</h2>
-                    <a href="{{ l_url('list/newest') }}" class="wid-view-more">@lang('front.view_all')</a>
-                    @foreach($new as $item)
-                        <div class="single-wid-product">
-                            <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->cover ? $item->cover . '&s=100' : cdn_asset('img/100x90.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="product-thumb lazyload"></a>
-                            <h2><a href="{{ l_url('repos', [$item->slug]) }}">{{ $item->title }}</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i> {{ $item->stargazers_count }}
-                            </div>
-                            <div title="Trends">
-                                <span class="line">{{ $item->trends }}</span>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="single-product-widget">
-                    <h2 class="product-wid-title">@lang('front.trend')</h2>
-                    <a href="{{ l_url('list/trend') }}" class="wid-view-more">@lang('front.view_all')</a>
-                    @foreach($trend as $item)
-                        <div class="single-wid-product">
-                            <a href="{{ l_url('repos', [$item->slug]) }}"><img src="{{ $item->cover ? $item->cover . '&s=100' : cdn_asset('img/100x90.png') }}" alt="{{ $item->title }}" title="{{ $item->title }}" class="product-thumb lazyload"></a>
-                            <h2><a href="{{ l_url('repos', [$item->slug]) }}">{{ $item->title }}</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i> {{ $item->stargazers_count }}
-                            </div>
-                            <div title="Trends">
-                                <span class="line">{{ $item->trends }}</span>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
-</div> <!-- End product widget area -->
+</section>
+
+<section id="top">
+    <div class="container">
+        <h1>@lang('front.popular')</h1>
+        @foreach($hot as $item)
+            <a href="{{ l_url('repos', [$item->slug]) }}">
+                <div class="row">
+                    <div class="col-md-3 title">{{ $item->owner }}/{{ $item->repo }}</div>
+                    <div class="col-md-6 desc">{{ $item->description  }}</div>
+                    <div class="col-md-2 col-md-offset-1 stars"><i class="fa fa-star"></i> {{ $item->stargazers_count }} <span class="line">{{ $item->trends }}</span></div>
+                </div>
+            </a>
+        @endforeach
+        <h1>@lang('front.latest')</h1>
+        @foreach($new as $item)
+            <a href="{{ l_url('repos', [$item->slug]) }}">
+                <div class="row">
+                    <div class="col-md-3 title">{{ $item->owner }}/{{ $item->repo }}</div>
+                    <div class="col-md-6 desc">{{ $item->description  }}</div>
+                    <div class="col-md-2 col-md-offset-1 stars"><i class="fa fa-star"></i> {{ $item->stargazers_count }} <span class="line">{{ $item->trends }}</span></div>
+                </div>
+            </a>
+        @endforeach
+        <h1>@lang('front.trend')</h1>
+        @foreach($trend as $item)
+            <a href="{{ l_url('repos', [$item->slug]) }}">
+                <div class="row">
+                    <div class="col-md-3 title">{{ $item->owner }}/{{ $item->repo }}</div>
+                    <div class="col-md-6 desc">{{ $item->description  }}</div>
+                    <div class="col-md-2 col-md-offset-1 stars"><i class="fa fa-star"></i> {{ $item->stargazers_count }} <span class="line">{{ $item->trends }}</span></div>
+                </div>
+            </a>
+        @endforeach
+    </div>
+</section>
+
+<section id="subscribe">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <p class="subtitle"></p>
+                <h2>Subscribe our newsletters</h2>
+                <form action="">
+                    <div class="form-group">
+                        <input type="email" placeholder="Email here">
+                        <a href="#" class="btn btn-green">Subscribe</a>
+                    </div>
+                </form>
+                <p class="promise">We promise to never spam you.</p>
+            </div>
+        </div>
+    </div>
+</section><!-- //Subscribe -->
 @endsection

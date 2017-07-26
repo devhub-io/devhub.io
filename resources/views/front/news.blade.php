@@ -9,6 +9,7 @@
 @endsection
 
 @section('contents')
+<section id="content">
     <div class="container">
         @include('widgets.breadcrumbs.news', ['date' => $current_date])
 
@@ -62,4 +63,5 @@
 
         <br>
     </div>
+</section>
 @endsection

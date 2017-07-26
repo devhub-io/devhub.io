@@ -1,6 +1,7 @@
 @extends('layouts.front')
 
 @section('contents')
+<section id="content">
     <div class="single-product-area">
         <div class="zigzag-bottom"></div>
         <div class="container">
@@ -30,4 +31,5 @@
             </div>
         </div>
     </div>
+</section>
 @endsection

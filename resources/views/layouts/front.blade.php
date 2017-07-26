@@ -22,13 +22,19 @@
     <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png" />
     <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700,500' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" />
     <link rel="stylesheet" href="{{ cdn_asset(elixir('css/all.css')) }}">
     @yield('styles')
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <style>.async-hide { opacity: 0 !important} </style>
     <script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
@@ -39,219 +45,129 @@
 </head>
 <body>
 
-<div class="header-area">
+<header id="main-nav">
     <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="user-menu">
-                    <ul>
-                        <li><a href="javascript:void(0);"><i class="fa fa-user"></i> @lang('front.my_account')</a></li>
-                        <li><a href="{{ l_url('sites') }}"><i class="fa fa-sitemap"></i> @lang('front.sites')</a></li>
-                    </ul>
-                </div>
-            </div>
 
+        <a id="navigation" href="#"><i class="fa fa-bars"></i></a>
+
+        <div id="slide_out_menu">
+            <a href="#" class="menu-close"><i class="fa fa-times"></i></a>
+            <div class="logo"><img src="images/logo-white.png" alt=""></div>
+            <ul>
+                <li><a href="{{ l_url('/developers') }}">Developers</a></li>
+                <li><a href="{{ l_url('/topics') }}">Topics</a></li>
+                <li><a href="{{ l_url('/news') }}">News</a></li>
+                <li><a href="#">My account</a></li>
+                <li><a href="{{ l_url('/sites') }}">Sites</a></li>
+                <li><a href="#" class="btn btn-blue">Search...</a></li>
+            </ul>
+
+            <div class="slide_out_menu_footer">
+                <div class="more-info">
+                    <p>Made with love by <a href="http://getcraftwork.com">Craft Work</a></p>
+                    <p>Developed by <a href="http://ruibogasdesign.net/">Rui Bogas</a>
+                </div>
+                <ul class="socials">
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
+                    <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
             <div class="col-md-4">
-                <div class="header-right">
-                    <ul class="list-unstyled list-inline">
-                        <li class="dropdown dropdown-small">
-                            <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#">
-                                <span class="key">@lang('front.choose_language') : </span><span class="value">{{ Localization::getCurrentLocaleNative() }} </span>
-                                <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                @foreach(Localization::getSupportedLocales() as $localeCode => $properties)
-                                    <li>
-                                        <a rel="alternate" hreflang="{{$localeCode}}" href="/{{ $localeCode }}">
-                                            {{ $properties['native'] }}
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+                <ul class="left">
+                    <li><a href="{{ l_url('/developers') }}">Developers</a></li>
+                    <li><a href="{{ l_url('/topics') }}">Topics</a></li>
+                    <li><a href="{{ l_url('/news') }}">News</a></li>
+                </ul>
             </div>
-        </div>
-    </div>
-</div> <!-- End header area -->
-
-<div class="site-branding-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="logo">
-                    <h1><a href="/"><span>Dev</span>Hub</a></h1>
-                </div>
+            <div class="col-md-4 text-center">
+                <a href="{{ l_url('/') }}" class="logo">DevHub.io</a>
             </div>
-
-            <div class="col-sm-6">
-                <div class="shopping-item">
-                    <form action="{{ l_url('search') }}">
-                        <input type="search" name="keyword" value="" placeholder="@lang('front.search_placeholder')">
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> <!-- End site branding area -->
-
-<div class="mainmenu-area">
-    <div class="container">
-        <div class="row">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="{{ active_class(if_uri('/')) }}"><a href="{{ l_url('/') }}">@lang('front.home')</a></li>
-                    @if(isset($one_column))
-                        @foreach($one_column as $item)
-                            <li class="{{ active_class($item->slug == $current_category_slug) }}"><a href="{{ l_url('category', [$item->slug]) }}">@lang('category.'.$item->slug)</a></li>
-                        @endforeach
-                    @endif
-                    <li class="{{ active_class(if_uri('developers') || if_route('developer')) }}"><a href="{{ l_url('developers') }}">Developers</a></li>
-                    <li class="{{ active_class(if_uri('topics') || if_route('topics')) }}"><a href="{{ l_url('topics') }}">Topics</a></li>
-                    <li class="{{ active_class(if_uri('news') || if_route('news')) }}"><a href="{{ l_url('news') }}">News</a></li>
+            <div class="col-md-4">
+                <ul class="right">
+                    <li><a href="#" class="help">My account</a></li>
+                    <li><a href="{{ l_url('/sites') }}">Sites</a></li>
+                    <li><a href="#" class="btn btn-blue">Search...</a></li>
                 </ul>
             </div>
         </div>
     </div>
-</div> <!-- End mainmenu area -->
+</header><!-- //Main Nav -->
 
 @yield('contents')
 
-<div class="footer-top-area">
-    <div class="zigzag-bottom"></div>
-    <div class="container">
+<footer id="footer">
+    <div class="container footer-container">
         <div class="row">
-            <div class="col-md-3 col-sm-6">
-                <div class="footer-about-us">
-                    <h2><span>DevHub</span></h2>
-                    <p>@lang('front.about_develophub')</p>
-                    <p>
-                        Currently tracking
-                        <a href="{{ l_url('list/newest') }}" style="color: white">{{ isset($repos_total) ? number_format($repos_total) : 0 }}</a> open source projects,
-                        <a href="{{ l_url('developers') }}" style="color: white">{{ isset($developers_total) ? number_format($developers_total) : 0 }}</a> developers
-                    </p>
-                    <div class="footer-social">
-                        <a target="_blank" href="https://www.facebook.com/devhubdotio"><i class="fa fa-facebook"></i></a>
-                        <a target="_blank" href="https://twitter.com/HubDevelop"><i class="fa fa-twitter"></i></a>
-                        <a href="mailto:devhub.io@gmail.com"><i class="fa fa-envelope"></i></a>
-                    </div>
-                </div>
+            <div class="col-md-3">
+                <a href="{{ l_url('/') }}" style="color: #26272d; font-weight: 700; text-transform: uppercase;font-size: 12px;">DevHub.io</a>
+                <p>Recommended high-quality free and open source development tools, resources, reading. <br>
+                    Currently tracking
+                    <a href="{{ l_url('list/newest') }}">{{ isset($repos_total) ? number_format($repos_total) : 0 }}</a> open source projects,
+                    <a href="{{ l_url('developers') }}">{{ isset($developers_total) ? number_format($developers_total) : 0 }}</a> developers</p>
+                <ul class="socials">
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                </ul>
             </div>
-
-            <div class="col-md-3 col-sm-6">
-                <div class="footer-menu">
-                    <h2 class="footer-wid-title">@lang('front.website') </h2>
-                    <ul>
-                        <li><a href="#">@lang('front.about')</a></li>
-                        <li><a href="#">@lang('front.contact_us')</a></li>
-                        <li><a href="//status.devhub.io/">@lang('front.status')</a></li>
-                        <li><a href="#">@lang('front.api')</a></li>
-                        <li><a href="{{ l_url('feed') }}" target="_blank" title="RSS Link">Feed</a></li>
-                    </ul>
-                </div>
+            <div class="col-md-2 col-md-offset-4 col-sm-4 col-xs-6 footer-links">
+                <ul>
+                    <li><p class="title">WEBSITE</p></li>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="#">Status</a></li>
+                    <li><a href="#">API</a></li>
+                    <li><a href="#">Feed</a></li>
+                </ul>
             </div>
-
-            <div class="col-md-3 col-sm-6">
-                <div class="footer-menu">
-                    <h2 class="footer-wid-title">@lang('front.category')</h2>
-                    <ul>
-                        @if(isset($one_column))
-                            @foreach($one_column as $item)
-                            <li><a href="{{ l_url('category', [$item->slug]) }}">@lang('category.'.$item->slug)</a></li>
-                            @endforeach
-                        @endif
-                        <li><a href="{{ l_url('developers') }}">Developers</a></li>
-                        <li><a href="{{ l_url('topics') }}">Topics</a></li>
-                        <li><a href="{{ l_url('news') }}">News</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="col-md-3 col-sm-6">
-                <div class="footer-newsletter">
-                    <h2 class="footer-wid-title">@lang('front.weekly_title')</h2>
-                    <p>@lang('front.weekly_subtitle')</p>
-                    <div class="newsletter-form">
-                        <form action="#">
-                            <input type="email" placeholder="@lang('front.enter_email')">
-                            <input type="submit" value="@lang('front.subscribe')">
-                        </form>
-                    </div>
-                </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 footer-links">
+                <ul>
+                    <li><p class="title">GATEGORY</p></li>
+                    <li><a href="#">Language</a></li>
+                    <li><a href="#">Frontend</a></li>
+                    <li><a href="#">Server</a></li>
+                    <li><a href="#">Design</a></li>
+                    <li><a href="#">App</a></li>
+                    <li><a href="#">Reading</a></li>
+                </ul>
             </div>
         </div>
     </div>
-</div> <!-- End footer top area -->
-
-<div class="footer-bottom-area">
-    <div class="container">
+    <div class="container copyright-container">
         <div class="row">
-            <div class="col-md-8">
-                <div class="copyright">
-                    <p>&copy; 2016 - 2017 DevHub.io. All Rights Reserved.</p>
-                    <p style="font-size: 10px; color: #bdbdbd">Disclaimer: This project is not affiliated with the GitHub company in any way.
-                        <br> GitHub® and the Octocat® logo are registered trademarks of GitHub, Inc., used with permission—https://github.com/logos</p>
+            <div class="col-md-8 text-left">
+                <div class="more-info">
+                    <p class="copyright-title">© 2016 - 2017 DevHub.io. All Rights Reserved.</p>
+                    <p class="copyright-tips">Disclaimer: This project is not affiliated with the GitHub company in any way.
+                        GitHub® and the Octocat® logo are registered trademarks of GitHub, Inc., used with permission—https://github.com/logos</p>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="footer-card-icon">
-                    @if(isset($badger))
-                        @foreach($badger as $item)
-                            {!! $item !!}
-                        @endforeach
-                    @endif
+                <div class="row">
+                    <div class="col-md-6 text-right">
+                        <div class="made-by">Power by</div>
+                    </div>
+                    <div class="col-md-6">
+                        @if(isset($badger))
+                            @foreach($badger as $item)
+                                {!! $item !!}
+                            @endforeach
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div> <!-- End footer bottom area -->
+</footer>
 
-<!-- Login Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Login</h4>
-            </div>
-            <div class="modal-body">
-                <form action="#" method="post">
-                    {!! csrf_field() !!}
-                    <div class="form-group">
-                        <label for="inputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="inputEmail1" placeholder="Email" name="email">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword">Password</label>
-                        <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password">
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="is_remember" value="1"> Remember Password
-                        </label>
-                    </div>
-                    <button type="submit" class="btn btn-default">Login</button>
-                </form>
-                <hr>
-                <h5>Another Account login</h5>
-                <a href="{{ l_url('socialite/github/redirect') }}" style="margin-right: 30px;"><i class="fa fa-github fa-3x"></i></a>
-                <a href="{{ l_url('socialite/bitbucket/redirect') }}" style="margin-right: 30px;"><i class="fa fa-bitbucket fa-3x"></i></a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="{{ cdn_asset(elixir('js/app.js')) }}"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/peity/3.2.0/jquery.peity.min.js"></script>
 @include('layouts.javascript_bind')

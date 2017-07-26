@@ -62,6 +62,7 @@
 @endsection
 
 @section('contents')
+<section id="content">
     <div class="container">
         @include('widgets.breadcrumbs.repos', ['repos' => $repos])
 
@@ -251,6 +252,7 @@
             </div>
         </div>
     </div>
+</section>
 @endsection
 
 @section('scripts')

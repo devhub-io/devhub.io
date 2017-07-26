@@ -17,6 +17,7 @@
 @endsection
 
 @section('contents')
+<section id="content">
     <div class="single-product-area">
         <h1 style="text-align: center">Developers</h1>
         <div class="container">
@@ -60,6 +61,7 @@
             </div>
         </div>
     </div>
+</section>
 @endsection
 
 @section('scripts')

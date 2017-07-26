@@ -17,12 +17,12 @@ elixir.config.sourcemaps = false;
 elixir(function (mix) {
     mix
         .styles([
-            'owl.carousel.css',
+            'normalize.css',
+            'animate.min.css',
             'style.css',
-            'responsive.css'
         ], 'public/css/all.css')
         .scripts([
-            'owl.carousel.min.js',
+            'wow.min.js',
             'jquery.sticky.js',
             'main.js'
         ], 'public/js/app.js')

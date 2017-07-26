@@ -128,7 +128,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
     public function findHottest($limit = 5, $has_image = true)
     {
         $list = $this->model->where('status', Constant::ENABLE)
-            ->select(['id', 'title', 'slug', 'cover', 'trends', 'stargazers_count', 'description']);
+            ->select(['id', 'title', 'slug', 'cover', 'trends', 'stargazers_count', 'description', 'owner', 'repo']);
         if ($has_image) {
             $list->where('cover', '<>', '');
         }
@@ -143,7 +143,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
     public function findNewest($limit = 5, $has_image = true)
     {
         $list = $this->model->where('status', Constant::ENABLE)
-            ->select(['id', 'title', 'slug', 'cover', 'trends', 'stargazers_count', 'description']);
+            ->select(['id', 'title', 'slug', 'cover', 'trends', 'stargazers_count', 'description', 'owner', 'repo']);
         if ($has_image) {
             $list->where('cover', '<>', '');
         }
@@ -158,7 +158,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
     public function findTrend($limit = 5, $has_image = true)
     {
         $list = $this->model->where('status', Constant::ENABLE)
-            ->select(['id', 'title', 'slug', 'cover', 'trends', 'stargazers_count', 'description']);
+            ->select(['id', 'title', 'slug', 'cover', 'trends', 'stargazers_count', 'description', 'owner', 'repo']);
         if ($has_image) {
             $list->where('cover', '<>', '');
         }

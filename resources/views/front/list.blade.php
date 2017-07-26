@@ -17,6 +17,7 @@
 @endsection
 
 @section('contents')
+<section id="content">
     <div class="single-product-area">
         <div class="container">
             <div class="row">
@@ -70,4 +71,5 @@
             </div>
         </div>
     </div>
+</section>
 @endsection

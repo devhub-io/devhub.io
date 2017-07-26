@@ -23,3 +23,6 @@ _ide_helper.php
 /public/sitemap*.xml
 
 /shippable
+
+# npm
+npm-debug.log

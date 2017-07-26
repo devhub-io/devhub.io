@@ -89,14 +89,14 @@ class HomeController extends Controller
         $new = $this->reposRepository->findNewest();
         $trend = $this->reposRepository->findTrend();
         $recommend = Cache::remember('front:index:recommend', 7 * 24 * 60, function () {
-            return $this->reposRepository->findRecommend();
+            return $this->reposRepository->findRecommend(5);
         });
 
         $hot_url = Article::query()->orderBy('up_number', 'desc')->limit(10)->get();
         $new_url = Article::query()->orderBy('fetched_at', 'desc')->limit(10)->get();
 
         $collections = Cache::remember('front:index:collections', 3 * 24 * 60, function () {
-            return Collection::where('is_enable', 1)->orderBy('sort')->get();
+            return Collection::where('is_enable', 1)->limit(3)->orderBy('sort')->get();
         });
 
         SEOMeta::setTitle('DevHub - Development Tools Repositories Developers Hub', false);
