@@ -21,7 +21,20 @@
     <link href="/components/gentelella/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="/components/gentelella/build/css/custom.min.css" rel="stylesheet">
+    <style>
+        .app-pagination {
+            margin-top: 30px;
+        }
 
+        .app-pagination li {
+            float: left;
+            width: 50px;
+        }
+
+        .app-pagination a {
+            font-size: 15px;
+        }
+    </style>
     @yield('styles')
 </head>
 
