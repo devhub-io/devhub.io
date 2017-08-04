@@ -57,8 +57,6 @@ class ReposDeveloperFetch extends Command
                 $job->handle(new ReposRepositoryEloquent(app()));
 
                 $this->info($item->owner);
-            } else {
-                $this->info('pass');
             }
         }
         $this->info('All done!');

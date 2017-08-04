@@ -45,7 +45,9 @@ class GithubDocument extends Command
      */
     public function handle()
     {
-        $repos = DB::table('repos')->select(['id', 'owner', 'repo'])->where('document_url', '')->where('language', 'go')->get();
+        $repos = DB::table('repos')->select(['id', 'owner', 'repo'])
+            ->where('document_url', '')
+            ->where('language', 'go')->get();
         foreach ($repos as $item) {
             $document_url = "https://godoc.org/github.com/$item->owner/$item->repo";
             DB::table('repos')->where('id', $item->id)->update([

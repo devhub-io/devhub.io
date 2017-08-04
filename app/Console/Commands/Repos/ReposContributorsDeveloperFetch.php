@@ -49,7 +49,10 @@ class ReposContributorsDeveloperFetch extends Command
         $userId = $this->argument('userId');
         $page = $this->argument('page');
         $perPage = $this->argument('perPage');
-        $repos = ReposContributor::query()->select(DB::raw('login, count(1) as num'))->groupBy('login')->orderBy('num', 'desc')->forPage($page, $perPage)->get();
+        $repos = ReposContributor::query()->select(DB::raw('login, count(1) as num'))
+            ->groupBy('login')
+            ->orderBy('num', 'desc')
+            ->forPage($page, $perPage)->get();
         foreach ($repos as $item) {
             if (!DB::table('developer')->where('html_url', "https://github.com/$item->login")->exists()) {
 
@@ -57,8 +60,6 @@ class ReposContributorsDeveloperFetch extends Command
                 $job->handle(new ReposRepositoryEloquent(app()));
 
                 $this->info($item->login);
-            } else {
-                $this->info('pass');
             }
         }
         $this->info('All done!');

@@ -45,7 +45,10 @@ class GithubBadges extends Command
      */
     public function handle()
     {
-        $repos = DB::table('repos')->select(['id', 'owner', 'repo'])->where('analytics_at', '<>', null)->orderBy('analytics_at', 'desc')->get();
+        $repos = DB::table('repos')->select(['id', 'owner', 'repo'])
+            ->where('analytics_at', '<>', null)
+            ->orderBy('analytics_at', 'desc')
+            ->get();
         foreach ($repos as $item) {
             $trees = DB::table('repos_trees')->select(['repos_id', 'path', 'type'])->where('repos_id', $item->id)->get();
 
