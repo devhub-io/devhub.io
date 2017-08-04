@@ -17,6 +17,7 @@ class CreateReposTreeContent extends Migration
             $table->integer('repos_id')->index();
             $table->string('commit_sha', 50)->index();
             $table->string('sha', 50);
+            $table->string('path');
             $table->text('content');
             $table->timestamps();
         });

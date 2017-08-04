@@ -101,6 +101,7 @@ class GithubContentFetch implements ShouldQueue
                 'repos_id' => $this->repos_id,
                 'commit_sha' => $this->commit_sha,
                 'sha' => $this->sha,
+                'path' => $this->path,
                 'content' => $jsonContent,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
