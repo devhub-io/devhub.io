@@ -22,10 +22,6 @@
     <!-- Custom Theme Style -->
     <link href="/components/gentelella/build/css/custom.min.css" rel="stylesheet">
     <style>
-        .app-pagination {
-            margin-top: 30px;
-        }
-
         .app-pagination li {
             float: left;
             width: 50px;
@@ -33,6 +29,17 @@
 
         .app-pagination a {
             font-size: 15px;
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        .app-pagination li {
+            list-style: none;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
         }
     </style>
     @yield('styles')
@@ -44,7 +51,7 @@
         <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="/admin" class="site_title"><i class="fa fa-paw"></i> <span>DevHub</span></a>
+                    <a href="/admin" class="site_title"><span>DevHub.io</span></a>
                 </div>
 
                 <div class="clearfix"></div>
