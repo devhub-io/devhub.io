@@ -47,7 +47,10 @@ class GithubUpdate extends Command
         $userId= $this->argument('userId');
         $page = $this->argument('page');
         $perPage = $this->argument('perPage');
-        $repos = Repos::query()->where('status', true)->select(['id'])->orderBy('stargazers_count', 'desc')->forPage($page, $perPage)->get();
+        $repos = Repos::query()->select('id')
+            ->orderBy('view_number', 'desc')
+            ->orderBy('fetched_at', 'asc')
+            ->forPage($page, $perPage)->get();
         foreach ($repos as $item) {
             try {
                 $job = new \App\Jobs\GithubUpdate($userId, $item->id);

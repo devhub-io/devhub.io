@@ -11,15 +11,10 @@
 
 namespace App\Console;
 
-use App;
 use App\Entities\Repos;
-use App\Entities\User;
 use App\Jobs\GithubAnalytics;
 use App\Jobs\GithubLicense;
 use App\Jobs\GithubUpdate;
-use App\Notifications\Pushover;
-use Carbon\Carbon;
-use File;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -81,47 +76,53 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // Backup
-//        $date = Carbon::now()->toW3cString();
-//        $environment = App::environment();
-//        $files = File::files(storage_path("app/$environment"));
-//        if (count($files) >= 3) {
-//            $first_file = head($files);
-//            @unlink($first_file);
-//        }
-//        $schedule->command(
-//            "db:backup --database=mysql --destination=local --destinationPath=/{$environment}/DevelopHub_{$environment}_{$date} --compression=gzip"
-//        )
-//            ->twiceDaily(13, 21)
-//            ->after(function () use ($date) {
-//                User::find(1)->notify(new Pushover('[数据库] 备份成功', $date));
-//            });
+        /*
+        $date = Carbon::now()->toW3cString();
+        $environment = App::environment();
+        $files = File::files(storage_path("app/$environment"));
+        if (count($files) >= 3) {
+            $first_file = head($files);
+            @unlink($first_file);
+        }
+        $schedule->command(
+            "db:backup --database=mysql --destination=local --destinationPath=/{$environment}/DevelopHub_{$environment}_{$date} --compression=gzip"
+        )
+            ->twiceDaily(13, 21)
+            ->after(function () use ($date) {
+                User::find(1)->notify(new Pushover('[数据库] 备份成功', $date));
+            });
+        */
 
         // Sync user activated time
-        $schedule->command('devhub:user:sync-activated-time')->everyTenMinutes();
+        // $schedule->command('devhub:user:sync-activated-time')->everyTenMinutes();
 
         // Github Update
-//        $schedule->call(function () {
-//            $repos = Repos::query()->select('id')->orderBy('fetched_at', 'asc')->limit(1000)->get();
-//            foreach ($repos as $item) {
-//                $job = (new GithubUpdate(1, $item->id))->onQueue('github-update');
-//                dispatch($job);
-//
-//                $job = (new GithubLicense(1, $item->id))->onQueue('github-license');
-//                dispatch($job);
-//            }
-//        })->hourly();
+        $schedule->call(function () {
+            $repos = Repos::query()->select('id')
+                ->orderBy('view_number', 'desc')
+                ->orderBy('fetched_at', 'asc')
+                ->limit(500)->get();
+            foreach ($repos as $item) {
+                $job = (new GithubUpdate(3, $item->id))->onQueue('github-update');
+                dispatch($job);
+
+                $job = (new GithubLicense(3, $item->id))->onQueue('github-license');
+                dispatch($job);
+            }
+        })->hourly();
 
         // Github Analytics
-//        $schedule->call(function () {
-//            $repos = Repos::query()->select('id')
-//                ->where('status', true)
-//                ->where('analytics_at', null)
-//                ->orderBy('stargazers_count', 'desc')->limit(600)->get();
-//            foreach ($repos as $item) {
-//                $job = (new GithubAnalytics(2, $item->id))->onQueue('github-analytics');
-//                dispatch($job);
-//            }
-//        })->hourly();
+        $schedule->call(function () {
+            $repos = Repos::query()->select('id')
+                ->where('status', true)
+                ->where('analytics_at', null)
+                ->orderBy('stargazers_count', 'desc')
+                ->limit(100)->get();
+            foreach ($repos as $item) {
+                $job = (new GithubAnalytics(2, $item->id))->onQueue('github-analytics');
+                dispatch($job);
+            }
+        })->hourly();
 
         // Trend
         // $schedule->command('devhub:repos:trend')->mondays();
