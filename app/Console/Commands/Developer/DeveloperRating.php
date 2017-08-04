@@ -45,7 +45,8 @@ class DeveloperRating extends Command
     {
         $developers = DB::table('developer')->select(['id', 'login'])->orderBy('followers', 'desc')->get();
         foreach ($developers as $developer) {
-            $repos = DB::table('repos')->select(DB::raw('count(1) as number, sum(stargazers_count) as stars'))->where('owner', $developer->login)->first();
+            $repos = DB::table('repos')->select(DB::raw('count(1) as number, sum(stargazers_count) as stars'))
+                ->where('owner', $developer->login)->first();
             if ($repos && $repos->number > 0) {
                 $rating = $repos->stars + (1.0 - 1.0 / $repos->number);
                 DB::table('developer')->where('id', $developer->id)->update([
