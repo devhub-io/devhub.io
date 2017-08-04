@@ -65,6 +65,7 @@ class Kernel extends ConsoleKernel
         Commands\Topics\TopicsFetchKeywords::class,
         Commands\Topics\TopicsImport::class,
         Commands\Site\SitePushUrl::class,
+        Commands\Repos\ReposTreeFetch::class,
     ];
 
     /**
