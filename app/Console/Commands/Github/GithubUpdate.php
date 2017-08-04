@@ -48,8 +48,8 @@ class GithubUpdate extends Command
         $page = $this->argument('page');
         $perPage = $this->argument('perPage');
         $repos = Repos::query()->select('id')
-            ->orderBy('view_number', 'desc')
             ->orderBy('fetched_at', 'asc')
+            ->orderBy('view_number', 'desc')
             ->forPage($page, $perPage)->get();
         foreach ($repos as $item) {
             try {

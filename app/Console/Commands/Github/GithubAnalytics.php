@@ -49,7 +49,7 @@ class GithubAnalytics extends Command
         $repos = Repos::query()->select('id')
             ->where('status', true)
             ->where('analytics_at', null)
-            ->orderBy('stargazers_count', 'desc')
+            ->orderBy('view_number', 'desc')
             ->forPage($page, $perPage)->get();
         foreach ($repos as $item) {
             try {

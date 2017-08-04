@@ -99,8 +99,8 @@ class Kernel extends ConsoleKernel
         // Github Update
         $schedule->call(function () {
             $repos = Repos::query()->select('id')
-                ->orderBy('view_number', 'desc')
                 ->orderBy('fetched_at', 'asc')
+                ->orderBy('view_number', 'desc')
                 ->limit(500)->get();
             foreach ($repos as $item) {
                 $job = (new GithubUpdate(3, $item->id))->onQueue('github-update');
@@ -116,7 +116,7 @@ class Kernel extends ConsoleKernel
             $repos = Repos::query()->select('id')
                 ->where('status', true)
                 ->where('analytics_at', null)
-                ->orderBy('stargazers_count', 'desc')
+                ->orderBy('view_number', 'desc')
                 ->limit(100)->get();
             foreach ($repos as $item) {
                 $job = (new GithubAnalytics(2, $item->id))->onQueue('github-analytics');
