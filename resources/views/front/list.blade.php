@@ -22,7 +22,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    @if(isset($title)) <h1 style="text-align: center">{{ $title }}</h1> @endif
+                    @if(isset($title)) <h1 style="text-align: center">{{ $title }} @if(isset($topic))<a href="https://stackoverflow.com/documentation/{{ $topic }}/topics" target="_blank" rel="nofollow"><i class="fa fa-stack-overflow" aria-hidden="true"></i></a>@endif</h1> @endif
                     @if(isset($explain)) <p style="margin-bottom: 25px;">{{ $explain }}</p> @endif
                 </div>
             </div>

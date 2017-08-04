@@ -632,6 +632,6 @@ class HomeController extends Controller
         SEO::setTitle($title);
         SEO::setDescription($explain);
 
-        return view('front.list', compact('repos', 'title', 'explain'));
+        return view('front.list', compact('repos', 'title', 'explain', 'topic'));
     }
 }
