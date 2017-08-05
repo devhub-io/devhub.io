@@ -66,7 +66,7 @@ class ReposDependency extends Command
                             'source' => 'npm',
                             'env' => '',
                             'package' => trim($package),
-                            'version' => $version,
+                            'version' => is_array($version) ? json_encode($version) : $version,
                             'created_at' => Carbon::now(),
                             'updated_at' => Carbon::now(),
                         ]);
@@ -80,7 +80,7 @@ class ReposDependency extends Command
                             'source' => 'npm',
                             'env' => 'dev',
                             'package' => trim($package),
-                            'version' => $version,
+                            'version' => is_array($version) ? json_encode($version) : $version,
                             'created_at' => Carbon::now(),
                             'updated_at' => Carbon::now(),
                         ]);
@@ -94,7 +94,7 @@ class ReposDependency extends Command
                             'source' => 'npm',
                             'env' => 'peer',
                             'package' => trim($package),
-                            'version' => $version,
+                            'version' => is_array($version) ? json_encode($version) : $version,
                             'created_at' => Carbon::now(),
                             'updated_at' => Carbon::now(),
                         ]);
@@ -115,7 +115,7 @@ class ReposDependency extends Command
                             'source' => 'composer',
                             'env' => '',
                             'package' => trim($package),
-                            'version' => $version,
+                            'version' => is_array($version) ? json_encode($version) : $version,
                             'created_at' => Carbon::now(),
                             'updated_at' => Carbon::now(),
                         ]);
@@ -129,7 +129,7 @@ class ReposDependency extends Command
                             'source' => 'composer',
                             'env' => 'dev',
                             'package' => trim($package),
-                            'version' => $version,
+                            'version' => is_array($version) ? json_encode($version) : $version,
                             'created_at' => Carbon::now(),
                             'updated_at' => Carbon::now(),
                         ]);
