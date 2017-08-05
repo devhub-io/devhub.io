@@ -50,7 +50,7 @@ class ReposTreeFetch extends Command
         $userId = $this->argument('userId');
         $page = $this->argument('page');
         $perPage = $this->argument('perPage');
-        $reposTree = ReposTree::query()->whereIn('path', $pathWhere)->orderBy('repos_id', 'asc')->forPage($page, $perPage)->get();
+        $reposTree = ReposTree::query()->whereIn('path', $pathWhere)->orderBy('updated_at', 'asc')->forPage($page, $perPage)->get();
         foreach ($reposTree as $item) {
             if (!DB::table('repos_tree_content')->where('repos_id', $item->repos_id)->where('commit_sha', $item->commit_sha)->where('sha', $item->sha)->exists()) {
 
