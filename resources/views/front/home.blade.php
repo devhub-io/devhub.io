@@ -40,7 +40,7 @@
 
 <section id="top">
     <div class="container">
-        <h1>@lang('front.popular')</h1>
+        <h1>@lang('front.popular') <a href="{{ l_url('list/popular') }}"><span style="margin-left: 10px; font-size: 16px">more</span></a></h1>
         @foreach($hot as $item)
             <a href="{{ l_url('repos', [$item->slug]) }}">
                 <div class="row">
@@ -50,7 +50,7 @@
                 </div>
             </a>
         @endforeach
-        <h1>@lang('front.latest')</h1>
+        <h1>@lang('front.latest') <a href="{{ l_url('list/newest') }}"><span style="margin-left: 10px; font-size: 16px">more</span></a></h1>
         @foreach($new as $item)
             <a href="{{ l_url('repos', [$item->slug]) }}">
                 <div class="row">
@@ -60,7 +60,7 @@
                 </div>
             </a>
         @endforeach
-        <h1>@lang('front.trend')</h1>
+        <h1>@lang('front.trend') <a href="{{ l_url('list/trend') }}"><span style="margin-left: 10px; font-size: 16px">more</span></a></h1>
         @foreach($trend as $item)
             <a href="{{ l_url('repos', [$item->slug]) }}">
                 <div class="row">
