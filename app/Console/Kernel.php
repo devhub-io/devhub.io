@@ -115,7 +115,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('devhub:queue:url-push')->hourly();
 
         // Repos content
-        $schedule->command('devhub:repos:tree-fetch 2 1 100')->hourly();
+        // $schedule->command('devhub:repos:tree-fetch 2 1 100')->hourly();
 
         // Repos readme fetch url
         $schedule->command('devhub:spider:github-fetch-readme-url 1 100')->hourlyAt(30);
