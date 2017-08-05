@@ -87,10 +87,10 @@ class Kernel extends ConsoleKernel
                 ->orderBy('view_number', 'desc')
                 ->limit(100)->get();
             foreach ($repos as $item) {
-                $job = (new GithubUpdate(3, $item->id))->onQueue('github-update');
+                $job = (new GithubUpdate(2, $item->id))->onQueue('github-update');
                 dispatch($job);
 
-                $job = (new GithubLicense(3, $item->id))->onQueue('github-license');
+                $job = (new GithubLicense(2, $item->id))->onQueue('github-license');
                 dispatch($job);
             }
         })->hourly();
@@ -101,9 +101,9 @@ class Kernel extends ConsoleKernel
                 ->where('status', true)
                 ->where('analytics_at', null)
                 ->orderBy('view_number', 'desc')
-                ->limit(500)->get();
+                ->limit(100)->get();
             foreach ($repos as $item) {
-                $job = (new GithubAnalytics(2, $item->id))->onQueue('github-analytics');
+                $job = (new GithubAnalytics(3, $item->id))->onQueue('github-analytics');
                 dispatch($job);
             }
         })->hourly();
@@ -115,10 +115,10 @@ class Kernel extends ConsoleKernel
         $schedule->command('devhub:queue:url-push')->hourly();
 
         // Repos content
-        $schedule->command('devhub:repos:tree-fetch 2 1 200')->hourly();
+        $schedule->command('devhub:repos:tree-fetch 2 1 100')->hourly();
 
         // Repos readme fetch url
-        $schedule->command('devhub:spider:github-fetch-readme-url 1 50')->hourlyAt(30);
+        $schedule->command('devhub:spider:github-fetch-readme-url 1 100')->hourlyAt(30);
 
         // Backup
         /*
@@ -143,9 +143,6 @@ class Kernel extends ConsoleKernel
 
         // Badges
         $schedule->command('devhub:github:badges')->dailyAt('02:00');
-
-        // Developer Language
-        $schedule->command('devhub:developer:language')->dailyAt('03:00');
 
         // Developer fetch repos
         $schedule->command('devhub:developer:repos-fetch 3 U 1 100')->dailyAt('04:00');
@@ -174,6 +171,9 @@ class Kernel extends ConsoleKernel
 
         // gitter rooms
         $schedule->command('devhub:spider:gitter-fetch-rooms')->weeklyOn(3);
+
+        // Developer Language
+        $schedule->command('devhub:developer:language')->weeklyOn(4);
 
         // Repos contributors fetch
         $schedule->command('devhub:spider:repos-contributors-fetch-developer-url')->weeklyOn(4);
