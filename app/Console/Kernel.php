@@ -38,7 +38,6 @@ class Kernel extends ConsoleKernel
         Commands\Package\PackageGosearchFetch::class,
         Commands\Package\PackageRubygemsFetch::class,
         Commands\Queue\QueueUrlPush::class,
-        Commands\Queue\QueueDeveloperPush::class,
         Commands\Site\SiteGenerateSitemap::class,
         Commands\Package\PackagePushUrl::class,
         Commands\Spider\SpiderGithubFetchDeveloperUrl::class,
@@ -115,6 +114,12 @@ class Kernel extends ConsoleKernel
         // URL Queue
         $schedule->command('devhub:queue:url-push')->hourly();
 
+        // Repos content
+        $schedule->command('devhub:repos:tree-fetch 2 1 200')->hourly();
+
+        // Repos readme fetch url
+        $schedule->command('devhub:spider:github-fetch-readme-url 1 50')->hourlyAt(30);
+
         // Backup
         /*
         $date = Carbon::now()->toW3cString();
@@ -140,17 +145,38 @@ class Kernel extends ConsoleKernel
         $schedule->command('devhub:github:badges')->dailyAt('02:00');
 
         // Developer Language
-        $schedule->command('php artisan devhub:developer:language')->dailyAt('03:00');
+        $schedule->command('devhub:developer:language')->dailyAt('03:00');
 
         // Developer fetch repos
-        $schedule->command('php artisan devhub:developer:repos-fetch 3 U 1 100')->dailyAt('04:00');
-        $schedule->command('php artisan devhub:developer:repos-fetch 3 O 1 100')->dailyAt('05:00');
+        $schedule->command('devhub:developer:repos-fetch 3 U 1 100')->dailyAt('04:00');
+        $schedule->command('devhub:developer:repos-fetch 3 O 1 100')->dailyAt('05:00');
+
+        // Developer Rating
+        $schedule->command('devhub:developer:rating')->dailyAt('06:00');
+
+        // Repos dependency
+        $schedule->command('devhub:repos:dependency')->dailyAt('21:00');
+
+        // New fetch repos
+        $schedule->command('devhub:news:github-fetch')->dailyAt('22:00');
 
         // Sitemap
         // $schedule->command('devhub:site:generate-sitemap')->daily();
 
         // Github Trending
         $schedule->command('devhub:spider:github-fetch-trending')->dailyAt('23:00');
+
+        // Github Document
+        $schedule->command('devhub:github:document')->weeklyOn(1);
+
+        // Repos fix
+        $schedule->command('devhub:repos:fix')->weeklyOn(2);
+
+        // gitter rooms
+        $schedule->command('devhub:spider:gitter-fetch-rooms')->weeklyOn(3);
+
+        // Repos contributors fetch
+        $schedule->command('devhub:spider:repos-contributors-fetch-developer-url')->weeklyOn(4);
 
         // Trend
         // $schedule->command('devhub:repos:trend')->mondays();
