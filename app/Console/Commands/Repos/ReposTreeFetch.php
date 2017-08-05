@@ -14,6 +14,7 @@ namespace App\Console\Commands\Repos;
 use App\Entities\ReposTree;
 use App\Jobs\GithubContentFetch;
 use App\Repositories\ReposRepositoryEloquent;
+use Carbon\Carbon;
 use DB;
 use Illuminate\Console\Command;
 
@@ -59,6 +60,7 @@ class ReposTreeFetch extends Command
                     $job->handle(new ReposRepositoryEloquent(app()));
 
                     $this->info("$item->repos_id : $item->path");
+                    DB::table('repos')->where('id', $item->repos_id)->update(['updated_at' => Carbon::now()]);
                 }
             }
         }
