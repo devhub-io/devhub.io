@@ -11,7 +11,10 @@
 
 namespace App\Console\Commands\Queue;
 
+use App\Console\Commands\Developer\DeveloperFetch;
+use App\Entities\DeveloperUrl;
 use App\Entities\ReposUrl;
+use App\Jobs\GithubDeveloperFetch;
 use App\Jobs\GithubFetch;
 use DB;
 use Illuminate\Console\Command;
@@ -45,9 +48,11 @@ class QueueUrlPush extends Command
      */
     public function handle()
     {
+        // Repos
+
         $urls = ReposUrl::query()->select(['id', 'url'])->get();
         foreach ($urls as $item) {
-            if (!DB::table('repos')->select('id')->where('github', $item->url)->exists()) {
+            if (!DB::table('repos')->where('github', $item->url)->exists()) {
                 dispatch(new GithubFetch(\Config::get('user.github-fetch'), $item->url));
                 $this->info($item->url);
             } else {
@@ -55,6 +60,20 @@ class QueueUrlPush extends Command
             }
             $item->delete();
         }
-        $this->info('All done!');
+        $this->info('Repos All done!');
+
+        // Developer
+
+        $urls = DeveloperUrl::query()->select(['id', 'url'])->get();
+        foreach ($urls as $item) {
+            if (!DB::table('developer')->where('html_url', $item->url)->exists()) {
+                dispatch(new GithubDeveloperFetch(\Config::get('user.developer-fetch'), $item->url));
+                $this->info($item->url);
+            } else {
+                $this->info('pass');
+            }
+            $item->delete();
+        }
+        $this->info('Developer All done!');
     }
 }

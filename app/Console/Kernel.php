@@ -67,6 +67,7 @@ class Kernel extends ConsoleKernel
         Commands\Site\SitePushUrl::class,
         Commands\Repos\ReposTreeFetch::class,
         Commands\Repos\ReposDependency::class,
+        Commands\Spider\SpiderGithubFetchTrending::class,
     ];
 
     /**
@@ -77,24 +78,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // Backup
-        /*
-        $date = Carbon::now()->toW3cString();
-        $environment = App::environment();
-        $files = File::files(storage_path("app/$environment"));
-        if (count($files) >= 3) {
-            $first_file = head($files);
-            @unlink($first_file);
-        }
-        $schedule->command(
-            "db:backup --database=mysql --destination=local --destinationPath=/{$environment}/DevelopHub_{$environment}_{$date} --compression=gzip"
-        )
-            ->twiceDaily(13, 21)
-            ->after(function () use ($date) {
-                User::find(1)->notify(new Pushover('[数据库] 备份成功', $date));
-            });
-        */
-
         // Sync user activated time
         // $schedule->command('devhub:user:sync-activated-time')->everyTenMinutes();
 
@@ -126,8 +109,29 @@ class Kernel extends ConsoleKernel
             }
         })->hourly();
 
-        // Trend
-        // $schedule->command('devhub:repos:trend')->mondays();
+        // News
+        $schedule->command('devhub:news:sync')->hourly();
+
+        // URL Queue
+        $schedule->command('devhub:queue:url-push')->hourly();
+
+        // Backup
+        /*
+        $date = Carbon::now()->toW3cString();
+        $environment = App::environment();
+        $files = File::files(storage_path("app/$environment"));
+        if (count($files) >= 3) {
+            $first_file = head($files);
+            @unlink($first_file);
+        }
+        $schedule->command(
+            "db:backup --database=mysql --destination=local --destinationPath=/{$environment}/DevelopHub_{$environment}_{$date} --compression=gzip"
+        )
+            ->twiceDaily(13, 21)
+            ->after(function () use ($date) {
+                User::find(1)->notify(new Pushover('[数据库] 备份成功', $date));
+            });
+        */
 
         // Process
         $schedule->command('devhub:repos:process')->daily();
@@ -138,8 +142,11 @@ class Kernel extends ConsoleKernel
         // Sitemap
         // $schedule->command('devhub:site:generate-sitemap')->daily();
 
-        // News
-        $schedule->command('devhub:news:sync')->hourly();
+        // Github Trending
+        $schedule->command('devhub:spider:github-fetch-trending')->dailyAt('23:00');
+
+        // Trend
+        // $schedule->command('devhub:repos:trend')->mondays();
     }
 
     /**
