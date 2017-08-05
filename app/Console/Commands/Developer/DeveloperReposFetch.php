@@ -43,7 +43,7 @@ class DeveloperReposFetch extends Command
         $perPage = $this->argument('perPage');
         $developers = Developer::query()->select(['id', 'html_url'])
             ->where('type', $type)
-            ->orderBy('updated_at', 'desc')
+            ->orderBy('updated_at', 'asc')
             ->forPage($page, $perPage)->get();
         foreach ($developers as $item) {
             $job = new GithubDeveloperReposFetch($userId, $item->html_url);

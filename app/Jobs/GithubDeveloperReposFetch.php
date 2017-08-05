@@ -14,6 +14,7 @@ namespace App\Jobs;
 use App\Entities\Service;
 use App\Repositories\Constant;
 use App\Repositories\ReposRepositoryEloquent;
+use Carbon\Carbon;
 use DB;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
@@ -77,7 +78,7 @@ class GithubDeveloperReposFetch implements ShouldQueue
                         }
                     }
                 }
-
+                DB::table('developer')->where('html_url', $this->url)->update(['updated_at' => Carbon::now()]);
             } catch (\Exception $e) {
                 Log::error('GithubDeveloperReposFetch ' . $e->getMessage());
             }

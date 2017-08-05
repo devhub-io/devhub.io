@@ -137,7 +137,10 @@ class Kernel extends ConsoleKernel
         $schedule->command('devhub:repos:process')->daily();
 
         // Badges
-        $schedule->command('devhub:github:badges')->daily();
+        $schedule->command('devhub:github:badges')->dailyAt('02:00');
+
+        // Developer Language
+        $schedule->command('php artisan devhub:developer:language')->dailyAt('03:00');
 
         // Sitemap
         // $schedule->command('devhub:site:generate-sitemap')->daily();
