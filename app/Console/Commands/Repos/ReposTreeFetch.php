@@ -14,7 +14,6 @@ namespace App\Console\Commands\Repos;
 use App\Entities\ReposTree;
 use App\Jobs\GithubContentFetch;
 use App\Repositories\ReposRepositoryEloquent;
-use Carbon\Carbon;
 use DB;
 use Illuminate\Console\Command;
 
@@ -51,7 +50,7 @@ class ReposTreeFetch extends Command
         $userId = $this->argument('userId');
         $page = $this->argument('page');
         $perPage = $this->argument('perPage');
-        $reposTree = ReposTree::query()->whereIn('path', $pathWhere)->orderBy('updated_at', 'asc')->forPage($page, $perPage)->get();
+        $reposTree = ReposTree::query()->whereIn('path', $pathWhere)->orderBy('repos_id', 'asc')->forPage($page, $perPage)->get();
         foreach ($reposTree as $item) {
             if (!DB::table('repos_tree_content')->where('repos_id', $item->repos_id)->where('commit_sha', $item->commit_sha)->where('sha', $item->sha)->exists()) {
 
@@ -60,7 +59,6 @@ class ReposTreeFetch extends Command
                     $job->handle(new ReposRepositoryEloquent(app()));
 
                     $this->info("$item->repos_id : $item->path");
-                    DB::table('repos')->where('id', $item->repos_id)->update(['updated_at' => Carbon::now()]);
                 }
             }
         }
