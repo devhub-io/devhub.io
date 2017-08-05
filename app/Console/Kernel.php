@@ -142,6 +142,10 @@ class Kernel extends ConsoleKernel
         // Developer Language
         $schedule->command('php artisan devhub:developer:language')->dailyAt('03:00');
 
+        // Developer fetch repos
+        $schedule->command('php artisan devhub:developer:repos-fetch 3 U 1 100')->dailyAt('04:00');
+        $schedule->command('php artisan devhub:developer:repos-fetch 3 O 1 100')->dailyAt('05:00');
+
         // Sitemap
         // $schedule->command('devhub:site:generate-sitemap')->daily();
 

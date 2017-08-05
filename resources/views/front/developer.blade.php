@@ -105,6 +105,11 @@
                 <p>
                     Data for {{ $developer->name ? $developer->name : $developer->login }} was last updated {{ Carbon\Carbon::now()->diffForHumans(Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $developer->site_updated_at)) }}.
                 </p>
+                @if($developer_languages->count() > 0)
+                <p>
+                    {{ $developer->name ? $developer->name : $developer->login }} use @foreach($developer_languages as $item) {{ $item->language }}, @endforeach...
+                </p>
+                @endif
             </article>
         </div>
         <div class="row">

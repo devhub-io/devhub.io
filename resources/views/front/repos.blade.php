@@ -131,7 +131,7 @@
                         </div>
                     @endif
                     <div>
-                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#reviewModal">
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#reviewModal" style="font-size: 12px; padding: 5px;">
                             I use {{ $repos->owner }}/{{ $repos->repo }}
                         </button>
                     </div>

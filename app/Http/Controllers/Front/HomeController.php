@@ -542,7 +542,9 @@ class HomeController extends Controller
             }
         }
 
-        return view('front.developer', compact('developer', 'owner_repos', 'contribute_repos', 'has_contribute', 'contribute_count'));
+        $developer_languages = DB::table('developer_languages')->where('developer_id', $developer->id)->orderBy('bytes', 'desc')->get();
+
+        return view('front.developer', compact('developer', 'owner_repos', 'contribute_repos', 'has_contribute', 'contribute_count', 'developer_languages'));
     }
 
     /**
