@@ -270,8 +270,18 @@ class HomeController extends Controller
         // Topics
         $topics = DB::table('repos_topics')->where('repos_id', $repos->id)->get();
 
+        // Dependencies
+        $reposDependencies = DB::table('repos_dependencies')->where('repos_id', $repos->id)->get();
+        $reposDependencies = $reposDependencies ? $reposDependencies->groupBy('source') : [];
+
+        $dependencies = [];
+        foreach ($reposDependencies as $key => $item) {
+            $env = $item->groupBy('env');
+            $dependencies[$key] = $env ? $env->toArray() : [];
+        }
+
         return view('front.repos', compact('repos', 'markdown', 'languages', 'related_repos', 'analytics_badges',
-            'gitter_badge', 'developer_exists', 'news_exists', 'packages', 'javascript_bind', 'topics'));
+            'gitter_badge', 'developer_exists', 'news_exists', 'packages', 'javascript_bind', 'topics', 'dependencies'));
     }
 
     /**

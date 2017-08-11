@@ -179,6 +179,36 @@
                     <div style="clear: both"></div>
                 @endif
 
+                @if(count($dependencies) > 0)
+                    <h3>Dependencies</h3>
+                    <div>
+                        @foreach($dependencies as $dPackages)
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>package</th>
+                                    <th>version</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($dPackages as $env => $pEnv)
+                                    @foreach($pEnv as $item)
+                                        <tr>
+                                            @if ($loop->first)
+                                                <td rowspan="{{ count($pEnv) }}">{{ $env }}</td>
+                                            @endif
+                                            <td>{{ $item->package }}</td>
+                                            <td>{{ $item->version }}</td>
+                                        </tr>
+                                    @endforeach
+                                @endforeach
+                                </tbody>
+                            </table>
+                        @endforeach
+                    </div>
+                @endif
+
                 <br>
 
                 @if($repos->tags->count() > 0)
