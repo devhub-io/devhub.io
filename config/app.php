@@ -182,14 +182,12 @@ return [
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
-        BackupManager\Laravel\Laravel5ServiceProvider::class,
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
         Arcanedev\LogViewer\LogViewerServiceProvider::class,
         Spatie\Analytics\AnalyticsServiceProvider::class,
         Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
         PragmaRX\Google2FA\Vendor\Laravel\ServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
-        AltThree\Badger\BadgerServiceProvider::class,
         Roumen\Feed\FeedServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
         NotificationChannels\Pushover\PushoverServiceProvider::class,
@@ -198,7 +196,6 @@ return [
         Torann\GeoIP\GeoIPServiceProvider::class,
         SocialiteProviders\Manager\ServiceProvider::class,
         Lubusin\Decomposer\DecomposerServiceProvider::class,
-        Dingo\Api\Provider\LaravelServiceProvider::class,
         Appstract\Opcache\OpcacheServiceProvider::class,
 
         /*
@@ -266,15 +263,12 @@ return [
         'Localization' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
         'Google2FA' => PragmaRX\Google2FA\Vendor\Laravel\Facade::class,
         'Entrust' => Zizaco\Entrust\EntrustFacade::class,
-        'Badger' => AltThree\Badger\Facades\Badger::class,
         'Feed' => Roumen\Feed\Feed::class,
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Active' => HieuLe\Active\Facades\Active::class,
         'UrlSigner' => Spatie\UrlSigner\Laravel\UrlSignerFacade::class,
         'GeoIP' => Torann\GeoIP\Facades\GeoIP::class,
-        'API' => Dingo\Api\Facade\API::class,
-        'APIRoute' => Dingo\Api\Facade\Route::class,
 
     ],
 
