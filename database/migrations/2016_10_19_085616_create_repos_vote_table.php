@@ -18,7 +18,7 @@ class CreateReposVoteTable extends Migration
             $table->tinyInteger('reliable');
             $table->tinyInteger('recommendation');
             $table->tinyInteger('documentation');
-            $table->string('ip', 50)->index();
+            $table->string('ip', 64)->index();
             $table->string('user_agent')->index();
             $table->timestamps();
         });
