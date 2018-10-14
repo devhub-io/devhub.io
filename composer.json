@@ -32,7 +32,7 @@
         "venturecraft/revisionable": "^1.28",
         "roumen/feed": "^2.10",
         "mailgun/mailgun-php": "^2.1",
-        "mews/captcha": "^2.1",
+        "mews/captcha": "^2.2",
         "laravel-notification-channels/pushover": "^0.0.2",
         "hieu-le/active": "^3.3",
         "spatie/laravel-url-signer": "^1.1",

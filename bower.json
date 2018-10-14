@@ -1,5 +1,5 @@
 {
-  "name": "laravelhub",
+  "name": "devhub",
   "description": "",
   "main": "",
   "authors": [
@@ -9,7 +9,7 @@
   "moduleType": [
     "globals"
   ],
-  "homepage": "http://www.laravelhub.org",
+  "homepage": "http://devhub.io",
   "ignore": [
     "**/.*",
     "node_modules",
