@@ -11,7 +11,6 @@
 
 namespace App\Exceptions;
 
-use Config;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
@@ -73,7 +72,7 @@ class Handler extends ExceptionHandler
      */
     protected function initRollbar()
     {
-        $config = Config::get('services.rollbar');
+        $config = config('services.rollbar');
         Rollbar::init($config);
     }
 

@@ -16,11 +16,11 @@
                             @foreach($repos as $item)
                                 <div class="col-sm-4 col-md-3">
                                     <div class="thumbnail" style="height: 362px;">
-                                        <a href="{{ l_url('repos', [$item->repos->slug]) }}"><img src="{{ $item->repos->cover ? $item->repos->cover : cdn_asset('img/200x200.png') }}" alt="{{ $item->repos->title }}" title="{{ $item->repos->title }}" width="200"></a>
+                                        <a href="{{ l_url('repos', [$item->repos ? $item->repos->slug : '-']) }}"><img src="{{ $item->repos && $item->repos->cover ? $item->repos->cover : cdn_asset('img/200x200.png') }}" alt="{{ $item->repos ? $item->repos->title : '' }}" title="{{ $item->repos ? $item->repos->title : '' }}" width="200"></a>
                                         <div class="caption">
-                                            <a href="{{ l_url('repos', [$item->repos->slug]) }}"><h3>{{ $item->repos->title }}</h3></a>
-                                            <span class="line">{{ $item->repos->trends }}</span>
-                                            <p>{{ mb_substr($item->repos->description, 0, 100) }}</p>
+                                            <a href="{{ l_url('repos', [$item->repos ? $item->repos->slug : '-']) }}"><h3>{{ $item->repos ? $item->repos->title : '' }}</h3></a>
+                                            <span class="line">{{ $item->repos ? $item->repos->trends : '' }}</span>
+                                            <p>{{ mb_substr($item->repos ? $item->repos->description : '' , 0, 100) }}</p>
                                         </div>
                                     </div>
                                 </div>
