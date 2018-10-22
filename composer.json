@@ -40,7 +40,8 @@
         "socialiteproviders/stackexchange": "^3.0",
         "lubusin/laravel-decomposer": "^1.1",
         "overtrue/wechat": "^4.1",
-        "appstract/laravel-opcache": "^1.1"
+        "appstract/laravel-opcache": "^1.1",
+        "pragmarx/health": "^0.9.16"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

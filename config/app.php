@@ -197,6 +197,7 @@ return [
         SocialiteProviders\Manager\ServiceProvider::class,
         Lubusin\Decomposer\DecomposerServiceProvider::class,
         Appstract\Opcache\OpcacheServiceProvider::class,
+        PragmaRX\Health\ServiceProvider::class,
 
         /*
          * Application Service Providers...
