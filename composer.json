@@ -12,7 +12,7 @@
         "laravel/scout": "^5.0",
         "laravel/socialite": "^3.1",
         "laracasts/flash": "~2.0",
-        "artesaos/seotools": "0.9.*",
+        "artesaos/seotools": "0.12.*",
         "prettus/l5-repository": "^2.6",
         "arcanedev/log-viewer": "~3.0",
         "spatie/laravel-analytics": "^2.1",

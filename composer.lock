@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "db1f29a2a2cf78ce9e650027963ae423",
+    "content-hash": "6859bd6c9cb73d560c2d1cdc27f70b4f",
     "packages": [
         {
             "name": "appstract/laravel-opcache",
@@ -274,16 +274,16 @@
         },
         {
             "name": "artesaos/seotools",
-            "version": "v0.9.2",
+            "version": "v0.12.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/artesaos/seotools.git",
-                "reference": "90c287542602af077541dab1ddac4914f608e7e7"
+                "reference": "96499c7d8d3eaa3e495f20d7fb4f135b2c8b9dc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/artesaos/seotools/zipball/90c287542602af077541dab1ddac4914f608e7e7",
-                "reference": "90c287542602af077541dab1ddac4914f608e7e7",
+                "url": "https://api.github.com/repos/artesaos/seotools/zipball/96499c7d8d3eaa3e495f20d7fb4f135b2c8b9dc9",
+                "reference": "96499c7d8d3eaa3e495f20d7fb4f135b2c8b9dc9",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -293,15 +293,30 @@
                 ]
             },
             "require": {
-                "illuminate/config": "~5",
-                "illuminate/support": "~5",
-                "php": ">=5.4.0"
+                "illuminate/config": "5.0.* || 5.1.* || 5.2.* || 5.3.* || 5.4.* || 5.5.* || 5.6.* || 5.7.*",
+                "illuminate/support": "5.0.* || 5.1.* || 5.2.* || 5.3.* || 5.4.* || 5.5.* || 5.6.* || 5.7.*",
+                "php": ">=7.0"
             },
             "require-dev": {
-                "phpspec/phpspec": "2.1.x",
-                "phpunit/phpunit": "4.*"
+                "mockery/mockery": "~1.0",
+                "orchestra/testbench": "~3.0",
+                "phpspec/phpspec": "~4.0",
+                "phpunit/phpunit": "~6.0"
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Artesaos\\SEOTools\\Providers\\SEOToolsServiceProvider"
+                    ],
+                    "aliases": {
+                        "SEOMeta": "Artesaos\\SEOTools\\Facades\\SEOMeta",
+                        "OpenGraph": "Artesaos\\SEOTools\\Facades\\OpenGraph",
+                        "Twitter": "Artesaos\\SEOTools\\Facades\\TwitterCard",
+                        "SEO": "Artesaos\\SEOTools\\Facades\\SEOTools"
+                    }
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Artesaos\\SEOTools\\": "src/SEOTools/"
@@ -327,7 +342,7 @@
                 "seotools",
                 "webmaster"
             ],
-            "time": "2016-04-30T00:18:23+00:00"
+            "time": "2018-09-09T20:48:44+00:00"
         },
         {
             "name": "bacon/bacon-qr-code",
