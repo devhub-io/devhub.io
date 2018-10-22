@@ -12,7 +12,6 @@
         "laravel/scout": "^5.0",
         "laravel/socialite": "^3.1",
         "laracasts/flash": "~2.0",
-        "roumen/sitemap": "2.6.*",
         "artesaos/seotools": "0.9.*",
         "prettus/l5-repository": "^2.6",
         "arcanedev/log-viewer": "~3.0",
@@ -40,7 +39,8 @@
         "socialiteproviders/stackexchange": "^3.0",
         "lubusin/laravel-decomposer": "^1.1",
         "overtrue/wechat": "^4.1",
-        "appstract/laravel-opcache": "^1.1"
+        "appstract/laravel-opcache": "^1.1",
+        "laravelium/sitemap": "3.0.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

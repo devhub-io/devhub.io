@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "507dcf8d644a2145a0fd02101f8753ac",
+    "content-hash": "b93fad6df28845c0ed21ef0f5298e8a1",
     "packages": [
         {
             "name": "appstract/laravel-opcache",
@@ -1913,6 +1913,73 @@
             "time": "2018-08-16T12:51:21+00:00"
         },
         {
+            "name": "laravelium/sitemap",
+            "version": "v3.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.com/Laravelium/Sitemap.git",
+                "reference": "b287ec4a6b47dcd63fd121199c05e059c479bc6f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://gitlab.com/api/v4/projects/Laravelium%2FSitemap/repository/archive.zip?sha=b287ec4a6b47dcd63fd121199c05e059c479bc6f",
+                "reference": "b287ec4a6b47dcd63fd121199c05e059c479bc6f",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "illuminate/support": "5.7.*",
+                "php": ">=7.1.3"
+            },
+            "require-dev": {
+                "orchestra/testbench": "3.7.*",
+                "phpunit/phpunit": "~7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laravelium\\Sitemap\\SitemapServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Laravelium\\Sitemap": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Roumen Damianoff",
+                    "email": "roumen@damianoff.com",
+                    "homepage": "https://damianoff.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravelium Sitemap package for Laravel.",
+            "homepage": "https://laravelium.com",
+            "keywords": [
+                "Sitemap",
+                "generator",
+                "google-news",
+                "html",
+                "laravel",
+                "laravelium",
+                "php",
+                "xml"
+            ],
+            "time": "2018-09-04T19:08:44+00:00"
+        },
+        {
             "name": "league/flysystem",
             "version": "1.0.48",
             "source": {
@@ -2777,16 +2844,16 @@
         },
         {
             "name": "overtrue/wechat",
-            "version": "4.1.8",
+            "version": "4.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/wechat.git",
-                "reference": "b9c7b780706e4a6b16658ab43d5667c57ddde498"
+                "reference": "356caf17f357121ebe81b75575a339dcd3005177"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/wechat/zipball/b9c7b780706e4a6b16658ab43d5667c57ddde498",
-                "reference": "b9c7b780706e4a6b16658ab43d5667c57ddde498",
+                "url": "https://api.github.com/repos/overtrue/wechat/zipball/356caf17f357121ebe81b75575a339dcd3005177",
+                "reference": "356caf17f357121ebe81b75575a339dcd3005177",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2842,7 +2909,7 @@
                 "weixin",
                 "weixin-sdk"
             ],
-            "time": "2018-09-20T12:51:32+00:00"
+            "time": "2018-10-20T12:41:31+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -4103,61 +4170,6 @@
             ],
             "abandoned": "laravelium/feed",
             "time": "2017-03-22T17:31:36+00:00"
-        },
-        {
-            "name": "roumen/sitemap",
-            "version": "v2.6.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Laravelium/laravel-sitemap.git",
-                "reference": "43747375a1dc19b11aa52442c99628a8d104c0f7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Laravelium/laravel-sitemap/zipball/43747375a1dc19b11aa52442c99628a8d104c0f7",
-                "reference": "43747375a1dc19b11aa52442c99628a8d104c0f7",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
-            },
-            "require": {
-                "illuminate/support": "~5",
-                "php": ">=5.5.9"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "3.7.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Roumen\\Sitemap": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Roumen Damianoff",
-                    "email": "roumen@crimsson.com",
-                    "homepage": "https://roumen.it",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A not so simple sitemap generator for Laravel.",
-            "homepage": "https://roumen.it/projects/laravel-sitemap",
-            "keywords": [
-                "Sitemap",
-                "generator",
-                "laravel"
-            ],
-            "abandoned": "laravelium/sitemap",
-            "time": "2016-10-06T06:13:52+00:00"
         },
         {
             "name": "simplesoftwareio/simple-qrcode",
@@ -7076,16 +7088,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.2.1",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "e79cd403fb77fc8963a99ecc30e80ddd885b3311"
+                "reference": "a9f129b99df316f847584d482c89c14a9f796e2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/e79cd403fb77fc8963a99ecc30e80ddd885b3311",
-                "reference": "e79cd403fb77fc8963a99ecc30e80ddd885b3311",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/a9f129b99df316f847584d482c89c14a9f796e2b",
+                "reference": "a9f129b99df316f847584d482c89c14a9f796e2b",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -7139,7 +7151,7 @@
                 "throwable",
                 "whoops"
             ],
-            "time": "2018-06-30T13:14:06+00:00"
+            "time": "2018-10-20T09:00:00+00:00"
         },
         {
             "name": "fzaninotto/faker",
