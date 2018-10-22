@@ -190,7 +190,6 @@ return [
         Mews\Captcha\CaptchaServiceProvider::class,
         NotificationChannels\Pushover\PushoverServiceProvider::class,
         HieuLe\Active\ActiveServiceProvider::class,
-        Spatie\UrlSigner\Laravel\UrlSignerServiceProvider::class,
         Torann\GeoIP\GeoIPServiceProvider::class,
         SocialiteProviders\Manager\ServiceProvider::class,
         Lubusin\Decomposer\DecomposerServiceProvider::class,
@@ -264,7 +263,6 @@ return [
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Active' => HieuLe\Active\Facades\Active::class,
-        'UrlSigner' => Spatie\UrlSigner\Laravel\UrlSignerFacade::class,
         'GeoIP' => Torann\GeoIP\Facades\GeoIP::class,
 
     ],

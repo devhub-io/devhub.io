@@ -12,7 +12,6 @@
 namespace App\Mail;
 
 use Cache;
-use UrlSigner;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -48,6 +47,13 @@ class SubscribeConfirm extends Mailable implements ShouldQueue
         Cache::put("mail:$slug", $this->mail, 35 * 24 * 60);
 
         return $this->view('emails.subscribe.confirm')
-            ->with('confirm_url', UrlSigner::sign(url('subscribe/confirm?slug='.$slug), 31));
+            ->with('confirm_url', $this->_sign(url('subscribe/confirm?slug='.$slug), 31));
+    }
+
+    /**
+     * UrlSigner
+     */
+    private function _sign() {
+        // TODO
     }
 }
