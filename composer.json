@@ -29,7 +29,6 @@
         "predis/predis": "^1.1",
         "intervention/image": "^2.3",
         "venturecraft/revisionable": "^1.28",
-        "roumen/feed": "^2.10",
         "mailgun/mailgun-php": "^2.1",
         "mews/captcha": "^2.2",
         "laravel-notification-channels/pushover": "^0.0.2",
@@ -40,7 +39,8 @@
         "lubusin/laravel-decomposer": "^1.1",
         "overtrue/wechat": "^4.1",
         "appstract/laravel-opcache": "^1.1",
-        "laravelium/sitemap": "3.0.*"
+        "laravelium/sitemap": "3.0.*",
+        "laravelium/feed": "3.0.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

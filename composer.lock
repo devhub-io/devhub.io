@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b93fad6df28845c0ed21ef0f5298e8a1",
+    "content-hash": "7703ac709d2a1b7772bf69b428bff850",
     "packages": [
         {
             "name": "appstract/laravel-opcache",
@@ -1911,6 +1911,74 @@
                 "oauth"
             ],
             "time": "2018-08-16T12:51:21+00:00"
+        },
+        {
+            "name": "laravelium/feed",
+            "version": "v3.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.com/Laravelium/Feed.git",
+                "reference": "bef9d61639a387cc22d040590c16c5ca737e3a39"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://gitlab.com/api/v4/projects/Laravelium%2FFeed/repository/archive.zip?sha=bef9d61639a387cc22d040590c16c5ca737e3a39",
+                "reference": "bef9d61639a387cc22d040590c16c5ca737e3a39",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "illuminate/support": "5.7.*",
+                "php": ">=7.1.3"
+            },
+            "require-dev": {
+                "orchestra/testbench": "3.7.*",
+                "phpunit/phpunit": "~7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laravelium\\Feed\\FeedServiceProvider"
+                    ],
+                    "aliases": {
+                        "Feed": "Laravelium\\Feed\\Feed"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Laravelium\\Feed": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Roumen Damianoff",
+                    "email": "roumen@damianoff.com",
+                    "homepage": "https://damianoff.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravelium Feed generator for Laravel.",
+            "homepage": "https://laravelium.com",
+            "keywords": [
+                "atom",
+                "feed",
+                "generator",
+                "laravel",
+                "laravelium",
+                "rss"
+            ],
+            "time": "2018-09-05T08:15:21+00:00"
         },
         {
             "name": "laravelium/sitemap",
@@ -4112,64 +4180,6 @@
                 "monitoring"
             ],
             "time": "2016-07-05T15:50:29+00:00"
-        },
-        {
-            "name": "roumen/feed",
-            "version": "v2.10.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Laravelium/laravel-feed.git",
-                "reference": "ffbdb58f2ef41c7cb5d3bcd0aec2273e8eabc58b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Laravelium/laravel-feed/zipball/ffbdb58f2ef41c7cb5d3bcd0aec2273e8eabc58b",
-                "reference": "ffbdb58f2ef41c7cb5d3bcd0aec2273e8eabc58b",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
-            },
-            "require": {
-                "illuminate/support": "^5.0",
-                "php": ">=5.5.9"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^3.0",
-                "phpunit/phpunit": "^4.8"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Roumen\\Feed": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Roumen Damianoff",
-                    "email": "roumen@crimsson.com",
-                    "homepage": "https://roumen.it",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A simple feed generator for Laravel.",
-            "homepage": "https://roumen.it/projects/laravel-feed",
-            "keywords": [
-                "atom",
-                "feed",
-                "generator",
-                "laravel",
-                "rss"
-            ],
-            "abandoned": "laravelium/feed",
-            "time": "2017-03-22T17:31:36+00:00"
         },
         {
             "name": "simplesoftwareio/simple-qrcode",

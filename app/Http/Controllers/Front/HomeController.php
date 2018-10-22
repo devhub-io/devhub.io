@@ -11,6 +11,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use App;
 use App\Entities\Article;
 use App\Entities\Collection;
 use App\Entities\CollectionRepos;
@@ -32,7 +33,6 @@ use Config;
 use DB;
 use Flash;
 use Localization;
-use Roumen\Feed\Feed;
 use SEO;
 use SEOMeta;
 use Validator;
@@ -350,7 +350,7 @@ class HomeController extends Controller
     public function feed()
     {
         // create new feed
-        $feed = new Feed();
+        $feed = App::make('feed');
 
         // multiple feeds are supported
         // if you are using caching you should set different cache keys for your feeds
