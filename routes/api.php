@@ -19,13 +19,3 @@
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-APIRoute::version('v1', function ($api) {
-    $api->group(['prefix' => 'wechat'], function ($api) {
-        $api->get('/', 'App\Http\Controllers\Api\WechatController@index');
-    });
-
-    # Front
-    $api->group(['prefix' => 'front'], function($api) {
-       $api->get('home', 'App\Http\Controllers\Api\FrontController@home');
-    });
-});

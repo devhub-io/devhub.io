@@ -11,6 +11,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use App;
 use App\Entities\Article;
 use App\Entities\Collection;
 use App\Entities\CollectionRepos;
@@ -26,14 +27,12 @@ use App\Repositories\CategoryRepository;
 use App\Repositories\ReposRepository;
 use App\Support\Mailgun;
 use Auth;
-use Badger;
 use Cache;
 use Carbon\Carbon;
 use Config;
 use DB;
 use Flash;
 use Localization;
-use Roumen\Feed\Feed;
 use SEO;
 use SEOMeta;
 use Validator;
@@ -62,13 +61,6 @@ class HomeController extends Controller
         view()->share('current_category_slug', '');
         view()->share('one_column', Cache::remember('front:one_coumen', 31 * 24 * 60, function () {
             return $this->categoryRepository->findWhere(['parent_id' => 0]);
-        }));
-        view()->share('badger', Cache::remember('front:badger', 60 * 24, function () {
-            return [
-                Badger::generate('Server', 'Nginx', 'brightgreen', 'plastic'),
-                Badger::generate('CDN', 'CloudFlare', '#1abc9c', 'plastic'),
-                Badger::generate('Framework', 'Laravel', 'blue', 'plastic'),
-            ];
         }));
         view()->share('repos_total', Cache::remember('front:repos_total', 60 * 24, function () {
             return DB::table('repos')->where('status', 1)->count();
@@ -358,7 +350,7 @@ class HomeController extends Controller
     public function feed()
     {
         // create new feed
-        $feed = new Feed();
+        $feed = App::make('feed');
 
         // multiple feeds are supported
         // if you are using caching you should set different cache keys for your feeds

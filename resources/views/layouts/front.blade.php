@@ -151,11 +151,60 @@
                         <div class="made-by">Power by</div>
                     </div>
                     <div class="col-md-6">
-                        @if(isset($badger))
-                            @foreach($badger as $item)
-                                {!! $item !!}
-                            @endforeach
-                        @endif
+                        <svg xmlns="http://www.w3.org/2000/svg" width="91" height="18">
+                            <linearGradient id="smooth" x2="0" y2="100%">
+                                <stop offset="0" stop-color="#fff" stop-opacity=".7"></stop>
+                                <stop offset=".1" stop-color="#aaa" stop-opacity=".1"></stop>
+                                <stop offset=".9" stop-color="#000" stop-opacity=".3"></stop>
+                                <stop offset="1" stop-color="#000" stop-opacity=".5"></stop>
+                            </linearGradient>
+                            <rect rx="4" width="91" height="18" fill="#555555"></rect>
+                            <rect rx="4" x="48" width="43" height="18" fill="#4c1"></rect>
+                            <rect x="48" width="4" height="18" fill="#4c1"></rect>
+                            <rect rx="4" width="91" height="18" fill="url(#smooth)"></rect>
+                            <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
+                                <text x="25" y="13" fill="#010101" fill-opacity=".3">Server</text>
+                                <text x="25" y="12">Server</text>
+                                <text x="68.5" y="13" fill="#010101" fill-opacity=".3">Nginx</text>
+                                <text x="68.5" y="12">Nginx</text>
+                            </g>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="106" height="18">
+                            <linearGradient id="smooth" x2="0" y2="100%">
+                                <stop offset="0" stop-color="#fff" stop-opacity=".7"></stop>
+                                <stop offset=".1" stop-color="#aaa" stop-opacity=".1"></stop>
+                                <stop offset=".9" stop-color="#000" stop-opacity=".3"></stop>
+                                <stop offset="1" stop-color="#000" stop-opacity=".5"></stop>
+                            </linearGradient>
+                            <rect rx="4" width="106" height="18" fill="#555555"></rect>
+                            <rect rx="4" x="36" width="70" height="18" fill="#1abc9c"></rect>
+                            <rect x="36" width="4" height="18" fill="#1abc9c"></rect>
+                            <rect rx="4" width="106" height="18" fill="url(#smooth)"></rect>
+                            <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
+                                <text x="19" y="13" fill="#010101" fill-opacity=".3">CDN</text>
+                                <text x="19" y="12">CDN</text>
+                                <text x="70" y="13" fill="#010101" fill-opacity=".3">CloudFlare</text>
+                                <text x="70" y="12">CloudFlare</text>
+                            </g>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="124" height="18">
+                            <linearGradient id="smooth" x2="0" y2="100%">
+                                <stop offset="0" stop-color="#fff" stop-opacity=".7"></stop>
+                                <stop offset=".1" stop-color="#aaa" stop-opacity=".1"></stop>
+                                <stop offset=".9" stop-color="#000" stop-opacity=".3"></stop>
+                                <stop offset="1" stop-color="#000" stop-opacity=".5"></stop>
+                            </linearGradient>
+                            <rect rx="4" width="124" height="18" fill="#555555"></rect>
+                            <rect rx="4" x="72" width="52" height="18" fill="#007ec6"></rect>
+                            <rect x="72" width="4" height="18" fill="#007ec6"></rect>
+                            <rect rx="4" width="124" height="18" fill="url(#smooth)"></rect>
+                            <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
+                                <text x="37" y="13" fill="#010101" fill-opacity=".3">Framework</text>
+                                <text x="37" y="12">Framework</text>
+                                <text x="97" y="13" fill="#010101" fill-opacity=".3">Laravel</text>
+                                <text x="97" y="12">Laravel</text>
+                            </g>
+                        </svg>
                     </div>
                 </div>
             </div>

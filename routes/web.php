@@ -21,7 +21,7 @@
 */
 
 # Front
-Route::group(['namespace' => 'Front', 'prefix' => Localization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect'], 'domain' => env('WWW_DOMAIN')], function () {
+Route::group(['namespace' => 'Front', 'prefix' => Localization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'], 'domain' => env('WWW_DOMAIN')], function () {
 
     App::setLocale(Localization::getCurrentLocaleRegional());
 
