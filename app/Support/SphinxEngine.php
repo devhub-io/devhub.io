@@ -101,7 +101,7 @@ class SphinxEngine extends Engine
             }
         }
 
-        return $builder->whereIn('id', $repos_ids ?: [-1])->get();
+        return $model->newQuery()->whereIn('id', $repos_ids ?: [-1])->get();
     }
 
     /**
