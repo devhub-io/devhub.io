@@ -87,11 +87,12 @@ class SphinxEngine extends Engine
     /**
      * Map the given results to instances of the given model.
      *
+     * @param Builder $builder
      * @param  mixed $results
      * @param  \Illuminate\Database\Eloquent\Model $model
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function map($results, $model)
+    public function map(Builder $builder, $results, $model)
     {
         $repos_ids = [];
         if (isset($results['matches'])) {
@@ -100,7 +101,7 @@ class SphinxEngine extends Engine
             }
         }
 
-        return $model->newQuery()->whereIn('id', $repos_ids ?: [-1])->get();
+        return $builder->whereIn('id', $repos_ids ?: [-1])->get();
     }
 
     /**
@@ -112,5 +113,16 @@ class SphinxEngine extends Engine
     public function getTotalCount($results)
     {
         return isset($results['total']) ? (int)$results['total'] : 0;
+    }
+
+    /**
+     * Pluck and return the primary keys of the given results.
+     *
+     * @param  mixed $results
+     * @return \Illuminate\Support\Collection
+     */
+    public function mapIds($results)
+    {
+        // TODO: Implement mapIds() method.
     }
 }
