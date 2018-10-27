@@ -184,6 +184,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admi
     Route::get('topic', 'TopicController@show');
 
     Route::get('decompose','\Lubusin\Decomposer\Controllers\DecomposerController@index');
+    Route::get('maintenance','MaintenanceController@index');
 });
 
 # Static

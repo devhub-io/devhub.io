@@ -109,6 +109,7 @@
                                     <li><a href="{{ url('admin/api/status') }}">API</a></li>
                                     <li><a href="{{ url('admin/queue/status') }}">Queue</a></li>
                                     <li><a href="{{ url('admin/decompose') }}" target="_blank">Decompose</a></li>
+                                    <li><a href="{{ url('admin/maintenance') }}">Maintenance</a></li>
                                 </ul>
                             </li>
                         </ul>

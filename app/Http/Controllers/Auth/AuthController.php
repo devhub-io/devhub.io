@@ -30,14 +30,19 @@ class AuthController extends Controller
 
     public function login()
     {
-        $rulues = ['captcha' => 'required|captcha'];
+        $loginData = request()->only(['email', 'password']);
+
+        $rulues = [
+            'email' => 'required',
+            'password' => 'required',
+            'captcha' => 'required|captcha',
+        ];
         $validator = Validator::make(request()->all(), $rulues);
         if ($validator->fails()) {
-            Flash::error('Invalid Captcha');
-            return redirect('auth/login');
+            $messages = json_encode($validator->messages()->messages(), JSON_UNESCAPED_UNICODE);
+            Flash::error($messages);
+            return redirect('auth/login')->withInput($loginData);
         }
-
-        $loginData = request()->only(['email', 'password']);
 
         if (Auth::validate($loginData)) {
             Auth::once($loginData);
@@ -54,7 +59,7 @@ class AuthController extends Controller
         }
 
         Flash::error('Invalid Email/Password');
-        return redirect('auth/login');
+        return redirect('auth/login')->withInput($loginData);
     }
 
     public function logout()

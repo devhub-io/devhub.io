@@ -50,37 +50,45 @@ class HomeController extends Controller
         $developers_count = Developer::count();
 
         // Google Analytics
-        $topBrowsers = Analytics::fetchTopBrowsers(Period::days(31));
-        $topBrowsers = $topBrowsers->take(10);
+        $topBrowsers = $mostVisitedPages = $topReferrers = [];
+        if (file_exists(storage_path() . '/app/google-analytics/service-account-credentials.json')) {
 
-        $mostVisitedPages = Analytics::fetchMostVisitedPages(Period::days(31));
-        $mostVisitedPages = $mostVisitedPages->take(10);
+            $topBrowsers = Analytics::fetchTopBrowsers(Period::days(31));
+            $topBrowsers = $topBrowsers->take(10);
 
-        $topReferrers = Analytics::fetchTopReferrers(Period::days(31));
-        $topReferrers = $topReferrers->take(10);
+            $mostVisitedPages = Analytics::fetchMostVisitedPages(Period::days(31));
+            $mostVisitedPages = $mostVisitedPages->take(10);
+
+            $topReferrers = Analytics::fetchTopReferrers(Period::days(31));
+            $topReferrers = $topReferrers->take(10);
+        }
 
         // CloudFlare
-        $client = new Client(['base_uri' => 'https://api.cloudflare.com/client/v4/']);
+        $cf = [];
         $zone_id = env('CLOUDFLARE_ZONE_ID');
-        $response = $client->request('GET', "zones/$zone_id/analytics/dashboard", [
-            'headers' => [
-                'X-Auth-Email' => env('CLOUDFLARE_AUTH_EMAIL'),
-                'X-Auth-Key' => env('CLOUDFLARE_KEY'),
-                'Content-Type' => 'application/json'
-            ],
-            'query' => [
-                'since' => '-43200'
-            ]
-        ]);
-        $cf = json_decode($response->getBody()->getContents(), true);
-        $cf = $cf ? $cf['result'] : [];
+        if ($zone_id) {
+            $client = new Client(['base_uri' => 'https://api.cloudflare.com/client/v4/']);
 
-        $http_status = $cf['totals']['requests']['http_status'];
-        arsort($http_status);
+            $response = $client->request('GET', "zones/$zone_id/analytics/dashboard", [
+                'headers' => [
+                    'X-Auth-Email' => env('CLOUDFLARE_AUTH_EMAIL'),
+                    'X-Auth-Key' => env('CLOUDFLARE_KEY'),
+                    'Content-Type' => 'application/json'
+                ],
+                'query' => [
+                    'since' => '-43200'
+                ]
+            ]);
+            $cf = json_decode($response->getBody()->getContents(), true);
+            $cf = $cf ? $cf['result'] : [];
 
-        $pageviews = $cf['totals']['pageviews']['search_engine'];
-        arsort($pageviews);
+            $http_status = $cf['totals']['requests']['http_status'];
+            arsort($http_status);
 
-        return view('admin.dashboard', compact('repos_count', 'topBrowsers', 'topReferrers', 'mostVisitedPages', 'developers_count', 'http_status', 'pageviews', 'cf'));
+            $pageviews = $cf['totals']['pageviews']['search_engine'];
+            arsort($pageviews);
+        }
+        return view('admin.dashboard', compact('repos_count', 'topBrowsers', 'topReferrers',
+            'mostVisitedPages', 'developers_count', 'http_status', 'pageviews', 'cf'));
     }
 }

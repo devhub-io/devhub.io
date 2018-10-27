@@ -12,10 +12,12 @@
             <div class="count">{{ number_format($developers_count) }}</div>
         </div>
 
+        @if($cf)
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
             <span class="count_top"><i class="fa fa-clock-o"></i> Unique Visitors (Last month | CloudFlare)</span>
             <div class="count">{{ number_format($cf['totals']['uniques']['all']) }}</div>
         </div>
+        @endif
     </div>
     <!-- /top tiles -->
     <div class="row">
@@ -43,6 +45,7 @@
                     </ul>
                     <div class="clearfix"></div>
                 </div>
+                @if($cf)
                 <div class="x_content">
                     <div class="dashboard-widget-content">
                         <div class="col-md-4 hidden-small">
@@ -75,6 +78,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
             </div>
         </div>
     </div>
