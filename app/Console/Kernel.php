@@ -67,6 +67,7 @@ class Kernel extends ConsoleKernel
         Commands\Repos\ReposTreeFetch::class,
         Commands\Repos\ReposDependency::class,
         Commands\Spider\SpiderGithubFetchTrending::class,
+        Commands\Jobs\FakerData::class,
     ];
 
     /**
