@@ -42,7 +42,9 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
-            'throttle:60,1'
+            'throttle:60,1',
+            \Barryvdh\Cors\HandleCors::class,
+            'allow.ip'
         ],
     ];
 
@@ -68,5 +70,6 @@ class Kernel extends HttpKernel
         'permission' => \Zizaco\Entrust\Middleware\EntrustPermission::class,
         'ability' => \Zizaco\Entrust\Middleware\EntrustAbility::class,
         'admin' => \App\Http\Middleware\AdminAuthenticate::class,
+        'allow.ip' => \App\Http\Middleware\AllowIP::class,
     ];
 }

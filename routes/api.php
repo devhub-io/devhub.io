@@ -21,7 +21,7 @@
 */
 
 # Front
-Route::group(['namespace' => 'Api', 'middleware' => [], 'domain' => env('API_DOMAIN')], function () {
+Route::group(['namespace' => 'Api', 'domain' => env('API_DOMAIN')], function () {
     // Jobs
     Route::get('job/{slug}', 'MainController@job');
     Route::get('jobs', 'MainController@jobs');
