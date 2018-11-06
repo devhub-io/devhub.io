@@ -19,3 +19,11 @@
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+# Front
+Route::group(['namespace' => 'Api', 'middleware' => [], 'domain' => env('API_DOMAIN')], function () {
+    // Jobs
+    Route::get('job/{slug}', 'MainController@job');
+    Route::get('jobs', 'MainController@jobs');
+    Route::get('jobs/search', 'MainController@search_jobs');
+});

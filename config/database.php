@@ -75,6 +75,20 @@ return [
             'engine' => null,
         ],
 
+        'jobshub' => [
+            'driver' => 'mysql',
+            'host' => env('JOBSHUB_DB_HOST', 'localhost'),
+            'port' => env('JOBSHUB_DB_PORT', '3306'),
+            'database' => env('JOBSHUB_DB_DATABASE', 'forge'),
+            'username' => env('JOBSHUB_DB_USERNAME', 'forge'),
+            'password' => env('JOBSHUB_DB_PASSWORD', ''),
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'strict' => false,
+            'engine' => null,
+        ],
+
         'pgsql' => [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', 'localhost'),

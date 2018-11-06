@@ -44,5 +44,6 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind('App\Repositories\ReposRepository',  'App\Repositories\ReposRepositoryEloquent');
         $this->app->bind('App\Repositories\CategoryRepository', 'App\Repositories\CategoryRepositoryEloquent');
+        $this->app->bind('App\Repositories\JobRepository', 'App\Repositories\JobRepositoryEloquent');
     }
 }

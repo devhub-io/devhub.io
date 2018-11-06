@@ -47,6 +47,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      * @param $user_id
      * @param array $data
      * @return mixed
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function createFromGithubAPI($user_id, array $data)
     {
@@ -89,6 +90,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
      * @param $id
      * @param array $data
      * @return bool|mixed
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function updateFromGithubAPI($id, array $data)
     {
@@ -209,7 +211,7 @@ class ReposRepositoryEloquent extends BaseRepository implements ReposRepository
             ->orderBy('stargazers_count', 'DESC')->limit($limit)->get();
     }
 
-    /**$limit
+    /**
      * @return int
      */
     public function count()

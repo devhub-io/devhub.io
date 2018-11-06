@@ -38,7 +38,8 @@
         "overtrue/wechat": "^4.1",
         "appstract/laravel-opcache": "^1.1",
         "laravelium/sitemap": "3.0.*",
-        "laravelium/feed": "3.0.*"
+        "laravelium/feed": "3.0.*",
+        "ext-pdo": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
