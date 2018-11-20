@@ -87,7 +87,7 @@ class UserController extends Controller
     }
 
     /**
-     * @param $id
+     * @param integer $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function delete($id)

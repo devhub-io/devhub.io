@@ -44,8 +44,8 @@ class GithubLicense extends Command
     public function handle()
     {
         $userId= $this->argument('userId');
-        $page = $this->argument('page');
-        $perPage = $this->argument('perPage');
+        $page = (int)$this->argument('page');
+        $perPage = (int)$this->argument('perPage');
         $repos = Repos::query()->select(['id', 'owner', 'repo'])
             ->where('status', true)
             ->orderBy('stargazers_count', 'desc')

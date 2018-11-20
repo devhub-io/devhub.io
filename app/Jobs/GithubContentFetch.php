@@ -54,11 +54,11 @@ class GithubContentFetch implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param $user_id
-     * @param $reposId
-     * @param $commit_sha
-     * @param $sha
-     * @param $path
+     * @param integer $user_id
+     * @param integer $reposId
+     * @param string $commit_sha
+     * @param string $sha
+     * @param string $path
      */
     public function __construct($user_id, $reposId, $commit_sha, $sha, $path)
     {

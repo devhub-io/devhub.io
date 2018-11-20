@@ -39,8 +39,8 @@ class DeveloperReposFetch extends Command
         $userId = $this->argument('userId');
         $type = $this->argument('type');
         $type = strtolower($type) == 'u' ? 'User' : 'Organization';
-        $page = $this->argument('page');
-        $perPage = $this->argument('perPage');
+        $page = (int)$this->argument('page');
+        $perPage = (int)$this->argument('perPage');
         $developers = Developer::query()->select(['id', 'html_url'])
             ->where('type', $type)
             ->orderBy('updated_at', 'asc')

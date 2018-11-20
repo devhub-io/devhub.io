@@ -38,8 +38,8 @@ class GithubFetch implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param $user_id
-     * @param $url
+     * @param integer $user_id
+     * @param string $url
      */
     public function __construct($user_id, $url)
     {

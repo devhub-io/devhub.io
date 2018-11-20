@@ -54,7 +54,7 @@ class User extends Authenticatable
     }
 
     /**
-     * @param $value
+     * @param string $value
      */
     public function setPasswordAttribute($value)
     {

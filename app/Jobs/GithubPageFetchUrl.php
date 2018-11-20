@@ -35,8 +35,8 @@ class GithubPageFetchUrl implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param $keyword
-     * @param $page
+     * @param string $keyword
+     * @param integer $page
      */
     public function __construct($keyword, $page)
     {

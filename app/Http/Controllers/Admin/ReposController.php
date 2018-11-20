@@ -159,7 +159,7 @@ class ReposController extends Controller
     /**
      * Change recommend
      *
-     * @param $id
+     * @param integer $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function change_recommend($id)
@@ -174,7 +174,7 @@ class ReposController extends Controller
     /**
      * Revision history
      *
-     * @param $id
+     * @param integer $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function history($id)
@@ -190,7 +190,7 @@ class ReposController extends Controller
     /**
      * Fetch
      *
-     * @param $id
+     * @param integer $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function fetch($id)

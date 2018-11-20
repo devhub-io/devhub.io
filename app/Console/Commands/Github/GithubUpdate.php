@@ -45,8 +45,8 @@ class GithubUpdate extends Command
     public function handle()
     {
         $userId= $this->argument('userId');
-        $page = $this->argument('page');
-        $perPage = $this->argument('perPage');
+        $page = (int)$this->argument('page');
+        $perPage = (int)$this->argument('perPage');
         $repos = Repos::query()->select('id')
             ->orderBy('fetched_at', 'asc')
             ->orderBy('view_number', 'desc')

@@ -37,8 +37,8 @@ class GithubUpdate implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param $user_id
-     * @param int $repos_id
+     * @param integer $user_id
+     * @param integer $repos_id
      */
     public function __construct($user_id, $repos_id)
     {

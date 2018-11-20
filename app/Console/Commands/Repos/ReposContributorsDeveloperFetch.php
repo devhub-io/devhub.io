@@ -47,8 +47,8 @@ class ReposContributorsDeveloperFetch extends Command
     public function handle()
     {
         $userId = $this->argument('userId');
-        $page = $this->argument('page');
-        $perPage = $this->argument('perPage');
+        $page = (int)$this->argument('page');
+        $perPage = (int)$this->argument('perPage');
         $repos = ReposContributor::query()->select(DB::raw('login, count(1) as num'))
             ->groupBy('login')
             ->orderBy('num', 'desc')

@@ -270,7 +270,7 @@ class PackageProcess extends Command
     }
 
     /**
-     * @param $url
+     * @param string $url
      */
     protected function pushUrlFetch($url)
     {

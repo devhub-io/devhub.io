@@ -90,7 +90,7 @@ class DeveloperController extends Controller
     /**
      * Revision history
      *
-     * @param $id
+     * @param integer $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function history($id)

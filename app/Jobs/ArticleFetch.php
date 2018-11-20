@@ -29,7 +29,7 @@ class ArticleFetch implements ShouldQueue
     protected $url;
 
     /**
-     * @var
+     * @var integer
      */
     protected $article_id;
 
@@ -49,6 +49,7 @@ class ArticleFetch implements ShouldQueue
      * Execute the job.
      *
      * @return void
+     * @throws \Embed\Exceptions\InvalidUrlException
      */
     public function handle()
     {

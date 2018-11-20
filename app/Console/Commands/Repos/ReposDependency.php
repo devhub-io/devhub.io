@@ -48,8 +48,8 @@ class ReposDependency extends Command
     public function handle()
     {
         $pathWhere = ['package.json', 'composer.json', 'Gemfile'];
-        $page = $this->argument('page');
-        $perPage = $this->argument('perPage');
+        $page = (int)$this->argument('page');
+        $perPage = (int)$this->argument('perPage');
         $reposTree = DB::table('repos_tree_content')->whereIn('path', $pathWhere)->orderBy('repos_id',
             'asc')->forPage($page, $perPage)->get();
         foreach ($reposTree as $item) {

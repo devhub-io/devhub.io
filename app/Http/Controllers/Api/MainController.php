@@ -31,7 +31,7 @@ class MainController extends Controller
     }
 
     /**
-     * @param $slug
+     * @param string $slug
      * @return Job
      */
     public function job($slug)

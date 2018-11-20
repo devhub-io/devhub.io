@@ -43,7 +43,7 @@ class CollectionController extends Controller
     }
 
     /**
-     * @param $id
+     * @param integer $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function cover($id)
@@ -143,7 +143,7 @@ class CollectionController extends Controller
     }
 
     /**
-     * @param $id
+     * @param integer $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function delete($id)
@@ -156,7 +156,7 @@ class CollectionController extends Controller
     }
 
     /**
-     * @param $id
+     * @param integer $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function repos($id)
@@ -169,7 +169,7 @@ class CollectionController extends Controller
     }
 
     /**
-     * @param $id
+     * @param integer $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function repos_store($id)
@@ -184,8 +184,8 @@ class CollectionController extends Controller
     }
 
     /**
-     * @param $id
-     * @param $repos_id
+     * @param integer $id
+     * @param integer $repos_id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function repos_change_enable($id, $repos_id)
@@ -198,8 +198,8 @@ class CollectionController extends Controller
     }
 
     /**
-     * @param $id
-     * @param $repos_id
+     * @param integer $id
+     * @param integer $repos_id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function repos_delete($id, $repos_id)

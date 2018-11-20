@@ -45,7 +45,7 @@ class TopicController extends Controller
     }
 
     /**
-     * @param $topic
+     * @param string $topic
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function delete($topic)

@@ -41,7 +41,8 @@ class GithubAnalytics implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param $repos_id
+     * @param integer $user_id
+     * @param integer $repos_id
      */
     public function __construct($user_id, $repos_id)
     {

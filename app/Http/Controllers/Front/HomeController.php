@@ -97,7 +97,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @param $slug
+     * @param string $slug
      * @return \Illuminate\Http\Response
      */
     public function lists($slug)
@@ -134,7 +134,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @param $type
+     * @param string $type
      * @return \Illuminate\Http\Response
      */
     public function type_lists($type)
@@ -167,7 +167,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @param $slug
+     * @param string $slug
      * @return \Illuminate\Http\Response
      */
     public function repos($slug)
@@ -277,7 +277,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @param $slug
+     * @param string $slug
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function repos_questions($slug)
@@ -291,7 +291,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @param $slug
+     * @param string $slug
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function repos_news($slug)
@@ -331,7 +331,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @param $slug
+     * @param string $slug
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function collection($slug)
@@ -508,7 +508,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @param $login
+     * @param string $login
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function developer($login)
@@ -610,6 +610,9 @@ class HomeController extends Controller
         return view('front.news', compact('news', 'next', 'prev', 'current_date'));
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function topics()
     {
         $topics = Cache::remember('front:topics', 24 * 60, function () {
@@ -622,6 +625,10 @@ class HomeController extends Controller
         return view('front.topics', compact('topics'));
     }
 
+    /**
+     * @param string $topic
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function topic($topic)
     {
         if (request()->get('page') > 1000) {

@@ -52,8 +52,8 @@ class ReposQuestionFetch extends Command
             $client = new StackExchange($stackexchange->token);
 
             $last_quota_remaining = 0;
-            $page = $this->argument('page');
-            $perPage = $this->argument('perPage');
+            $page = (int)$this->argument('page');
+            $perPage = (int)$this->argument('perPage');
             $repos = Repos::query()->select(['id', 'repo'])->orderBy('stargazers_count', 'desc')->forPage($page, $perPage)->get();
             foreach ($repos as $repo) {
 

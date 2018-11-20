@@ -39,8 +39,8 @@ class DeveloperOrganizations extends Command
     public function handle()
     {
         $userId = $this->argument('userId');
-        $page = $this->argument('page');
-        $perPage = $this->argument('perPage');
+        $page = (int)$this->argument('page');
+        $perPage = (int)$this->argument('perPage');
         $developers = Developer::query()->select(['id', 'html_url'])
             ->where('type', 'User')
             ->orderBy('view_number', 'desc')

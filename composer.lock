@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7f3b9690c8efab0b6880051f89b21b7c",
+    "content-hash": "142356663d945acd77d7231e2ab40476",
     "packages": [
         {
             "name": "appstract/laravel-opcache",
