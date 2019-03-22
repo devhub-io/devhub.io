@@ -141,7 +141,7 @@
         <div class="row">
             <div class="col-md-8 text-left">
                 <div class="more-info">
-                    <p class="copyright-title">© 2016 - 2017 DevHub.io. All Rights Reserved.</p>
+                    <p class="copyright-title">© 2016 - 2019 DevHub.io. All Rights Reserved.</p>
                     <p class="copyright-tips">Disclaimer: This project is not affiliated with the GitHub company in any way.
                         GitHub® and the Octocat® logo are registered trademarks of GitHub, Inc., used with permission—https://github.com/logos</p>
                 </div>
