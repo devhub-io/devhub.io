@@ -3,7 +3,7 @@
 /*
  * This file is part of devhub.io.
  *
- * (c) DevelopHub <master@devhub.io>
+ * (c) sysatom <sysatom@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -497,7 +497,10 @@ class HomeController extends Controller
         }
 
         $type = request()->get('type', 'User');
-        $developers = Developer::query()->where('status', 1)->where('public_repos', '>', 0)->where('type', $type)
+        $developers = Developer::query()
+            ->where('status', 1)
+            ->where('public_repos', '>', 0)
+            ->where('type', $type)
             ->orderBy('rating', 'desc')
             ->orderBy('followers', 'desc')
             ->paginate(12);

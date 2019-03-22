@@ -1,9 +1,13 @@
-# DevelopHub
+# devhub.io
 
-## Queue
+Laravel version
 
-- nohup php artisan queue:work --tries=0 --queue=github-fetch &
-- nohup php artisan queue:work --tries=0 --queue=github-update &
-- nohup php artisan queue:work --tries=0 --queue=github-analytics &
-- nohup php artisan queue:work --tries=0 --queue=github-license &
-- nohup php artisan queue:work --tries=0 --queue=developer-update &
+## Environment Dependencies
+
+- MySQL
+- Redis
+- Sphinx
+
+## Copyright
+
+Copyright (c) sysatom. See [LICENSE](https://github.com/sysatom/devhub.io/blob/master/LICENSE) for details.
