@@ -122,6 +122,7 @@
                     <li><a href="//status.devhub.io/">@lang('front.status')</a></li>
                     <li><a href="#">@lang('front.api')</a></li>
                     <li><a href="{{ l_url('feed') }}">Feed</a></li>
+                    <li><a href="https://github.com/devhub-io">Github</a></li>
                 </ul>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 footer-links">
