@@ -50,7 +50,6 @@
         "doctrine/dbal": "~2.3",
         "filp/whoops": "^2.0",
         "fzaninotto/faker": "~1.8",
-        "laravel/telescope": "^0.1.5",
         "mockery/mockery": "0.9.*",
         "nunomaduro/collision": "^2.0",
         "nunomaduro/larastan": "^0.3.8",
