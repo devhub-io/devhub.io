@@ -433,7 +433,7 @@ class HomeController extends Controller
                     'target' => $target,
                     'referer' => request()->server('HTTP_REFERER') ?: '',
                     'ip' => real_ip(),
-                    'user_agent' => request()->server('HTTP_USER_AGENT'),
+                    'user_agent' => request()->server('HTTP_USER_AGENT') ?: '',
                     'clicked_at' => Carbon::now(),
                 ]);
             }
