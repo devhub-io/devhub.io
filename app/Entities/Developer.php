@@ -16,13 +16,11 @@ use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
-use Venturecraft\Revisionable\RevisionableTrait;
 
 class Developer extends Model implements Transformable
 {
     use Searchable;
     use TransformableTrait;
-    use RevisionableTrait;
 
     protected $table = 'developer';
 
