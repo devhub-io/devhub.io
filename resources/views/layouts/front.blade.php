@@ -57,7 +57,7 @@
                 <li><a href="{{ l_url('/developers') }}">Developers</a></li>
                 <li><a href="{{ l_url('/topics') }}">Topics</a></li>
                 <li><a href="{{ l_url('/news') }}">News</a></li>
-                <li><a href="javascript:alert('Coming soon.')">My account</a></li>
+                <li><a href="https://tools.devhub.io/">Tools</a></li>
                 <li><a href="{{ l_url('/sites') }}">Sites</a></li>
                 <li><a href="{{ l_url('search') }}" class="btn btn-blue">Search...</a></li>
             </ul>
@@ -88,7 +88,7 @@
             </div>
             <div class="col-md-4">
                 <ul class="right">
-                    <li><a href="javascript:alert('Coming soon.')" class="help">My account</a></li>
+                    <li><a href="https://tools.devhub.io/" class="help">Tools</a></li>
                     <li><a href="{{ l_url('/sites') }}">Sites</a></li>
                     <li><a href="{{ l_url('/search') }}" class="btn btn-blue">Search...</a></li>
                 </ul>
