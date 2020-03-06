@@ -88,7 +88,7 @@
             </div>
             <div class="col-md-4">
                 <ul class="right">
-                    <li><a href="https://tools.devhub.io/" class="help">Tools</a></li>
+                    <li><a href="https://tools.devhub.io/">Tools</a></li>
                     <li><a href="{{ l_url('/sites') }}">Sites</a></li>
                     <li><a href="{{ l_url('/search') }}" class="btn btn-blue">Search...</a></li>
                 </ul>
